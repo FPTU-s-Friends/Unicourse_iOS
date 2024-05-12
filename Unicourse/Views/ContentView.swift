@@ -20,7 +20,6 @@ struct ContentView: View {
                     OnBoardView()
                 }
             }
-            LoadingIndicatorView(isLoading: $appData.isLoading)
         }
     }
 }
