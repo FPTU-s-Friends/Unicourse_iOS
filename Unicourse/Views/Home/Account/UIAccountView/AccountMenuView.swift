@@ -110,20 +110,19 @@ struct AccountMenuView: View {
     }
 
     func SignOut() {
+        appData.isLoading = true
         Task {
             do {
-                appData.isLoading = true
                 try AuthenticationManager.shared.signOut()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     appData.signOutUser()
+                    appData.mainTabSelection = 1
                 }
             } catch {
                 appData.showAlert(text: error.localizedDescription)
             }
-            do {
-                appData.isLoading = false
-            }
         }
+        appData.isLoading = false
     }
 }
 

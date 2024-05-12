@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccountView: View {
     @StateObject var viewModel = AccountViewModel()
+    @EnvironmentObject var appData: AppData
 
     var body: some View {
         ZStack {
@@ -32,6 +33,12 @@ struct AccountView: View {
                 Spacer()
             }
             .offset(y: -30)
+
+//            LoadingIndicatorView(isLoading: $appData.isLoading)
+//                .opacity(1)
+//                .animation(.easeInOut(duration: 0.5), value: appData.isLoading)
+            
+            // loading o day van chua duoc
         }
     }
 }

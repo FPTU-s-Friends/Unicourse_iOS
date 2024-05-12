@@ -74,9 +74,6 @@ class AppData: ObservableObject {
                         self.error = error.localizedDescription
                 }
             }
-        } else {
-            isShowingAlert = true
-            error = "User is not Sign in"
         }
     }
 }
