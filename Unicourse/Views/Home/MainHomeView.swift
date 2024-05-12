@@ -13,7 +13,7 @@ struct MainHomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                TabView(selection: .constant(1)) {
+                TabView(selection: $appData.mainTabSelection) {
                     HomeView().tabItem {
                         Label("Trang chủ", systemImage: "house")
                     }.tag(1)
@@ -25,9 +25,10 @@ struct MainHomeView: View {
                     CommunityView().tabItem {
                         Label("Cộng đồng", systemImage: "person.3")
                     }.tag(3)
+                    
                     AccountView().tabItem {
                         Label("Tài khoản", systemImage: "person.circle.fill")
-                    }
+                    }.tag(4)
                 }
                 .tint(.activeColor)
             }

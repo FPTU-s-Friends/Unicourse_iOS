@@ -38,7 +38,7 @@ struct OnBoardView: View {
                 )
                 .cornerRadius(10)
             } else {
-                ButtonNextOnView(action: { incrementPage() }, text: "Tiếp tục")
+                ButtonMain(action: { incrementPage() }, text: "Tiếp tục")
             }
         }
         .animation(.easeInOut, value: viewModel.pageIndex)
