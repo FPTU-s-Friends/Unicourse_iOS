@@ -7,6 +7,4 @@
 
 import Foundation
 
-class ContentViewModel: ObservableObject {
-    @Published var isLoggedIn: Bool = false
-}
+class ContentViewModel: ObservableObject {}

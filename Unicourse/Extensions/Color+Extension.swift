@@ -14,6 +14,8 @@ extension Color {
     static var activeButtonColor = Color(hex: "4284F4")
     static var mainBackgroundColor = Color(hex: "F3FBFF")
     static var neutralTextColor = Color(hex: "#8D8A8A")
+    static let grayItem = Color(hex: "#EDEDED")
+    static let colorCartIcon = Color(hex: "#16AEF4")
 
     init(hex: String) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)

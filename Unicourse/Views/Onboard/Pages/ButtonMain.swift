@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ButtonNextOnView: View {
+struct ButtonMain: View {
     var action: () -> Void
     var text: String
-    
+
     var body: some View {
         Button(action: {
             action()
@@ -25,10 +25,8 @@ struct ButtonNextOnView: View {
         )
         .cornerRadius(10)
     }
-    
-
 }
 
 #Preview {
-    ButtonNextOnView(action: {}, text: "Next")
+    ButtonMain(action: {}, text: "Next")
 }

@@ -5,8 +5,6 @@
 //  Created by Trung Kiên Nguyễn on 1/5/24.
 //
 
-import Firebase
-import FirebaseCore
 import SwiftUI
 
 @main
@@ -16,15 +14,30 @@ struct UnicourseApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(appData) // Pass appData as environment object
-                .alert("Error", isPresented: $appData.isShowingAlert) {
-                    Button("OK", role: .cancel) {
-                        appData.isShowingAlert = false
-                    }
-                } message: {
-                    Text(appData.error)
+            VStack {
+                if appData.isShowSlashScreen {
+                    SlashScreenView()
+                } else {
+                    ContentView()
+                        .environmentObject(appData) // Pass appData as environment object
+                        .alert("Error", isPresented: $appData.isShowingAlert) {
+                            Button("OK", role: .cancel) {
+                                appData.isShowingAlert = false
+                            }
+                        } message: {
+                            Text(appData.error)
+                        }
                 }
+            }
+            .animation(.spring(), value: appData.isShowSlashScreen)
+            .onAppear {
+                Task {
+                    try await appData.checkUserAuthentication()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        appData.isShowSlashScreen = false
+                    }
+                }
+            }
         }
     }
 }
