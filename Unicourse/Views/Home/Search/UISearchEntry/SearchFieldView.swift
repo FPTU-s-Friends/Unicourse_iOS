@@ -40,7 +40,6 @@ struct SearchFieldView: View {
                         .padding(.vertical, 8)
                         .focused($isTextFieldFocused)
                         .onChange(of: isTextFieldFocused) { newValue in
-
                             withAnimation {
                                 isFilterIconHidden = newValue
                             }

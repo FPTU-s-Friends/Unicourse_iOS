@@ -32,26 +32,19 @@ struct AccountView: View {
                 
                 VStack(spacing: 20) {
                     UserStatisticView()
-                    
-                    AccountMenuView(menuItems: $viewModel.menuItems)
-                    HeaderAccountView()
-                    
-                    VStack(spacing: 20) {
-                        UserStatisticView()
                         
-                        AccountMenuView(menuItems: $viewModel.menuItems)
-                    }
-                    .frame(width: 400, height: 600)
-                    Spacer()
+                    AccountMenuView(menuItems: $viewModel.menuItems)
                 }
-                .offset(y: -30)
-                
-                //            LoadingIndicatorView(isLoading: $appData.isLoading)
-                //                .opacity(1)
-                //                .animation(.easeInOut(duration: 0.5), value: appData.isLoading)
-                
-                // loading o day van chua duoc
+                .frame(width: 400, height: 600)
+                Spacer()
             }
+            .offset(y: -30)
+                
+            //            LoadingIndicatorView(isLoading: $appData.isLoading)
+            //                .opacity(1)
+            //                .animation(.easeInOut(duration: 0.5), value: appData.isLoading)
+                
+            // loading o day van chua duoc
         }
     }
 }
