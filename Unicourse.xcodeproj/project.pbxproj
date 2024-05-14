@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */; };
+		B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998D2BF3857A0034BC08 /* ExpandableView.swift */; };
+		B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998F2BF387840034BC08 /* ThumbnailView.swift */; };
+		B54199922BF3879E0034BC08 /* ExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54199912BF3879E0034BC08 /* ExpandedView.swift */; };
 		B5898F872BED221200C315B8 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5898F862BED221200C315B8 /* CourseDetailView.swift */; };
 		B5898F8B2BED26D800C315B8 /* CircleButtonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5898F8A2BED26D800C315B8 /* CircleButtonUI.swift */; };
 		B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5898F8D2BED339E00C315B8 /* RatingStars.swift */; };
@@ -91,6 +95,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSyllabusTabView.swift; sourceTree = "<group>"; };
+		B541998D2BF3857A0034BC08 /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
+		B541998F2BF387840034BC08 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		B54199912BF3879E0034BC08 /* ExpandedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedView.swift; sourceTree = "<group>"; };
 		B5898F862BED221200C315B8 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		B5898F8A2BED26D800C315B8 /* CircleButtonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonUI.swift; sourceTree = "<group>"; };
 		B5898F8D2BED339E00C315B8 /* RatingStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingStars.swift; sourceTree = "<group>"; };
@@ -187,9 +195,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B541998C2BF385630034BC08 /* ExpandableElement */ = {
+			isa = PBXGroup;
+			children = (
+				B541998D2BF3857A0034BC08 /* ExpandableView.swift */,
+				B541998F2BF387840034BC08 /* ThumbnailView.swift */,
+				B54199912BF3879E0034BC08 /* ExpandedView.swift */,
+			);
+			path = ExpandableElement;
+			sourceTree = "<group>";
+		};
 		B5898F852BED21FB00C315B8 /* Course Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B541998C2BF385630034BC08 /* ExpandableElement */,
 				B5898F962BEDC87000C315B8 /* TabBarElement */,
 				B5898F882BED26BC00C315B8 /* UIElement */,
 				B5898F862BED221200C315B8 /* CourseDetailView.swift */,
@@ -217,6 +236,7 @@
 				B5898F9E2BEE003F00C315B8 /* CourseDetailTabView.swift */,
 				B5898FA42BEE0D5D00C315B8 /* CourseReviewTabView.swift */,
 				C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */,
+				B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */,
 			);
 			path = TabBarElement;
 			sourceTree = "<group>";
@@ -723,11 +743,13 @@
 				C567497B2BE8DEB200DA6A58 /* CustomProgressView.swift in Sources */,
 				C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */,
 				C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */,
+				B54199922BF3879E0034BC08 /* ExpandedView.swift in Sources */,
 				C541DA152BE363110022079E /* DeviderCustomView.swift in Sources */,
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
 				B5898F9F2BEE003F00C315B8 /* CourseDetailTabView.swift in Sources */,
+				B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */,
 				C567495A2BE88FD200DA6A58 /* SignInResponseModel.swift in Sources */,
 				B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */,
 				C57ED1C52BEF4D1700641532 /* TabButton.swift in Sources */,
@@ -743,7 +765,9 @@
 				C54DADAB2BE9D75900E968CE /* ProgressCourseView.swift in Sources */,
 				C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */,
 				B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */,
+				B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */,
 				B5898FA32BEE0A5A00C315B8 /* DetailInformationCourse.swift in Sources */,
+				B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */,
 				C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */,
 				C567494D2BE8764200DA6A58 /* UserProfile.swift in Sources */,
 			);
