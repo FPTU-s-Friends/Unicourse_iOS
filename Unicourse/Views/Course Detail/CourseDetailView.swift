@@ -61,12 +61,11 @@ struct CourseDetailView: View {
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView()
-                                .tag(0)
-                            Text("Tag 2")
-                                .tag(1)
-                            CourseReviewTabView()
-                                .tag(2)
+                            CourseDetailTabView().tag(0)
+
+                            CourseSyllabusTabView().tag(1)
+
+                            CourseReviewTabView().tag(2)
                         }
                         .frame(height: 400)
                         .tabViewStyle(.page(indexDisplayMode: .never))
