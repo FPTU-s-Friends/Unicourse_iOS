@@ -503,6 +503,7 @@
 		C56F69362BE2026A0093E51B /* Unicourse */ = {
 			isa = PBXGroup;
 			children = (
+				C5ACC6C02BF441F500104A0C /* Constants */,
 				C56749432BE86E9B00DA6A58 /* Info.plist */,
 				C56749412BE86E6000DA6A58 /* GoogleService-Info.plist */,
 				C56749402BE86E2800DA6A58 /* Others */,
@@ -608,6 +609,13 @@
 				C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */,
 			);
 			path = UISearchEntry;
+			sourceTree = "<group>";
+		};
+		C5ACC6C02BF441F500104A0C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,7 +16,11 @@ struct AccountMenuView: View {
     var body: some View {
         VStack {
             ForEach(menuItems) { menuItem in
-                NavigationLink(destination: menuItem.destination) {
+                NavigationLink(destination: menuItem.destination
+                    .navigationBarTitle(menuItem.title, displayMode: .large)
+                
+                    .navigationBarBackButtonHidden(true))
+                {
                     VStack {
                         if menuItem.id == 2 {
                             VStack(alignment: .leading) {
