@@ -9,37 +9,14 @@ import SwiftUI
 
 struct FavoriteView: View {
     @State var searchString: String = ""
+    @State private var isSearchBarVisible: Bool = false
     @Environment(\.dismiss) var dismiss: DismissAction
 
     var body: some View {
         VStack {
             ScrollView {
-                HStack {
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.blue)
-                            TextField("", text: $searchString)
-                                .font(Font.custom("SF Pro Display", size: 14))
-                                .lineSpacing(20)
-                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.76))
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 8)
-                        }
-                        .padding(12)
-                        .frame(height: 44)
-                        .background(.white)
-                        .cornerRadius(16)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .inset(by: 0.25)
-                                .stroke(Color(red: 0.93, green: 0.93, blue: 0.93), lineWidth: 0.25)
-                        )
-                    }
-                }
-                .padding(EdgeInsets(top: 6, leading: 18, bottom: 6, trailing: 18))
-                .frame(width: 375, height: 56)
-                .padding(.horizontal, 10)
+                // Conditionally show the search bar
+
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
                     ForEach(0 ..< 4) { _ in
                         ZStack(alignment: .top) {
@@ -117,6 +94,7 @@ struct FavoriteView: View {
                         .cornerRadius(12)
                     }
                 }
+                .searchable(text: $searchString, isPresented: $isSearchBarVisible,prompt: Text("Tìm kiếm"))
             }
         }
         .toolbar {
@@ -132,13 +110,51 @@ struct FavoriteView: View {
                 })
             }
 
+//                // Step 2
+//                HStack {
+//                    VStack(alignment: .leading, spacing: 10) {
+//                        HStack(spacing: 8) {
+//                            Image(systemName: "magnifyingglass")
+//                                .font(.system(size: 16))
+//                                .foregroundColor(.black)
+//                                .frame(width: 10, height: 18)
+//                                .padding(.horizontal, 15)
+//                            TextField("", text: $searchString)
+//                                .font(Font.custom("SF Pro Display", size: 14))
+//                                .lineSpacing(20)
+//                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.76))
+//                                .padding(.horizontal, 4)
+//                                .padding(.vertical, 8)
+//                        }
+//                        .padding(12)
+//                        .frame(height: 44)
+//                        .background(.white)
+//                        .cornerRadius(16)
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 16)
+//                                .inset(by: 0.25)
+//                                .stroke(Color(red: 0.93, green: 0.93, blue: 0.93), lineWidth: 0.25)
+//                        )
+//                    }
+//                }
+//                .padding(EdgeInsets(top: 6, leading: 18, bottom: 6, trailing: 18))
+//                .frame(width: 375, height: 56)
+//                .padding(.horizontal, 10)
+//            }
+//
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {}, label: {
-                    Image(systemName: "magnifyingglass")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
+                Button(action: {
+                    withAnimation(.spring()) {
+                        isSearchBarVisible.toggle()
+                    }
+                }, label: {
+                    if !isSearchBarVisible {
+                        Image(systemName: "magnifyingglass")
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                            .frame(width: 10, height: 18)
+                            .padding(.horizontal, 15)
+                    }
                 })
             }
         }
