@@ -54,7 +54,7 @@ struct CourseDetailView: View {
                     // Go Back Button - Favourite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: "Khóa học OSG202 - Hệ điều hành", courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398)
+                    BasicInfo(courseName: "Khóa học JPD123", courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398)
                     // End basic info
 
                     // Tab bar
