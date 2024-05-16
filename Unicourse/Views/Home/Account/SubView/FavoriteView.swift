@@ -125,7 +125,17 @@ struct FavoriteView: View {
                     dismiss()
                 }, label: {
                     Image(systemName: "arrow.left")
-                        .font(.system(size: 20))
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                        .frame(width: 10, height: 18)
+                        .padding(.horizontal, 15)
+                })
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {}, label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 16))
                         .foregroundColor(.black)
                         .frame(width: 10, height: 18)
                         .padding(.horizontal, 15)
