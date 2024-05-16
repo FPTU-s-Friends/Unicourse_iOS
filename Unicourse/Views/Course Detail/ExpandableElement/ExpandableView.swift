@@ -62,7 +62,7 @@ struct ExpandableView: View {
                 )
                 .cornerRadius(16)
                 .overlay {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .stroke(Color(hex: "#EDEDED"), lineWidth: 0.5)
                         .matchedGeometryEffect(id: "mask", in: namepsace, isSource: false)
                 }

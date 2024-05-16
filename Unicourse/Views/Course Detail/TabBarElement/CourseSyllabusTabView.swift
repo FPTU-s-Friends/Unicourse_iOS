@@ -12,162 +12,74 @@ struct CourseSyllabusTabView: View {
         VStack {
             ScrollView {
                 VStack {
-                    ExpandableView(
-                        thumbnail: ThumbnailView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 1: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
+                    ForEach(0 ..< 2) {
+                        _ in
+                        ExpandableView(
+                            thumbnail: ThumbnailView(content: {
+                                VStack(spacing: 11) {
+                                    // Dynamic variable
+                                    Text("Khoảng 3 giờ 0 phút")
+                                        .font(.system(size: 12, weight: .regular))
+                                        .foregroundStyle(Color(hex: "#8D8A8A"))
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                                    HStack(alignment: .top, spacing: 10) {
+                                        Image("Week")
+                                        Text("JPD113 Buổi 1,2 - Spring 2022")
+                                            .font(.system(size: 14, weight: .medium))
+                                    }
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Giới thiệu về hệ điều hành")
-                                        .font(.system(size: 14, weight: .medium))
+
+                                    HStack {
+                                        Text("Đã hoàn thành")
+                                            .font(.system(size: 12, weight: .medium))
+                                        Spacer()
+                                    }
                                 }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                                .padding(14)
 
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
-                                }
-                            }
-                            .padding(14)
+                            }),
+                            expanded: ExpandedView(content: {
+                                VStack {
+                                    VStack(spacing: 11) {
+                                        // Dynamic variable
+                                        Text("Khoảng 3 giờ 0 phút")
+                                            .font(.system(size: 12, weight: .regular))
+                                            .foregroundStyle(Color(hex: "#8D8A8A"))
+                                            .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                                        HStack(alignment: .top, spacing: 10) {
+                                            Image("Week")
+                                            Text("JPD113 Buổi 1,2 - Spring 2022")
+                                                .font(.system(size: 14, weight: .medium))
+                                        }
+                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
 
-                        }),
-                        expanded: ExpandedView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 1: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Giới thiệu về hệ điều hành")
-                                        .font(.system(size: 14, weight: .medium))
-                                }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                                        HStack {
+                                            Text("Đã hoàn thành")
+                                                .font(.system(size: 12, weight: .medium))
+                                            Spacer()
+                                        }
+                                    }
+                                    .padding(14)
 
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
-                                }
-
-                                Text("Chuong 1")
-                                Text("Chuong 2")
-                                Text("Chuong 3")
-                                Text("Chuong 4")
-                            }
-                            .padding(14)
-
-                        }))
-                    ExpandableView(
-                        thumbnail: ThumbnailView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 2: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Hệ thống máy chủ")
-                                        .font(.system(size: 14, weight: .medium))
-                                }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
-                                }
-                            }
-                            .padding(14)
-
-                        }),
-                        expanded: ExpandedView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 1: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Giới thiệu về hệ điều hành")
-                                        .font(.system(size: 14, weight: .medium))
-                                }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
+                                    LazyVStack(spacing: 2) {
+                                        ForEach(0 ..< 2) { i in
+                                            HStack(spacing: 20) {
+                                                Image(systemName: "play.circle")
+                                                    .font(.system(size: 20, weight: .regular))
+                                                Text("Bài \(i + 1)")
+                                                Spacer()
+                                                Text("3 giờ")
+                                                    .font(.system(size: 12, weight: .regular))
+                                            }
+                                            .padding(20)
+                                            .frame(maxWidth: .infinity)
+                                            .background(Color(hex: "#EDEDED"))
+                                        }
+                                    }
                                 }
 
-                                Text("Chuong 1")
-                                Text("Chuong 2")
-                                Text("Chuong 3")
-                                Text("Chuong 4")
-                            }
-                            .padding(14)
-
-                        }))
-                    ExpandableView(
-                        thumbnail: ThumbnailView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 3: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Binary là gì")
-                                        .font(.system(size: 14, weight: .medium))
-                                }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
-                                }
-                            }
-                            .padding(14)
-
-                        }),
-                        expanded: ExpandedView(content: {
-                            VStack(spacing: 11) {
-                                // Dynamic variable
-                                Text("Tuần 1: Khoảng 4 tiếng")
-                                    .font(.system(size: 12, weight: .regular))
-                                    .foregroundStyle(Color(hex: "#8D8A8A"))
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                HStack(alignment: .top, spacing: 10) {
-                                    Image("Week")
-                                    Text("Giới thiệu về hệ điều hành")
-                                        .font(.system(size: 14, weight: .medium))
-                                }
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-
-                                HStack {
-                                    Text("Đã hoàn thành")
-                                        .font(.system(size: 12, weight: .medium))
-                                    Spacer()
-                                }
-
-                                Text("Chuong 1")
-                                Text("Chuong 2")
-                                Text("Chuong 3")
-                                Text("Chuong 4")
-                            }
-                            .padding(14)
-
-                        }))
+                            }))
+                    }
                 }
             }
             .scrollIndicators(.never)
