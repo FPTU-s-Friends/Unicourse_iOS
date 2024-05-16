@@ -18,7 +18,6 @@ struct AccountMenuView: View {
             ForEach(menuItems) { menuItem in
                 NavigationLink(destination: menuItem.destination
                     .navigationBarTitle(menuItem.title, displayMode: .large)
-                
                     .navigationBarBackButtonHidden(true))
                 {
                     VStack {

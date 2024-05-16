@@ -26,7 +26,7 @@ struct FavoriteView: View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                 }
-                                .frame(width: 190)
+                                .frame(width: 170)
                                 .padding(.top, 10)
 
                                 Text("WDU203c - The UI/UX Design")
@@ -87,16 +87,19 @@ struct FavoriteView: View {
                             .background(Color(red: 1, green: 1, blue: 1).opacity(0.50))
                             .cornerRadius(5)
                             .padding(.horizontal, 5)
-                            .offset(x: -50, y: 175)
+                            .offset(x: -50, y: 170)
                         }
                         .frame(width: 180, height: 260)
                         .background(.white)
                         .cornerRadius(12)
                     }
                 }
-                .searchable(text: $searchString, isPresented: $isSearchBarVisible,prompt: Text("Tìm kiếm"))
+                .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
             }
         }
+
+        .background(Color.mainBackgroundColor)
+        .padding()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {

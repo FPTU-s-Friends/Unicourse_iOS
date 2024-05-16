@@ -46,6 +46,7 @@ struct TransactionHistoryView: View {
                 }
             }
         }
+        .background(Color.mainBackgroundColor)
     }
 }
 

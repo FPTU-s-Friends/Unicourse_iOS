@@ -16,43 +16,19 @@ struct HistoryTransactionItem: View {
 
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Image("User")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20)
+            VStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image("User")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
 
-                    Text(name)
-                        .font(.system(size: 12, weight: .light))
-                        .foregroundStyle(.gray)
-                }
-
-                HStack {
-                    Image("3diconsiconcourse")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 60)
-                        .cornerRadius(10)
-                    VStack(alignment: .leading) {
-                        Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
-                            .multilineTextAlignment(.leading)
+                        Text(name)
                             .font(.system(size: 12, weight: .light))
-                        // ---
-                        HStack {
-                            Text("50.000 VND")
-                                .font(.system(size: 14, weight: .bold))
-                                .foregroundColor(.activeColor)
-                            // ---
-                            Text("70.000 VND")
-                                .font(.system(size: 12, weight: .bold))
-                                .strikethrough()
-                                .foregroundColor(.gray)
-                        }
+                            .foregroundStyle(.gray)
                     }
-                }
 
-                if isShowDetailHistory {
                     HStack {
                         Image("3diconsiconcourse")
                             .resizable()
@@ -76,47 +52,76 @@ struct HistoryTransactionItem: View {
                             }
                         }
                     }
-                }
 
-                HStack {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Mar 12 - 2024")
-                            .font(.system(size: 14, weight: .light))
-                            .foregroundStyle(.gray)
-
-                        Text("2 Khoá học")
-                            .font(.system(size: 14, weight: .bold))
+                    if isShowDetailHistory {
+                        HStack {
+                            Image("3diconsiconcourse")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60)
+                                .cornerRadius(10)
+                            VStack(alignment: .leading) {
+                                Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(size: 12, weight: .light))
+                                // ---
+                                HStack {
+                                    Text("50.000 VND")
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundColor(.activeColor)
+                                    // ---
+                                    Text("70.000 VND")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .strikethrough()
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
                     }
 
-                    Spacer()
+                    HStack {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Mar 12 - 2024")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundStyle(.gray)
 
-                    VStack(alignment: .trailing, spacing: 8) {
-                        Text("Tổng giá")
-                            .font(.system(size: 14, weight: .light))
-                            .foregroundStyle(.gray)
+                            Text("2 Khoá học")
+                                .font(.system(size: 14, weight: .bold))
+                        }
 
-                        Text("90.000 VND")
-                            .font(.system(size: 16, weight: .bold))
-                            .lineSpacing(20)
-                            .foregroundColor(.activeColor)
+                        Spacer()
+
+                        VStack(alignment: .trailing, spacing: 8) {
+                            Text("Tổng giá")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundStyle(.gray)
+
+                            Text("90.000 VND")
+                                .font(.system(size: 16, weight: .bold))
+                                .lineSpacing(20)
+                                .foregroundColor(.activeColor)
+                        }
                     }
                 }
+                .padding(30)
+
+                Button(action: {
+                    withAnimation {
+                        isShowDetailHistory.toggle()
+                    }
+                }, label: {
+                    Text(isShowDetailHistory ? "Thu gọn" : "Xem thêm")
+                        .font(.system(size: .mainTitleButtonPath))
+                        .foregroundStyle(.white)
+                        .padding(6)
+                        .padding(.horizontal, 10)
+                        .background(Color.activeButtonColor.cornerRadius(20))
+                })
             }
-            .padding(30)
-
-            Button(action: {
-                withAnimation {
-                    isShowDetailHistory.toggle()
-                }
-            }, label: {
-                Text(isShowDetailHistory ? "Thu gọn" : "Xem thêm")
-                    .font(.system(size: .mainTitleButtonPath))
-                    .foregroundStyle(.white)
-                    .padding(6)
-                    .padding(.horizontal, 10)
-                    .background(Color.activeButtonColor.cornerRadius(20))
-            })
+            .shadow(radius: 1)
+            .background(Color.white.cornerRadius(10))
         }
+        .padding(.horizontal, 15)
     }
 }
 

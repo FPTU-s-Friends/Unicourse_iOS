@@ -64,6 +64,7 @@ struct DiscountView: View {
                 }
             }
         }
+        .background(Color.mainBackgroundColor)
         .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
     }
 }
