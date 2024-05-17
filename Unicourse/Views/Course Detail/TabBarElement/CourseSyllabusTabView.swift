@@ -73,8 +73,8 @@ struct CourseSyllabusTabView: View {
                                     LazyVStack(spacing: 2) {
                                         ForEach(chapter.listVideo) { video in
                                             HStack(spacing: 20) {
-                                                Image(systemName: "play.circle")
-                                                    .font(.system(size: 20, weight: .regular))
+                                                Image(systemName: "play.rectangle.fill")
+                                                    .font(.system(size: 16, weight: .regular))
                                                 Text(video.titleVideo)
                                                 Spacer()
                                                 Text(convertMinutesToString(minutes: video.totalTime))

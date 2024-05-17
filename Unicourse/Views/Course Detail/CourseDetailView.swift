@@ -79,9 +79,12 @@ struct CourseDetailView: View {
             .padding(.horizontal, 18)
 
             VStack {
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                NavigationLink {
+                    CourseVideoPlayerView()
+
+                } label: {
                     ButtonGradientUI(titleButton: "Bắt đầu học")
-                })
+                }
             }
             .padding(.horizontal, 20)
             .background(.white)
