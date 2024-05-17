@@ -36,6 +36,21 @@ struct CourseDetailView: View {
                                 }).tint(.black)
 
                                 Button(action: {}, label: {
+                                    ZStack {
+                                        CircleButtonUI(isActive: isFav, systemName: "cart", symbolRenderingMode: .multicolor)
+                                            .tint(.black)
+                                        Text("12")
+                                            .font(.system(size: 10))
+                                            .foregroundStyle(.white)
+                                            .padding(2)
+                                            .background(Color.activeColor.cornerRadius(20))
+                                            .padding(.leading, 20)
+                                            .padding(.bottom, 20)
+                                    }
+
+                                })
+
+                                Button(action: {}, label: {
                                     CircleButtonUI(isActive: false, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
                                 }).tint(.black)
                             }

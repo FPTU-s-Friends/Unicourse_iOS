@@ -38,7 +38,7 @@ struct AccountView: View {
                 .frame(width: 400, height: 600)
                 Spacer()
             }
-            .offset(y: -30)
+            .offset(y: -10)
         }
     }
 }
