@@ -42,7 +42,7 @@ struct Mockdata: Identifiable {
                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
                      VideoChapter(titleVideo: "Video 2", totalTime: 90)
                  ]),
-        Mockdata(nameChapter: "JPD113 buổi 3 - Spring 2022", isDone: Bool.random(),
+        Mockdata(nameChapter: "JPD113 buổi 3 - Spring 2022 ", isDone: Bool.random(),
                  listVideo: [
                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
                      VideoChapter(titleVideo: "Video 2", totalTime: 90),
@@ -73,8 +73,8 @@ struct CourseSyllabusTabView: View {
                                     LazyVStack(spacing: 2) {
                                         ForEach(chapter.listVideo) { video in
                                             HStack(spacing: 20) {
-                                                Image(systemName: "play.circle")
-                                                    .font(.system(size: 20, weight: .regular))
+                                                Image(systemName: "play.rectangle.fill")
+                                                    .font(.system(size: 16, weight: .regular))
                                                 Text(video.titleVideo)
                                                 Spacer()
                                                 Text(convertMinutesToString(minutes: video.totalTime))
