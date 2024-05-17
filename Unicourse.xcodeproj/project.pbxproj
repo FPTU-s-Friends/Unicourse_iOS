@@ -103,6 +103,8 @@
 		C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD172BF7202000FC0DF7 /* HeaderCartItemView.swift */; };
 		C5DDAD002BEC6ADA00CDF642 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */; };
 		C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */; };
+		C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */; };
+		C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +200,8 @@
 		C5D7DD172BF7202000FC0DF7 /* HeaderCartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCartItemView.swift; sourceTree = "<group>"; };
 		C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,6 +589,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5EA2CF62BF76BBC002C6144 /* Checkout */,
 				C5D7DD0A2BF70E6400FC0DF7 /* Cart */,
 				B5898F852BED21FB00C315B8 /* Course Detail */,
 				C541D9F72BE3429E0022079E /* Onboard */,
@@ -707,6 +712,23 @@
 			path = CartUI;
 			sourceTree = "<group>";
 		};
+		C5EA2CF62BF76BBC002C6144 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				C5EA2CFA2BF7715A002C6144 /* CheckoutUI */,
+				C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		C5EA2CFA2BF7715A002C6144 /* CheckoutUI */ = {
+			isa = PBXGroup;
+			children = (
+				C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */,
+			);
+			path = CheckoutUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -823,6 +845,7 @@
 				C56749652BE899D700DA6A58 /* SignInRequestModel.swift in Sources */,
 				C541D9FC2BE343D10022079E /* PageView.swift in Sources */,
 				C5D7DD0C2BF70E7300FC0DF7 /* CartView.swift in Sources */,
+				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
@@ -865,6 +888,7 @@
 				C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
 				B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */,
+				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,

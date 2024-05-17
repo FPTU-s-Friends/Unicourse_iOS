@@ -12,28 +12,28 @@ struct AccountView: View {
     @EnvironmentObject var appData: AppData
     
     var body: some View {
-        ScrollView {
-            ZStack {
-                Color.white
-                    .frame(width: 360, height: 600)
-                    .cornerRadius(20)
-                    .offset(y: 60)
+//        ScrollView {
+        ZStack {
+            Color.white
+                .frame(width: 360, height: 600)
+                .cornerRadius(20)
+                .offset(y: 40)
                 
-                VStack {
-                    HeaderAccountView()
+            VStack {
+                HeaderAccountView()
                     
-                    VStack(spacing: 20) {
-                        UserStatisticView()
+                VStack(spacing: 20) {
+                    UserStatisticView()
                             
-                        AccountMenuView(menuItems: $viewModel.menuItems)
-                    }
-                    .frame(width: 400, height: 600)
-                    Spacer()
+                    AccountMenuView(menuItems: $viewModel.menuItems)
                 }
-                .offset(y: 0)
-                
-                LoadingIndicatorView(isLoading: $appData.isLoading)
+                .frame(width: 400, height: 600)
+                Spacer()
             }
+            .offset(y: 0)
+                
+            LoadingIndicatorView(isLoading: $appData.isLoading)
+//            }
         }
         .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
             .edgesIgnoringSafeArea(.top))
