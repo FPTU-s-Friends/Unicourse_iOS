@@ -42,7 +42,7 @@ struct Mockdata: Identifiable {
                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
                      VideoChapter(titleVideo: "Video 2", totalTime: 90)
                  ]),
-        Mockdata(nameChapter: "JPD113 buổi 3 - Spring 2022", isDone: Bool.random(),
+        Mockdata(nameChapter: "JPD113 buổi 3 - Spring 2022 ", isDone: Bool.random(),
                  listVideo: [
                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
                      VideoChapter(titleVideo: "Video 2", totalTime: 90),
