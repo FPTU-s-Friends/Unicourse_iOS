@@ -35,7 +35,7 @@ struct CourseDetailView: View {
                                     CircleButtonUI(isActive: isFav, systemName: "heart", symbolRenderingMode: .multicolor)
                                 }).tint(.black)
 
-                                Button(action: {}, label: {
+                                NavigationLink(destination: CartView()) {
                                     ZStack {
                                         CircleButtonUI(isActive: isFav, systemName: "cart", symbolRenderingMode: .multicolor)
                                             .tint(.black)
@@ -47,8 +47,7 @@ struct CourseDetailView: View {
                                             .padding(.leading, 20)
                                             .padding(.bottom, 20)
                                     }
-
-                                })
+                                }
 
                                 Button(action: {}, label: {
                                     CircleButtonUI(isActive: false, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
@@ -101,6 +100,7 @@ struct CourseDetailView: View {
             .padding(.horizontal, 20)
             .background(.white)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

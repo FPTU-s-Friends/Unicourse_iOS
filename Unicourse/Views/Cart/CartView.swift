@@ -42,6 +42,8 @@ struct CartView: View {
                 ButtonCheckBox(isChecked: $isCheckedAll)
             }
         }
+        .navigationBarTitle("Giỏ hàng", displayMode: .large)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

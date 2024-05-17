@@ -49,9 +49,9 @@ struct HeaderCartItemView: View {
             // nếu mà checkAll tất cả item thì thằng này cũng trở thành true
             isCheckedAllItemPerson = isCheckedAll
         }
-        .onChange(of: isCheckedAllItemPerson) { _, _ in
+        .onChange(of: isCheckedAllItemPerson) { _, newValue in
             // ở đây phòng trường hợp người dùng CheckAll thành true trước, xong nhấn bỏ chọn thì chuyển checkAll thành false
-            if !isCheckedAllItemPerson {
+            if newValue == false {
                 isCheckedAll = isCheckedAllItemPerson
             }
         }

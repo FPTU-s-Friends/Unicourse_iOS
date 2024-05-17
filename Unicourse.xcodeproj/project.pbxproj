@@ -82,7 +82,6 @@
 		C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69372BE2026A0093E51B /* UnicourseApp.swift */; };
 		C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69392BE2026A0093E51B /* ContentView.swift */; };
 		C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56F693B2BE2026C0093E51B /* Assets.xcassets */; };
-		C56F693F2BE2026C0093E51B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56F693E2BE2026C0093E51B /* Preview Assets.xcassets */; };
 		C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F694A2BE208AA0093E51B /* Color+Extension.swift */; };
 		C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */; };
 		C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */; };
@@ -176,7 +175,6 @@
 		C56F69372BE2026A0093E51B /* UnicourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicourseApp.swift; sourceTree = "<group>"; };
 		C56F69392BE2026A0093E51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C56F693B2BE2026C0093E51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C56F693E2BE2026C0093E51B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C56F694A2BE208AA0093E51B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionView.swift; sourceTree = "<group>"; };
 		C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryView.swift; sourceTree = "<group>"; };
@@ -527,9 +525,9 @@
 			isa = PBXGroup;
 			children = (
 				C56749432BE86E9B00DA6A58 /* Info.plist */,
+				C56749402BE86E2800DA6A58 /* Others */,
 				C5D7DD0D2BF7116C00FC0DF7 /* Config */,
 				C5ACC6C02BF441F500104A0C /* Constants */,
-				C56749402BE86E2800DA6A58 /* Others */,
 				C56749492BE8754D00DA6A58 /* Managers */,
 				C56749442BE8709D00DA6A58 /* Helpers */,
 				C56F69452BE207CE0093E51B /* Extensions */,
@@ -538,17 +536,8 @@
 				C56F69472BE207ED0093E51B /* Views */,
 				C56F69482BE207FA0093E51B /* ViewModels */,
 				C56F69372BE2026A0093E51B /* UnicourseApp.swift */,
-				C56F693D2BE2026C0093E51B /* Preview Content */,
 			);
 			path = Unicourse;
-			sourceTree = "<group>";
-		};
-		C56F693D2BE2026C0093E51B /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				C56F693E2BE2026C0093E51B /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		C56F69452BE207CE0093E51B /* Extensions */ = {
@@ -767,7 +756,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C56F693F2BE2026C0093E51B /* Preview Assets.xcassets in Resources */,
 				C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */,
 				C56749422BE86E6000DA6A58 /* GoogleService-Info.plist in Resources */,
 			);

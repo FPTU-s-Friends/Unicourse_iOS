@@ -25,10 +25,13 @@ struct CartItemView: View {
                 .background(Color.white.cornerRadius(10))
                 .onChange(of: isCheckedAll) { _, _ in
                     // nếu mà bấm nút tổng check thì check hết toàn bộ khoá học
-                    isChecked = isCheckedAll
+                    withAnimation {
+                        isChecked = isCheckedAll
+                    }
                 }
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.bottom, 10)
         }
     }
 }

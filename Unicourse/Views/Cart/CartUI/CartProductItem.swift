@@ -15,30 +15,44 @@ struct CartProductItem: View {
         HStack {
             ButtonCheckBox(isChecked: $isChecked)
 
-            Image("3diconsiconcourse")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 60)
-                .cornerRadius(10)
-            VStack(alignment: .leading) {
-                Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 12, weight: .light))
-                // ---
+            NavigationLink(destination: CourseDetailView()) {
                 HStack {
-                    Text("50.000 VND")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundColor(.activeColor)
-                    // ---
-                    Text("70.000 VND")
-                        .font(.system(size: 12, weight: .bold))
-                        .strikethrough()
-                        .foregroundColor(.gray)
+                    Image("3diconsiconcourse")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60)
+                        .cornerRadius(10)
+                    VStack(alignment: .leading) {
+                        Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
+                            .multilineTextAlignment(.leading)
+                            .font(.system(size: 12, weight: .light))
+                            .foregroundStyle(.black)
+                        // ---
+                        HStack {
+                            Text("50.000 VND")
+                                .font(.system(size: 14, weight: .bold))
+                                .foregroundColor(.activeColor)
+                            // ---
+                            Text("70.000 VND")
+                                .font(.system(size: 12, weight: .bold))
+                                .strikethrough()
+                                .foregroundColor(.gray)
+                        }
+                    }
                 }
             }
         }
         .onChange(of: isCheckedAllItemPerson) {
-            isChecked = isCheckedAllItemPerson
+            withAnimation {
+                isChecked = isCheckedAllItemPerson
+            }
+        }
+        .onChange(of: isChecked) {
+            withAnimation {
+                if isChecked == false {
+                    isCheckedAllItemPerson = false
+                }
+            }
         }
     }
 }

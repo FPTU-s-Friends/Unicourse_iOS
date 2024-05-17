@@ -14,7 +14,7 @@ struct HeaderAccountView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        Button(action: {}, label: {
+                        NavigationLink(destination: CartView()) {
                             ZStack {
                                 Image(systemName: "cart")
                                     .font(.system(size: 20))
@@ -34,8 +34,7 @@ struct HeaderAccountView: View {
                                     .padding(.leading, 20)
                                     .padding(.bottom, 20)
                             }
-
-                        })
+                        }
                     }
                     Button(action: {}, label: {
                         Image(systemName: "pencil")
