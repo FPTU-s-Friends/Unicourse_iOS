@@ -39,19 +39,6 @@ struct HeaderButtonView: View {
                             .stroke(Color.gray, lineWidth: 0.1)
                     )
             })
-
-            Button(action: {}, label: {
-                Image(systemName: "gearshape")
-                    .font(.system(size: 20))
-                    .padding(10)
-                    .foregroundColor(.white)
-                    .background(Color.activeButtonColor)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(Color.gray, lineWidth: 0.1)
-                    )
-            })
         }
         .navigationBarBackButtonHidden(true)
     }

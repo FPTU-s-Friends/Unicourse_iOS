@@ -48,11 +48,24 @@ struct HeaderAccountView: View {
                                     .stroke(Color.gray, lineWidth: 0.1)
                             )
                     })
+
+                    Button(action: {}, label: {
+                        Image(systemName: "gearshape")
+                            .font(.system(size: 20))
+                            .padding(10)
+                            .foregroundColor(.black)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.gray, lineWidth: 0.1)
+                            )
+                    })
                 }
             }
             .padding(.horizontal, 20)
         }
-        .offset(y: 20)
+        .offset(y: -10)
     }
 }
 

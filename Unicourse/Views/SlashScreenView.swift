@@ -10,8 +10,8 @@ import SwiftUI
 struct SlashScreenView: View {
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Color.mainColor1, .white], startPoint: .leading, endPoint: .bottomLeading)
-                .ignoresSafeArea()
+//            LinearGradient(colors: [Color.mainColor1, .white], startPoint: .leading, endPoint: .bottomLeading)
+//                .ignoresSafeArea()
 
 //            LoadingIndicatorView(isLoading: .constant(true))
 //                .padding(.top, 400)
@@ -19,7 +19,7 @@ struct SlashScreenView: View {
             Image("mainIconApp")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
+                .frame(width: 80)
                 .padding(.bottom, 50)
         }
     }
