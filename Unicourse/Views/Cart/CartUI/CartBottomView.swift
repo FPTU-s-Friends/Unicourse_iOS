@@ -58,10 +58,10 @@ struct CartBottomView: View {
 
                 Spacer()
 
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                NavigationLink(destination: CheckoutView()) {
                     ButtonGradientUI(titleButton: "Mua Ngay")
                         .frame(width: 160)
-                })
+                }
             }
             .padding(.horizontal, 20)
         }

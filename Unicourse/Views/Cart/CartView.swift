@@ -22,7 +22,9 @@ struct CartView: View {
             Spacer()
 
             // Bottom
-            CartBottomView()
+          
+                CartBottomView()
+            
         }
         .background(Color.mainBackgroundColor)
         .toolbar {
