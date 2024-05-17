@@ -113,19 +113,23 @@ struct AccountMenuView: View {
     }
 
     func SignOut() {
-        appData.isLoading = true
         Task {
-            do {
-                try AuthenticationManager.shared.signOut()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    appData.signOutUser()
-                    appData.mainTabSelection = 1
+            withAnimation {
+                do {
+                    appData.isLoading = true
+                    try AuthenticationManager.shared.signOut()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        appData.signOutUser()
+                        appData.mainTabSelection = 1
+                        appData.isLoading = false
+                    }
+
+                } catch {
+                    appData.showAlert(text: error.localizedDescription)
+                    appData.isLoading = false
                 }
-            } catch {
-                appData.showAlert(text: error.localizedDescription)
             }
         }
-        appData.isLoading = false
     }
 }
 

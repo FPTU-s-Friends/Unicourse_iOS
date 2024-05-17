@@ -23,10 +23,10 @@ struct HomeView: View {
 
                         VStack(alignment: .leading, spacing: 7) {
                             Text("\(appData.user?.fullName ?? "Loading...")")
-                                .font(.system(size: 14, weight: .bold, design: .default))
+                                .font(.system(size: 12, weight: .semibold))
 
                             Text("Học Sinh")
-                                .font(.system(size: 12, weight: .bold, design: .default))
+                                .font(.system(size: 8, weight: .bold, design: .default))
                                 .foregroundStyle(Color.white)
                                 .padding(5)
                                 .background(Color.activeColor.cornerRadius(20))

@@ -21,26 +21,6 @@ struct CourseDetailView: View {
                 LazyVStack(spacing: 16) {
                     // Go Back Button - Favourite Button - Share Button
                     VStack {
-                        HStack {
-                            Button(action: {
-                                dismiss()
-                            }, label: {
-                                CircleButtonUI(isActive: false, systemName: "arrow.left", symbolRenderingMode: .multicolor)
-                            }).tint(.black)
-                            Spacer()
-                            Group {
-                                Button(action: {
-                                    isFav.toggle()
-                                }, label: {
-                                    CircleButtonUI(isActive: isFav, systemName: "heart", symbolRenderingMode: .multicolor)
-                                }).tint(.black)
-
-                                Button(action: {}, label: {
-                                    CircleButtonUI(isActive: false, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
-                                }).tint(.black)
-                            }
-                        }
-
                         Image("3diconsiconcourse")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -81,7 +61,6 @@ struct CourseDetailView: View {
             VStack {
                 NavigationLink {
                     CourseVideoPlayerView()
-
                 } label: {
                     ButtonGradientUI(titleButton: "Bắt đầu học")
                 }
@@ -89,9 +68,49 @@ struct CourseDetailView: View {
             .padding(.horizontal, 20)
             .background(.white)
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    CircleButtonUI(isActive: false, systemName: "arrow.left", symbolRenderingMode: .multicolor)
+                }).tint(.black)
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    Button(action: {
+                        isFav.toggle()
+                    }, label: {
+                        CircleButtonUI(isActive: isFav, systemName: "heart", symbolRenderingMode: .multicolor)
+                    }).tint(.black)
+
+                    NavigationLink(destination: CartView()) {
+                        ZStack {
+                            CircleButtonUI(isActive: isFav, systemName: "cart", symbolRenderingMode: .multicolor)
+                                .tint(.black)
+                            Text("12")
+                                .font(.system(size: 10))
+                                .foregroundStyle(.white)
+                                .padding(2)
+                                .background(Color.activeColor.cornerRadius(20))
+                                .padding(.leading, 20)
+                                .padding(.bottom, 20)
+                        }
+                    }
+
+                    Button(action: {}, label: {
+                        CircleButtonUI(isActive: false, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
+                    }).tint(.black)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    CourseDetailView()
+    NavigationStack {
+        CourseDetailView()
+    }
 }
