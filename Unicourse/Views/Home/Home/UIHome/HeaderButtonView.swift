@@ -27,7 +27,7 @@ struct HeaderButtonView: View {
                         )
                 })
 
-            Button(action: {}, label: {
+            NavigationLink(destination: NotificationView()) {
                 Image(systemName: "bell")
                     .font(.system(size: 20))
                     .padding(10)
@@ -38,7 +38,7 @@ struct HeaderButtonView: View {
                         Circle()
                             .stroke(Color.gray, lineWidth: 0.1)
                     )
-            })
+            }
         }
         .navigationBarBackButtonHidden(true)
     }

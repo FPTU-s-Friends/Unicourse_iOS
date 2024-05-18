@@ -80,6 +80,9 @@
 		C56749772BE8DA1500DA6A58 /* SemesterChoosenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56749762BE8DA1500DA6A58 /* SemesterChoosenView.swift */; };
 		C56749792BE8DAA900DA6A58 /* CustomPageControlHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56749782BE8DAA900DA6A58 /* CustomPageControlHomeView.swift */; };
 		C567497B2BE8DEB200DA6A58 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567497A2BE8DEB200DA6A58 /* CustomProgressView.swift */; };
+		C56881812BF840BD00B2C3F3 /* ChatGroupMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56881802BF840BD00B2C3F3 /* ChatGroupMiniView.swift */; };
+		C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56881832BF854F900B2C3F3 /* NotificationView.swift */; };
+		C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56881852BF867E700B2C3F3 /* NotificationItemView.swift */; };
 		C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69372BE2026A0093E51B /* UnicourseApp.swift */; };
 		C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69392BE2026A0093E51B /* ContentView.swift */; };
 		C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56F693B2BE2026C0093E51B /* Assets.xcassets */; };
@@ -111,6 +114,8 @@
 		C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD172BF7202000FC0DF7 /* HeaderCartItemView.swift */; };
 		C5DDAD002BEC6ADA00CDF642 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */; };
 		C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */; };
+		C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */; };
+		C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */; };
 		C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */; };
 		C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */; };
 /* End PBXBuildFile section */
@@ -185,6 +190,9 @@
 		C56749762BE8DA1500DA6A58 /* SemesterChoosenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterChoosenView.swift; sourceTree = "<group>"; };
 		C56749782BE8DAA900DA6A58 /* CustomPageControlHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControlHomeView.swift; sourceTree = "<group>"; };
 		C567497A2BE8DEB200DA6A58 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		C56881802BF840BD00B2C3F3 /* ChatGroupMiniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupMiniView.swift; sourceTree = "<group>"; };
+		C56881832BF854F900B2C3F3 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		C56881852BF867E700B2C3F3 /* NotificationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemView.swift; sourceTree = "<group>"; };
 		C56F69342BE2026A0093E51B /* Unicourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unicourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F69372BE2026A0093E51B /* UnicourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicourseApp.swift; sourceTree = "<group>"; };
 		C56F69392BE2026A0093E51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -217,6 +225,8 @@
 		C5D7DD172BF7202000FC0DF7 /* HeaderCartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCartItemView.swift; sourceTree = "<group>"; };
 		C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodItemView.swift; sourceTree = "<group>"; };
 		C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -531,6 +541,7 @@
 		C567496C2BE8C56A00DA6A58 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				C568817F2BF8409E00B2C3F3 /* ChatGroupItem */,
 				C56749712BE8C5CB00DA6A58 /* CommunityView.swift */,
 			);
 			path = Community;
@@ -547,6 +558,23 @@
 				C54DADB02BE9E47800E968CE /* TopLecturesView.swift */,
 			);
 			path = UIHome;
+			sourceTree = "<group>";
+		};
+		C568817F2BF8409E00B2C3F3 /* ChatGroupItem */ = {
+			isa = PBXGroup;
+			children = (
+				C56881802BF840BD00B2C3F3 /* ChatGroupMiniView.swift */,
+			);
+			path = ChatGroupItem;
+			sourceTree = "<group>";
+		};
+		C56881822BF854DA00B2C3F3 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C56881832BF854F900B2C3F3 /* NotificationView.swift */,
+				C56881852BF867E700B2C3F3 /* NotificationItemView.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		C56F692B2BE2026A0093E51B = {
@@ -611,6 +639,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C56881822BF854DA00B2C3F3 /* Notification */,
 				C5EA2CF62BF76BBC002C6144 /* Checkout */,
 				C5D7DD0A2BF70E6400FC0DF7 /* Cart */,
 				B5898F852BED21FB00C315B8 /* Course Detail */,
@@ -752,6 +781,23 @@
 			path = CheckoutUI;
 			sourceTree = "<group>";
 		};
+		C5EA2CF62BF76BBC002C6144 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				C5EA2CFA2BF7715A002C6144 /* CheckoutUI */,
+				C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		C5EA2CFA2BF7715A002C6144 /* CheckoutUI */ = {
+			isa = PBXGroup;
+			children = (
+				C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */,
+			);
+			path = CheckoutUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -837,6 +883,7 @@
 			files = (
 				C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */,
 				C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */,
+				C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */,
 				C567495C2BE8910400DA6A58 /* NetworkManager.swift in Sources */,
 				C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */,
 				B5898F9C2BEDFF5600C315B8 /* ButtonGradientUI.swift in Sources */,
@@ -850,6 +897,7 @@
 				C54DADB12BE9E47800E968CE /* TopLecturesView.swift in Sources */,
 				C53E80422BF0BC94003DFC4B /* TransactionHistoryView.swift in Sources */,
 				C567493F2BE86D0100DA6A58 /* MainHomeView.swift in Sources */,
+				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C56749772BE8DA1500DA6A58 /* SemesterChoosenView.swift in Sources */,
@@ -866,13 +914,16 @@
 				C56749512BE8810F00DA6A58 /* AppData.swift in Sources */,
 				C56749632BE8994B00DA6A58 /* APIPath.swift in Sources */,
 				C56749562BE885BF00DA6A58 /* HTTPClient.swift in Sources */,
+				C56881812BF840BD00B2C3F3 /* ChatGroupMiniView.swift in Sources */,
 				C56749752BE8CB7100DA6A58 /* HeaderButtonView.swift in Sources */,
 				C56749652BE899D700DA6A58 /* SignInRequestModel.swift in Sources */,
 				C541D9FC2BE343D10022079E /* PageView.swift in Sources */,
 				C5D7DD0C2BF70E7300FC0DF7 /* CartView.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
+				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
+				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C54DADAD2BE9D88300E968CE /* HeaderCategoryView.swift in Sources */,
@@ -898,8 +949,10 @@
 				C541DA152BE363110022079E /* DeviderCustomView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
+				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
+				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
@@ -914,12 +967,15 @@
 				C53E80512BF0BF38003DFC4B /* HeaderAccountView.swift in Sources */,
 				C567495E2BE893E800DA6A58 /* AppError.swift in Sources */,
 				C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */,
+				C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
 				B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */,
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
+				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
+				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
