@@ -21,7 +21,7 @@ struct CourseView: View {
                 VStack {
                     // Header Cards
                     HStack {
-                        Text("My courses")
+                        Text("Khoá học của tôi")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.white)
                         Spacer()

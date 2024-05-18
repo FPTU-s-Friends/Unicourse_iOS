@@ -23,7 +23,7 @@ struct HomeView: View {
 
                         VStack(alignment: .leading, spacing: 7) {
                             Text("\(appData.user?.fullName ?? "Loading...")")
-                                .font(.system(size: 12, weight: .semibold))
+                                .font(.system(size: 14, weight: .semibold))
 
                             Text("Học Sinh")
                                 .font(.system(size: 8, weight: .bold, design: .default))
