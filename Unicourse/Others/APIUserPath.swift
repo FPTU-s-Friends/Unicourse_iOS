@@ -9,7 +9,7 @@ import Foundation
 
 enum APIUserPath {
     case getEnrolledCourseByUserId(userId: String)
-
+    // API
     var endPointValue: String {
         switch self {
         case .getEnrolledCourseByUserId(userId: let userId):
