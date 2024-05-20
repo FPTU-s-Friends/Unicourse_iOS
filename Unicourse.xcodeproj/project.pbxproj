@@ -23,6 +23,8 @@
 		B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5898FA62BEE106400C315B8 /* CustomProcessRating.swift */; };
 		B5A43A212BFAFAC000AE89C4 /* APIUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43A202BFAFAC000AE89C4 /* APIUserPath.swift */; };
 		B5A43A232BFAFE3B00AE89C4 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43A222BFAFE3B00AE89C4 /* HTTPStatusCode.swift */; };
+		B5A43A262BFB031000AE89C4 /* EnrolledCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */; };
+		B5A43A282BFB045500AE89C4 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43A272BFB045500AE89C4 /* CourseModel.swift */; };
 		B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */; };
 		B5BE39F22BF7322C00F6BD3A /* VideoStreamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE39F12BF7322C00F6BD3A /* VideoStreamingView.swift */; };
 		B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */; };
@@ -129,6 +131,8 @@
 		B5898FA62BEE106400C315B8 /* CustomProcessRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProcessRating.swift; sourceTree = "<group>"; };
 		B5A43A202BFAFAC000AE89C4 /* APIUserPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserPath.swift; sourceTree = "<group>"; };
 		B5A43A222BFAFE3B00AE89C4 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
+		B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledCourseModel.swift; sourceTree = "<group>"; };
+		B5A43A272BFB045500AE89C4 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertDateToString.swift; sourceTree = "<group>"; };
 		B5BE39F12BF7322C00F6BD3A /* VideoStreamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStreamingView.swift; sourceTree = "<group>"; };
 		B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGradient.swift; sourceTree = "<group>"; };
@@ -276,6 +280,15 @@
 				B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */,
 			);
 			path = TabBarElement;
+			sourceTree = "<group>";
+		};
+		B5A43A242BFB02F800AE89C4 /* CourseModels */ = {
+			isa = PBXGroup;
+			children = (
+				B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */,
+				B5A43A272BFB045500AE89C4 /* CourseModel.swift */,
+			);
+			path = CourseModels;
 			sourceTree = "<group>";
 		};
 		B5BE39ED2BF7282500F6BD3A /* CourseVideoPlayerElement */ = {
@@ -608,6 +621,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5A43A242BFB02F800AE89C4 /* CourseModels */,
 				C56749542BE884D100DA6A58 /* ResponseModels */,
 				C56749532BE884C700DA6A58 /* RequestModels */,
 				C56749522BE884BA00DA6A58 /* AppModels */,
@@ -866,6 +880,7 @@
 				C56749772BE8DA1500DA6A58 /* SemesterChoosenView.swift in Sources */,
 				B5898FA52BEE0D5D00C315B8 /* CourseReviewTabView.swift in Sources */,
 				C53E804F2BF0BE7F003DFC4B /* AccountMenuView.swift in Sources */,
+				B5A43A262BFB031000AE89C4 /* EnrolledCourseModel.swift in Sources */,
 				B5898F912BED37CC00C315B8 /* BasicInfo.swift in Sources */,
 				C56749482BE8736900DA6A58 /* Utilities.swift in Sources */,
 				C53E80462BF0BCE6003DFC4B /* MenuItem.swift in Sources */,
@@ -944,6 +959,7 @@
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
 				C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */,
+				B5A43A282BFB045500AE89C4 /* CourseModel.swift in Sources */,
 				C54DADAB2BE9D75900E968CE /* ProgressCourseView.swift in Sources */,
 				C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */,
 				B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */,

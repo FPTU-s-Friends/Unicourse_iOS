@@ -66,7 +66,7 @@ enum HTTPStatusCodes: Int, Codable {
     case RequestHeaderFieldsTooLarge = 431
     case UnavailableForLegalReasons = 451
     
-    // 500 Server Error
+    // 500 Server Errors
     case InternalServerError = 500
     case NotImplemented
     case BadGateway
