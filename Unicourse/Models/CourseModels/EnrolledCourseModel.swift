@@ -53,7 +53,7 @@ struct BasicUserInfo: Codable {
     var profile_image: String
 }
 
-// Continuing
+//  Continuing
 struct EnrolledCourseModel: Codable {
     var _id: String
     var user: BasicUserInfo
