@@ -15,6 +15,7 @@ struct BasicUserInfo: Codable {
     var profile_image: String
 }
 
+// Continuing
 struct EnrolledCourseModel: Codable {
     var _id: String
     var completed: Bool
