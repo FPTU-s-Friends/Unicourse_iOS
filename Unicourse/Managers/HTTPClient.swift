@@ -21,7 +21,6 @@ struct HTTPRequest {
     let body: Data?
 }
 
-
 class HTTPClient {
     static let shared = HTTPClient()
 
@@ -34,7 +33,7 @@ class HTTPClient {
         urlRequest.httpBody = request.body
 
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
+            if let error {
                 completion(.failure(error))
                 return
             }
@@ -51,7 +50,7 @@ class HTTPClient {
                 return
             }
 
-            guard let data = data else {
+            guard let data else {
                 let noDataError = NSError(domain: "No Data", code: 0, userInfo: nil)
                 completion(.failure(noDataError))
                 return
