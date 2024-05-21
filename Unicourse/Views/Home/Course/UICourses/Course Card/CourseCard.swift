@@ -45,7 +45,18 @@ struct CourseCard: View {
                         .foregroundStyle(Color(hex: "#8D8A8A"))
                 }
                 Spacer()
-                ButtonGradient(title: courseButtonTitle, action: action)
+                NavigationLink(destination:
+                    CourseDetailView()
+                        .navigationBarBackButtonHidden(true),
+
+                    label: {
+                        Text("Tiếp tục")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(.white)
+                            .frame(width: 100, height: 30)
+                            .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom))
+                            .clipShape(RoundedRectangle(cornerRadius: 7.0))
+                    })
             }
         }
         .padding(14)

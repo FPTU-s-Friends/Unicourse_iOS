@@ -208,13 +208,18 @@ struct CourseView: View {
 
                     }.padding(.leading, 12)
                 }
+                .refreshable {
+                    vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: true)
+                }
             }
             .ignoresSafeArea()
+
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
         }
         .onAppear {
-            DispatchQueue.main.async {
-                vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token)
-            }
+            vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: false)
         }
     }
 }
