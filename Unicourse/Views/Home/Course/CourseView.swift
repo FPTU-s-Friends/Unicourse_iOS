@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CourseView: View {
+    @State private var mockUserId: String = "6646f84216457d365c09d6d6"
+    @EnvironmentObject private var appData: AppData
+    @StateObject private var vm = CourseViewModel()
     @State private var textSearch: String = ""
 
     var body: some View {
@@ -207,6 +210,11 @@ struct CourseView: View {
                 }
             }
             .ignoresSafeArea()
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token)
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 class NetworkManager {
     static let shared = NetworkManager()
 //    private let baseURL = "http://localhost:4040"
-    
+
     private let baseURL = "https://unicourse-api-production.up.railway.app"
 
     private init() {}
@@ -53,12 +53,51 @@ class NetworkManager {
 
     // MARK: - Private Methods
 
-    private func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]?, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
+    func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]?, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: baseURL)?.appendingPathComponent(path) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
-        let request = HTTPRequest(url: url, method: method, headers: headers, body: body)
+        let request = HTTPRequest(url: url, method: method, headers: ["Content-Type": "application/json"], body: body)
+        HTTPClient.shared.sendRequest(request) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(response))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    // đây là function call mới => đặt tạm là callApi2
+    // đặt một list cặp key - value vào cái biến r đưa vào đối số headers là được
+//    additionalHeaders = [
+//        "Authorization": "Bearer token",
+//        "Accept": "application/json"
+//    ]
+
+    func callAPI2<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
+        guard let url = URL(string: baseURL)?.appendingPathComponent(path) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+
+        // Headers mặc định
+        var defaultHeaders = ["Content-Type": "application/json"]
+
+        // Hợp nhất headers mặc định với headers được truyền vào (nếu có)
+        if let additionalHeaders = headers {
+            defaultHeaders.merge(additionalHeaders) { _, new in new }
+        }
+
+        let request = HTTPRequest(url: url, method: method, headers: defaultHeaders, body: body)
         HTTPClient.shared.sendRequest(request) { result in
             DispatchQueue.main.async {
                 switch result {
