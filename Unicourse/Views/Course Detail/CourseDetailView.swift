@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CourseDetailView: View {
+    @EnvironmentObject var appData: AppData
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
     @Environment(\.dismiss) var dismiss
@@ -112,5 +113,6 @@ struct CourseDetailView: View {
 #Preview {
     NavigationStack {
         CourseDetailView()
+            .environmentObject(AppData())
     }
 }

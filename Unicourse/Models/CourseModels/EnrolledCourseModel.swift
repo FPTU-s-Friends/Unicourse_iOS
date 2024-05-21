@@ -41,7 +41,7 @@ struct TrackId: Codable {
 struct Track: Codable {
     var _id: String
     var trackId: TrackId
-    var complteted: Bool
+    var completed: Bool
     var subTrackProgress: [SubTrackProgress]
 }
 
@@ -53,13 +53,12 @@ struct BasicUserInfo: Codable {
     var profile_image: String
 }
 
-// Continuing
 struct EnrolledCourseModel: Codable {
     var _id: String
     var user: BasicUserInfo
-    var course: CourseModel
+//    var course: CourseModel
     var completed: Bool
-    var enrollDate: Date
+    var enrollDate: String
     var progress: Int
-    var trackProgress: [Track]
+//    var trackProgress: [Track]
 }

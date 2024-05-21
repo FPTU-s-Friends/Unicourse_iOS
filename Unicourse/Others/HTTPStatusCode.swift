@@ -43,7 +43,7 @@ enum HTTPStatusCodes: Int, Codable {
     case Forbidden
     case NotFound
     case MethodNotAllowed
-    case NotAcceptable
+    case NotAcceptables
     case ProxyAuthenticationRequired
     case RequestTimeout
     case Conflict
