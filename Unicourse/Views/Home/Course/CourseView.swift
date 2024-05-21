@@ -161,7 +161,7 @@ struct CourseView: View {
                     .padding(.leading, 8)
                     .padding(.bottom, 15)
 
-                    // End Current learning course
+                    // End Current learning  course
                     VStack(spacing: 10) {
                         PathTitle(title: "Tất cả khoá học", isHaveButton: false, actionButton: {})
                             .padding(.trailing, 28)
