@@ -27,7 +27,7 @@ struct LoadingIndicatorView: View {
                         .rotationEffect(Angle(degrees: isAnimation ? 360 : 0))
                         .onAppear {
                             withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
-                                self.isAnimation = true
+                                isAnimation = true
                             }
                         }
                 }

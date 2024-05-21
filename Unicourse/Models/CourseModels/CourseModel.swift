@@ -14,12 +14,12 @@ enum CourseEnrollType: String, Codable {
 
 struct CourseModel: Codable {
     var _id: String
-    var type: String
+    var type: CourseEnrollType
     var titleDescription: String
     var title: String
     var thumbnail: String
     var subTitleDescription: [String]
     var subTitle: String
-//    var semester_number: Int
-//    var enrollmentCount: Int
+    var semester_number: Int?
+    var enrollmentCount: Int
 }
