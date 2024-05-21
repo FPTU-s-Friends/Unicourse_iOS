@@ -94,7 +94,6 @@ struct CourseView: View {
                                 NavigationLink(destination:
                                     CourseDetailView()
                                         .navigationBarBackButtonHidden(true),
-
                                     label: {
                                         Text("Tiếp tục")
                                             .font(.system(size: 12, weight: .medium))
@@ -138,16 +137,29 @@ struct CourseView: View {
                             .padding(.trailing, 28)
 
                         // List card
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                ForEach(0 ..< 3) { _ in
-                                    CourseCard(courseName: "Khoá học NextJS", courseChapter: 10, coursePercentageProcess: 22, courseButtonTitle: "Tiếp tục", action: {})
+                        if vm.listEnrolledCourses.count > 0 {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(vm.listEnrolledCourses, id: \._id) { courseItem in
+                                        CourseCard(courseItem: courseItem)
+                                    }
                                 }
                             }
+                        } else {
+                            VStack {
+                                Image(systemName: "xmark.icloud.fill")
+                                    .font(.system(size: 32, weight: .regular))
+                                    .foregroundStyle(.gray)
+
+                                Text("No data found")
+                                    .font(.system(size: 12, weight: .light))
+                            }
                         }
+
                         // End List card
                     }
                     .padding(.leading, 8)
+                    .padding(.bottom, 15)
 
                     // End Current learning course
                     VStack(spacing: 10) {
@@ -174,37 +186,15 @@ struct CourseView: View {
                                 .cornerRadius(16)
                             Spacer()
                         }
-
                         LazyVStack {
-                            // Horizontal Course  Card
-
-                            ForEach(0 ..< 6) { _ in
-                                VStack {
-                                    HStack(spacing: 13) {
-                                        VStack {
-                                            Image("3dicons")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 44, height: 44)
-                                                .padding(9.6)
-                                        }
-                                        .background(.green)
-                                        .cornerRadius(12)
-                                        VStack(alignment: .leading) {
-                                            Text("Khoá học MAD101")
-                                                .font(.system(size: 14, weight: .bold))
-                                            Spacer()
-                                            Text("Feb 14")
-                                                .font(.system(size: 12, weight: .regular))
-                                        }
-                                        Spacer()
-                                    }
-                                    Divider()
+                            ForEach(vm.listEnrolledCourses, id: \._id) {
+                                courseItem in
+                                NavigationLink(destination: CourseDetailView()) {
+                                    CourseListView(courseItem: courseItem)
                                 }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            // Horizontal Course Card
-                        }
-                        .padding(.bottom, 80)
+                        }.padding(.bottom, 100)
 
                     }.padding(.leading, 12)
                 }
@@ -219,11 +209,14 @@ struct CourseView: View {
             }
         }
         .onAppear {
-            vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: false)
+            DispatchQueue.main.async {
+                vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: false)
+            }
         }
     }
 }
 
 #Preview {
     CourseView()
+        .environmentObject(AppData())
 }
