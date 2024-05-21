@@ -10,6 +10,7 @@ import Foundation
 class CourseViewModel: ObservableObject {
     @Published var listEnrolledCourses: [EnrolledCourseModel] = []
 
+//Comment
     func fetchListEnrolledCourses(userId: String, token: String) {
         NetworkManager.shared.callAPI2(path: APIUserPath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<EnrolledCourseModel>, Error>) in
             switch result {
