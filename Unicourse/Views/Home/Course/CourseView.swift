@@ -126,9 +126,9 @@ struct CourseView: View {
                     )
                 )
                 .cornerRadius(24)
-                /// End card
+                /// End  card
 
-                // Current learning course
+                // Current learning  course
                 ScrollView {
                     VStack(spacing: 16) {
                         // Title
