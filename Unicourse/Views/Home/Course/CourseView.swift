@@ -176,7 +176,7 @@ struct CourseView: View {
                         }
 
                         LazyVStack {
-                            // Horizontal Course Card
+                            // Horizontal Course  Card
 
                             ForEach(0 ..< 6) { _ in
                                 VStack {
