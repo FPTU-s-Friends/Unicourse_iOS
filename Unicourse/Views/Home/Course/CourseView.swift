@@ -127,7 +127,7 @@ struct CourseView: View {
                     )
                 )
                 .cornerRadius(24)
-                /// End  card
+                /// End   card
 
                 // Current learning  course
                 ScrollView {
