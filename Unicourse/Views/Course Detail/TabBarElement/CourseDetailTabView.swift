@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct CourseDetailTabView: View {
+    var courseLectureName: String
+    var lectureDescription: String
+    var imageLectureURL: String
     var body: some View {
         VStack(spacing: 10) {
             // Lecture Info
-            LectureInfo(courseAuthorName: "Nguyễn Trung Kiên", courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: "Thiết kế không chỉ là trông nó như thế nào và cảm thấy như thế nào. Thiết kế là cách nó hoạt động")
+            LectureInfo(courseAuthorName: courseLectureName, courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: lectureDescription, imageLectureURL: imageLectureURL)
             // Lecture Info
             DetailInformationCourse()
 

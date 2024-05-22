@@ -13,7 +13,7 @@ struct Feedback: Codable {
     var rating: Int
     var course_id: String
     var user_id: BasicUserInfo
-    var status: Bool
+    var status: String
 }
 
 struct Lecture_Info: Codable {
@@ -21,7 +21,7 @@ struct Lecture_Info: Codable {
     var my_course: [String]
     var my_schedule: [String]
     var description: String
-    var feedback: [Feedback]
+    var feedback: [Feedback]?
 }
 
 struct LectureModel: Codable {

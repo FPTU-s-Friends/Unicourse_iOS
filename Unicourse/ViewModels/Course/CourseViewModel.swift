@@ -18,7 +18,7 @@ class CourseViewModel: ObservableObject {
             guard !hasFetched else { return }
         }
         isLoading = true
-        NetworkManager.shared.callAPI2(path: APIUserPath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<EnrolledCourseModel>, Error>) in
+        NetworkManager.shared.callAPI2(path: APICoursePath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[EnrolledCourseModel]>, Error>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {

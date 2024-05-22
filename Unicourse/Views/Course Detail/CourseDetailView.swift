@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CourseDetailView: View {
+    var courseId: String
     @EnvironmentObject var appData: AppData
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
+    @StateObject private var vm = CourseDetailViewModel()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -42,7 +44,7 @@ struct CourseDetailView: View {
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView().tag(0)
+                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture.fullName ?? "Loading..", lectureDescription: vm.courseDetail?.lecture.lecture_info.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture.profile_image) ?? "default_profile").tag(0)
 
                             CourseSyllabusTabView().tag(1)
 
@@ -68,6 +70,14 @@ struct CourseDetailView: View {
             }
             .padding(.horizontal, 20)
             .background(.white)
+
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
+        }
+        .onAppear {
+            print(courseId)
+            vm.fetchCourseDetailById(courseId: courseId)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -110,9 +120,9 @@ struct CourseDetailView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        CourseDetailView()
-            .environmentObject(AppData())
-    }
-}
+// #Preview {
+//    NavigationStack {
+//        CourseDetailView()
+//            .environmentObject(AppData())
+//    }
+// }
