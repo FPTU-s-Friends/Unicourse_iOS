@@ -62,7 +62,7 @@ struct BasicUserInfo: Codable {
 struct EnrolledCourseModel: Codable {
     var _id: String
     var user: BasicUserInfo
-    var course: CourseModel
+    var course: CourseInEnrolledModel
     var completed: Bool
     var enrollDate: String
     var progress: Int

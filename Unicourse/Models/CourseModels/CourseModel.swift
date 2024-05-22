@@ -12,7 +12,7 @@ enum CourseEnrollType: String, Codable {
     case free
 }
 
-struct CourseModel: Codable {
+struct CourseInEnrolledModel: Codable {
     var _id: String
     var type: CourseEnrollType
     var titleDescription: String
