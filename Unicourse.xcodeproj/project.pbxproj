@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */; };
 		B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998D2BF3857A0034BC08 /* ExpandableView.swift */; };
 		B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998F2BF387840034BC08 /* ThumbnailView.swift */; };
@@ -120,6 +121,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSyllabusTabView.swift; sourceTree = "<group>"; };
 		B541998D2BF3857A0034BC08 /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B541998F2BF387840034BC08 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			children = (
 				B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */,
 				B5A43A272BFB045500AE89C4 /* CourseModel.swift */,
+				B50A72582BFDF9DC00D3B549 /* LectureModel.swift */,
 			);
 			path = CourseModels;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */,
 				C57ED1BC2BEF4CC600641532 /* SearchFieldView.swift in Sources */,
 				C56749692BE89B0500DA6A58 /* SignUpResponseModel.swift in Sources */,
+				B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */,
 				C56749722BE8C5CB00DA6A58 /* CommunityView.swift in Sources */,
 				C56749512BE8810F00DA6A58 /* AppData.swift in Sources */,
 				C56749632BE8994B00DA6A58 /* APIPath.swift in Sources */,

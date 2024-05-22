@@ -12,6 +12,7 @@ struct CourseView: View {
     @EnvironmentObject private var appData: AppData
     @StateObject private var vm = CourseViewModel()
     @State private var textSearch: String = ""
+    @State private var showingCredits = false
 
     var body: some View {
         ZStack {
@@ -133,8 +134,12 @@ struct CourseView: View {
                     VStack(spacing: 16) {
                         // Title
                         PathTitle(title: "Đang học", isHaveButton: true,
-                                  actionButton: { print("123") })
+                                  actionButton: { showingCredits.toggle() })
                             .padding(.trailing, 28)
+                            .sheet(isPresented: $showingCredits) {
+                                AllCourseView()
+                                    .presentationDetents([.medium])
+                            }
 
                         // List card
                         if vm.listEnrolledCourses.count > 0 {
@@ -214,6 +219,11 @@ struct CourseView: View {
             }
         }
     }
+}
+
+@ViewBuilder
+func AllCourseView() -> some View {
+    Text("All courses appears here")
 }
 
 #Preview {
