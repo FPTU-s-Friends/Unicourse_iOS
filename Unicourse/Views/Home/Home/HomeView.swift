@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var currentPage = 0
     @EnvironmentObject var appData: AppData
+    @StateObject var viewModel = HomeViewModel()
 
     var body: some View {
         ZStack {
@@ -40,25 +40,23 @@ struct HomeView: View {
 
                     VStack {
                         ZStack(alignment: .top) {
-                            TabView(selection: $currentPage) {
-                                Image("MainBanner")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("MainBanner")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("MainBanner")
-                                    .resizable()
-                                    .scaledToFit()
+                            TabView(selection: $viewModel.currentPage) {
+                                ForEach(viewModel.slideData.slides.indices, id: \.self) { index in
+                                    Image(viewModel.slideData.slides[index].imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .cornerRadius(10)
+                                        .padding(.horizontal, 10)
+                                        .tag(index)
+                                }
                             }
                             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                            .frame(height: 200)
+                            .frame(height: 250)
 
-                            CustomPageControlHomeView(numberOfPages: 3, currentPage: $currentPage)
-                                .padding(.top, 15)
+                            CustomPageControlHomeView(numberOfPages: viewModel.slideData.slides.count, currentPage: $viewModel.currentPage)
+                                .offset(y: 20)
                         }
                     }
-                    .padding()
 
                     // Danh mục kỳ semester
                     SemesterChosenView()
@@ -78,6 +76,11 @@ struct HomeView: View {
 
                     Spacer()
                 }
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                viewModel.getAllFreeCourse(token: appData.token)
             }
         }
         .background(Color.mainBackgroundColor)

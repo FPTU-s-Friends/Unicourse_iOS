@@ -42,7 +42,7 @@ class NetworkManager {
 
         let signUpRequest = SignUpRequestModel(email: email, fullName: fullName, profileImage: profileImage)
 
-        dump(signUpRequest)
+//        dump(signUpRequest)
 
         guard let bodyData = try? JSONEncoder().encode(signUpRequest) else {
             completion(.failure(NSError(domain: "Invalid Request Sign Up Data", code: 0, userInfo: nil)))
@@ -50,6 +50,8 @@ class NetworkManager {
         }
         callAPI(path: path, method: method, headers: headers, body: bodyData, completion: completion)
     }
+
+    // MARK: - Course Method
 
     // MARK: - Private Methods
 
