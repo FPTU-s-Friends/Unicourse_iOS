@@ -12,15 +12,19 @@ struct LectureInfo: View {
     let courseRatingPoint: Double
     let totalCourseOfAuthor: Int
     let courseAuthorBio: String
+    let imageLectureURL: String
     var body: some View {
         VStack(spacing: 14) {
             HStack {
                 Group {
-                    Image("kien")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 40, height: 40)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    AsyncImage(url: URL(string: imageLectureURL)!) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 40, height: 40)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    } placeholder: {
+                        ProgressView()
+                    }
 
                     VStack(alignment: .leading) {
                         Text(courseAuthorName)
@@ -72,6 +76,7 @@ struct LectureInfo: View {
     }
 }
 
-#Preview {
-    LectureInfo(courseAuthorName: "Nguyễn Trung Kiên", courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: "Thiết kế không chỉ là trông nó như thế nào và cảm thấy như thế nào. Thiết kế là cách nó hoạt động")
-}
+//
+// #Preview {
+//    LectureInfo(courseAuthorName: "Nguyễn Trung Kiên", courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: "Thiết kế không chỉ là trông nó như thế nào và cảm thấy như thế nào. Thiết kế là cách nó hoạt động")
+// }

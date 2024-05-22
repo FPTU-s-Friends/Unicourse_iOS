@@ -93,7 +93,7 @@ struct CourseView: View {
 
                                 // Button
                                 NavigationLink(destination:
-                                    CourseDetailView()
+                                    CourseDetailView(courseId: "65a8790ba30979a347d026c9")
                                         .navigationBarBackButtonHidden(true),
                                     label: {
                                         Text("Tiếp tục")
@@ -129,7 +129,7 @@ struct CourseView: View {
                 .cornerRadius(24)
                 /// End   card
 
-                // Current learning  course
+                // Current  learning  course
                 ScrollView {
                     VStack(spacing: 16) {
                         // Title
@@ -194,7 +194,7 @@ struct CourseView: View {
                         LazyVStack {
                             ForEach(vm.listEnrolledCourses, id: \._id) {
                                 courseItem in
-                                NavigationLink(destination: CourseDetailView()) {
+                                NavigationLink(destination: CourseDetailView(courseId: courseItem.course._id)) {
                                     CourseListView(courseItem: courseItem)
                                 }
                                 .buttonStyle(PlainButtonStyle())

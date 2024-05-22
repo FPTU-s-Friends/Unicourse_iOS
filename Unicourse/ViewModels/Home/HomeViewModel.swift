@@ -26,11 +26,14 @@ class HomeViewModel: ObservableObject {
     @Published var allFreeCourse: [CourseDetailModel] = []
     @Published var isLoading = false
     @Published var error = ""
+    @Published var listEnrolledCourses: [EnrolledCourseModel] = []
+    private var hasFetched: Bool = false
 
     func getAllFreeCourse(token: String) {
-        self.isLoading = true
-        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<CourseDetailModel>, Error>) in
+        isLoading = true
+        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseDetailModel]>, Error>) in
             DispatchQueue.main.async {
+                self.isLoading = false
                 switch result {
                 case .success(let response):
                     switch response.status {
@@ -46,8 +49,34 @@ class HomeViewModel: ObservableObject {
                     print(error)
                     self.error = error.localizedDescription
                 }
-                self.isLoading = false
             }
+        }
+    }
+
+    // Comment
+    func fetchListEnrolledCourses(userId: String, token: String, isRefresh: Bool) {
+        if !isRefresh {
+            guard !hasFetched else { return }
+        }
+        isLoading = true
+        NetworkManager.shared.callAPI2(path: APICoursePath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[EnrolledCourseModel]>, Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.listEnrolledCourses = response.data
+                    self.logEnrolledCourses()
+                }
+                self.hasFetched = true
+            case .failure(let error):
+                print(error)
+            }
+            self.isLoading = false
+        }
+    }
+
+    private func logEnrolledCourses() {
+        for course in listEnrolledCourses {
+            print(course.trackProgress.count)
         }
     }
 }

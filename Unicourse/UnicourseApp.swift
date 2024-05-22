@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct UnicourseApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var appData = AppData() // Use @StateObject instead of @EnvironmentObject
+    @StateObject var appData = AppData()
 
     var body: some Scene {
         WindowGroup {
@@ -19,7 +19,7 @@ struct UnicourseApp: App {
                     SlashScreenView()
                 } else {
                     ContentView()
-                        .environmentObject(appData) // Pass appData as environment object
+                        .environmentObject(appData)
                         .alert("Error", isPresented: $appData.isShowingAlert) {
                             Button("OK", role: .cancel) {
                                 appData.isShowingAlert = false

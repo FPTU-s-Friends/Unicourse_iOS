@@ -25,11 +25,18 @@ struct HomeView: View {
                             Text("\(appData.user?.fullName ?? "Loading...")")
                                 .font(.system(size: 14, weight: .semibold))
 
-                            Text("Học Sinh")
-                                .font(.system(size: 8, weight: .bold, design: .default))
-                                .foregroundStyle(Color.white)
-                                .padding(5)
-                                .background(Color.activeColor.cornerRadius(20))
+                            if let userRole = appData.user?.role {
+                                switch userRole {
+                                case .student:
+                                    roleText("Học Viên")
+                                case .teacher:
+                                    roleText("Giảng Viên")
+                                case .admin:
+                                    roleText("Admin")
+                                }
+                            } else {
+                                Text("Unknown")
+                            }
                         }
 
                         Spacer()
@@ -63,11 +70,11 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Tiến trình khoá học
-                    ProgressCourseView()
+                    ProgressCourseView(listEnrollCourses: viewModel.listEnrolledCourses)
                         .padding(.bottom, 10)
 
                     // Khoá học nổi bật
-                    TopCoursesView()
+                    TopCoursesView(freeCourse: viewModel.allFreeCourse)
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
@@ -79,11 +86,18 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.async {
-                viewModel.getAllFreeCourse(token: appData.token)
-            }
+            viewModel.getAllFreeCourse(token: appData.token)
+            viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "Bố mày", token: appData.token, isRefresh: false)
         }
         .background(Color.mainBackgroundColor)
+    }
+
+    func roleText(_ text: String) -> some View {
+        Text(text)
+            .font(.system(size: 8, weight: .bold, design: .default))
+            .foregroundStyle(Color.white)
+            .padding(5)
+            .background(Color.activeColor.cornerRadius(20))
     }
 }
 

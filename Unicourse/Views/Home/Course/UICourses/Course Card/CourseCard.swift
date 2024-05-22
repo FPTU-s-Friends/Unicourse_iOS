@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CourseCard: View {
-    private let totalPercentageProces: Double = 100
+    private let totalPercentageProcess: Double = 100
     let courseItem: EnrolledCourseModel
 
     var body: some View {
@@ -23,7 +23,7 @@ struct CourseCard: View {
             }
 
             HStack(spacing: 14) {
-                CustomProgressView(value: Double(courseItem.progress), total: totalPercentageProces)
+                CustomProgressView(value: Double(courseItem.progress), total: totalPercentageProcess)
                 Text("\(courseItem.progress)%")
                     .font(.system(size: 12, weight: .regular))
                     .foregroundStyle(.white)
@@ -42,7 +42,7 @@ struct CourseCard: View {
                 }
                 Spacer()
                 NavigationLink(destination:
-                    CourseDetailView()
+                    CourseDetailView(courseId: "65a8790ba30979a347d026c9")
                         .navigationBarBackButtonHidden(true),
 
                     label: {
@@ -62,7 +62,8 @@ struct CourseCard: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.gray, lineWidth: 0.1)
         )
-        .cornerRadius(16)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+
         // End Card Course
     }
 }
