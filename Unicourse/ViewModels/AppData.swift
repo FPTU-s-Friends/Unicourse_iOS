@@ -38,7 +38,7 @@ class AppData: ObservableObject {
                 let role = jwt.claim(name: "role").string ?? ""
 
                 // Updating the user profile in appData
-                self.user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: role)
+                self.user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: userRole(rawValue: role) ?? .student)
             } catch {
                 print(error)
             }

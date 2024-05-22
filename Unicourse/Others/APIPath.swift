@@ -10,6 +10,7 @@ import Foundation
 enum APIPath {
     case signIn
     case signUp
+    case getAllFreeCourse
 
     var stringValue: String {
         switch self {
@@ -17,6 +18,8 @@ enum APIPath {
             "/api/auth/signIn"
         case .signUp:
             "/api/auth/signUp"
+        case .getAllFreeCourse:
+            "/api/course/free-course"
         }
     }
 }

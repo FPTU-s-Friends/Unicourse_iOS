@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CartView: View {
     @Environment(\.dismiss) var dismiss: DismissAction
+    
+    
     // Biến cục bộ để checkAll toàn bộ sản phẩm
     @State private var isCheckedAll: Bool = false
 

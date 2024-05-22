@@ -44,7 +44,7 @@ struct CourseDetailView: View {
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture.fullName ?? "Loading..", lectureDescription: vm.courseDetail?.lecture.lecture_info.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture.profile_image) ?? "default_profile").tag(0)
+                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? "Loading..", lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture?.profile_image) ?? "default_profile").tag(0)
 
                             CourseSyllabusTabView().tag(1)
 

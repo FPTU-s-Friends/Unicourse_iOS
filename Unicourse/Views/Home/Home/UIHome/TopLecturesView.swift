@@ -22,6 +22,7 @@ struct TopLecturesView: View {
                             .clipShape(Circle())
 
                         Text("Trung Kiên")
+                            .font(.system(size: 14, weight: .semibold))
                     }
                 }
             }

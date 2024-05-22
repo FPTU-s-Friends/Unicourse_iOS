@@ -33,11 +33,11 @@ struct CourseDetailModel: Codable {
     var subTitle: String
     var subTitleDescription: [String]
     var enrollmentCount: Int
-    var status: String
+    var status: String?
     var type: CourseEnrollType
     var thumbnail: String
     var quiz: [QuizModel]?
-    var lecture: LectureModel
+    var lecture: LectureModel?
     var tracks: [TrackId]
     var semester_number: Int?
 }
