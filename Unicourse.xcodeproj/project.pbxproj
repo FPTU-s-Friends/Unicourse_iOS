@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
+		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
+		B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725F2BFE05F400D3B549 /* TrackModel.swift */; };
 		B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */; };
 		B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998D2BF3857A0034BC08 /* ExpandableView.swift */; };
 		B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998F2BF387840034BC08 /* ThumbnailView.swift */; };
@@ -122,6 +124,8 @@
 
 /* Begin PBXFileReference section */
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
+		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		B50A725F2BFE05F400D3B549 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSyllabusTabView.swift; sourceTree = "<group>"; };
 		B541998D2BF3857A0034BC08 /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B541998F2BF387840034BC08 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50A725A2BFE03BE00D3B549 /* QuizModels */ = {
+			isa = PBXGroup;
+			children = (
+				B50A725B2BFE03C800D3B549 /* QuizModel.swift */,
+			);
+			path = QuizModels;
+			sourceTree = "<group>";
+		};
+		B50A725D2BFE05CA00D3B549 /* LectureModels */ = {
+			isa = PBXGroup;
+			children = (
+				B50A72582BFDF9DC00D3B549 /* LectureModel.swift */,
+			);
+			path = LectureModels;
+			sourceTree = "<group>";
+		};
+		B50A725E2BFE05E800D3B549 /* TrackModels */ = {
+			isa = PBXGroup;
+			children = (
+				B50A725F2BFE05F400D3B549 /* TrackModel.swift */,
+			);
+			path = TrackModels;
+			sourceTree = "<group>";
+		};
 		B541998C2BF385630034BC08 /* ExpandableElement */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +335,6 @@
 			children = (
 				B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */,
 				B5A43A272BFB045500AE89C4 /* CourseModel.swift */,
-				B50A72582BFDF9DC00D3B549 /* LectureModel.swift */,
 			);
 			path = CourseModels;
 			sourceTree = "<group>";
@@ -646,6 +673,9 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B50A725E2BFE05E800D3B549 /* TrackModels */,
+				B50A725D2BFE05CA00D3B549 /* LectureModels */,
+				B50A725A2BFE03BE00D3B549 /* QuizModels */,
 				B5A43A242BFB02F800AE89C4 /* CourseModels */,
 				C56749542BE884D100DA6A58 /* ResponseModels */,
 				C56749532BE884C700DA6A58 /* RequestModels */,
@@ -906,6 +936,7 @@
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C56749772BE8DA1500DA6A58 /* SemesterChoosenView.swift in Sources */,
 				B5898FA52BEE0D5D00C315B8 /* CourseReviewTabView.swift in Sources */,
+				B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */,
 				C53E804F2BF0BE7F003DFC4B /* AccountMenuView.swift in Sources */,
 				B5A43A262BFB031000AE89C4 /* EnrolledCourseModel.swift in Sources */,
 				B5898F912BED37CC00C315B8 /* BasicInfo.swift in Sources */,
@@ -963,6 +994,7 @@
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
+				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
