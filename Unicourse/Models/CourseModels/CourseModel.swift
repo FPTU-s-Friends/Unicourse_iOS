@@ -20,6 +20,6 @@ struct CourseModel: Codable {
     var thumbnail: String
     var subTitleDescription: [String]
     var subTitle: String
-    var semester_number: Int
+    var semester_number: Int?
     var enrollmentCount: Int
 }

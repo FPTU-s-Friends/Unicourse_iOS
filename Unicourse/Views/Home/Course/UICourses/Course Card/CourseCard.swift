@@ -9,11 +9,7 @@ import SwiftUI
 
 struct CourseCard: View {
     private let totalPercentageProces: Double = 100
-    let courseName: String
-    let courseChapter: Int
-    let coursePercentageProcess: Int
-    let courseButtonTitle: String
-    let action: () -> Void
+    let courseItem: EnrolledCourseModel
 
     var body: some View {
         VStack(spacing: 13) {
@@ -21,14 +17,14 @@ struct CourseCard: View {
                 Circle()
                     .frame(width: 32, height: 32)
                     .foregroundStyle(.green.gradient)
-                Text(courseName)
+                Text(courseItem.course.title)
                     .font(.system(size: 14, weight: .bold))
                 Spacer()
             }
 
             HStack(spacing: 14) {
-                CustomProgressView(value: Double(coursePercentageProcess), total: totalPercentageProces)
-                Text("\(coursePercentageProcess)%")
+                CustomProgressView(value: Double(courseItem.progress), total: totalPercentageProces)
+                Text("\(courseItem.progress)%")
                     .font(.system(size: 12, weight: .regular))
                     .foregroundStyle(.white)
                     .padding(.vertical, 4)
@@ -40,12 +36,23 @@ struct CourseCard: View {
             HStack {
                 Group {
                     Image(systemName: "square.stack.3d.up")
-                    Text("Chương \(courseChapter)")
+                    Text(courseItem.completed ? "Đã hoàn thành" : "Chưa hoàn thành")
                         .font(.system(size: 12))
                         .foregroundStyle(Color(hex: "#8D8A8A"))
                 }
                 Spacer()
-                ButtonGradient(title: courseButtonTitle, action: action)
+                NavigationLink(destination:
+                    CourseDetailView()
+                        .navigationBarBackButtonHidden(true),
+
+                    label: {
+                        Text("Tiếp tục")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(.white)
+                            .frame(width: 100, height: 30)
+                            .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom))
+                            .clipShape(RoundedRectangle(cornerRadius: 7.0))
+                    })
             }
         }
         .padding(14)
@@ -60,6 +67,7 @@ struct CourseCard: View {
     }
 }
 
-#Preview {
-    CourseCard(courseName: "Khoá học NextJS", courseChapter: 10, coursePercentageProcess: 22, courseButtonTitle: "Tiếp tục", action: {})
-}
+//
+// #Preview {
+//    CourseCard(courseName: "Khoá học NextJS", courseChapter: 10, coursePercentageProcess: 22, courseButtonTitle: "Tiếp tục", action: {})
+// }
