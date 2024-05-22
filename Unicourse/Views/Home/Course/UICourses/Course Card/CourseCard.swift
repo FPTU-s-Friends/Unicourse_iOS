@@ -42,7 +42,7 @@ struct CourseCard: View {
                 }
                 Spacer()
                 NavigationLink(destination:
-                    CourseDetailView()
+                    CourseDetailView(courseId: "65a8790ba30979a347d026c9")
                         .navigationBarBackButtonHidden(true),
 
                     label: {

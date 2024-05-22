@@ -50,7 +50,7 @@ struct SearchResultView: View {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
                         ForEach(0 ..< 4) { _ in
-                            NavigationLink(destination: CourseDetailView()) {
+                            NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
                                 SearchResultItemView()
                             }
                         }

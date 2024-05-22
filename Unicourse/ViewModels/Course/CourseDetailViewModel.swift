@@ -8,14 +8,31 @@
 import Foundation
 
 class CourseDetailViewModel: ObservableObject {
-//    func fetchData(userId: String) {
-//        NetworkManager.shared.callAPI(path: APIUserPath.getEnrolledCourseByUserId(userId: userId), method: .get, headers: ["Content-Type": "application/json"]) {
-//            (result: Result<CommonResponse<EnrolledCourseModel>, Error>) in
-//            switch result {
-//            case .success(let x):
-//                self.data = x.data
-//            case .failure(let error):
-//            }
-//        }
-//    }
+    @Published var courseDetail: CourseDetailModel? = nil
+    @Published var isLoading: Bool = false
+    private var hasFetched: Bool = false
+
+    func fetchCourseDetailById(courseId: String) {
+        isLoading = true
+        guard !hasFetched else { return }
+        NetworkManager.shared.callAPI2(path: APICoursePath.getDetailCourseById(courseId: courseId).endPointValue, method: .get, body: nil) { (result: Result<CommonResponse<CourseDetailModel>, Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.courseDetail = response.data
+                    self.logEnrolledCourses()
+                }
+                self.hasFetched = true
+            case .failure(let error):
+                print(error)
+            }
+            self.isLoading = false
+        }
+    }
+
+    private func logEnrolledCourses() {
+        if courseDetail != nil {
+            print(courseDetail?.lecture)
+        }
+    }
 }
