@@ -105,6 +105,7 @@ struct HomeView: View {
                     refreshData()
                 }
             }
+            LoadingIndicatorView(isLoading: $viewModel.isLoadingAllFreeCourse)
         }
         .onAppear {
             if !hasLoadedDataInitially {
