@@ -141,23 +141,19 @@ struct CourseView: View {
                                     .presentationDetents([.medium])
                             }
 
-                        // List card
-                        if vm.listEnrolledCourses.count > 0 {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 16) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                // List card
+                                if vm.listEnrolledCourses.count > 0 {
                                     ForEach(vm.listEnrolledCourses, id: \._id) { courseItem in
                                         CourseCard(courseItem: courseItem)
                                     }
-                                }
-                            }
-                        } else {
-                            VStack {
-                                Image(systemName: "xmark.icloud.fill")
-                                    .font(.system(size: 32, weight: .regular))
-                                    .foregroundStyle(.gray)
 
-                                Text("No data found")
-                                    .font(.system(size: 12, weight: .light))
+                                } else {
+                                    ForEach(0 ..< 3) { _ in
+                                        SkeletonCourseProgressCard()
+                                    }
+                                }
                             }
                         }
 

@@ -9,23 +9,28 @@ import SwiftUI
 
 struct ProgressCourseView: View {
     var listEnrollCourses: [EnrolledCourseModel]
+    @Binding var isLoading: Bool
 
     var body: some View {
-        HeaderCategoryView(textCategory: "Tiến trình",
-                           textButton: "Tất cả",
-                           action: {})
+        VStack {
+            HeaderCategoryView(textCategory: "Tiến trình",
+                               textButton: "Tất cả",
+                               action: {})
 
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
-                ForEach(listEnrollCourses, id: \._id) { enrollCourse in
-                    CourseCard(courseItem: enrollCourse)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    if self.isLoading || self.listEnrollCourses.isEmpty {
+                        ForEach(0 ..< 3) { _ in
+                            SkeletonCourseProgressCard()
+                        }
+                    } else {
+                        ForEach(self.listEnrollCourses, id: \._id) { enrollCourse in
+                            CourseCard(courseItem: enrollCourse)
+                        }
+                    }
                 }
+                .padding(.horizontal, 10)
             }
-            .padding(.horizontal, 10)
         }
     }
-}
-
-#Preview {
-    ProgressCourseView(listEnrollCourses: [])
 }

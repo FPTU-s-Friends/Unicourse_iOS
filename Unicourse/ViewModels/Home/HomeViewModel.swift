@@ -24,31 +24,30 @@ class HomeViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var slideData = SlideData()
     @Published var allFreeCourse: [CourseDetailModel] = []
-    @Published var isLoading = false
+    @Published var isLoadingListEnrolled = false
+    @Published var isLoadingAllFreeCourse = false
     @Published var error = ""
     @Published var listEnrolledCourses: [EnrolledCourseModel] = []
     private var hasFetched: Bool = false
 
     func getAllFreeCourse(token: String) {
-        isLoading = true
+        isLoadingAllFreeCourse = true
         NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseDetailModel]>, Error>) in
             DispatchQueue.main.async {
-                self.isLoading = false
                 switch result {
                 case .success(let response):
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
-                        print(response)
                         self.allFreeCourse = response.data
                     default:
                         self.error = "Unexpected status code: \(response.status)"
-                        print(response.data)
                     }
 
                 case .failure(let error):
                     print(error)
                     self.error = error.localizedDescription
                 }
+                self.isLoadingAllFreeCourse = false
             }
         }
     }
@@ -58,7 +57,7 @@ class HomeViewModel: ObservableObject {
         if !isRefresh {
             guard !hasFetched else { return }
         }
-        isLoading = true
+        isLoadingListEnrolled = true
         NetworkManager.shared.callAPI2(path: APICoursePath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[EnrolledCourseModel]>, Error>) in
             switch result {
             case .success(let response):
@@ -70,7 +69,7 @@ class HomeViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
-            self.isLoading = false
+            self.isLoadingListEnrolled = false
         }
     }
 
