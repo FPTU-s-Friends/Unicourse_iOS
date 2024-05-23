@@ -40,29 +40,29 @@ struct TrackStep: Codable {
 }
 
 // Basic info video của chapter
-struct TrackId: Codable {
+struct Track: Codable {
     var _id: String
     var courseId: String?
-    var position: Int
-    var chapterTitle: String
-    var track_steps: [TrackStep]
+    var position: Int?
+    var chapterTitle: String?
+    var track_steps: [TrackStep]?
 
-    static var sampleData = TrackId(_id: "",
-                                    position: 9,
-                                    chapterTitle: "",
-                                    track_steps: [TrackStep.sampleData])
+    static var sampleData = Track(_id: "",
+                                  position: 9,
+                                  chapterTitle: "",
+                                  track_steps: [TrackStep.sampleData])
 }
 
 // Chapter của khoá học
-struct Track: Codable {
-    var _id: String
-    var trackId: TrackId
-    var completed: Bool
-    //  var subTrackProgress: [SubTrackProgress]
-    // Tạm thời cần ẩn đi subtrackprogress vì database cái có
-    // cái không
-
-    static var sampleData = Track(_id: "",
-                                  trackId: TrackId.sampleData,
-                                  completed: false)
-}
+// struct Track: Codable {
+//    var _id: String
+//    var trackId: TrackId
+//    var completed: Bool
+//    //  var subTrackProgress: [SubTrackProgress]
+//    // Tạm thời cần ẩn đi subtrackprogress vì database cái có
+//    // cái không
+//
+//    static var sampleData = Track(_id: "",
+//                                  trackId: TrackId.sampleData,
+//                                  completed: false)
+// }

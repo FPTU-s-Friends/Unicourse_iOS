@@ -25,8 +25,8 @@ struct CourseModel: Codable {
     var thumbnail: String
     var quiz: [QuizModel]?
     var lecture: LectureModel?
-    var tracks: [TrackId]?
+    var tracks: [Track]?
     var semester_number: Int?
 
-    static var sampleData = CourseModel(_id: "", title: "", titleDescription: "", subTitle: "", subTitleDescription: [""], enrollmentCount: 3, type: .free, thumbnail: "", tracks: [TrackId(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 8, duration: 9, content_url: "", type: "")])])
+    static var sampleData = CourseModel(_id: "", title: "", titleDescription: "", subTitle: "", subTitleDescription: [""], enrollmentCount: 3, type: .free, thumbnail: "", tracks: [Track(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 8, duration: 9, content_url: "", type: "")])])
 }

@@ -23,7 +23,7 @@ class CourseViewModel: ObservableObject {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.listEnrolledCourses = response.data
-                    self.logEnrolledCourses()
+//                    self.logEnrolledCourses()
                 }
                 self.hasFetched = true
             case .failure(let error):
