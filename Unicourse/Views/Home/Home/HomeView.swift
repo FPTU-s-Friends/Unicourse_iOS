@@ -11,40 +11,43 @@ struct HomeView: View {
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
 
+    // chỉ cho load data lúc đầu
+    @State private var hasLoadedDataInitially = false
+
     var body: some View {
         ZStack {
             VStack {
-                ScrollView {
-                    HStack {
-                        Image("User")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
+                HStack {
+                    Image("User")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50)
 
-                        VStack(alignment: .leading, spacing: 7) {
-                            Text("\(appData.user?.fullName ?? "Loading...")")
-                                .font(.system(size: 14, weight: .semibold))
+                    VStack(alignment: .leading, spacing: 7) {
+                        Text("\(appData.user?.fullName ?? "Loading...")")
+                            .font(.system(size: 14, weight: .semibold))
 
-                            if let userRole = appData.user?.role {
-                                switch userRole {
-                                case .student:
-                                    roleText("Học Viên")
-                                case .teacher:
-                                    roleText("Giảng Viên")
-                                case .admin:
-                                    roleText("Admin")
-                                }
-                            } else {
-                                Text("Unknown")
+                        if let userRole = appData.user?.role {
+                            switch userRole {
+                            case .student:
+                                roleText("Học Viên")
+                            case .teacher:
+                                roleText("Giảng Viên")
+                            case .admin:
+                                roleText("Admin")
                             }
+                        } else {
+                            Text("Unknown")
                         }
-
-                        Spacer()
-
-                        HeaderButtonView()
                     }
-                    .padding(.horizontal, 18)
 
+                    Spacer()
+
+                    HeaderButtonView()
+                }
+                .padding(.horizontal, 18)
+
+                ScrollView {
                     VStack {
                         ZStack(alignment: .top) {
                             TabView(selection: $viewModel.currentPage) {
@@ -70,7 +73,7 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Tiến trình khoá học
-                    ProgressCourseView(listEnrollCourses: viewModel.listEnrolledCourses)
+                    ProgressCourseView(listEnrollCourses: viewModel.listEnrolledCourses, isLoading: $viewModel.isLoadingListEnrolled)
                         .padding(.bottom, 10)
 
                     // Khoá học nổi bật
@@ -83,13 +86,23 @@ struct HomeView: View {
 
                     Spacer()
                 }
+                .refreshable {
+                    refreshData()
+                }
             }
         }
         .onAppear {
-            viewModel.getAllFreeCourse(token: appData.token)
-            viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "Bố mày", token: appData.token, isRefresh: false)
+            if !hasLoadedDataInitially {
+                refreshData()
+                hasLoadedDataInitially = true
+            }
         }
         .background(Color.mainBackgroundColor)
+    }
+
+    func refreshData() {
+        viewModel.getAllFreeCourse(token: appData.token)
+        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "Bố mày", token: appData.token, isRefresh: true)
     }
 
     func roleText(_ text: String) -> some View {
