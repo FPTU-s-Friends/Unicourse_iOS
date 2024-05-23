@@ -11,15 +11,19 @@ struct CourseDetailTabView: View {
     var courseLectureName: String
     var lectureDescription: String
     var imageLectureURL: String
-    var body: some View {
-        VStack(spacing: 10) {
-            // Lecture Info
-            LectureInfo(courseAuthorName: courseLectureName, courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: lectureDescription, imageLectureURL: imageLectureURL)
-            // Lecture Info
-            DetailInformationCourse()
+    var isLoading: Bool
 
-            Spacer()
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 10) {
+                // Lecture Info
+                LectureInfo(courseAuthorName: courseLectureName, courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: lectureDescription, imageLectureURL: imageLectureURL, isLoading: isLoading)
+                // Lecture Info
+                DetailInformationCourse()
+
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
     }
 }

@@ -60,7 +60,7 @@ struct CourseView: View {
                     .cornerRadius(24)
 
                     // Current  learning  course
-                    CurrentLearningCourses(showingCredits: $showingCredits, listEnrolledCourses: vm.listEnrolledCourses)
+                    CurrentLearningCourses(showingCredits: $showingCredits, listEnrolledCourses: vm.listEnrolledCourses, isLoadSkeleton: vm.isLoading)
                         .refreshable {
                             vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: true)
                         }

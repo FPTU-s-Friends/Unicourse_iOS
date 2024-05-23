@@ -37,14 +37,14 @@ struct CourseDetailView: View {
                     // Go Back Button - Favourite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: "Khóa học JPD123", courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398)
+                    BasicInfo(courseName: vm.courseDetail?.title ?? "", courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
                     // End basic info
 
                     // Tab bar
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? "Loading..", lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture?.profile_image) ?? "default_profile").tag(0)
+                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? "", lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture?.profile_image) ?? "", isLoading: vm.isLoading).tag(0)
 
                             CourseSyllabusTabView().tag(1)
 
@@ -76,7 +76,6 @@ struct CourseDetailView: View {
             }
         }
         .onAppear {
-            print(courseId)
             vm.fetchCourseDetailById(courseId: courseId)
         }
         .navigationBarBackButtonHidden(true)
