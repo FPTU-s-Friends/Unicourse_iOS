@@ -14,9 +14,27 @@ struct CourseCard: View {
     var body: some View {
         VStack(spacing: 13) {
             HStack(alignment: .top, spacing: 10) {
-                Circle()
-                    .frame(width: 32, height: 32)
-                    .foregroundStyle(.green.gradient)
+                VStack {
+                    // chỗ này để mốt sửa thành lecture image vào
+                    AsyncImage(url: URL(string: courseItem.user.profile_image)!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 28, height: 28)
+                            .cornerRadius(20)
+
+                    } placeholder: {
+                        Image("person.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 28, height: 28)
+                            .cornerRadius(20)
+                    }
+                }
+
+//                Circle()
+//                    .frame(width: 32, height: 32)
+//                    .foregroundStyle(.green.gradient)
                 Text(courseItem.course.title)
                     .font(.system(size: 14, weight: .bold))
                 Spacer()
@@ -68,7 +86,6 @@ struct CourseCard: View {
     }
 }
 
-//
-// #Preview {
-//    CourseCard(courseName: "Khoá học NextJS", courseChapter: 10, coursePercentageProcess: 22, courseButtonTitle: "Tiếp tục", action: {})
-// }
+#Preview {
+    CourseCard(courseItem: EnrolledCourseModel(_id: "", user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""), course: CourseInEnrolledCoursesModel(_id: "", type: .fee, titleDescription: "", title: "", thumbnail: "", subTitleDescription: [""], subTitle: "", semester_number: 9, enrollmentCount: 9), completed: true, enrollDate: "", progress: 10, trackProgress: []))
+}
