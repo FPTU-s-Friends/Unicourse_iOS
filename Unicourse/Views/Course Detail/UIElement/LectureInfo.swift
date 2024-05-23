@@ -13,57 +13,76 @@ struct LectureInfo: View {
     let totalCourseOfAuthor: Int
     let courseAuthorBio: String
     let imageLectureURL: String
+    let isLoading: Bool
+
     var body: some View {
         VStack(spacing: 14) {
-            HStack {
-                Group {
-                    AsyncImage(url: URL(string: imageLectureURL)!) { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 40, height: 40)
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    } placeholder: {
-                        ProgressView()
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text(courseAuthorName)
-                            .font(.system(size: 14, weight: .bold))
-                        HStack {
-                            RatingStars(rating: courseRatingPoint)
-                            Text("\(totalCourseOfAuthor) khoá học")
-                                .font(.system(size: 12, weight: .regular))
-                                .foregroundStyle(Color.neutralTextColor)
+            if !isLoading {
+                HStack {
+                    Group {
+                        if let url = URL(string: imageLectureURL) {
+                            AsyncImage(url: url) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            } placeholder: {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: 40, height: 40)
+                                }
+                            }
+                        } else {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: 40, height: 40)
+                            }
                         }
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+
+                        VStack(alignment: .leading) {
+                            Text(courseAuthorName)
+                                .font(.system(size: 14, weight: .bold))
+                            HStack {
+                                RatingStars(rating: courseRatingPoint)
+                                Text("\(totalCourseOfAuthor) khoá học")
+                                    .font(.system(size: 12, weight: .regular))
+                                    .foregroundStyle(Color.neutralTextColor)
+                            }
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        }
                     }
+                    Spacer()
+                    Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                        Text("Xem thông tin")
+                            .frame(height: 20)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                            .font(.system(size: 12, weight: .medium))
+                            .background(Color(hex: "#4284F4"))
+                            .cornerRadius(7.0)
+
+                    })
+                    .tint(.white)
                 }
-                Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Xem thông tin")
-                        .frame(height: 20)
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .font(.system(size: 12, weight: .medium))
-                        .background(Color(hex: "#4284F4"))
-                        .cornerRadius(7.0)
 
-                })
-                .tint(.white)
-            }
+                VStack {
+                    Text(courseAuthorBio)
+                        .font(.system(size: 14, weight: .regular))
+                }
+                .padding(12)
+                .frame(width: 295)
+                .background(Color(hex: "#F7F8FC"))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray, lineWidth: 0.2)
+                )
+                .cornerRadius(16.0)
 
-            VStack {
-                Text(courseAuthorBio)
-                    .font(.system(size: 14, weight: .medium))
+            } else {
+                SkeletonLectureInfo()
             }
-            .padding(12)
-            .frame(width: 295)
-            .background(Color(hex: "#F7F8FC"))
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray, lineWidth: 0.2)
-            )
-            .cornerRadius(16.0)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 17)
