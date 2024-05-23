@@ -77,7 +77,7 @@ struct CurrentLearningCourses: View {
                     } else {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
-                            NavigationLink(destination: CourseDetailView(courseId: courseItem.course._id)) {
+                            NavigationLink(destination: CourseDetailView(courseId: courseItem.course!._id)) {
                                 CourseListView(courseItem: courseItem)
                             }
                             .buttonStyle(PlainButtonStyle())
@@ -97,5 +97,6 @@ func AllCourseView() -> some View {
 }
 
 #Preview {
-    CurrentLearningCourses(showingCredits: .constant(false), listEnrolledCourses: [EnrolledCourseModel(_id: "", user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""), course: CourseInEnrolledCoursesModel(_id: "", type: .free, titleDescription: "", title: "", thumbnail: "", subTitleDescription: [""], subTitle: "", enrollmentCount: 9), completed: false, enrollDate: "", progress: 76, trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)])])
+    CurrentLearningCourses(showingCredits: .constant(false),
+                           listEnrolledCourses: [EnrolledCourseModel.sampleData])
 }

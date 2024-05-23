@@ -15,7 +15,7 @@ struct TrackingCourseCard: View {
             HStack(alignment: .top, spacing: 12) {
                 VStack {
                     VStack {
-                        AsyncImage(url: URL(string: enrollCourse.course.thumbnail)!) { image in
+                        AsyncImage(url: URL(string: enrollCourse.course!.thumbnail)!) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -44,7 +44,7 @@ struct TrackingCourseCard: View {
                             Image(.trackingCourseCircle)
                         }
                         // End Icon Tracking Course
-                        Text(enrollCourse.course.titleDescription)
+                        Text(enrollCourse.course!.titleDescription)
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                             .font(.system(size: 14, weight: .medium))
@@ -107,5 +107,10 @@ struct TrackingCourseCard: View {
 }
 
 #Preview {
-    TrackingCourseCard(enrollCourse: EnrolledCourseModel(_id: "", user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""), course: CourseInEnrolledCoursesModel(_id: "", type: .free, titleDescription: "", title: "", thumbnail: "", subTitleDescription: [""], subTitle: "", enrollmentCount: 9), completed: false, enrollDate: "", progress: 76, trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)]))
+    TrackingCourseCard(enrollCourse: EnrolledCourseModel(_id: "",
+                                                         user: BasicUserInfo.sampleData,
+                                                         course: CourseModel.sampleData,
+                                                         completed: false, enrollDate: "",
+                                                         progress: 76,
+                                                         trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)]))
 }

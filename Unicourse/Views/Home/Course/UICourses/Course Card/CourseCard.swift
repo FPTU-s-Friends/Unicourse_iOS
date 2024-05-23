@@ -16,7 +16,7 @@ struct CourseCard: View {
             HStack(alignment: .top, spacing: 10) {
                 VStack {
                     // chỗ này để mốt sửa thành lecture image vào
-                    AsyncImage(url: URL(string: courseItem.course.lecture?.profile_image ?? "")!) { image in
+                    AsyncImage(url: URL(string: courseItem.course?.lecture?.profile_image ?? "")!) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -35,7 +35,7 @@ struct CourseCard: View {
 //                Circle()
 //                    .frame(width: 32, height: 32)
 //                    .foregroundStyle(.green.gradient)
-                Text(courseItem.course.title)
+                Text(courseItem.course?.title ?? "")
                     .font(.system(size: 14, weight: .bold))
                 Spacer()
             }
@@ -87,5 +87,5 @@ struct CourseCard: View {
 }
 
 #Preview {
-    CourseCard(courseItem: EnrolledCourseModel(_id: "", user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""), course: CourseInEnrolledCoursesModel(_id: "", type: .fee, titleDescription: "", title: "", thumbnail: "", subTitleDescription: [""], subTitle: "", semester_number: 9, enrollmentCount: 9), completed: true, enrollDate: "", progress: 10, trackProgress: []))
+    CourseCard(courseItem: EnrolledCourseModel(_id: "", user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""), course: CourseModel.sampleData, completed: true, enrollDate: "", progress: 10, trackProgress: []))
 }

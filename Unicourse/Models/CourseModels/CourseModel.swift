@@ -12,22 +12,8 @@ enum CourseEnrollType: String, Codable {
     case free
 }
 
-// Dùng cho thằng get enrolled
-struct CourseInEnrolledCoursesModel: Codable {
-    var _id: String
-    var type: CourseEnrollType
-    var titleDescription: String
-    var title: String
-    var thumbnail: String
-    var subTitleDescription: [String]
-    var lecture: LectureModel?
-    var subTitle: String
-    var semester_number: Int?
-    var enrollmentCount: Int
-}
-
 // Dùng cho View Detail Model
-struct CourseDetailModel: Codable {
+struct CourseModel: Codable {
     var _id: String
     var title: String
     var titleDescription: String
@@ -39,6 +25,8 @@ struct CourseDetailModel: Codable {
     var thumbnail: String
     var quiz: [QuizModel]?
     var lecture: LectureModel?
-    var tracks: [TrackId]
+    var tracks: [TrackId]?
     var semester_number: Int?
+
+    static var sampleData = CourseModel(_id: "", title: "", titleDescription: "", subTitle: "", subTitleDescription: [""], enrollmentCount: 3, type: .free, thumbnail: "", tracks: [TrackId(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 8, duration: 9, content_url: "", type: "")])])
 }

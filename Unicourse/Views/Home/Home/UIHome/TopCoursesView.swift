@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopCoursesView: View {
-    var freeCourses: [CourseDetailModel]
+    var freeCourses: [CourseModel]
     @Binding var isLoadingFreeCourse: Bool
 
     var body: some View {
@@ -37,7 +37,7 @@ struct TopCoursesView: View {
                                     
                                     VStack {
                                         Text("Now")
-                                            .font(.system(size: 14, weight: .semibold))
+                                            .font(.system(size: 12, weight: .semibold))
                                             .foregroundStyle(.white)
                                             .padding(5)
                                             .padding(.horizontal, 10)
@@ -57,7 +57,7 @@ struct TopCoursesView: View {
                                         
                                         Text(course.lecture?.fullName ?? "Bố mày")
                                             .font(.system(size: 12, weight: .bold))
-                                            .foregroundStyle(.white)
+                                            .foregroundStyle(.black)
                                             .padding(6)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
@@ -66,7 +66,7 @@ struct TopCoursesView: View {
                                         
                                         Text("01:42:56")
                                             .font(.system(size: 10, weight: .light))
-                                            .foregroundStyle(.white)
+                                            .foregroundStyle(.black)
                                             .padding(6)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
@@ -75,6 +75,8 @@ struct TopCoursesView: View {
                                     Text(course.title)
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundStyle(.white)
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(1)
                                 }
                                 .padding(10)
                             }
