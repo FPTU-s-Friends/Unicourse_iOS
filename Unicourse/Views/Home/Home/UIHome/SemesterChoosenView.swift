@@ -12,10 +12,8 @@ struct Semester: Identifiable {
     let name: String
     let icon: String
     let color: Color
-}
 
-class SemesterData: ObservableObject {
-    @Published var semesters: [Semester] = [
+    static var listSemesters: [Semester] = [
         Semester(name: "Kỳ 1", icon: "book.fill", color: .red),
         Semester(name: "Kỳ 2", icon: "calendar", color: .blue),
         Semester(name: "Kỳ 3", icon: "graduationcap.fill", color: .green),
@@ -29,8 +27,9 @@ class SemesterData: ObservableObject {
 }
 
 struct SemesterChosenView: View {
-    @ObservedObject var semesterData = SemesterData()
+    var semesterData = Semester.listSemesters
     @State private var activeSemester: UUID?
+    @State private var selectedSemesterIndex: Int?
 
     var body: some View {
         VStack {
@@ -48,8 +47,11 @@ struct SemesterChosenView: View {
             .padding(.horizontal, 15)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(semesterData.semesters) { semester in
+                HStack(spacing: 12) {
+                    ForEach(Array(semesterData.enumerated()), id: \.element.id) { index, semester in
+                        NavigationLink(destination: CourseSemesterView(semester: index + 1), tag: index, selection: $selectedSemesterIndex) {
+                            EmptyView()
+                        }
                         VStack {
                             Image(systemName: semester.icon)
                                 .foregroundStyle(semester.id == activeSemester ? .white : semester.color)
@@ -63,6 +65,7 @@ struct SemesterChosenView: View {
                                 )
                                 .onTapGesture {
                                     activeSemester = semester.id
+                                    selectedSemesterIndex = index
                                 }
 
                             Text(semester.name)
@@ -78,5 +81,7 @@ struct SemesterChosenView: View {
 }
 
 #Preview {
-    SemesterChosenView()
+    NavigationStack {
+        SemesterChosenView()
+    }
 }

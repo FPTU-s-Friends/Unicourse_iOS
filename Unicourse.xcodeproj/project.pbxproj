@@ -39,6 +39,7 @@
 		B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */; };
 		B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C422BEB95EC008A6A45 /* PathTitle.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
+		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */; };
 		C53E803E2BF0BC58003DFC4B /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */; };
@@ -128,9 +129,6 @@
 		C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B052BFF112E00630823 /* CourseSemesterView.swift */; };
 		C5E98B082BFF171300630823 /* SkeletonTrackingCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */; };
 		C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */; };
-		C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B052BFF112E00630823 /* CourseSemesterView.swift */; };
-		C5E98B082BFF171300630823 /* SkeletonTrackingCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */; };
-		C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */; };
 		C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */; };
 		C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */; };
 /* End PBXBuildFile section */
@@ -168,6 +166,7 @@
 		B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		B5C54C422BEB95EC008A6A45 /* PathTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTitle.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
+		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlashScreenView.swift; sourceTree = "<group>"; };
 		C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
@@ -250,9 +249,6 @@
 		C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		C5E98B012BFEFC5700630823 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
-		C5E98B052BFF112E00630823 /* CourseSemesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterView.swift; sourceTree = "<group>"; };
-		C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTrackingCourseView.swift; sourceTree = "<group>"; };
-		C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCourseCard.swift; sourceTree = "<group>"; };
 		C5E98B052BFF112E00630823 /* CourseSemesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterView.swift; sourceTree = "<group>"; };
 		C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTrackingCourseView.swift; sourceTree = "<group>"; };
 		C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCourseCard.swift; sourceTree = "<group>"; };
@@ -392,8 +388,6 @@
 				B5C54C412BEB95C8008A6A45 /* Path Title */,
 				B5C54C3E2BEB92B4008A6A45 /* Course Card */,
 				B5C54C3B2BEB91F7008A6A45 /* Button */,
-				C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */,
-				C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */,
 				C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */,
 				C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */,
 			);
@@ -578,7 +572,6 @@
 			children = (
 				C541D9F52BE341C90022079E /* OnboardModel.swift */,
 				C567495D2BE893E800DA6A58 /* AppError.swift */,
-				C567494C2BE8764200DA6A58 /* UserProfile.swift */,
 			);
 			path = AppModels;
 			sourceTree = "<group>";
@@ -722,7 +715,6 @@
 			isa = PBXGroup;
 			children = (
 				C5E98B042BFF111B00630823 /* CourseSemester */,
-				C5E98B042BFF111B00630823 /* CourseSemester */,
 				C5D8D5F32BFEF93700DE7EBA /* CommonUI */,
 				C56881822BF854DA00B2C3F3 /* Notification */,
 				C5EA2CF62BF76BBC002C6144 /* Checkout */,
@@ -798,6 +790,7 @@
 		C5C665A82BFF3214009A733B /* Authentications */ = {
 			isa = PBXGroup;
 			children = (
+				C567494C2BE8764200DA6A58 /* UserProfile.swift */,
 				C56749532BE884C700DA6A58 /* RequestModels */,
 				C56749542BE884D100DA6A58 /* ResponseModels */,
 			);
@@ -878,20 +871,11 @@
 				C5D8D5F42BFEF94900DE7EBA /* SkeletonCourseProgressCard.swift */,
 				C5D8D5F62BFEFA6C00DE7EBA /* SkeletonCourseCard.swift */,
 				C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */,
-				C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */,
+				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
 				C5E98B012BFEFC5700630823 /* ShimmerEffect.swift */,
-				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
-				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
+				C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */,
 			);
 			path = CommonUI;
-			sourceTree = "<group>";
-		};
-		C5E98B042BFF111B00630823 /* CourseSemester */ = {
-			isa = PBXGroup;
-			children = (
-				C5E98B052BFF112E00630823 /* CourseSemesterView.swift */,
-			);
-			path = CourseSemester;
 			sourceTree = "<group>";
 		};
 		C5E98B042BFF111B00630823 /* CourseSemester */ = {
@@ -1029,6 +1013,7 @@
 				B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */,
 				C5E98B082BFF171300630823 /* SkeletonTrackingCourseView.swift in Sources */,
 				C5E98B082BFF171300630823 /* SkeletonTrackingCourseView.swift in Sources */,
+				C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */,
 				C53E804F2BF0BE7F003DFC4B /* AccountMenuView.swift in Sources */,
 				B5A43A262BFB031000AE89C4 /* EnrolledCourseModel.swift in Sources */,
 				B5898F912BED37CC00C315B8 /* BasicInfo.swift in Sources */,

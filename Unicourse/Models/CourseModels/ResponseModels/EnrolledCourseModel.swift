@@ -15,7 +15,7 @@ struct EnrolledCourseModel: Codable {
     var completed: Bool
     var enrollDate: String
     var progress: Int
-    var trackProgress: [Track]
+    var trackProgress: [Track]?
 
     static var sampleData = EnrolledCourseModel(_id: "",
                                                 user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""),

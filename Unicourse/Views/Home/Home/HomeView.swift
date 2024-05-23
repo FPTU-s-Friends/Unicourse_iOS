@@ -46,7 +46,7 @@ struct HomeView: View {
                             switch userRole {
                             case .student:
                                 roleText("Học Viên")
-                            case .teacher:
+                            case .lecture:
                                 roleText("Giảng Viên")
                             case .admin:
                                 roleText("Admin")
@@ -96,7 +96,7 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
-                    TopLecturesView()
+                    TopLecturesView(listLectures: viewModel.listLectures)
                         .padding(.bottom, 10)
 
                     Spacer()
@@ -119,6 +119,7 @@ struct HomeView: View {
     func refreshData() {
         viewModel.getAllFreeCourse(token: appData.token)
         viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "Bố mày", token: appData.token, isRefresh: true)
+        viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
 
     func roleText(_ text: String) -> some View {

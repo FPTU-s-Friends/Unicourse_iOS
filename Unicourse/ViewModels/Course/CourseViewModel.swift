@@ -35,7 +35,7 @@ class CourseViewModel: ObservableObject {
 
     private func logEnrolledCourses() {
         for course in listEnrolledCourses {
-            print(course.trackProgress.count)
+            print(course.trackProgress?.count)
         }
     }
 }
