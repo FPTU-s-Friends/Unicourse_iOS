@@ -25,7 +25,7 @@ struct WaveShimmer: View {
             startPoint: .leading,
             endPoint: .trailing
         )
-        .frame(width: 400, height: 200)
+        .frame(width: 400, height: 400)
         .offset(x: self.phase)
         .onAppear {
             withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {

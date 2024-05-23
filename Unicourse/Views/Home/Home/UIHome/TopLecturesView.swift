@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct TopLecturesView: View {
+    var listLectures: [LectureModel]
+
     var body: some View {
         HeaderCategoryView(textCategory: "Giảng viên nổi bật", textButton: "Xem thêm", action: {})
 
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
-                ForEach(0 ..< 6) { _ in
+                ForEach(listLectures, id: \._id) { lecture in
                     VStack {
-                        Image("kien")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 60, height: 60)
-                            .clipShape(Circle())
+                        AsyncImage(url: URL(string: lecture.profile_image)!) { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 60, height: 60)
+                                .clipShape(Circle())
 
-                        Text("Trung Kiên")
-                            .font(.system(size: 14, weight: .semibold))
+                        } placeholder: {
+                            ProgressView()
+                        }
+
+                        Text(lecture.fullName)
+                            .font(.system(size: 10, weight: .semibold))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(1)
+                            .frame(width: 100)
                     }
                 }
             }
@@ -32,5 +41,5 @@ struct TopLecturesView: View {
 }
 
 #Preview {
-    TopLecturesView()
+    TopLecturesView(listLectures: [])
 }

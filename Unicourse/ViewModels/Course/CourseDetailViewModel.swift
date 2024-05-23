@@ -8,7 +8,7 @@
 import Foundation
 
 class CourseDetailViewModel: ObservableObject {
-    @Published var courseDetail: CourseDetailModel? = nil
+    @Published var courseDetail: CourseModel? = nil
     @Published var isLoading: Bool = false
     private var hasFetched: Bool = false
 
@@ -18,7 +18,7 @@ class CourseDetailViewModel: ObservableObject {
         }
         isLoading = true
 
-        NetworkManager.shared.callAPI2(path: APICoursePath.getDetailCourseById(courseId: courseId).endPointValue, method: .get, body: nil) { (result: Result<CommonResponse<CourseDetailModel>, Error>) in
+        NetworkManager.shared.callAPI2(path: APICoursePath.getDetailCourseById(courseId: courseId).endPointValue, method: .get, body: nil) { (result: Result<CommonResponse<CourseModel>, Error>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {

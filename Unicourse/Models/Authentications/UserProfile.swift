@@ -8,9 +8,9 @@
 import FirebaseAuth
 import Foundation
 
-enum userRole: String {
+enum UserRole: String, Codable {
     case student
-    case teacher
+    case lecture
     case admin
 }
 
@@ -20,12 +20,12 @@ struct UserProfile: Equatable {
     var email: String
     var fullName: String
     var profileImageURL: URL?
-    var role: userRole
+    var role: UserRole
     var isCommentBlocked: Bool
     var isBlocked: Bool
     var isChatBlocked: Bool
 
-    init(userId: String, email: String, fullName: String, profileImageURL: URL? = nil, role: userRole, isCommentBlocked: Bool = false, isBlocked: Bool = false, isChatBlocked: Bool = false) {
+    init(userId: String, email: String, fullName: String, profileImageURL: URL? = nil, role: UserRole, isCommentBlocked: Bool = false, isBlocked: Bool = false, isChatBlocked: Bool = false) {
         self.userId = userId
         self.email = email
         self.fullName = fullName

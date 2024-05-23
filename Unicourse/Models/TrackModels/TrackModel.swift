@@ -30,6 +30,13 @@ struct TrackStep: Codable {
     var duration: Int
     var content_url: String
     var type: String
+
+    static var sampleData = TrackStep(_id: "",
+                                      title: "",
+                                      position: 9,
+                                      duration: 9,
+                                      content_url: "",
+                                      type: "")
 }
 
 // Basic info video của chapter
@@ -39,6 +46,11 @@ struct TrackId: Codable {
     var position: Int
     var chapterTitle: String
     var track_steps: [TrackStep]
+
+    static var sampleData = TrackId(_id: "",
+                                    position: 9,
+                                    chapterTitle: "",
+                                    track_steps: [TrackStep.sampleData])
 }
 
 // Chapter của khoá học
@@ -49,4 +61,8 @@ struct Track: Codable {
     //  var subTrackProgress: [SubTrackProgress]
     // Tạm thời cần ẩn đi subtrackprogress vì database cái có
     // cái không
+
+    static var sampleData = Track(_id: "",
+                                  trackId: TrackId.sampleData,
+                                  completed: false)
 }

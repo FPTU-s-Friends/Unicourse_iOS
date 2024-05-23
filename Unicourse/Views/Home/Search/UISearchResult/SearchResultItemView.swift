@@ -8,33 +8,49 @@
 import SwiftUI
 
 struct SearchResultItemView: View {
+    var courseItem: CourseModel
+
     var body: some View {
         ZStack(alignment: .top) {
             VStack(alignment: .leading) {
                 VStack {
-                    Image("courseImageEx")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    AsyncImage(url: URL(string: courseItem.thumbnail)!) { image in
+                        image.resizable()
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 165)
+
+                    } placeholder: {
+                        ProgressView()
+                    }
                 }
                 .frame(width: 190)
-                .padding(.top, 10)
 
                 VStack {
                     HStack {
-                        Image("User")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20)
+                        AsyncImage(url: URL(string: courseItem.lecture!.profile_image)!) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 34)
+                                .cornerRadius(30)
 
-                        Text("Đinh Gia Bảo")
+                        } placeholder: {
+                            ProgressView()
+                        }
+
+                        Text(courseItem.lecture!.fullName)
                             .font(.system(size: 10, weight: .medium))
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(1)
                             .foregroundStyle(.gray)
                     }
                 }
                 .padding(.horizontal, 15)
 
-                Text("WDU203c - The UI/UX Design")
+                Text(courseItem.title)
                     .font(.system(size: 12))
+                    .foregroundStyle(.black)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                     .truncationMode(.tail)
@@ -56,42 +72,8 @@ struct SearchResultItemView: View {
                 .padding(.bottom, 10)
             }
 
-            HStack(alignment: .top, spacing: 4) {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 8)
-                    .foregroundColor(.yellow)
-
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 8)
-                    .foregroundColor(.yellow)
-
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 8)
-                    .foregroundColor(.yellow)
-
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 8)
-                    .foregroundColor(.yellow)
-
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 8)
-                    .foregroundColor(.yellow)
-            }
-            .padding(2)
-            .background(Color(red: 1, green: 1, blue: 1).opacity(0.50))
-            .cornerRadius(5)
-            .padding(.horizontal, 5)
-            .offset(x: -40, y: 160)
+            RatingStars(rating: 4)
+                .offset(x: -40, y: 140)
         }
         .frame(width: 180, height: 260)
         .background(.white)
@@ -100,5 +82,5 @@ struct SearchResultItemView: View {
 }
 
 #Preview {
-    SearchResultItemView()
+    SearchResultItemView(courseItem: CourseModel.sampleData)
 }

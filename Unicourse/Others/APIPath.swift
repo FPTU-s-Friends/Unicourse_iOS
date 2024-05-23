@@ -11,6 +11,8 @@ enum APIPath {
     case signIn
     case signUp
     case getAllFreeCourse
+    case getCourseSemester
+    case getUsers
 
     var stringValue: String {
         switch self {
@@ -20,6 +22,10 @@ enum APIPath {
             "/api/auth/signUp"
         case .getAllFreeCourse:
             "/api/course/free-course"
+        case .getCourseSemester:
+            "/api/course/semester"
+        case .getUsers:
+            "/api/user/get-all-users"
         }
     }
 }
