@@ -16,7 +16,7 @@ struct CourseCard: View {
             HStack(alignment: .top, spacing: 10) {
                 VStack {
                     // chỗ này để mốt sửa thành lecture image vào
-                    AsyncImage(url: URL(string: courseItem.user.profile_image)!) { image in
+                    AsyncImage(url: URL(string: courseItem.course.lecture?.profile_image ?? "")!) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -24,7 +24,7 @@ struct CourseCard: View {
                             .cornerRadius(20)
 
                     } placeholder: {
-                        Image("person.circle")
+                        Image(systemName: "person.circle")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 28, height: 28)

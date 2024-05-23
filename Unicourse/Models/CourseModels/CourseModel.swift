@@ -20,6 +20,7 @@ struct CourseInEnrolledCoursesModel: Codable {
     var title: String
     var thumbnail: String
     var subTitleDescription: [String]
+    var lecture: LectureModel?
     var subTitle: String
     var semester_number: Int?
     var enrollmentCount: Int
