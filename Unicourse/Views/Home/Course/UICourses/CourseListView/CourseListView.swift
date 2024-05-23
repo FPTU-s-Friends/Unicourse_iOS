@@ -12,13 +12,22 @@ struct CourseListView: View {
     var body: some View {
         HStack(spacing: 13.0) {
             VStack {
-                Image(._3Dicons)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 48, height: 48)
+                VStack {
+                    AsyncImage(url: URL(string: courseItem.course.thumbnail)!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+
+                    } placeholder: {
+                        Image(._3Dicons)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                }
             }
             .frame(width: 64, height: 64)
-            .background(Color(hex: "#F1DBC7"))
+//            .background(Color(hex: "#F1DBC7"))
+            .background(Color.mainColor1)
             .clipShape(RoundedRectangle(cornerRadius: 8.0))
 
             VStack(alignment: .leading, spacing: 20) {
@@ -44,6 +53,6 @@ struct CourseListView: View {
     }
 }
 
-// #Preview {
-//    CourseListView()
-// }
+#Preview {
+    CourseListView(courseItem: EnrolledCourseModel.sampleData)
+}

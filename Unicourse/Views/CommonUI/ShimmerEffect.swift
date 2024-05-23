@@ -41,7 +41,6 @@ struct WaveShimmer: View {
                         endPoint: .trailing
                     )
                 )
-                .rotationEffect(.degrees(30))
                 .scaleEffect(x: 1.5, y: 1, anchor: .center)
         )
     }

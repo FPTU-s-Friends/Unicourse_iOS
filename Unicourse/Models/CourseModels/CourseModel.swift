@@ -12,7 +12,7 @@ enum CourseEnrollType: String, Codable {
     case free
 }
 
-// Dùng cho thằng get enrolled
+// Dùng cho thằng get  enrolled
 struct CourseInEnrolledCoursesModel: Codable {
     var _id: String
     var type: CourseEnrollType
@@ -20,6 +20,7 @@ struct CourseInEnrolledCoursesModel: Codable {
     var title: String
     var thumbnail: String
     var subTitleDescription: [String]
+    var lecture: LectureModel?
     var subTitle: String
     var semester_number: Int?
     var enrollmentCount: Int
