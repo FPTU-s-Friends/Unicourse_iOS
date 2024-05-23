@@ -21,11 +21,11 @@ struct WaveShimmer: View {
 
     var body: some View {
         LinearGradient(
-            gradient: Gradient(colors: [.clear, Color.gray.opacity(0.3), .clear]),
+            gradient: Gradient(colors: [.clear, Color.mainColor1.opacity(0.9), .clear]),
             startPoint: .leading,
             endPoint: .trailing
         )
-        .frame(width: 300, height: 300)
+        .frame(width: 400, height: 200)
         .offset(x: self.phase)
         .onAppear {
             withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
@@ -36,7 +36,7 @@ struct WaveShimmer: View {
             Rectangle()
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [.clear, Color.gray.opacity(0.3), .clear]),
+                        gradient: Gradient(colors: [.clear, Color.mainColor1.opacity(2), .clear]),
                         startPoint: .leading,
                         endPoint: .trailing
                     )

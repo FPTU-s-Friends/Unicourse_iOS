@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TopCoursesView: View {
-    var freeCourse: [CourseDetailModel]
+    var freeCourses: [CourseDetailModel]
+    @Binding var isLoadingFreeCourse: Bool
 
     var body: some View {
         HeaderCategoryView(textCategory: "Khoá học nổi bật",
@@ -17,67 +18,72 @@ struct TopCoursesView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(freeCourse, id: \._id) { course in
-                    NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                        ZStack {
-                            ZStack(alignment: .topTrailing) {
-                                AsyncImage(url: URL(string: course.thumbnail)!) { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-
-                                } placeholder: {
-                                    ProgressView()
-                                }
-
-                                VStack {
-                                    Text("Now")
-                                        .font(.system(size: 14, weight: .semibold))
-                                        .foregroundStyle(.white)
-                                        .padding(5)
-                                        .padding(.horizontal, 10)
-                                        .background(Color.activeColor.cornerRadius(10))
-                                }
-                                .padding(.top, 10)
-                                .padding(.trailing, 10)
-                            }
-
-                            VStack(alignment: .leading) {
-                                Spacer()
-                                HStack {
-                                    Image("User")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 20)
-
-                                    Text(course.lecture?.fullName ?? "Bố mày")
-                                        .font(.system(size: 12, weight: .bold))
-                                        .foregroundStyle(.white)
-                                        .padding(6)
-                                        .background(.ultraThinMaterial)
-                                        .cornerRadius(10)
-
-                                    Spacer()
-
-                                    Text("01:42:56")
-                                        .font(.system(size: 10, weight: .light))
-                                        .foregroundStyle(.white)
-                                        .padding(6)
-                                        .background(.ultraThinMaterial)
-                                        .cornerRadius(10)
-                                }
-
-                                Text(course.title)
-                                    .font(.system(size: 14, weight: .bold))
-                                    .foregroundStyle(.white)
-                            }
-                            .padding(10)
-                        }
-                        .frame(width: 270)
-                        .cornerRadius(20)
-                        .padding(.leading, 10)
+                if self.isLoadingFreeCourse || self.freeCourses.isEmpty {
+                    ForEach(0 ..< 3) { _ in
+                        SkeletonCourseProgressCard()
                     }
-
-                    Spacer()
+                } else {
+                    ForEach(freeCourses, id: \._id) { course in
+                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+                            ZStack {
+                                ZStack(alignment: .topTrailing) {
+                                    AsyncImage(url: URL(string: course.thumbnail)!) { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                        
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    
+                                    VStack {
+                                        Text("Now")
+                                            .font(.system(size: 14, weight: .semibold))
+                                            .foregroundStyle(.white)
+                                            .padding(5)
+                                            .padding(.horizontal, 10)
+                                            .background(Color.activeColor.cornerRadius(10))
+                                    }
+                                    .padding(.top, 10)
+                                    .padding(.trailing, 10)
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Spacer()
+                                    HStack {
+                                        Image("User")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20)
+                                        
+                                        Text(course.lecture?.fullName ?? "Bố mày")
+                                            .font(.system(size: 12, weight: .bold))
+                                            .foregroundStyle(.white)
+                                            .padding(6)
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(10)
+                                        
+                                        Spacer()
+                                        
+                                        Text("01:42:56")
+                                            .font(.system(size: 10, weight: .light))
+                                            .foregroundStyle(.white)
+                                            .padding(6)
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(10)
+                                    }
+                                    
+                                    Text(course.title)
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundStyle(.white)
+                                }
+                                .padding(10)
+                            }
+                            .frame(width: 270)
+                            .cornerRadius(20)
+                            .padding(.leading, 10)
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
@@ -85,5 +91,5 @@ struct TopCoursesView: View {
 }
 
 #Preview {
-    TopCoursesView(freeCourse: [])
+    TopCoursesView(freeCourses: [], isLoadingFreeCourse: .constant(true))
 }

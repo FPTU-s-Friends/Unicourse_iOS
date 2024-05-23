@@ -18,11 +18,26 @@ struct HomeView: View {
         ZStack {
             VStack {
                 HStack {
-                    Image("User")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
-
+                    VStack {
+                        if let profileImageURL = appData.user?.profileImageURL,
+                           let url = URL(string: profileImageURL.absoluteString)
+                        {
+                            AsyncImage(url: url) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 50)
+                                    .cornerRadius(30)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                        } else {
+                            Image(systemName: "User")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50)
+                                .cornerRadius(30)
+                        }
+                    }
                     VStack(alignment: .leading, spacing: 7) {
                         Text("\(appData.user?.fullName ?? "Loading...")")
                             .font(.system(size: 14, weight: .semibold))
@@ -37,7 +52,7 @@ struct HomeView: View {
                                 roleText("Admin")
                             }
                         } else {
-                            Text("Unknown")
+                            roleText("Unknown")
                         }
                     }
 
@@ -77,7 +92,7 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Khoá học nổi bật
-                    TopCoursesView(freeCourse: viewModel.allFreeCourse)
+                    TopCoursesView(freeCourses: viewModel.allFreeCourse, isLoadingFreeCourse: $viewModel.isLoadingAllFreeCourse)
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
