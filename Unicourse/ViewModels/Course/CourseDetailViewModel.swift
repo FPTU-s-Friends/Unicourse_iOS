@@ -13,14 +13,16 @@ class CourseDetailViewModel: ObservableObject {
     private var hasFetched: Bool = false
 
     func fetchCourseDetailById(courseId: String) {
+        guard !hasFetched else {
+            return
+        }
         isLoading = true
-        guard !hasFetched else { return }
+
         NetworkManager.shared.callAPI2(path: APICoursePath.getDetailCourseById(courseId: courseId).endPointValue, method: .get, body: nil) { (result: Result<CommonResponse<CourseDetailModel>, Error>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.courseDetail = response.data
-                    self.logEnrolledCourses()
                 }
                 self.hasFetched = true
             case .failure(let error):
