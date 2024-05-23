@@ -13,7 +13,7 @@ struct CourseListView: View {
         HStack(spacing: 13.0) {
             VStack {
                 VStack {
-                    AsyncImage(url: URL(string: courseItem.course.thumbnail)!) { image in
+                    AsyncImage(url: URL(string: courseItem.course?.thumbnail ?? "")!) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -31,7 +31,7 @@ struct CourseListView: View {
             .clipShape(RoundedRectangle(cornerRadius: 8.0))
 
             VStack(alignment: .leading, spacing: 20) {
-                Text(courseItem.course.title)
+                Text(courseItem.course?.title ?? "")
                     .font(.system(size: 14, weight: .bold))
 
                 HStack(alignment: .center) {

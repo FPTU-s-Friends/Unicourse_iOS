@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopCoursesView: View {
-    var freeCourses: [CourseDetailModel]
+    var freeCourses: [CourseModel]
     @Binding var isLoadingFreeCourse: Bool
 
     var body: some View {

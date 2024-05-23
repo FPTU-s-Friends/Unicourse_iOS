@@ -10,7 +10,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var slideData = SlideData()
-    @Published var allFreeCourse: [CourseDetailModel] = []
+    @Published var allFreeCourse: [CourseModel] = []
     @Published var isLoadingListEnrolled = false
     @Published var isLoadingAllFreeCourse = false
     @Published var error = ""
@@ -19,7 +19,7 @@ class HomeViewModel: ObservableObject {
 
     func getAllFreeCourse(token: String) {
         isLoadingAllFreeCourse = true
-        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseDetailModel]>, Error>) in
+        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):

@@ -35,6 +35,7 @@ struct SearchResultItemView: View {
 
                 Text("WDU203c - The UI/UX Design")
                     .font(.system(size: 12))
+                    .foregroundStyle(.black)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                     .truncationMode(.tail)
