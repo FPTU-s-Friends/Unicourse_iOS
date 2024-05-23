@@ -106,11 +106,11 @@ struct TrackingCourseCard: View {
     }
 }
 
-#Preview {
-    TrackingCourseCard(enrollCourse: EnrolledCourseModel(_id: "",
-                                                         user: BasicUserInfo.sampleData,
-                                                         course: CourseModel.sampleData,
-                                                         completed: false, enrollDate: "",
-                                                         progress: 76,
-                                                         trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)]))
-}
+// #Preview {
+//    TrackingCourseCard(enrollCourse: EnrolledCourseModel(_id: "",
+//                                                         user: BasicUserInfo.sampleData,
+//                                                         course: CourseModel.sampleData,
+//                                                         completed: false, enrollDate: "",
+//                                                         progress: 76,
+//                                                         trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)]))
+// }
