@@ -23,7 +23,8 @@ struct CircleButtonUI: View {
     var body: some View {
         Image(systemName: "\(systemNameString)")
             .symbolRenderingMode(symbolRenderingMode)
-            .frame(width: 28, height: 28)
+            .frame(width: 24, height: 24)
+            .padding(6)
             .background(.white.opacity(0.5))
             .clipShape(Circle())
     }

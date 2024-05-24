@@ -40,7 +40,7 @@ struct CourseDetailView: View {
                     // Go Back Button - Favorite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: courseDetail.title, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
+                    BasicInfo(courseName: vm.courseDetail?.title ?? DefaultTextUser.defaultNameLecture, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
                     // End basic info
 
                     // Tab bar
@@ -77,13 +77,13 @@ struct CourseDetailView: View {
             .padding(.horizontal, 20)
             .background(.white)
 
-//            if vm.isLoading {
-//                LoadingIndicatorView(isLoading: .constant(true))
-//            }
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
         }
-//        .onAppear {
-//            vm.fetchCourseDetailById(courseId: courseId)
-//        }
+        .onAppear {
+            vm.fetchCourseDetailById(courseId: courseDetail._id)
+        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

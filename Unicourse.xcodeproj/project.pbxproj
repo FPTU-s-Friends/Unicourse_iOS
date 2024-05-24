@@ -108,6 +108,7 @@
 		C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6F2C002C7B004BB9A6 /* DefaultTextUI.swift */; };
 		C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF712C002DE0004BB9A6 /* SemesterModel.swift */; };
 		C579AF742C0034DF004BB9A6 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF732C0034DF004BB9A6 /* DefaultValue.swift */; };
+		C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF752C0056CF004BB9A6 /* SearchSuggestTextView.swift */; };
 		C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */; };
 		C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */; };
 		C57ED1BC2BEF4CC600641532 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */; };
@@ -238,6 +239,7 @@
 		C579AF6F2C002C7B004BB9A6 /* DefaultTextUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextUI.swift; sourceTree = "<group>"; };
 		C579AF712C002DE0004BB9A6 /* SemesterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterModel.swift; sourceTree = "<group>"; };
 		C579AF732C0034DF004BB9A6 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
+		C579AF752C0056CF004BB9A6 /* SearchSuggestTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestTextView.swift; sourceTree = "<group>"; };
 		C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionView.swift; sourceTree = "<group>"; };
 		C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryView.swift; sourceTree = "<group>"; };
 		C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 			isa = PBXGroup;
 			children = (
 				C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */,
+				C579AF752C0056CF004BB9A6 /* SearchSuggestTextView.swift */,
 			);
 			path = UISearchEntry;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
+				C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
 				C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */,
