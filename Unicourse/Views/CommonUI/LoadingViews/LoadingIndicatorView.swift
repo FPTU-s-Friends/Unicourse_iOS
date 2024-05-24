@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoadingIndicatorView: View {
+    //comment
     @State private var isAnimation = false
     @Binding var isLoading: Bool
     private let animationBackgroundColor = Color.mainColor1.opacity(0.3)

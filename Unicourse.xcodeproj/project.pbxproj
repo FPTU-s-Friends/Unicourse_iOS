@@ -41,6 +41,7 @@
 		B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */; };
 		B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C422BEB95EC008A6A45 /* PathTitle.swift */; };
 		B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */; };
+		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
@@ -177,6 +178,7 @@
 		B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		B5C54C422BEB95EC008A6A45 /* PathTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTitle.swift; sourceTree = "<group>"; };
 		B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundMyCourseView.swift; sourceTree = "<group>"; };
+		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */,
 				B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */,
 				B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */,
+				B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -703,8 +706,8 @@
 		C56F692B2BE2026A0093E51B = {
 			isa = PBXGroup;
 			children = (
-				C56F69352BE2026A0093E51B /* Products */,
 				C56F69362BE2026A0093E51B /* Unicourse */,
+				C56F69352BE2026A0093E51B /* Products */,
 				C541DA082BE359060022079E /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -728,8 +731,8 @@
 				C56749442BE8709D00DA6A58 /* Helpers */,
 				C56F69452BE207CE0093E51B /* Extensions */,
 				C56F69492BE208040093E51B /* Utilities */,
-				C56F69462BE207E80093E51B /* Models */,
 				C56F69472BE207ED0093E51B /* Views */,
+				C56F69462BE207E80093E51B /* Models */,
 				C56F69482BE207FA0093E51B /* ViewModels */,
 				C56F69372BE2026A0093E51B /* UnicourseApp.swift */,
 			);
@@ -1162,6 +1165,7 @@
 				B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */,
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
+				B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,

@@ -45,8 +45,8 @@ struct TrackingCourseCard: View {
                     HStack(alignment: .center, spacing: 12) {
                         // Icon Tracking Course
                         ZStack {
-                            Image("trackingCourseLine")
-                            Image("trackingCourseCircle")
+                            Image("tracking_course_line")
+                            Image("tracking_course_circle")
                         }
                         // End Icon Tracking Course
                         if let titleDescription = enrollCourse.course?.titleDescription {
