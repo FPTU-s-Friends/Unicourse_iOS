@@ -80,6 +80,7 @@ struct CourseDetailView: View {
             VStack {
                 NavigationLink {
                     CourseVideoPlayerView()
+                        .navigationBarBackButtonHidden(true)
                 } label: {
                     ButtonGradientUI(titleButton: "Bắt đầu học")
                 }

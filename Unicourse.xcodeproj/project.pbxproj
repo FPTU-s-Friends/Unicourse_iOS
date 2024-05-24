@@ -338,7 +338,6 @@
 		B5898F852BED21FB00C315B8 /* Course Detail */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE39ED2BF7282500F6BD3A /* CourseVideoPlayerElement */,
 				B541998C2BF385630034BC08 /* ExpandableElement */,
 				B5898F962BEDC87000C315B8 /* TabBarElement */,
 				B5898F882BED26BC00C315B8 /* UIElement */,
@@ -390,15 +389,6 @@
 				C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */,
 			);
 			path = Course;
-			sourceTree = "<group>";
-		};
-		B5BE39ED2BF7282500F6BD3A /* CourseVideoPlayerElement */ = {
-			isa = PBXGroup;
-			children = (
-				B5BE39F12BF7322C00F6BD3A /* VideoStreamingView.swift */,
-				C596D7BC2BF73810004D02F9 /* CourseVideoPlayerView.swift */,
-			);
-			path = CourseVideoPlayerElement;
 			sourceTree = "<group>";
 		};
 		B5C54C3A2BEB7217008A6A45 /* UICourses */ = {
@@ -468,6 +458,15 @@
 				B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */,
 			);
 			path = NotfoundViews;
+			sourceTree = "<group>";
+		};
+		B5F06B182C00AA25001316BC /* StreamingVideos */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE39F12BF7322C00F6BD3A /* VideoStreamingView.swift */,
+				C596D7BC2BF73810004D02F9 /* CourseVideoPlayerView.swift */,
+			);
+			path = StreamingVideos;
 			sourceTree = "<group>";
 		};
 		C53E803A2BF0AE38003DFC4B /* SubView */ = {
@@ -767,6 +766,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5F06B182C00AA25001316BC /* StreamingVideos */,
 				C5E98B042BFF111B00630823 /* CourseSemester */,
 				C5D8D5F32BFEF93700DE7EBA /* CommonUI */,
 				C56881822BF854DA00B2C3F3 /* Notification */,
