@@ -28,7 +28,7 @@ struct SearchSuggestTextView: View {
 
                 VStack {
                     HStack {
-                        Text("Hoang NT")
+                        Text("CSI")
                             .font(.system(size: 14, weight: .semibold))
                             .lineSpacing(20)
 
@@ -41,7 +41,7 @@ struct SearchSuggestTextView: View {
 
                 VStack {
                     HStack {
-                        Text("UI Design for beginner")
+                        Text("UI Design")
                             .font(.system(size: 14, weight: .semibold))
                             .lineSpacing(20)
 
@@ -53,7 +53,7 @@ struct SearchSuggestTextView: View {
                 }
                 VStack {
                     HStack {
-                        Text("Cấu trúc dữ liệu và giải thuật")
+                        Text("JPD113")
                             .font(.system(size: 14, weight: .semibold))
                             .lineSpacing(20)
 

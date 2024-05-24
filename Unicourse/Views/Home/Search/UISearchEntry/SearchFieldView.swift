@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct SearchFieldView: View {
     @Binding var searchString: String
     var action: () -> Void
@@ -44,6 +42,7 @@ struct SearchFieldView: View {
                                 isFilterIconHidden = newValue
                             }
                         }
+
                         .onSubmit {
                             isNavigateToResultView = true
                         }

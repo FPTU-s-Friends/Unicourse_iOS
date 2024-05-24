@@ -25,7 +25,7 @@ struct SearchEntryView: View {
             SearchSuggestTextView(searchText: $viewModel.searchString)
 
 //            Suggest Course
-            SuggestCourseView()
+            SuggestCourseView(listSearchCourse: viewModel.listSearchCourse)
         }
         .padding(10)
         .background(Color.mainBackgroundColor)

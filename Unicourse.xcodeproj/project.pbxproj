@@ -109,6 +109,9 @@
 		C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF712C002DE0004BB9A6 /* SemesterModel.swift */; };
 		C579AF742C0034DF004BB9A6 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF732C0034DF004BB9A6 /* DefaultValue.swift */; };
 		C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF752C0056CF004BB9A6 /* SearchSuggestTextView.swift */; };
+		C579AF782C009B89004BB9A6 /* SearchCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF772C009B89004BB9A6 /* SearchCourseModel.swift */; };
+		C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = C579AF7A2C00A307004BB9A6 /* SwiftyJSON */; };
+		C579AF7D2C00A5BC004BB9A6 /* PrintDataJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF7C2C00A5BC004BB9A6 /* PrintDataJSON.swift */; };
 		C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */; };
 		C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */; };
 		C57ED1BC2BEF4CC600641532 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */; };
@@ -240,6 +243,8 @@
 		C579AF712C002DE0004BB9A6 /* SemesterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterModel.swift; sourceTree = "<group>"; };
 		C579AF732C0034DF004BB9A6 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		C579AF752C0056CF004BB9A6 /* SearchSuggestTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestTextView.swift; sourceTree = "<group>"; };
+		C579AF772C009B89004BB9A6 /* SearchCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseModel.swift; sourceTree = "<group>"; };
+		C579AF7C2C00A5BC004BB9A6 /* PrintDataJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintDataJSON.swift; sourceTree = "<group>"; };
 		C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionView.swift; sourceTree = "<group>"; };
 		C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryView.swift; sourceTree = "<group>"; };
 		C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
@@ -278,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C541DA052BE358D30022079E /* GoogleSignIn in Frameworks */,
+				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
 				C541DA0C2BE359060022079E /* FirebaseFirestore in Frameworks */,
 				C56749612BE896F200DA6A58 /* JWTDecode in Frameworks */,
 				C541DA0A2BE359060022079E /* FirebaseAuth in Frameworks */,
@@ -569,6 +575,7 @@
 				B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */,
 				C56749452BE870B500DA6A58 /* AppDelegate.swift */,
 				B578A8942BFCD081003CBFFA /* ISOStringConvertHelper.swift */,
+				C579AF7C2C00A5BC004BB9A6 /* PrintDataJSON.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -830,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A43A252BFB031000AE89C4 /* EnrolledCourseModel.swift */,
+				C579AF772C009B89004BB9A6 /* SearchCourseModel.swift */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
@@ -950,6 +958,7 @@
 				C541DA0B2BE359060022079E /* FirebaseFirestore */,
 				C541DA0D2BE359060022079E /* FirebaseStorage */,
 				C56749602BE896F200DA6A58 /* JWTDecode */,
+				C579AF7A2C00A307004BB9A6 /* SwiftyJSON */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -983,6 +992,7 @@
 				C541DA022BE358BB0022079E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C541DA032BE358D30022079E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				C567495F2BE896F200DA6A58 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -1084,6 +1094,7 @@
 				C53E804A2BF0BD32003DFC4B /* AccountViewModel.swift in Sources */,
 				B5898FA12BEE094A00C315B8 /* LectureInfo.swift in Sources */,
 				C56749792BE8DAA900DA6A58 /* CustomPageControlHomeView.swift in Sources */,
+				C579AF782C009B89004BB9A6 /* SearchCourseModel.swift in Sources */,
 				C541D9FE2BE355490022079E /* ButtonMain.swift in Sources */,
 				C57ED1C12BEF4D1000641532 /* ResultUserView.swift in Sources */,
 				C57ED1BE2BEF4CC900641532 /* SuggestCourseView.swift in Sources */,
@@ -1139,6 +1150,7 @@
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
+				C579AF7D2C00A5BC004BB9A6 /* PrintDataJSON.swift in Sources */,
 				C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
@@ -1386,6 +1398,14 @@
 				minimumVersion = 3.1.0;
 			};
 		};
+		C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1418,6 +1438,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C567495F2BE896F200DA6A58 /* XCRemoteSwiftPackageReference "JWTDecode" */;
 			productName = JWTDecode;
+		};
+		C579AF7A2C00A307004BB9A6 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

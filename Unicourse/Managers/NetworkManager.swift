@@ -85,7 +85,7 @@ class NetworkManager {
 //        "Accept": "application/json"
 //    ]
 
-    func callAPI2<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
+    func callAPI2<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: String]? = nil, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: baseURL)?.appendingPathComponent(path) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
@@ -93,6 +93,10 @@ class NetworkManager {
 
         // Headers mặc định
         var defaultHeaders = ["Content-Type": "application/json"]
+
+//        if let parameters = parameters {
+//            components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+//        }
 
         // Hợp nhất headers mặc định với headers được truyền vào (nếu có)
         if let additionalHeaders = headers {
