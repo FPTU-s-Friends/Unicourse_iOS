@@ -24,35 +24,45 @@ struct CourseDetailView: View {
                 LazyVStack(spacing: 16) {
                     // Go Back Button - Favorite Button - Share Button
                     VStack {
-                        AsyncImage(url: URL(string: courseDetail.thumbnail)) { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .cornerRadius(24)
+                        if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
+                            AsyncImage(url: url) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 200)
+                                    .cornerRadius(24)
 
-                        } placeholder: {
-                            ProgressView()
+                            } placeholder: {
+                                RoundedRectangle(cornerRadius: 24.0)
+                                    .frame(height: 200)
+                                    .foregroundStyle(Color.gray.opacity(0.5))
+                            }
+                        } else {
+                            RoundedRectangle(cornerRadius: 24)
+                                .frame(height: 200)
+                                .foregroundStyle(Color.gray.opacity(0.5))
                         }
                     }
-                    .padding(14)
-                    .frame(maxWidth: .infinity)
-                    .background(Color(hex: "#DAE9DA"))
-                    .clipShape(RoundedRectangle(cornerRadius: 24.0))
+                    .cornerRadius(24)
                     // Go Back Button - Favorite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: vm.courseDetail?.title ?? DefaultTextUser.defaultNameLecture, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
+                    BasicInfo(courseName: vm.courseDetail?.title ?? DefaultTextUser.defaultNameLecture, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: vm.courseDetail?.enrollmentCount ?? -1, isLoading: vm.isLoading)
                     // End basic info
 
                     // Tab bar
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView(courseLectureName: courseDetail.lecture?.fullName ?? DefaultTextUser.defaultNameLecture,
-                                                lectureDescription: courseDetail.lecture?.lecture_info?.description ?? "",
-                                                imageLectureURL: courseDetail.lecture?.profile_image ?? DefaultURL.defaultUserURL,
-                                                isLoading: vm.isLoading).tag(0)
+                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? DefaultTextUser.defaultNameLecture,
+                                                lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "",
+                                                imageLectureURL: vm.courseDetail?.lecture?.profile_image ?? DefaultURL.defaultUserURL,
+                                                isLoading: vm.isLoading,
+                                                subTitleDescription: vm.courseDetail?.subTitleDescription ?? [],
+                                                subTitle: vm.courseDetail?.subTitle ?? "",
+                                                courseName: vm.courseDetail?.title ?? "").tag(0)
 
-                            CourseSyllabusTabView().tag(1)
+                            CourseSyllabusTabView(listTrack: vm.courseDetail?.tracks ?? []).tag(1)
 
                             CourseReviewTabView().tag(2)
                         }

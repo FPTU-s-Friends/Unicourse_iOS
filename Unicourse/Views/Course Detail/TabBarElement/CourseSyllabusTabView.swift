@@ -52,32 +52,38 @@ struct Mockdata: Identifiable {
 }
 
 struct CourseSyllabusTabView: View {
+    var listTrack: [Track]
+
+    private var listTrackSorted: [Track] {
+        listTrack.sorted(by: { $0.position ?? 0 < $1.position ?? 1 })
+    }
+
     var body: some View {
         VStack {
             ScrollView {
                 VStack {
-                    ForEach(Mockdata.data) { chapter in
+                    ForEach(listTrackSorted, id: \._id) { chapter in
                         ExpandableView(
                             thumbnail: ThumbnailView(content: {
-                                ThumbnailHeading(totalTime: chapter.listVideo.reduce(0) { acc, curr in
-                                    acc + curr.totalTime
-                                }, chapterName: chapter.nameChapter, isDone: chapter.isDone)
+                                ThumbnailHeading(totalTime: chapter.track_steps?.reduce(0) { acc, curr in
+                                    acc + curr.duration
+                                } ?? 0, chapterName: chapter.chapterTitle!, isDone: false)
 
                             }),
                             expanded: ExpandedView(content: {
                                 VStack {
-                                    ThumbnailHeading(totalTime: chapter.listVideo.reduce(0) { acc, curr in
-                                        acc + curr.totalTime
-                                    }, chapterName: chapter.nameChapter, isDone: chapter.isDone)
+                                    ThumbnailHeading(totalTime: chapter.track_steps?.reduce(0) { acc, curr in
+                                        acc + curr.duration
+                                    } ?? 0, chapterName: chapter.chapterTitle!, isDone: false)
 
                                     LazyVStack(spacing: 2) {
-                                        ForEach(chapter.listVideo) { video in
+                                        ForEach(chapter.track_steps ?? [], id: \._id) { item in
                                             HStack(spacing: 20) {
                                                 Image(systemName: "play.rectangle.fill")
                                                     .font(.system(size: 16, weight: .regular))
-                                                Text(video.titleVideo)
+                                                Text(item.title)
                                                 Spacer()
-                                                Text(convertMinutesToString(minutes: video.totalTime))
+                                                Text(convertMinutesToString(minutes: item.duration))
                                                     .font(.system(size: 12, weight: .regular))
                                             }
                                             .padding(20)
@@ -96,9 +102,9 @@ struct CourseSyllabusTabView: View {
     }
 }
 
-#Preview {
-    CourseSyllabusTabView()
-}
+// #Preview {
+//    CourseSyllabusTabView()
+// }
 
 struct ThumbnailHeading: View {
     var totalTime: Int

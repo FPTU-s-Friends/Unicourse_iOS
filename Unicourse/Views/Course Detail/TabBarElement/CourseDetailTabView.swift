@@ -12,6 +12,9 @@ struct CourseDetailTabView: View {
     var lectureDescription: String
     var imageLectureURL: String
     var isLoading: Bool
+    var subTitleDescription: [String]
+    var subTitle: String
+    var courseName: String
 
     var body: some View {
         ScrollView {
@@ -19,7 +22,7 @@ struct CourseDetailTabView: View {
                 // Lecture Info
                 LectureInfo(courseAuthorName: courseLectureName, courseRatingPoint: 3.5, totalCourseOfAuthor: 11, courseAuthorBio: lectureDescription, imageLectureURL: imageLectureURL, isLoading: isLoading)
                 // Lecture Info
-                DetailInformationCourse()
+                DetailInformationCourse(isLoadingSkeleton: isLoading, subTitleDescription: subTitleDescription, subTitle: subTitle, courseName: courseName)
 
                 Spacer()
             }
