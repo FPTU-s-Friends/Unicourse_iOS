@@ -40,6 +40,7 @@
 		B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */; };
 		B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */; };
 		B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C422BEB95EC008A6A45 /* PathTitle.swift */; };
+		B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
@@ -175,6 +176,7 @@
 		B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGradient.swift; sourceTree = "<group>"; };
 		B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		B5C54C422BEB95EC008A6A45 /* PathTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTitle.swift; sourceTree = "<group>"; };
+		B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundMyCourseView.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -432,6 +434,37 @@
 				B5C54C422BEB95EC008A6A45 /* PathTitle.swift */,
 			);
 			path = "Path Title";
+			sourceTree = "<group>";
+		};
+		B5F06B112C0076FB001316BC /* SkeletonViews */ = {
+			isa = PBXGroup;
+			children = (
+				C5D8D5F42BFEF94900DE7EBA /* SkeletonCourseProgressCard.swift */,
+				C5D8D5F62BFEFA6C00DE7EBA /* SkeletonCourseCard.swift */,
+				C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */,
+				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
+				C5E98B012BFEFC5700630823 /* ShimmerEffect.swift */,
+				C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */,
+				B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */,
+				B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */,
+			);
+			path = SkeletonViews;
+			sourceTree = "<group>";
+		};
+		B5F06B122C007727001316BC /* LoadingViews */ = {
+			isa = PBXGroup;
+			children = (
+				C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */,
+			);
+			path = LoadingViews;
+			sourceTree = "<group>";
+		};
+		B5F06B132C00772F001316BC /* NotfoundViews */ = {
+			isa = PBXGroup;
+			children = (
+				B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */,
+			);
+			path = NotfoundViews;
 			sourceTree = "<group>";
 		};
 		C53E803A2BF0AE38003DFC4B /* SubView */ = {
@@ -741,7 +774,6 @@
 				C541D9FF2BE356FC0022079E /* Login */,
 				C567493D2BE86CDE00DA6A58 /* Home */,
 				C56F69392BE2026A0093E51B /* ContentView.swift */,
-				C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */,
 				C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */,
 			);
 			path = Views;
@@ -890,14 +922,9 @@
 		C5D8D5F32BFEF93700DE7EBA /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				C5D8D5F42BFEF94900DE7EBA /* SkeletonCourseProgressCard.swift */,
-				C5D8D5F62BFEFA6C00DE7EBA /* SkeletonCourseCard.swift */,
-				C5E98B072BFF171300630823 /* SkeletonTrackingCourseView.swift */,
-				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
-				C5E98B012BFEFC5700630823 /* ShimmerEffect.swift */,
-				C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */,
-				B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */,
-				B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */,
+				B5F06B132C00772F001316BC /* NotfoundViews */,
+				B5F06B122C007727001316BC /* LoadingViews */,
+				B5F06B112C0076FB001316BC /* SkeletonViews */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -1078,6 +1105,7 @@
 				C541D9F92BE342DA0022079E /* OnBoardView.swift in Sources */,
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
 				B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */,
+				B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */,
 				C567494F2BE87D5D00DA6A58 /* LoginViewModel.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,

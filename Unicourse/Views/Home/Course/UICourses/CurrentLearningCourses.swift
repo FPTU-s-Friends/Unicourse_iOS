@@ -24,16 +24,21 @@ struct CurrentLearningCourses: View {
                             .presentationDetents([.medium])
                     }
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        // List card
-                        if listEnrolledCourses.count > 0, isLoadSkeleton == false {
-                            ForEach(listEnrolledCourses, id: \._id) { courseItem in
-                                CourseCard(courseItem: courseItem)
-                            }
-                        } else {
+                if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
                             ForEach(0 ..< 2) { _ in
                                 SkeletonCourseProgressCard()
+                            }
+                        }
+                    }
+                } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
+                    NotfoundMyCourseView()
+                } else {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(listEnrolledCourses, id: \._id) { courseItem in
+                                CourseCard(courseItem: courseItem)
                             }
                         }
                     }
@@ -71,18 +76,19 @@ struct CurrentLearningCourses: View {
                 }
 
                 LazyVStack {
-                    if listEnrolledCourses.count > 0, isLoadSkeleton == false {
+                    if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
+                        ForEach(0 ..< 2) { _ in
+                            SkeletonCourseListView()
+                        }
+                    } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
+                        NotfoundMyCourseView()
+                    } else {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
                             NavigationLink(destination: CourseDetailView(courseDetail: courseItem.course ?? CourseModel.sampleData)) {
                                 CourseListView(courseItem: courseItem)
                             }
                             .buttonStyle(PlainButtonStyle())
-                        }
-
-                    } else {
-                        ForEach(0 ..< 2) { _ in
-                            SkeletonCourseListView()
                         }
                     }
 
