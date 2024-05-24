@@ -91,6 +91,12 @@ struct CourseDetailView: View {
             if vm.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
+        }
+        .onAppear {
+            vm.fetchCourseDetailById(courseId: courseDetail._id)
         }
         .onAppear {
             vm.fetchCourseDetailById(courseId: courseDetail._id)

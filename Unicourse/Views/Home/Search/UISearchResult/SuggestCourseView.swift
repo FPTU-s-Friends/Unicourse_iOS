@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SuggestCourseView: View {
-    var body: some View {
-        //                Suggest Course
+    var listSearchCourse: [SearchCourseModel]
 
+    var body: some View {
         HStack {
             Text("Suggest Search")
                 .font(.system(size: 12))
@@ -19,7 +19,7 @@ struct SuggestCourseView: View {
 
             Spacer()
 
-            Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {}, label: {
                 Image("reloadIcon")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -30,22 +30,28 @@ struct SuggestCourseView: View {
         Spacer()
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 20)], spacing: 60) {
-                ForEach(0 ..< 20) { _ in
-                    GeometryReader { geometry in
-                        HStack(spacing: 10) {
-                            Image("3dicons")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .padding(10)
-                                .cornerRadius(7)
+                ForEach(listSearchCourse, id: \._id) { course in
+                    GeometryReader { _ in
+                        HStack(spacing: 4) {
+                            AsyncImage(url: URL(string: course.thumbnail)!) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 70, height: 70)
+                                    .padding(10)
+                                    .cornerRadius(20)
 
-                            Text("MAD101 - Toán rời rạc")
+                            } placeholder: {
+                                ProgressView()
+                            }
+
+                            Text(course.title)
                                 .font(.system(size: 12))
+                                .lineLimit(2)
+                                .multilineTextAlignment(.leading)
+                                .padding(.trailing, 10)
                         }
-                        .frame(maxWidth: geometry.size.width)
-                        .background(.white)
-                        .cornerRadius(12)
+                        .cornerRadius(10)
                     }
                 }
             }
@@ -54,5 +60,5 @@ struct SuggestCourseView: View {
 }
 
 #Preview {
-    SuggestCourseView()
+    SuggestCourseView(listSearchCourse: [SearchCourseModel.sampleData, SearchCourseModel.sampleData])
 }
