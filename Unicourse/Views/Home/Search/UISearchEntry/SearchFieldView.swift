@@ -63,9 +63,9 @@ struct SearchFieldView: View {
                     Image("filterIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .frame(width: 16, height: 16)
                 }
-                .padding(12)
-                .frame(width: 44, height: 44)
+                .padding(8)
                 .background(.white)
                 .cornerRadius(16)
                 .overlay(

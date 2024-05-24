@@ -7,20 +7,6 @@
 
 import Foundation
 
-enum Order {
-    case DES
-    case ASC
-
-    var toString: String {
-        switch self {
-        case .DES:
-            return "desc"
-        case .ASC:
-            return "asc"
-        }
-    }
-}
-
 class HomeViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var slideData = SlideData()

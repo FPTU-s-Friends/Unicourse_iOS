@@ -25,8 +25,22 @@ struct CourseModel: Codable {
     var thumbnail: String
     var quiz: [QuizModel]?
     var lecture: LectureModel?
-    var tracks: [TrackId]?
+    var tracks: [Track]?
     var semester_number: Int?
 
-    static var sampleData = CourseModel(_id: "", title: "", titleDescription: "", subTitle: "", subTitleDescription: [""], enrollmentCount: 3, type: .free, thumbnail: "", tracks: [TrackId(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 8, duration: 9, content_url: "", type: "")])])
+    static var sampleData = CourseModel(
+        _id: "course123",
+        title: "Introduction to SwiftUI",
+        titleDescription: "Learn the basics of SwiftUI",
+        subTitle: "SwiftUI Basics",
+        subTitleDescription: ["Overview of SwiftUI", "Building UI with SwiftUI", "State and Data Flow"],
+        enrollmentCount: 150,
+        status: "Active",
+        type: .free,
+        thumbnail: "https://example.com/thumbnail.jpg",
+        quiz: [QuizModel.sampleData],
+        lecture: LectureModel.sampleData,
+        tracks: [Track.sampleData],
+        semester_number: 1
+    )
 }

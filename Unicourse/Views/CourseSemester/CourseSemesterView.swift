@@ -19,13 +19,11 @@ struct CourseSemesterView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
                     if viewModel.listCourseSemester.isEmpty {
                         ForEach(0 ..< 6) { _ in
-                            NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
-                                SkeletonGridCourseView()
-                            }
+                            SkeletonGridCourseView()
                         }
                     } else {
                         ForEach(viewModel.listCourseSemester, id: \._id) { course in
-                            NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
+                            NavigationLink(destination: CourseDetailView(courseDetail: course)) {
                                 SearchResultItemView(courseItem: course)
                             }
                         }

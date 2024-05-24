@@ -44,7 +44,7 @@ struct SkeletonCourseListView: View {
                 .frame(width: 24, height: 24)
                 .foregroundColor(Color.gray.opacity(0.3))
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 5)
         .shimmerWithWave()
     }
 }

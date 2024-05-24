@@ -23,7 +23,7 @@ struct EnrolledCourseModel: Codable {
                                                 completed: false,
                                                 enrollDate: "",
                                                 progress: 76,
-                                                trackProgress: [Track(_id: "", trackId: TrackId.sampleData, completed: false)])
+                                                trackProgress: [Track(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [])])
 }
 
 struct BasicUserInfo: Codable {

@@ -13,8 +13,8 @@ struct ProgressCourseView: View {
 
     var body: some View {
         VStack {
-            HeaderCategoryView(textCategory: "Tiến trình",
-                               textButton: "Tất cả",
+            HeaderCategoryView(textCategory: HeaderCategoryText.progressText,
+                               textButton: TextButton.viewAll,
                                action: {})
 
             ScrollView(.horizontal, showsIndicators: false) {

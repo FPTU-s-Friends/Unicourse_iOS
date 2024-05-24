@@ -7,35 +7,16 @@
 
 import SwiftUI
 
-struct Semester: Identifiable {
-    let id = UUID()
-    let name: String
-    let icon: String
-    let color: Color
-
-    static var listSemesters: [Semester] = [
-        Semester(name: "Kỳ 1", icon: "book.fill", color: .red),
-        Semester(name: "Kỳ 2", icon: "calendar", color: .blue),
-        Semester(name: "Kỳ 3", icon: "graduationcap.fill", color: .green),
-        Semester(name: "Kỳ 4", icon: "lightbulb.fill", color: .yellow),
-        Semester(name: "Kỳ 5", icon: "brain.head.profile.fill", color: .purple),
-        Semester(name: "Kỳ 6", icon: "rectangle.3.offgrid.bubble.left.fill", color: .orange),
-        Semester(name: "Kỳ 7", icon: "chart.bar.fill", color: .pink),
-        Semester(name: "Kỳ 8", icon: "pencil.tip.crop.circle.fill", color: .teal),
-        Semester(name: "Kỳ 9", icon: "star.fill", color: .brown)
-    ]
-}
-
 struct SemesterChosenView: View {
-    var semesterData = Semester.listSemesters
     @State private var activeSemester: UUID?
     @State private var selectedSemesterIndex: Int?
+    var semesterData = SemesterModel.listSemesters
 
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Danh Mục")
+                    Text(HeaderCategoryText.headerSemesterText)
                         .font(.system(size: CGFloat.mainTitlePath, weight: .bold))
                     Rectangle()
                         .fill(Color.activeColor)
@@ -83,5 +64,6 @@ struct SemesterChosenView: View {
 #Preview {
     NavigationStack {
         SemesterChosenView()
+            .environmentObject(AppData())
     }
 }

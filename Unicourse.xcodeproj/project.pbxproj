@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50030C12BFF65C000508314 /* SkeletonLectureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */; };
+		B50030C32BFF67DA00508314 /* SkeletonBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */; };
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
 		B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725F2BFE05F400D3B549 /* TrackModel.swift */; };
@@ -101,6 +103,11 @@
 		C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69392BE2026A0093E51B /* ContentView.swift */; };
 		C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56F693B2BE2026C0093E51B /* Assets.xcassets */; };
 		C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F694A2BE208AA0093E51B /* Color+Extension.swift */; };
+		C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6B2C002950004BB9A6 /* DefaultURL.swift */; };
+		C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6D2C002A15004BB9A6 /* DefaultTextUser.swift */; };
+		C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6F2C002C7B004BB9A6 /* DefaultTextUI.swift */; };
+		C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF712C002DE0004BB9A6 /* SemesterModel.swift */; };
+		C579AF742C0034DF004BB9A6 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF732C0034DF004BB9A6 /* DefaultValue.swift */; };
 		C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */; };
 		C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */; };
 		C57ED1BC2BEF4CC600641532 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */; };
@@ -134,6 +141,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureInfo.swift; sourceTree = "<group>"; };
+		B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBasicInfo.swift; sourceTree = "<group>"; };
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		B50A725F2BFE05F400D3B549 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
@@ -224,6 +233,11 @@
 		C56F69392BE2026A0093E51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C56F693B2BE2026C0093E51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56F694A2BE208AA0093E51B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C579AF6B2C002950004BB9A6 /* DefaultURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURL.swift; sourceTree = "<group>"; };
+		C579AF6D2C002A15004BB9A6 /* DefaultTextUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextUser.swift; sourceTree = "<group>"; };
+		C579AF6F2C002C7B004BB9A6 /* DefaultTextUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextUI.swift; sourceTree = "<group>"; };
+		C579AF712C002DE0004BB9A6 /* SemesterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterModel.swift; sourceTree = "<group>"; };
+		C579AF732C0034DF004BB9A6 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		C57ED1B52BEF4C8500641532 /* TabSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionView.swift; sourceTree = "<group>"; };
 		C57ED1B82BEF4CB000641532 /* SearchEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEntryView.swift; sourceTree = "<group>"; };
 		C57ED1BB2BEF4CC600641532 /* SearchFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
@@ -707,6 +721,7 @@
 				C56749522BE884BA00DA6A58 /* AppModels */,
 				C53E80452BF0BCE6003DFC4B /* MenuItem.swift */,
 				B5A43A2F2BFB5A3B00AE89C4 /* CommonResponse.swift */,
+				C579AF712C002DE0004BB9A6 /* SemesterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -783,6 +798,10 @@
 		C5ACC6C02BF441F500104A0C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				C579AF6B2C002950004BB9A6 /* DefaultURL.swift */,
+				C579AF6D2C002A15004BB9A6 /* DefaultTextUser.swift */,
+				C579AF6F2C002C7B004BB9A6 /* DefaultTextUI.swift */,
+				C579AF732C0034DF004BB9A6 /* DefaultValue.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -874,6 +893,8 @@
 				C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */,
 				C5E98B012BFEFC5700630823 /* ShimmerEffect.swift */,
 				C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */,
+				B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */,
+				B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -1042,8 +1063,10 @@
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
+				C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */,
+				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
@@ -1065,6 +1088,7 @@
 				C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */,
 				C53E804D2BF0BE38003DFC4B /* UserStatisticView.swift in Sources */,
 				C541DA102BE3596C0022079E /* ContentViewModel.swift in Sources */,
+				C579AF742C0034DF004BB9A6 /* DefaultValue.swift in Sources */,
 				B5898F8B2BED26D800C315B8 /* CircleButtonUI.swift in Sources */,
 				C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */,
 				C567497B2BE8DEB200DA6A58 /* CustomProgressView.swift in Sources */,
@@ -1076,11 +1100,13 @@
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
+				C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */,
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
 				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
+				C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
@@ -1091,6 +1117,7 @@
 				B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */,
 				C57ED1C52BEF4D1700641532 /* TabButton.swift in Sources */,
 				C5D8D5F72BFEFA6C00DE7EBA /* SkeletonCourseCard.swift in Sources */,
+				B50030C12BFF65C000508314 /* SkeletonLectureInfo.swift in Sources */,
 				B5898F872BED221200C315B8 /* CourseDetailView.swift in Sources */,
 				C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */,
 				C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */,
@@ -1117,6 +1144,7 @@
 				C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */,
 				B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */,
 				B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */,
+				B50030C32BFF67DA00508314 /* SkeletonBasicInfo.swift in Sources */,
 				B5898FA32BEE0A5A00C315B8 /* DetailInformationCourse.swift in Sources */,
 				B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */,
 				C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */,

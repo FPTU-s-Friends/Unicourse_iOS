@@ -10,6 +10,7 @@ import SwiftUI
 struct CurrentLearningCourses: View {
     @Binding var showingCredits: Bool
     var listEnrolledCourses: [EnrolledCourseModel]
+    var isLoadSkeleton: Bool
 
     var body: some View {
         ScrollView {
@@ -26,13 +27,12 @@ struct CurrentLearningCourses: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         // List card
-                        if listEnrolledCourses.count > 0 {
+                        if listEnrolledCourses.count > 0, isLoadSkeleton == false {
                             ForEach(listEnrolledCourses, id: \._id) { courseItem in
                                 CourseCard(courseItem: courseItem)
                             }
-
                         } else {
-                            ForEach(0 ..< 3) { _ in
+                            ForEach(0 ..< 2) { _ in
                                 SkeletonCourseProgressCard()
                             }
                         }
@@ -69,18 +69,20 @@ struct CurrentLearningCourses: View {
                         .cornerRadius(16)
                     Spacer()
                 }
+
                 LazyVStack {
-                    if listEnrolledCourses.isEmpty {
-                        ForEach(0 ..< 2) { _ in
-                            SkeletonCourseListView()
-                        }
-                    } else {
+                    if listEnrolledCourses.count > 0, isLoadSkeleton == false {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
-                            NavigationLink(destination: CourseDetailView(courseId: courseItem.course!._id)) {
+                            NavigationLink(destination: CourseDetailView(courseDetail: courseItem.course ?? CourseModel.sampleData)) {
                                 CourseListView(courseItem: courseItem)
                             }
                             .buttonStyle(PlainButtonStyle())
+                        }
+
+                    } else {
+                        ForEach(0 ..< 2) { _ in
+                            SkeletonCourseListView()
                         }
                     }
 
@@ -98,5 +100,5 @@ func AllCourseView() -> some View {
 
 #Preview {
     CurrentLearningCourses(showingCredits: .constant(false),
-                           listEnrolledCourses: [EnrolledCourseModel.sampleData])
+                           listEnrolledCourses: [EnrolledCourseModel.sampleData], isLoadSkeleton: true)
 }

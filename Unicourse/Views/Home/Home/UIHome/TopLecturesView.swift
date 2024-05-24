@@ -11,7 +11,9 @@ struct TopLecturesView: View {
     var listLectures: [LectureModel]
 
     var body: some View {
-        HeaderCategoryView(textCategory: "Giảng viên nổi bật", textButton: "Xem thêm", action: {})
+        HeaderCategoryView(textCategory: HeaderCategoryText.topLecturesText,
+                           textButton: TextButton.viewMore,
+                           action: {})
 
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
