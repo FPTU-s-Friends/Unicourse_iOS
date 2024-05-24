@@ -10,9 +10,7 @@ import SwiftUI
 struct LoadingIndicatorView: View {
     @State private var isAnimation = false
     @Binding var isLoading: Bool
-
     private let animationBackgroundColor = Color.mainColor1.opacity(0.3)
-
     @State private var showCompletionView = false
 
     var body: some View {
@@ -26,7 +24,7 @@ struct LoadingIndicatorView: View {
                         .frame(width: 50, height: 50)
                         .rotationEffect(Angle(degrees: isAnimation ? 360 : 0))
                         .onAppear {
-                            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: 0.6).repeatForever(autoreverses: false)) {
                                 isAnimation = true
                             }
                         }

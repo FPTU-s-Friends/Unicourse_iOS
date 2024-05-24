@@ -12,8 +12,8 @@ struct TopCoursesView: View {
     @Binding var isLoadingFreeCourse: Bool
 
     var body: some View {
-        HeaderCategoryView(textCategory: "Khoá học nổi bật",
-                           textButton: "Xem thêm",
+        HeaderCategoryView(textCategory: HeaderCategoryText.topCourseText,
+                           textButton: TextButton.viewMore,
                            action: {})
 
         ScrollView(.horizontal, showsIndicators: false) {
@@ -24,7 +24,7 @@ struct TopCoursesView: View {
                     }
                 } else {
                     ForEach(freeCourses, id: \._id) { course in
-                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+                        NavigationLink(destination: CourseDetailView(courseDetail: course)) {
                             ZStack {
                                 ZStack(alignment: .topTrailing) {
                                     AsyncImage(url: URL(string: course.thumbnail)!) { image in
@@ -50,7 +50,7 @@ struct TopCoursesView: View {
                                 VStack(alignment: .leading) {
                                     Spacer()
                                     HStack {
-                                        Image("User")
+                                        Image(.user)
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 20)

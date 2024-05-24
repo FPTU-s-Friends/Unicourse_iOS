@@ -31,7 +31,7 @@ struct HomeView: View {
                                 ProgressView()
                             }
                         } else {
-                            Image(systemName: "User")
+                            Image(.user)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50)
@@ -45,14 +45,14 @@ struct HomeView: View {
                         if let userRole = appData.user?.role {
                             switch userRole {
                             case .student:
-                                roleText("Học Viên")
+                                roleText(TextRole.student)
                             case .lecture:
-                                roleText("Giảng Viên")
+                                roleText(TextRole.lecture)
                             case .admin:
-                                roleText("Admin")
+                                roleText(TextRole.admin)
                             }
                         } else {
-                            roleText("Unknown")
+                            roleText(TextRole.defaultValue)
                         }
                     }
 
@@ -105,7 +105,9 @@ struct HomeView: View {
                     refreshData()
                 }
             }
-            LoadingIndicatorView(isLoading: $viewModel.isLoadingAllFreeCourse)
+            if viewModel.isLoadingListEnrolled {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
         }
         .onAppear {
             if !hasLoadedDataInitially {
@@ -118,7 +120,7 @@ struct HomeView: View {
 
     func refreshData() {
         viewModel.getAllFreeCourse(token: appData.token)
-        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "Bố mày", token: appData.token, isRefresh: true)
+        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
 

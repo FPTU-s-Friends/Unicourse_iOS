@@ -18,10 +18,7 @@ struct Feedback: Codable {
 
 struct Lecture_Info: Codable {
     var _id: String
-//    var my_course: [String]?
-//    var my_schedule: [String]
     var description: String?
-//    var feedback: [Feedback]?
 }
 
 struct LectureModel: Codable {
@@ -33,4 +30,18 @@ struct LectureModel: Codable {
     var dateOfBirth: String?
     var role: UserRole?
     var lecture_info: Lecture_Info?
+
+    static var sampleData = LectureModel(
+        _id: "lecture123",
+        email: "lecture@example.com",
+        fullName: "John Doe",
+        profileName: "johndoe",
+        profile_image: "https://example.com/profile.jpg",
+        dateOfBirth: "1980-01-01",
+        role: .lecture,
+        lecture_info: Lecture_Info(
+            _id: "lectureinfo123",
+            description: "An experienced lecturer in Computer Science."
+        )
+    )
 }

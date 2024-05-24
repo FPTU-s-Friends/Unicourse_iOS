@@ -74,7 +74,7 @@ struct CurrentLearningCourses: View {
                     if listEnrolledCourses.count > 0, isLoadSkeleton == false {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
-                            NavigationLink(destination: CourseDetailView(courseId: courseItem.course!._id)) {
+                            NavigationLink(destination: CourseDetailView(courseDetail: courseItem.course ?? CourseModel.sampleData)) {
                                 CourseListView(courseItem: courseItem)
                             }
                             .buttonStyle(PlainButtonStyle())

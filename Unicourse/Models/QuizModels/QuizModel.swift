@@ -29,4 +29,18 @@ struct QuizModel: Codable {
     var viewer: Int
     var creator_role: CreatorRole
     var creator_id: String
+
+    static var sampleData = QuizModel(
+        _id: "quiz123",
+        title: "SwiftUI Basics Quiz",
+        description: "A quiz to test your knowledge of SwiftUI basics.",
+        course_id: "course123",
+        status: .open,
+        max_attemps: 3,
+        passing_score: 70,
+        category: "Programming",
+        viewer: 120,
+        creator_role: .lecture,
+        creator_id: "creator123"
+    )
 }

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CourseDetailView: View {
-    var courseId: String
     @EnvironmentObject var appData: AppData
+    @Environment(\.dismiss) var dismiss
+    @StateObject private var vm = CourseDetailViewModel()
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
-    @StateObject private var vm = CourseDetailViewModel()
-    @Environment(\.dismiss) var dismiss
+    var courseDetail: CourseModel
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -22,29 +22,35 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button - Favourite Button - Share Button
+                    // Go Back Button - Favorite Button - Share Button
                     VStack {
-                        Image("3diconsiconcourse")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 237, height: 237)
-                        Spacer()
+                        AsyncImage(url: URL(string: courseDetail.thumbnail)) { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .cornerRadius(24)
+
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
                     .padding(14)
                     .frame(maxWidth: .infinity)
                     .background(Color(hex: "#DAE9DA"))
                     .clipShape(RoundedRectangle(cornerRadius: 24.0))
-                    // Go Back Button - Favourite Button - Share Button
+                    // Go Back Button - Favorite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: vm.courseDetail?.title ?? "", courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
+                    BasicInfo(courseName: courseDetail.title, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: 398, isLoading: vm.isLoading)
                     // End basic info
 
                     // Tab bar
                     VStack {
                         TabSelectionView(tabSelection: $tabSelection)
                         TabView(selection: $tabSelection) {
-                            CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? "", lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "Loading..", imageLectureURL: (vm.courseDetail?.lecture?.profile_image) ?? "", isLoading: vm.isLoading).tag(0)
+                            CourseDetailTabView(courseLectureName: courseDetail.lecture?.fullName ?? DefaultTextUser.defaultNameLecture,
+                                                lectureDescription: courseDetail.lecture?.lecture_info?.description ?? "",
+                                                imageLectureURL: courseDetail.lecture?.profile_image ?? DefaultURL.defaultUserURL,
+                                                isLoading: vm.isLoading).tag(0)
 
                             CourseSyllabusTabView().tag(1)
 
@@ -71,13 +77,13 @@ struct CourseDetailView: View {
             .padding(.horizontal, 20)
             .background(.white)
 
-            if vm.isLoading {
-                LoadingIndicatorView(isLoading: .constant(true))
-            }
+//            if vm.isLoading {
+//                LoadingIndicatorView(isLoading: .constant(true))
+//            }
         }
-        .onAppear {
-            vm.fetchCourseDetailById(courseId: courseId)
-        }
+//        .onAppear {
+//            vm.fetchCourseDetailById(courseId: courseId)
+//        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -98,7 +104,7 @@ struct CourseDetailView: View {
 
                     NavigationLink(destination: CartView()) {
                         ZStack {
-                            CircleButtonUI(isActive: isFav, systemName: "cart", symbolRenderingMode: .multicolor)
+                            CircleButtonUI(isActive: true, systemName: "cart", symbolRenderingMode: .multicolor)
                                 .tint(.black)
                             Text("12")
                                 .font(.system(size: 10))
@@ -111,7 +117,7 @@ struct CourseDetailView: View {
                     }
 
                     Button(action: {}, label: {
-                        CircleButtonUI(isActive: false, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
+                        CircleButtonUI(isActive: true, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
                     }).tint(.black)
                 }
             }
@@ -119,9 +125,9 @@ struct CourseDetailView: View {
     }
 }
 
-// #Preview {
-//    NavigationStack {
-//        CourseDetailView()
-//            .environmentObject(AppData())
-//    }
-// }
+#Preview {
+    NavigationStack {
+        CourseDetailView(courseDetail: CourseModel.sampleData)
+            .environmentObject(AppData())
+    }
+}

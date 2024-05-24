@@ -15,14 +15,19 @@ struct TrackingCourseCard: View {
             HStack(alignment: .top, spacing: 12) {
                 VStack {
                     VStack {
-                        AsyncImage(url: URL(string: enrollCourse.course!.thumbnail)!) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 65, height: 65)
-
-                        } placeholder: {
-                            Image(._3Dicons)
+                        if let urlString = enrollCourse.course?.thumbnail, let url = URL(string: urlString) {
+                            AsyncImage(url: url) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 65, height: 65)
+                            } placeholder: {
+                                Image("3Dicons")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            }
+                        } else {
+                            Image("3Dicons")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                         }
@@ -40,15 +45,17 @@ struct TrackingCourseCard: View {
                     HStack(alignment: .center, spacing: 12) {
                         // Icon Tracking Course
                         ZStack {
-                            Image(.trackingCourseLine)
-                            Image(.trackingCourseCircle)
+                            Image("trackingCourseLine")
+                            Image("trackingCourseCircle")
                         }
                         // End Icon Tracking Course
-                        Text(enrollCourse.course!.titleDescription)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(2)
-                            .font(.system(size: 14, weight: .medium))
-                            .frame(width: 212, height: 40)
+                        if let titleDescription = enrollCourse.course?.titleDescription {
+                            Text(titleDescription)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(2)
+                                .font(.system(size: 14, weight: .medium))
+                                .frame(width: 212, height: 40)
+                        }
                     }
                 }
                 Spacer()
@@ -56,14 +63,17 @@ struct TrackingCourseCard: View {
 
             HStack {
                 Group {
-                    AsyncImage(url: URL(string: enrollCourse.user.profile_image)!) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 24, height: 24)
-                            .cornerRadius(20)
-
-                    } placeholder: {
+                    if let profileImageURL = URL(string: enrollCourse.user.profile_image) {
+                        AsyncImage(url: profileImageURL) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                                .cornerRadius(20)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    } else {
                         ProgressView()
                     }
 
@@ -84,33 +94,32 @@ struct TrackingCourseCard: View {
                     .clipShape(RoundedRectangle(cornerRadius: 7.0))
 
                     // Button
-                    NavigationLink(destination:
-                        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
-                            .navigationBarBackButtonHidden(true),
-                        label: {
-                            Text("Tiếp tục")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundStyle(.white)
-                                .frame(width: 100, height: 30)
-                                .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom))
-                                .clipShape(RoundedRectangle(cornerRadius: 7.0))
-
-                        })
+                    if let course = enrollCourse.course {
+                        NavigationLink(destination:
+                            CourseDetailView(courseDetail: course)
+                                .navigationBarBackButtonHidden(true),
+                            label: {
+                                Text("Tiếp tục")
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundStyle(.white)
+                                    .frame(width: 100, height: 30)
+                                    .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom))
+                                    .clipShape(RoundedRectangle(cornerRadius: 7.0))
+                            })
+                    }
                 }
             }
         }
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: 133)
-        .background(.white)
+        .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16.0))
     }
 }
 
-// #Preview {
-//    TrackingCourseCard(enrollCourse: EnrolledCourseModel(_id: "",
-//                                                         user: BasicUserInfo.sampleData,
-//                                                         course: CourseModel.sampleData,
-//                                                         completed: false, enrollDate: "",
-//                                                         progress: 76,
-//                                                         trackProgress: [Track(_id: "", trackId: TrackId(_id: "", position: 9, chapterTitle: "", track_steps: [TrackStep(_id: "", title: "", position: 9, duration: 9, content_url: "", type: "")]), completed: false)]))
-// }
+// Sample Preview
+struct TrackingCourseCard_Previews: PreviewProvider {
+    static var previews: some View {
+        TrackingCourseCard(enrollCourse: EnrolledCourseModel.sampleData)
+    }
+}
