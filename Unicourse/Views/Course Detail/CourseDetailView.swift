@@ -13,7 +13,7 @@ struct CourseDetailView: View {
     @StateObject private var vm = CourseDetailViewModel()
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
-    var courseDetail: CourseModel
+    var courseId: String
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -96,10 +96,10 @@ struct CourseDetailView: View {
             }
         }
         .onAppear {
-            vm.fetchCourseDetailById(courseId: courseDetail._id)
+            vm.fetchCourseDetailById(courseId: courseId)
         }
         .onAppear {
-            vm.fetchCourseDetailById(courseId: courseDetail._id)
+            vm.fetchCourseDetailById(courseId: courseId)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -144,7 +144,7 @@ struct CourseDetailView: View {
 
 #Preview {
     NavigationStack {
-        CourseDetailView(courseDetail: CourseModel.sampleData)
+        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
             .environmentObject(AppData())
     }
 }

@@ -15,7 +15,7 @@ struct CartProductItem: View {
         HStack {
             ButtonCheckBox(isChecked: $isChecked)
 
-            NavigationLink(destination: CourseDetailView(courseDetail: CourseModel.sampleData)) {
+            NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
                 HStack {
                     Image("3diconsiconcourse")
                         .resizable()

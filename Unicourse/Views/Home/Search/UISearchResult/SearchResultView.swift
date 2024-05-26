@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SearchResultView: View {
-    @State var activeTab = "Liên quan"
     @Environment(\.dismiss) private var dismiss
     @Binding var searchString: String
-    @Binding var isFilterIconHidden: Bool
-    @Binding var isNavigateToResultView: Bool
+    @Binding var isLoadingSearch: Bool
+    @Binding var listSearch: SearchResponseModel
+    @State var activeTab = "Liên quan"
 
     var body: some View {
         ZStack {
@@ -20,12 +20,6 @@ struct SearchResultView: View {
                 .ignoresSafeArea(.all)
 
             VStack {
-                SearchFieldView(
-                    searchString: $searchString,
-                    action: { dismiss() },
-                    isFilterIconHidden: $isFilterIconHidden,
-                    isNavigateToResultView: $isNavigateToResultView
-                )
                 ResultUserView()
 
                 HStack {
@@ -49,18 +43,57 @@ struct SearchResultView: View {
 
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
-                        ForEach(0 ..< 4) { _ in
-                            NavigationLink(destination: CourseDetailView(courseDetail: CourseModel.sampleData)) {
-                                SearchResultItemView(courseItem: .sampleData)
+                        if isLoadingSearch {
+                            ForEach(0 ..< 6) { _ in
+                                SkeletonGridCourseView()
+                            }
+                        } else {
+                            ForEach(listSearch.course, id: \._id) { course in
+                                NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+                                    SearchResultItemView(title: course.title, description: course.titleDescription, thumbnail: course.thumbnail)
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        .searchable(text: $searchString, prompt: Text("Tìm Khoá Học"))
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                        .frame(width: 10, height: 18)
+                        .padding(.horizontal, 15)
+                })
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {}, label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16, height: 16)
+                    }
+                    .padding(8)
+                    .background(.white)
+                    .cornerRadius(16)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .inset(by: 0.25)
+                            .stroke(Color(red: 0.26, green: 0.52, blue: 0.96), lineWidth: 0.25)
+                    )
+                })
+            }
+        }
     }
 }
 
 #Preview {
-    SearchResultView(searchString: .constant(""), isFilterIconHidden: .constant(false), isNavigateToResultView: .constant(false))
+    SearchResultView(searchString: .constant(""), isLoadingSearch: .constant(true), listSearch: .constant(.init(course: [], quiz: [], blog: [])))
 }
