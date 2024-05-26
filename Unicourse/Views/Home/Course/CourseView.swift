@@ -23,7 +23,7 @@ struct CourseView: View {
             VStack(spacing: 10) {
                 VStack {
                     VStack {
-                        // Header Cards
+                        // Header  Cards
                         HStack {
                             Text("Khoá học của tôi")
                                 .font(.system(size: 20, weight: .bold))
