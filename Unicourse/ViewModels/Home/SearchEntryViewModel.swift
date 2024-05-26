@@ -2,7 +2,6 @@ import Combine
 import SwiftUI
 
 class SearchEntryViewModel: ObservableObject {
-    @Published var isFilterIconHidden = false
     @Published var isNavigateToResultView = false
     @Published var searchString: String = "" {
         didSet {
@@ -12,7 +11,7 @@ class SearchEntryViewModel: ObservableObject {
         }
     }
 
-    @Published var listSearchCourse: [SearchCourseModel] = []
+    @Published var listSearch: SearchResponseModel = .init(course: [], quiz: [], blog: [])
     @Published var isLoading = false
     @Published var error = ""
     @Published var isShowingAlert = false
@@ -26,34 +25,25 @@ class SearchEntryViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
-                self?.searchCourse(searchText: searchText)
+                self?.search(searchText: searchText)
             }
             .store(in: &cancellables)
     }
 
-    func searchCourse(searchText: String) {
-        guard !searchText.isEmpty else {
-            listSearchCourse = []
-            return
-        }
-
+    func search(searchText: String) {
         isLoading = true
 
-        print("\(APIPath.searchCourse.stringValue)?text=\(searchText)")
+        let params = ["text": searchText]
 
-        NetworkManager.shared.callAPI2(path: "\(APIPath.searchCourse.stringValue)?text=\(searchText)", method: .get, body: nil) {
-            (result: Result<CommonResponse<SearchCourseResponseModel>, Error>) in
+        NetworkManager.shared.callAPI2(path: APIPath.searchCourse.stringValue, method: .get, parameters: params, body: nil) {
+            (result: Result<CommonResponse<SearchResponseModel>, Error>) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    printJSONData(data: response.data)
-                    if response.data.course.isEmpty {
-                        self.listSearchCourse = []
-                    } else {
-                        self.listSearchCourse = response.data.course
-                    }
+                    self.listSearch = response.data
+
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
                 self.isLoading = false
             }

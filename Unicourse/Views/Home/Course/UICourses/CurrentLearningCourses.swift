@@ -85,7 +85,7 @@ struct CurrentLearningCourses: View {
                     } else {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
-                            NavigationLink(destination: CourseDetailView(courseDetail: courseItem.course ?? CourseModel.sampleData)) {
+                            NavigationLink(destination: CourseDetailView(courseId: courseItem.course?._id ?? "")) {
                                 CourseListView(courseItem: courseItem)
                             }
                             .buttonStyle(PlainButtonStyle())

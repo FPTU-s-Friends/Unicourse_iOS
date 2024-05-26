@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CourseVideoPlayerView: View {
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss: DismissAction
     let listTrack: [Track]
     @StateObject var vm = StreamingVideoViewModel()
     @State private var tabSelection = 0
@@ -80,6 +80,19 @@ struct CourseVideoPlayerView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
             Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                        .frame(width: 10, height: 18)
+                        .padding(.horizontal, 15)
+                }
+            }
         }
         .onAppear {
             if !listTrack.isEmpty {

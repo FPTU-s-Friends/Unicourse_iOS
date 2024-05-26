@@ -96,7 +96,7 @@ struct TrackingCourseCard: View {
                     // Button
                     if let course = enrollCourse.course {
                         NavigationLink(destination:
-                            CourseDetailView(courseDetail: course)
+                            CourseDetailView(courseId: course._id)
                                 .navigationBarBackButtonHidden(true),
                             label: {
                                 Text("Tiếp tục")
