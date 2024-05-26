@@ -98,9 +98,6 @@ struct CourseDetailView: View {
         .onAppear {
             vm.fetchCourseDetailById(courseId: courseDetail._id)
         }
-        .onAppear {
-            vm.fetchCourseDetailById(courseId: courseDetail._id)
-        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
