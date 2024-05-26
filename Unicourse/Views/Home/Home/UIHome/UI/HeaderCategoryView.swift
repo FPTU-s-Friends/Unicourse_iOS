@@ -31,7 +31,7 @@ struct HeaderCategoryView: View {
                     .foregroundStyle(.white)
                     .padding(6)
                     .padding(.horizontal, 10)
-                    .background(Color.activeButtonColor.cornerRadius(20))
+                    .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .top, endPoint: .trailing).cornerRadius(10))
             })
         }
         .padding(.horizontal, 15)

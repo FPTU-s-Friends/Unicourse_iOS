@@ -24,7 +24,7 @@ struct TopCoursesView: View {
                     }
                 } else {
                     ForEach(freeCourses, id: \._id) { course in
-                        NavigationLink(destination: CourseDetailView(courseDetail: course)) {
+                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                             ZStack {
                                 ZStack(alignment: .topTrailing) {
                                     AsyncImage(url: URL(string: course.thumbnail)!) { image in

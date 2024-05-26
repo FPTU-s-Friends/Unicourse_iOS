@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CourseVideoPlayerView: View {
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss: DismissAction
     let listTrack: [Track]
     @StateObject var vm = StreamingVideoViewModel()
     @State private var tabSelection = 0
@@ -27,7 +27,7 @@ struct CourseVideoPlayerView: View {
                 // Head title
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
-                        // Chapter Title 
+                        // Chapter Title
                         Text("CSI104 Buổi 10 - Spring 2022")
                             .font(.system(size: 18, weight: .semibold))
                         // Video Title
@@ -64,22 +64,35 @@ struct CourseVideoPlayerView: View {
                 VStack {
                     TabSelectionView(tabSelection: $tabSelection, selectionButtons: ["Danh sách phát", "Thảo luận"])
                     Divider()
-
-                    TabView(selection: $tabSelection) {
-                        VStack {
-                            Text("\(listTrack.count)")
-                        }.tag(0)
-
-                        VStack {
-                            Text("Tab2")
-                        }.tag(1)
-                    }
-                    .frame(height: 400)
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                    .padding(.bottom, 70)
                 }
+                TabView(selection: $tabSelection) {
+                    VStack {
+                        ForEach(listTrack, id: \._id) { track_item in
+                            TrackItemViews(track_item: track_item)
+                        }
+                    }.tag(0)
+
+                    VStack {
+                        Text("Tab2")
+                    }.tag(1)
+                }
+                .frame(height: 400)
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
             Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                        .frame(width: 10, height: 18)
+                        .padding(.horizontal, 15)
+                }
+            }
         }
         .onAppear {
             if !listTrack.isEmpty {

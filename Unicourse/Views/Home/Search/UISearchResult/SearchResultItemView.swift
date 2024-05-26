@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct SearchResultItemView: View {
-    var courseItem: CourseModel
+    var title: String
+    var description: String
+    var thumbnail: String
     
     var body: some View {
         ZStack(alignment: .top) {
             VStack(alignment: .leading) {
                 VStack {
-                    AsyncImage(url: URL(string: courseItem.thumbnail ?? DefaultURL.defaultCourseURL)) { image in
-                        image.resizable()
+                    AsyncImage(url: URL(string: thumbnail)) { image in
+                        image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(height: 165)
                         
                     } placeholder: {
-                        ProgressView()
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: .infinity, height: 165)
+                            .padding(10)
+                            .shimmerWithWave()
                     }
                 }
                 .frame(width: 190)
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        AsyncImage(url: URL(string: courseItem.lecture?.profile_image ?? DefaultURL.defaultUserURL)) { image in
+                        AsyncImage(url: URL(string: DefaultURL.defaultUserURL)) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 23, height: 23)
@@ -37,7 +43,7 @@ struct SearchResultItemView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                        Text("\(courseItem.lecture?.fullName ?? DefaultTextUser.defaultNameLecture)")
+                        Text("\(DefaultTextUser.defaultNameLecture)")
                             .font(.system(size: 10, weight: .medium))
                             .multilineTextAlignment(.leading)
                             .lineLimit(1)
@@ -45,7 +51,7 @@ struct SearchResultItemView: View {
                     }
                     .padding(.horizontal, 15)
                     
-                    Text(courseItem.title)
+                    Text(title)
                         .font(.system(size: 12))
                         .foregroundStyle(.black)
                         .multilineTextAlignment(.leading)
@@ -80,5 +86,5 @@ struct SearchResultItemView: View {
 }
 
 #Preview {
-    SearchResultItemView(courseItem: CourseModel.sampleData)
+    SearchResultItemView(title: "", description: "", thumbnail: "")
 }
