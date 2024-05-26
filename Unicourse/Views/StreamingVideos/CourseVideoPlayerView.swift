@@ -22,7 +22,7 @@ struct CourseVideoPlayerView: View {
             VStack(spacing: 0) {
                 // Stream view
                 VStack {
-                    VideoStreamingView(videoID: "cizoIav3geY")
+                    VideoStreamingView(videoID: vm.selectedTrack?.track_steps?[0].content_url ?? "")
                 }
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
                 .background(.gray.opacity(0.2))
@@ -70,7 +70,7 @@ struct CourseVideoPlayerView: View {
                         ScrollView {
                             VStack {
                                 ForEach(listTrackSorted, id: \._id) { track_item in
-                                    TrackItemViews(track_item: track_item)
+                                    TrackItemViews(vm: vm, track_item: track_item)
                                 }
                             }
                         }

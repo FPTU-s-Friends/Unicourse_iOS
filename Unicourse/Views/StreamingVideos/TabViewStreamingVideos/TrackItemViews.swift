@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TrackItemViews: View {
-    @State var isSelected: Bool = false
-    @StateObject var vm = StreamingVideoViewModel()
+    @ObservedObject var vm: StreamingVideoViewModel
     var track_item: Track
+    var isSelected: Bool {
+        vm.selectedTrack?._id == track_item._id
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -49,9 +52,8 @@ struct TrackItemViews: View {
                     .background(isSelected ? Color(hex: "#eef0ff") : .white)
                 }
                 .onTapGesture {
-                    withAnimation(.spring) {
-                        print(track_step._id)
-                    }
+                    vm.setSelectedTrack(newTrack: track_item)
+                    vm.getCurrentTrack()
                 }
             }
         }
@@ -60,9 +62,9 @@ struct TrackItemViews: View {
     }
 }
 
-#Preview {
-    TrackItemViews(track_item: track_item)
-}
+// #Preview {
+//    TrackItemViews(track_item: track_item)
+// }
 
 var track_item = Track(
     _id: "65a87e31a30979a347d026d3",

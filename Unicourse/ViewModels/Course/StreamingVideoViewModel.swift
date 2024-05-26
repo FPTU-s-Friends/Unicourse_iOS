@@ -9,4 +9,12 @@ import Foundation
 
 class StreamingVideoViewModel: ObservableObject {
     @Published var selectedTrack: Track? = nil
+
+    func setSelectedTrack(newTrack: Track) {
+        selectedTrack = newTrack
+    }
+
+    func getCurrentTrack() {
+        print(selectedTrack?.chapterTitle ?? "")
+    }
 }
