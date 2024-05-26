@@ -41,6 +41,7 @@
 		B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */; };
 		B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C422BEB95EC008A6A45 /* PathTitle.swift */; };
 		B5D0DA282C03434500773956 /* StreamingVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */; };
+		B5D0DA2B2C034A5500773956 /* TrackItemViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */; };
 		B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */; };
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
@@ -182,6 +183,7 @@
 		B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		B5C54C422BEB95EC008A6A45 /* PathTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTitle.swift; sourceTree = "<group>"; };
 		B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingVideoViewModel.swift; sourceTree = "<group>"; };
+		B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItemViews.swift; sourceTree = "<group>"; };
 		B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundMyCourseView.swift; sourceTree = "<group>"; };
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
@@ -437,6 +439,14 @@
 			path = "Path Title";
 			sourceTree = "<group>";
 		};
+		B5D0DA292C034A3700773956 /* TabViewStreamingVideos */ = {
+			isa = PBXGroup;
+			children = (
+				B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */,
+			);
+			path = TabViewStreamingVideos;
+			sourceTree = "<group>";
+		};
 		B5F06B112C0076FB001316BC /* SkeletonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +483,7 @@
 		B5F06B182C00AA25001316BC /* StreamingVideos */ = {
 			isa = PBXGroup;
 			children = (
+				B5D0DA292C034A3700773956 /* TabViewStreamingVideos */,
 				B5BE39F12BF7322C00F6BD3A /* VideoStreamingView.swift */,
 				C596D7BC2BF73810004D02F9 /* CourseVideoPlayerView.swift */,
 			);
@@ -1195,6 +1206,7 @@
 				C54DADAB2BE9D75900E968CE /* ProgressCourseView.swift in Sources */,
 				C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */,
 				B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */,
+				B5D0DA2B2C034A5500773956 /* TrackItemViews.swift in Sources */,
 				B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */,
 				B50030C32BFF67DA00508314 /* SkeletonBasicInfo.swift in Sources */,
 				B5898FA32BEE0A5A00C315B8 /* DetailInformationCourse.swift in Sources */,
