@@ -60,44 +60,54 @@ struct CourseSyllabusTabView: View {
 
     var body: some View {
         VStack {
-            ScrollView {
+            if listTrack.isEmpty {
                 VStack {
-                    ForEach(listTrackSorted, id: \._id) { chapter in
-                        ExpandableView(
-                            thumbnail: ThumbnailView(content: {
-                                ThumbnailHeading(totalTime: chapter.track_steps?.reduce(0) { acc, curr in
-                                    acc + curr.duration
-                                } ?? 0, chapterName: chapter.chapterTitle!, isDone: false)
-
-                            }),
-                            expanded: ExpandedView(content: {
-                                VStack {
+                    Text("Khoá học hiện đang được cập nhật !")
+                        .font(.system(size: 12, weight: .regular))
+                    Spacer()
+                }
+                .padding(.top, 20)
+              
+            } else {
+                ScrollView {
+                    VStack {
+                        ForEach(listTrackSorted, id: \._id) { chapter in
+                            ExpandableView(
+                                thumbnail: ThumbnailView(content: {
                                     ThumbnailHeading(totalTime: chapter.track_steps?.reduce(0) { acc, curr in
                                         acc + curr.duration
                                     } ?? 0, chapterName: chapter.chapterTitle!, isDone: false)
 
-                                    LazyVStack(spacing: 2) {
-                                        ForEach(chapter.track_steps ?? [], id: \._id) { item in
-                                            HStack(spacing: 20) {
-                                                Image(systemName: "play.rectangle.fill")
-                                                    .font(.system(size: 16, weight: .regular))
-                                                Text(item.title)
-                                                Spacer()
-                                                Text(convertMinutesToString(minutes: item.duration))
-                                                    .font(.system(size: 12, weight: .regular))
+                                }),
+                                expanded: ExpandedView(content: {
+                                    VStack {
+                                        ThumbnailHeading(totalTime: chapter.track_steps?.reduce(0) { acc, curr in
+                                            acc + curr.duration
+                                        } ?? 0, chapterName: chapter.chapterTitle!, isDone: false)
+
+                                        LazyVStack(spacing: 2) {
+                                            ForEach(chapter.track_steps ?? [], id: \._id) { item in
+                                                HStack(spacing: 20) {
+                                                    Image(systemName: "play.rectangle.fill")
+                                                        .font(.system(size: 16, weight: .regular))
+                                                    Text(item.title)
+                                                    Spacer()
+                                                    Text(convertMinutesToString(minutes: item.duration))
+                                                        .font(.system(size: 12, weight: .regular))
+                                                }
+                                                .padding(20)
+                                                .frame(maxWidth: .infinity)
+                                                .background(Color(hex: "#EDEDED"))
                                             }
-                                            .padding(20)
-                                            .frame(maxWidth: .infinity)
-                                            .background(Color(hex: "#EDEDED"))
                                         }
                                     }
-                                }
 
-                            }))
+                                }))
+                        }
                     }
                 }
+                .scrollIndicators(.never)
             }
-            .scrollIndicators(.never)
         }
     }
 }
