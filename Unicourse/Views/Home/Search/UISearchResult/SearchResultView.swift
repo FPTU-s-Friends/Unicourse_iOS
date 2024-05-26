@@ -59,6 +59,8 @@ struct SearchResultView: View {
             }
         }
         .searchable(text: $searchString, prompt: Text("Tìm Khoá Học"))
+        .navigationTitle("Tìm kiếm khoá học")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -95,5 +97,7 @@ struct SearchResultView: View {
 }
 
 #Preview {
-    SearchResultView(searchString: .constant(""), isLoadingSearch: .constant(true), listSearch: .constant(.init(course: [], quiz: [], blog: [])))
+    NavigationStack {
+        SearchResultView(searchString: .constant(""), isLoadingSearch: .constant(true), listSearch: .constant(.init(course: [], quiz: [], blog: [])))
+    }
 }
