@@ -52,7 +52,7 @@ struct CourseDetailView: View {
 
                     // Tab bar
                     VStack {
-                        TabSelectionView(tabSelection: $tabSelection)
+                        TabSelectionView(tabSelection: $tabSelection, selectionButtons: ["Chi tiết", "Lộ trình", "Đánh giá"])
                         TabView(selection: $tabSelection) {
                             CourseDetailTabView(courseLectureName: vm.courseDetail?.lecture?.fullName ?? DefaultTextUser.defaultNameLecture,
                                                 lectureDescription: vm.courseDetail?.lecture?.lecture_info?.description ?? "",
@@ -79,7 +79,7 @@ struct CourseDetailView: View {
 
             VStack {
                 NavigationLink {
-                    CourseVideoPlayerView()
+                    CourseVideoPlayerView(listTrack: vm.courseDetail?.tracks ?? [])
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     ButtonGradientUI(titleButton: "Bắt đầu học")

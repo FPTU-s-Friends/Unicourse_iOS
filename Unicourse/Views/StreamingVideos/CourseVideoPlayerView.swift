@@ -7,125 +7,140 @@
 
 import SwiftUI
 
-struct Mockdatas: Identifiable {
-    var id = UUID()
-    var nameChapter: String
-    var isDone: Bool
-    var listVideo: [VideoChapter]
-
-    init(nameChapter: String, isDone: Bool, listVideo: [VideoChapter]) {
-        self.nameChapter = nameChapter
-        self.isDone = isDone
-        self.listVideo = listVideo
-    }
-
-    static var data: [Mockdatas] = [
-        Mockdatas(nameChapter: "JPD113 buổi 1 - Spring 2022", isDone: Bool.random(),
-                  listVideo: [
-                      VideoChapter(titleVideo: "Video 1", totalTime: 80),
-                      VideoChapter(titleVideo: "Video 2", totalTime: 90)
-                  ]),
-        Mockdatas(nameChapter: "JPD113 buổi 2 - Spring 2022", isDone: Bool.random(),
-                  listVideo: [
-                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
-                      VideoChapter(titleVideo: "Video 2", totalTime: 90)
-                  ]),
-        Mockdatas(nameChapter: "JPD113 buổi 3 - Spring 2022 ", isDone: Bool.random(),
-                  listVideo: [
-                      VideoChapter(titleVideo: "Video 1", totalTime: 70),
-                      VideoChapter(titleVideo: "Video 2", totalTime: 90),
-                      VideoChapter(titleVideo: "Video 3", totalTime: 90)
-                  ])
-    ]
-}
-
 struct CourseVideoPlayerView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
+    let listTrack: [Track]
+    @StateObject var vm = StreamingVideoViewModel()
+    @State private var tabSelection = 0
 
     var body: some View {
         VStack(spacing: 0) {
-            // Video Streaming Area
+            // Stream view
             VStack {
-                // ViewModel to keep videoID
-                VideoStreamingView(videoID: "EWQbP1WaQzY")
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/ .infinity/*@END_MENU_TOKEN@*/, minHeight: 228)
-                    .background(Color.gray)
+//                VideoStreamingView(videoID: "cizoIav3geY")
             }
+            .frame(maxWidth: .infinity, minHeight: 250)
+            .background(.gray.opacity(0.2))
 
-            // Syllabus + Comment
+            // Tab view
+            ScrollView {
+                // Head title
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        // Chapter Title 
+                        Text("CSI104 Buổi 10 - Spring 2022")
+                            .font(.system(size: 18, weight: .semibold))
+                        // Video Title
+                        HStack {
+                            Image(systemName: "play.rectangle")
+                            Text("Đang phát:")
+                            Text("Video 1")
 
-            ZStack {
-                Rectangle()
-                    .ignoresSafeArea()
-                    .foregroundStyle(
-                        LinearGradient(
-                            stops: [
-                                Gradient.Stop(color: Color(red: 0.88, green: 0.9, blue: 1), location: 0.00),
-                                Gradient.Stop(color: Color(red: 0.97, green: 0.97, blue: 0.99).opacity(0), location: 1.00)
-                            ],
-                            startPoint: UnitPoint(x: 0.5, y: 0),
-                            endPoint: UnitPoint(x: 0.5, y: 1)))
+                        }.font(.system(size: 15, weight: .regular))
 
-                VStack(spacing: 10) {
-                    // Chapter name
-                    Text("CSI Buổi 1 - Spring 2022")
-                        .font(.system(size: 18, weight: .bold))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("Giảng viên:")
+                            Text("Giảng viên Unicourse")
 
-                    HStack {
-                        Image(systemName: "play.rectangle.fill")
-                            .font(.system(size: 16, weight: .regular))
-
-                        Text("Video 1")
-                            .font(.system(size: 14, weight: .regular))
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }.font(.system(size: 15, weight: .regular))
                     }
-
-                    ScrollView {
-                        VStack {
-                            ExpandableView(
-                                thumbnail: ThumbnailView(content: {
-                                    ThumbnailHeading(totalTime: 2, chapterName: " item.nameChapter", isDone: false)
-
-                                }),
-                                expanded: ExpandedView(content: {
-                                    VStack {
-                                        ThumbnailHeading(totalTime: 2, chapterName: " item.nameChapter", isDone: false)
-
-                                        LazyVStack(spacing: 2) {
-                                            HStack(spacing: 20) {
-                                                Image(systemName: "play.rectangle.fill")
-                                                    .font(.system(size: 16, weight: .regular))
-                                                Text("123")
-                                                Spacer()
-                                                Text(convertMinutesToString(minutes: 3))
-                                                    .font(.system(size: 12, weight: .regular))
-                                            }
-                                            .padding(20)
-                                            .frame(maxWidth: .infinity)
-                                            .background(Color(hex: "#EDEDED"))
-                                        }
-                                    }
-
-                                }))
-                        }
+                    Spacer()
+                    Button {} label: {
+                        Image(systemName: "bookmark.square.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 40))
+                            .foregroundStyle(.blue)
                     }
-                    .scrollIndicators(.never)
                 }
-                .padding(14)
+                .padding(.top, 20)
+                .padding(.horizontal, 20)
+
+                // End Head Title
+
+                Spacer(minLength: 30)
+
+                // Tab view: [Danh sách phát, More]
+                VStack {
+                    TabSelectionView(tabSelection: $tabSelection, selectionButtons: ["Danh sách phát", "Thảo luận"])
+                    Divider()
+
+                    TabView(selection: $tabSelection) {
+                        VStack {
+                            Text("\(listTrack.count)")
+                        }.tag(0)
+
+                        VStack {
+                            Text("Tab2")
+                        }.tag(1)
+                    }
+                    .frame(height: 400)
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .padding(.bottom, 70)
+                }
             }
-        }.toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    CircleButtonUI(isActive: false, systemName: "arrow.left", symbolRenderingMode: .multicolor)
-                }).tint(.black)
+            Spacer()
+        }
+        .onAppear {
+            if !listTrack.isEmpty {
+                vm.selectedTrack = listTrack[0]
             }
         }
     }
 }
 
 #Preview {
-    CourseVideoPlayerView()
+    CourseVideoPlayerView(listTrack: mockData)
 }
+
+// Create mock data
+let mockData: [Track] = [
+    Track(
+        _id: "65a87e31a30979a347d026d3",
+        courseId: "65a878bfa30979a347d026c6",
+        position: 1,
+        chapterTitle: "CSI104 Buổi 1 - Spring 2022",
+        track_steps: [
+            TrackStep(
+                _id: "65ad100066451902420ee7b7",
+                title: "Video 1",
+                position: 1,
+                duration: 46,
+                content_url: "ajJEIBcs5A4",
+                type: "video"
+            )
+        ]
+    ),
+    Track(
+        _id: "65aa4d443cce807fe880c22e",
+        courseId: "65a878bfa30979a347d026c6",
+        position: 10,
+        chapterTitle: "CSI104 Buổi 10 - Spring 2022",
+        track_steps: [
+            TrackStep(
+                _id: "65ad100066451902420ee7ca",
+                title: "Video 1",
+                position: 1,
+                duration: 45,
+                content_url: "h-39pz6DpDg",
+                type: "video"
+            )
+        ]
+    ),
+    Track(
+        _id: "65aa4dce3cce807fe880c22f",
+        courseId: "65a878bfa30979a347d026c6",
+        position: 11,
+        chapterTitle: "CSI104 Buổi 11 - Spring 2022",
+        track_steps: [
+            TrackStep(
+                _id: "65ad100066451902420ee7cb",
+                title: "Video 1",
+                position: 1,
+                duration: 70,
+                content_url: "PkAm174VxJ4",
+                type: "video"
+            )
+        ]
+    )
+]
