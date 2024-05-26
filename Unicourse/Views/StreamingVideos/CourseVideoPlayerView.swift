@@ -31,7 +31,7 @@ struct CourseVideoPlayerView: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
                         // Chapter   Title
-                        Text("CSI104 Buổi 10 - Spring 2022")
+                        Text(vm.selectedTrack?.chapterTitle ?? "")
                             .font(.system(size: 18, weight: .semibold))
                         // Video Title
                         HStack {
