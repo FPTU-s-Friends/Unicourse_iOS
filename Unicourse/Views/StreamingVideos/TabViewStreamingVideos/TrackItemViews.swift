@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TrackItemViews: View {
     @State var isSelected: Bool = false
+    @StateObject var vm = StreamingVideoViewModel()
     var track_item: Track
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text("Chương 1 - \(track_item.chapterTitle!)")
+                Text("Chương \(track_item.position!) - \(track_item.chapterTitle!)")
                     .font(.system(size: 12, weight: .regular))
                     .foregroundStyle(Color.neutralTextColor)
                 Spacer()
