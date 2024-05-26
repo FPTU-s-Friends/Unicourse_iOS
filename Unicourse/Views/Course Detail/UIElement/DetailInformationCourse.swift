@@ -19,11 +19,6 @@ struct DetailInformationCourse: View {
         } else {
             VStack {
                 VStack(spacing: 18) {
-                    HStack(alignment: .top) {
-                        Text("Khoá học OSG202 - Hệ điều hành")
-                            .font(.system(size: 14, weight: .bold))
-                        Spacer()
-                    }
 
                     VStack(alignment: .leading) {
                         Text(subTitle)

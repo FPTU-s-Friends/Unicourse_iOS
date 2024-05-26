@@ -11,7 +11,7 @@ import SwiftUI
 struct TabSelectionView: View {
     @Binding var tabSelection: Int
     @Namespace private var buttonId
-    private let selectionButtons = ["Chi tiết", "Lộ trình", "Đánh giá"]
+    let selectionButtons : [String]
 
     var body: some View {
         HStack(alignment: .top, spacing: 40) {
