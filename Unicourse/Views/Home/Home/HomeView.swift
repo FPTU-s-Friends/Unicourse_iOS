@@ -101,6 +101,7 @@ struct HomeView: View {
 
                     Spacer()
                 }
+
                 .refreshable {
                     refreshData()
                 }
@@ -109,6 +110,7 @@ struct HomeView: View {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
         }
+
         .onAppear {
             if !hasLoadedDataInitially {
                 refreshData()

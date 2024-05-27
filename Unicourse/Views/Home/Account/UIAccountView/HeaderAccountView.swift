@@ -17,8 +17,10 @@ struct HeaderAccountView: View {
                         NavigationLink(destination: CartView()) {
                             ZStack {
                                 Image(systemName: "cart")
-                                    .font(.system(size: 20))
-                                    .padding(10)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20)
+                                    .padding(8)
                                     .foregroundColor(.black)
                                     .background(Color.white)
                                     .clipShape(Circle())
@@ -38,8 +40,10 @@ struct HeaderAccountView: View {
                     }
                     Button(action: {}, label: {
                         Image(systemName: "pencil")
-                            .font(.system(size: 20))
-                            .padding(10)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 18)
+                            .padding(8)
                             .foregroundColor(.black)
                             .background(Color.white)
                             .clipShape(Circle())
@@ -51,8 +55,10 @@ struct HeaderAccountView: View {
 
                     Button(action: {}, label: {
                         Image(systemName: "gearshape")
-                            .font(.system(size: 20))
-                            .padding(10)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
+                            .padding(8)
                             .foregroundColor(.black)
                             .background(Color.white)
                             .clipShape(Circle())
@@ -63,9 +69,7 @@ struct HeaderAccountView: View {
                     })
                 }
             }
-            .padding(.horizontal, 20)
         }
-        .offset(y: -10)
     }
 }
 

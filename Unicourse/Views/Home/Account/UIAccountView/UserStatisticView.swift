@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct UserStatisticView: View {
+    @EnvironmentObject var appData: AppData
+
     var body: some View {
-        Image("User")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 100, height: 100)
-        Text("Nguyễn Trung Kiên")
+        AsyncImage(url: URL(string: appData.user?.profileImageURL?.absoluteString ?? "")) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 80, height: 80)
+                .cornerRadius(60)
+
+        } placeholder: {
+            RoundedRectangle(cornerRadius: 60)
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 100, height: 100)
+                .shimmerWithWave()
+        }
+        Text(appData.user?.fullName ?? "Người dùng Unicourse")
             .font(.system(size: 16, weight: .bold))
 
         HStack(spacing: 50) {
@@ -70,4 +81,5 @@ struct UserStatisticView: View {
 
 #Preview {
     UserStatisticView()
+        .environmentObject(AppData())
 }

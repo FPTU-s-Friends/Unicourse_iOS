@@ -10,38 +10,40 @@ import SwiftUI
 struct AccountView: View {
     @StateObject var viewModel = AccountViewModel()
     @EnvironmentObject var appData: AppData
-    
+
     var body: some View {
-//        ScrollView {
         ZStack {
-            Color.white
-                .frame(width: 360, height: 600)
-                .cornerRadius(20)
-                .offset(y: 40)
-                
-            VStack {
-                HeaderAccountView()
-                    
-                VStack(spacing: 20) {
-                    UserStatisticView()
-                            
-                    AccountMenuView(menuItems: $viewModel.menuItems)
+            ScrollView {
+                VStack {
+                    VStack {
+                        HeaderAccountView()
+                            .padding(.trailing, 10)
+
+                        UserStatisticView()
+
+                        AccountMenuView(menuItems: viewModel.menuItems)
+                            .padding(.bottom, 30)
+                    }
+                    .background {
+                        Color.white
+                            .frame(width: 360, height: 550)
+                            .cornerRadius(20)
+                            .offset(y: 40)
+                    }
                 }
-                .frame(width: 400, height: 600)
-                Spacer()
+                LoadingIndicatorView(isLoading: $appData.isLoading)
             }
-            .offset(y: 0)
-                
-            LoadingIndicatorView(isLoading: $appData.isLoading)
-//            }
         }
-        .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.top))
+        .background {
+            LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
+                .ignoresSafeArea()
+        }
     }
 }
 
 #Preview {
     NavigationStack {
         AccountView()
+            .environmentObject(AppData())
     }
 }

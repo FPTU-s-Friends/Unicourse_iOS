@@ -15,7 +15,7 @@ struct ContentView: View {
         ZStack {
             NavigationStack {
                 if appData.isLoggedIn {
-                    MainHomeView()
+                    CustomHomeView()
                 } else {
                     OnBoardView()
                 }

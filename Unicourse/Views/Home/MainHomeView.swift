@@ -9,36 +9,40 @@ import SwiftUI
 struct MainHomeView: View {
     @EnvironmentObject var appData: AppData
 
+    // Define an array of tab items with label and system image name
+    let tabBarItems = [
+        ("Trang chủ", "house"),
+        ("Khoá học", "book"),
+        ("Cộng đồng", "person.3"),
+        ("Tài khoản", "person.circle.fill")
+    ]
+
     var body: some View {
         NavigationStack {
-            ZStack {
+            VStack {
                 TabView(selection: $appData.mainTabSelection) {
-                    HomeView()
-                        .tabItem {
-                            Label("Trang chủ", systemImage: "house")
-                        }
-                        .tag(1)
-
-                    CourseView()
-                        .tabItem {
-                            Label("Khoá học", systemImage: "book")
-                        }
-                        .tag(2)
-
-                    CommunityView()
-                        .tabItem {
-                            Label("Cộng đồng", systemImage: "person.3")
-                        }
-                        .tag(3)
-
-                    AccountView()
-                        .tabItem {
-                            Label("Tài khoản", systemImage: "person.circle.fill")
-                        }
-                        .tag(4)
+                    ForEach(0 ..< tabBarItems.count, id: \.self) { index in
+                        getView(for: index)
+                            .tag(index)
+                            .tabItem {
+                                Label(tabBarItems[index].0, systemImage: tabBarItems[index].1)
+                            }
+                    }
                 }
                 .tint(.activeColor)
             }
+        }
+    }
+
+    // Return appropriate view based on index
+    @ViewBuilder
+    private func getView(for index: Int) -> some View {
+        switch index {
+        case 0: HomeView()
+        case 1: CourseView()
+        case 2: CommunityView()
+        case 3: AccountView()
+        default: EmptyView()
         }
     }
 }
