@@ -19,16 +19,33 @@ struct SearchCourseModel: Codable {
     var _id: String
     var title: String
     var titleDescription: String
+    var enrollmentCount: Int
     var type: CourseEnrollType
+    var amount: Int
     var thumbnail: String
+    var lecture: SearchCourseLectureModel
 
     static var sampleData = SearchCourseModel(
         _id: "65a9f5c319080610bf831c55",
         title: "Khóa học CEA201",
         titleDescription: "Kiến thức các bài giảng của khóa CEA201",
+        enrollmentCount: 10,
         type: .free,
-        thumbnail: "https://anhcocvang.com/static/media/CEA201.726e8249a187ad5531b6.png"
+        amount: 0,
+        thumbnail: "https://anhcocvang.com/static/media/CEA201.726e8249a187ad5531b6.png",
+        lecture: SearchCourseLectureModel.sampleData
     )
+}
+
+struct SearchCourseLectureModel: Codable {
+    var _id: String
+    var fullName: String
+    var profileName: String?
+    var profile_image: String
+
+    static var sampleData = SearchCourseLectureModel(_id: "662f61f6b57741e90fac0a5b",
+                                                     fullName: "Giảng viên Unicourse",
+                                                     profile_image: "https://lh3.googleusercontent.com/a/ACg8ocLzW-T4UHAYsYHdEUvPk9ukeshyAZpPbTHHpva5ndCUGFNUlw=s96-c")
 }
 
 // Quiz Search Model

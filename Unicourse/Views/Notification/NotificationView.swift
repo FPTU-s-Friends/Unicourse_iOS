@@ -70,7 +70,7 @@ struct NotificationView: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .inset(by: 0.25)
-                            .stroke(Color.activeColor, lineWidth: 1)
+                            .stroke(Color.activeColor.gradient, lineWidth: 1)
                     )
                 })
             }

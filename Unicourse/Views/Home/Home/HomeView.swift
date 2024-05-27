@@ -19,12 +19,12 @@ struct HomeView: View {
             VStack {
                 HStack {
                     HeaderUserView()
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 10)
 
                     Spacer()
 
                     HeaderButtonView()
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 10)
                 }
                 ScrollView {
                     VStack {

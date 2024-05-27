@@ -49,6 +49,7 @@
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
 		C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */; };
+		C52F5C452C04B0E900A2FB8A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */; };
 		C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */; };
 		C53E803E2BF0BC58003DFC4B /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */; };
 		C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803F2BF0BC78003DFC4B /* DiscountView.swift */; };
@@ -312,6 +313,7 @@
 				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
 				C541DA0C2BE359060022079E /* FirebaseFirestore in Frameworks */,
 				C56749612BE896F200DA6A58 /* JWTDecode in Frameworks */,
+				C52F5C452C04B0E900A2FB8A /* SDWebImageSwiftUI in Frameworks */,
 				C541DA0A2BE359060022079E /* FirebaseAuth in Frameworks */,
 				C541DA0E2BE359060022079E /* FirebaseStorage in Frameworks */,
 				C541DA072BE358D30022079E /* GoogleSignInSwift in Frameworks */,
@@ -1062,6 +1064,7 @@
 				C541DA0D2BE359060022079E /* FirebaseStorage */,
 				C56749602BE896F200DA6A58 /* JWTDecode */,
 				C579AF7A2C00A307004BB9A6 /* SwiftyJSON */,
+				C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1096,6 +1099,7 @@
 				C541DA032BE358D30022079E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				C567495F2BE896F200DA6A58 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -1490,6 +1494,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 		C541DA022BE358BB0022079E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1525,6 +1537,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		C541DA042BE358D30022079E /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C541DA032BE358D30022079E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

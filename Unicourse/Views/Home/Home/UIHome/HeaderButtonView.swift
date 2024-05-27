@@ -21,7 +21,7 @@ struct HeaderButtonView: View {
                         .frame(width: 18)
                         .padding(10)
                         .foregroundColor(.white)
-                        .background(Color.activeButtonColor)
+                        .background(Color.activeButtonColor.gradient)
                         .clipShape(Circle())
                         .overlay(
                             Circle()
@@ -36,7 +36,7 @@ struct HeaderButtonView: View {
                     .frame(width: 18)
                     .padding(10)
                     .foregroundColor(.white)
-                    .background(Color.activeButtonColor)
+                    .background(Color.activeButtonColor.gradient)
                     .clipShape(Circle())
                     .overlay(
                         Circle()

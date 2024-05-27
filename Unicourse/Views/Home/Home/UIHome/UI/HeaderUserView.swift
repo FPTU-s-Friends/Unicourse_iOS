@@ -34,7 +34,7 @@ struct HeaderUserView: View {
             }
             VStack(alignment: .leading, spacing: 7) {
                 Text("\(appData.user?.fullName ?? "Loading...")")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 13, weight: .semibold))
                     .lineLimit(1)
                     .multilineTextAlignment(.leading)
 
@@ -56,10 +56,11 @@ struct HeaderUserView: View {
 
     func roleText(_ text: String) -> some View {
         Text(text)
-            .font(.system(size: 8, weight: .bold, design: .default))
+            .font(.system(size: 10, weight: .bold, design: .default))
             .foregroundStyle(Color.white)
             .padding(5)
-            .background(Color.activeColor.cornerRadius(20))
+            .background(Color.activeColor.gradient)
+            .cornerRadius(10)
     }
 }
 
