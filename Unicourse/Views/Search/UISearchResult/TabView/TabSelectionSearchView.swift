@@ -1,0 +1,48 @@
+//
+//  TabSelectionSearchView.swift
+//  Unicourse
+//
+//  Created by Trung Kiên Nguyễn on 27/5/24.
+//
+
+import Foundation
+import SwiftUI
+
+struct TabSelectionSearchView: View {
+    @Binding var tabSelection: Int
+    @Namespace private var buttonId
+    let selectionButtons: [String]
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 40) {
+            ForEach(selectionButtons.indices, id: \.self) {
+                index in
+                VStack {
+                    Button(selectionButtons[index]) {
+                        withAnimation(.spring) {
+                            tabSelection = index
+                        }
+                    }
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(tabSelection == index ? .primary : .secondary)
+                    .padding(.horizontal)
+                    if tabSelection == index {
+                        Capsule()
+                            .frame(width: 60, height: 4)
+                            .padding(.horizontal, 4)
+                            .foregroundStyle(Color(hex: "#16AEF4"))
+                            .matchedGeometryEffect(id: "ID", in: buttonId)
+                    } else {
+                        EmptyView()
+                            .frame(height: 4)
+                            .matchedGeometryEffect(id: /*@START_MENU_TOKEN@*/"ID"/*@END_MENU_TOKEN@*/, in: buttonId)
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    TabSelectionSearchView(tabSelection: .constant(1), selectionButtons: ["Liên quan", "Mới nhất", "Giảm giá"])
+}

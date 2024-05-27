@@ -12,7 +12,8 @@ struct SearchResultView: View {
     @Binding var searchString: String
     @Binding var isLoadingSearch: Bool
     @Binding var listSearch: SearchResponseModel
-    @State var activeTab = "Liên quan"
+    @State var tabSelection: Int = 0
+    @State var isPresentedFilter = false
 
     var body: some View {
         ZStack {
@@ -22,45 +23,35 @@ struct SearchResultView: View {
             VStack {
                 ResultUserView()
 
-                HStack {
-                    TabButton(title: "Liên quan", isActive: activeTab == "Liên quan") {
-                        activeTab = "Liên quan"
-                    }
-
-                    Spacer()
-
-                    TabButton(title: "Mới nhất", isActive: activeTab == "Mới nhất") {
-                        activeTab = "Mới nhất"
-                    }
-
-                    Spacer()
-
-                    TabButton(title: "Giảm giá", isActive: activeTab == "Giảm giá") {
-                        activeTab = "Giảm giá"
-                    }
-                }
-                .padding(20)
-
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
-                        if isLoadingSearch {
-                            ForEach(0 ..< 6) { _ in
-                                SkeletonGridCourseView()
-                            }
-                        } else {
-                            ForEach(listSearch.course, id: \._id) { course in
-                                NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                                    SearchResultItemView(title: course.title, description: course.titleDescription, thumbnail: course.thumbnail)
-                                }
-                            }
-                        }
-                    }
+                TabSelectionSearchView(tabSelection: $tabSelection, selectionButtons: ["Liên quan", "Mới nhất", "Giảm giá"])
+                TabView(selection: $tabSelection) {
+//                    Tab Liên quan
+                    RelatedResultTabView(isLoadingSearch: $isLoadingSearch, listSearch: $listSearch)
+                        .tag(0)
+//                    Tab Mới nhất
+                    NewestResultTabView().tag(1)
+//                    Tab Giảm giá
+                    SaleResultTabView().tag(2)
                 }
             }
         }
         .searchable(text: $searchString, prompt: Text("Tìm Khoá Học"))
         .navigationTitle("Tìm kiếm khoá học")
         .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $isPresentedFilter) {
+            VStack {
+                Text("Filter ở đây")
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        print("Save button tapped")
+                        isPresentedFilter = false
+                    }
+                }
+            }
+        }
+
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -75,7 +66,9 @@ struct SearchResultView: View {
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {}, label: {
+                Button(action: {
+                    isPresentedFilter.toggle()
+                }, label: {
                     HStack(spacing: 8) {
                         Image(systemName: "ellipsis")
                             .resizable()
