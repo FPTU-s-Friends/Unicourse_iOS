@@ -81,7 +81,7 @@ struct LoginView: View {
                     // Không làm gì khi giá trị set thay đổi
                 }
             ), destination: {
-                MainHomeView()
+                CustomHomeView()
                     .navigationBarBackButtonHidden(true)
             })
         }

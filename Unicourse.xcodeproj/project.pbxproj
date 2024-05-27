@@ -48,6 +48,7 @@
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
+		C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */; };
 		C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */; };
 		C53E803E2BF0BC58003DFC4B /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */; };
 		C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803F2BF0BC78003DFC4B /* DiscountView.swift */; };
@@ -198,6 +199,7 @@
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
+		C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderUserView.swift; sourceTree = "<group>"; };
 		C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlashScreenView.swift; sourceTree = "<group>"; };
 		C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		C53E803F2BF0BC78003DFC4B /* DiscountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountView.swift; sourceTree = "<group>"; };
@@ -506,6 +508,16 @@
 			path = StreamingVideos;
 			sourceTree = "<group>";
 		};
+		C52F5C422C0488B800A2FB8A /* CustomTabUI */ = {
+			isa = PBXGroup;
+			children = (
+				C548DDA02C04607F00764E13 /* TabShape.swift */,
+				C548DDA22C0463B900764E13 /* TabPosition.swift */,
+				C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */,
+			);
+			path = CustomTabUI;
+			sourceTree = "<group>";
+		};
 		C53E803A2BF0AE38003DFC4B /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,10 +607,8 @@
 		C548DDA42C0468D100764E13 /* CustomTab */ = {
 			isa = PBXGroup;
 			children = (
-				C548DDA22C0463B900764E13 /* TabPosition.swift */,
-				C548DDA02C04607F00764E13 /* TabShape.swift */,
+				C52F5C422C0488B800A2FB8A /* CustomTabUI */,
 				C5688C682C04558D003669C0 /* CustomHomeView.swift */,
-				C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */,
 			);
 			path = CustomTab;
 			sourceTree = "<group>";
@@ -609,6 +619,7 @@
 				C567497A2BE8DEB200DA6A58 /* CustomProgressView.swift */,
 				C56749782BE8DAA900DA6A58 /* CustomPageControlHomeView.swift */,
 				C54DADAC2BE9D88300E968CE /* HeaderCategoryView.swift */,
+				C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1170,6 +1181,7 @@
 				C5D7DD0C2BF70E7300FC0DF7 /* CartView.swift in Sources */,
 				B578A8952BFCD081003CBFFA /* ISOStringConvertHelper.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
+				C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
 				C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */,

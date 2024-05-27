@@ -16,7 +16,9 @@ struct HeaderButtonView: View {
 
                 label: {
                     Image(systemName: "magnifyingglass")
-                        .font(.system(size: 20))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 18)
                         .padding(10)
                         .foregroundColor(.white)
                         .background(Color.activeButtonColor)
@@ -29,7 +31,9 @@ struct HeaderButtonView: View {
 
             NavigationLink(destination: NotificationView()) {
                 Image(systemName: "bell")
-                    .font(.system(size: 20))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 18)
                     .padding(10)
                     .foregroundColor(.white)
                     .background(Color.activeButtonColor)
