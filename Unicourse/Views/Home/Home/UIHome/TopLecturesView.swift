@@ -37,7 +37,6 @@ struct TopLecturesView: View {
                     }
                 }
             }
-            .padding(.leading, 10)
         }
     }
 }

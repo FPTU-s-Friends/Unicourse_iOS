@@ -16,7 +16,7 @@ class AppData: ObservableObject {
     @Published var isLoading = false
     @Published var isShowSlashScreen = true
     @Published var error: String = ""
-    @Published var mainTabSelection = 1
+    @Published var mainTabSelection = 0
     @Published var isLoggedIn: Bool = false
 
     init(user: UserProfile? = nil, token: String = "") {
