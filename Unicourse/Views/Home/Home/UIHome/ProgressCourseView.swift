@@ -12,25 +12,31 @@ struct ProgressCourseView: View {
     @Binding var isLoading: Bool
 
     var body: some View {
-        VStack {
-            HeaderCategoryView(textCategory: HeaderCategoryText.progressText,
-                               textButton: TextButton.viewAll,
-                               action: {})
+        if !isLoading == false && !listEnrollCourses.isEmpty {
+            VStack {
+                HeaderCategoryView(textCategory: HeaderCategoryText.progressText,
+                                   textButton: TextButton.viewAll,
+                                   action: {})
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    if self.isLoading || self.listEnrollCourses.isEmpty {
-                        ForEach(0 ..< 3) { _ in
-                            SkeletonCourseProgressCard()
-                        }
-                    } else {
-                        ForEach(self.listEnrollCourses, id: \._id) { enrollCourse in
-                            CourseCard(courseItem: enrollCourse)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) {
+                        if self.isLoading {
+                            ForEach(0 ..< 3) { _ in
+                                SkeletonCourseProgressCard()
+                            }
+                        } else {
+                            ForEach(self.listEnrollCourses, id: \._id) { enrollCourse in
+                                CourseCard(courseItem: enrollCourse)
+                            }
                         }
                     }
+                    .padding(.horizontal, 10)
                 }
-                .padding(.horizontal, 10)
             }
         }
     }
+}
+
+#Preview {
+    ProgressCourseView(listEnrollCourses: [], isLoading: .constant(false))
 }

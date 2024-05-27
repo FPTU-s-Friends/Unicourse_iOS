@@ -9,9 +9,7 @@ import SwiftUI
 
 struct SearchResultView: View {
     @Environment(\.dismiss) private var dismiss
-    @Binding var searchString: String
-    @Binding var isLoadingSearch: Bool
-    @Binding var listSearch: SearchResponseModel
+    @ObservedObject var viewModel: SearchEntryViewModel
     @State var tabSelection: Int = 0
     @State var isPresentedFilter = false
 
@@ -25,17 +23,17 @@ struct SearchResultView: View {
 
                 TabSelectionSearchView(tabSelection: $tabSelection, selectionButtons: ["Liên quan", "Mới nhất", "Giảm giá"])
                 TabView(selection: $tabSelection) {
-//                    Tab Liên quan
-                    RelatedResultTabView(isLoadingSearch: $isLoadingSearch, listSearch: $listSearch)
+                    // Tab Liên quan
+                    RelatedResultTabView(isLoadingSearch: $viewModel.isLoading, listSearch: $viewModel.listSearch, viewModel: viewModel)
                         .tag(0)
-//                    Tab Mới nhất
+                    // Tab Mới nhất
                     NewestResultTabView().tag(1)
-//                    Tab Giảm giá
+                    // Tab Giảm giá
                     SaleResultTabView().tag(2)
                 }
             }
         }
-        .searchable(text: $searchString, prompt: Text("Tìm Khoá Học"))
+        .searchable(text: $viewModel.searchString, prompt: Text("Tìm Khoá Học"))
         .navigationTitle("Tìm kiếm khoá học")
         .navigationBarTitleDisplayMode(.large)
         .sheet(isPresented: $isPresentedFilter) {
@@ -51,7 +49,6 @@ struct SearchResultView: View {
                 }
             }
         }
-
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -91,6 +88,6 @@ struct SearchResultView: View {
 
 #Preview {
     NavigationStack {
-        SearchResultView(searchString: .constant(""), isLoadingSearch: .constant(true), listSearch: .constant(.init(course: [], quiz: [], blog: [])))
+        SearchResultView(viewModel: SearchEntryViewModel())
     }
 }

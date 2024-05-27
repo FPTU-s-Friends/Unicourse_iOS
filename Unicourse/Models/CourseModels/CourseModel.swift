@@ -22,6 +22,7 @@ struct CourseModel: Codable {
     var enrollmentCount: Int
     var status: String?
     var type: CourseEnrollType
+    var amount: Int?
     var thumbnail: String
     var quiz: [QuizModel]?
     var lecture: LectureModel?

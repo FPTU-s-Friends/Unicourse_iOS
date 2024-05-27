@@ -13,12 +13,11 @@ struct AccountView: View {
 
     var body: some View {
         ZStack {
-            ScrollView {
-                VStack {
+            VStack {
+                HeaderAccountView()
+                    .padding(.trailing, 10)
+                ScrollView {
                     VStack {
-                        HeaderAccountView()
-                            .padding(.trailing, 10)
-
                         UserStatisticView()
 
                         AccountMenuView(menuItems: viewModel.menuItems)
@@ -28,11 +27,11 @@ struct AccountView: View {
                         Color.white
                             .frame(width: 360, height: 550)
                             .cornerRadius(20)
-                            .offset(y: 40)
+                            .offset(y: 20)
                     }
                 }
-                LoadingIndicatorView(isLoading: $appData.isLoading)
             }
+            LoadingIndicatorView(isLoading: $appData.isLoading)
         }
         .background {
             LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
