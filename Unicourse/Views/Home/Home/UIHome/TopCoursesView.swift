@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct TopCoursesView: View {
-    var freeCourses: [CourseModel]
-    @Binding var isLoadingFreeCourse: Bool
+    var searchCourses: [SearchCourseModel]
+    @Binding var isLoadingSearchCourse: Bool
+    var headerText: String
 
     var body: some View {
-        HeaderCategoryView(textCategory: HeaderCategoryText.topCourseText,
+        HeaderCategoryView(textCategory: headerText,
                            textButton: TextButton.viewMore,
                            action: {})
 
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                if self.isLoadingFreeCourse || self.freeCourses.isEmpty {
+                if self.isLoadingSearchCourse || self.searchCourses.isEmpty {
                     ForEach(0 ..< 3) { _ in
                         SkeletonCourseProgressCard()
                     }
                 } else {
-                    ForEach(freeCourses, id: \._id) { course in
+                    ForEach(searchCourses, id: \._id) { course in
                         NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                             ZStack {
                                 ZStack(alignment: .topTrailing) {
@@ -36,12 +37,13 @@ struct TopCoursesView: View {
                                     }
                                     
                                     VStack {
-                                        Text("Now")
+                                        Text("Hot")
                                             .font(.system(size: 12, weight: .semibold))
-                                            .foregroundStyle(.white)
+                                            .foregroundStyle(.black)
                                             .padding(5)
                                             .padding(.horizontal, 10)
-                                            .background(Color.activeColor.cornerRadius(10))
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(20)
                                     }
                                     .padding(.top, 10)
                                     .padding(.trailing, 10)
@@ -55,7 +57,7 @@ struct TopCoursesView: View {
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 20)
                                         
-                                        Text(course.lecture?.fullName ?? "Bố mày")
+                                        Text(course.lecture.fullName)
                                             .font(.system(size: 12, weight: .bold))
                                             .foregroundStyle(.black)
                                             .padding(6)
@@ -64,10 +66,10 @@ struct TopCoursesView: View {
                                         
                                         Spacer()
                                         
-                                        Text("01:42:56")
-                                            .font(.system(size: 10, weight: .light))
-                                            .foregroundStyle(.black)
-                                            .padding(6)
+                                        Text("\(course.type)")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundStyle(course.type == CourseEnrollType.free ? .green : .blue)
+                                            .padding(10)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
                                     }
@@ -93,5 +95,5 @@ struct TopCoursesView: View {
 }
 
 #Preview {
-    TopCoursesView(freeCourses: [], isLoadingFreeCourse: .constant(true))
+    TopCoursesView(searchCourses: [], isLoadingSearchCourse: .constant(true), headerText: HeaderCategoryText.topFreeCourse)
 }

@@ -10,33 +10,66 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var slideData = SlideData()
-    @Published var allFreeCourse: [CourseModel] = []
+    @Published var searchCourse: [SearchCourseModel] = []
     @Published var isLoadingListEnrolled = false
-    @Published var isLoadingAllFreeCourse = false
+    @Published var isLoadingSearchCourse = false
     @Published var isLoadingGetUser = false
+    @Published var isShowingAlert = false
     @Published var error = ""
     @Published var listEnrolledCourses: [EnrolledCourseModel] = []
     @Published var listLectures: [LectureModel] = []
+    var listFreeCourses: [SearchCourseModel] {
+        searchCourse.filter {
+            $0.type == CourseEnrollType.free
+        }
+    }
+
     private var hasFetched: Bool = false
 
-    func getAllFreeCourse(token: String) {
-        isLoadingAllFreeCourse = true
-        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
-            DispatchQueue.main.async {
+//    func getAllFreeCourse(token: String) {
+//        isLoadingAllFreeCourse = true
+//        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let response):
+//                    switch response.status {
+//                    case HTTPStatusCodes.OK.rawValue:
+//                        printJSONData(data: response)
+//                        self.allFreeCourse = response.data
+//                    default:
+//                        self.error = "Unexpected status code: \(response.status)"
+//                    }
+//
+//                case .failure(let error):
+//                    print(error)
+//                    self.error = error.localizedDescription
+//                }
+//                self.isLoadingAllFreeCourse = false
+//            }
+//        }
+//    }
+
+    func search(searchText: String, page: Int? = 1, limit: Int = 6) {
+        isLoadingSearchCourse = true
+        let pageToUse = page ?? currentPage
+
+        let params: [String: Any] = ["text": searchText, "page": pageToUse, "limit": limit]
+
+        NetworkManager.shared.callAPI2(path: APIPath.searchCourse.stringValue, method: .get, parameters: params, body: nil) {
+            (result: Result<CommonResponse<SearchResponseModel>, Error>) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 switch result {
                 case .success(let response):
-                    switch response.status {
-                    case HTTPStatusCodes.OK.rawValue:
-                        self.allFreeCourse = response.data
-                    default:
-                        self.error = "Unexpected status code: \(response.status)"
-                    }
+                    self.searchCourse = response.data.course
+                    self.currentPage = pageToUse
 
                 case .failure(let error):
-                    print(error)
                     self.error = error.localizedDescription
+                    self.isShowingAlert = true
+                    print(error)
                 }
-                self.isLoadingAllFreeCourse = false
+                self.isLoadingSearchCourse = false
             }
         }
     }
@@ -52,7 +85,6 @@ class HomeViewModel: ObservableObject {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.listEnrolledCourses = response.data
-                    self.logEnrolledCourses()
                 }
                 self.hasFetched = true
             case .failure(let error):
@@ -103,12 +135,6 @@ class HomeViewModel: ObservableObject {
             print("Error encoding parameters: \(error)")
             self.error = "Error preparing request" // Inform user about the issue
             isLoadingGetUser = false
-        }
-    }
-
-    private func logEnrolledCourses() {
-        for course in listEnrolledCourses {
-            print(course.trackProgress?.count)
         }
     }
 }
