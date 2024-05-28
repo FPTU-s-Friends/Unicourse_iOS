@@ -105,7 +105,6 @@ class NetworkManager {
 
         // Headers mặc định
         var defaultHeaders = ["Content-Type": "application/json"]
-
         // Hợp nhất headers mặc định với headers được truyền vào (nếu có)
         if let additionalHeaders = headers {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
