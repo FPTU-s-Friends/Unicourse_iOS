@@ -7,6 +7,20 @@
 
 import Foundation
 
+struct EnrollCourseNonDetail: Codable {
+    let _id: String
+    let title: String
+    let titleDescription: String
+    let thumbnail: String
+}
+
+struct EnrollCourse: Codable {
+    let _id: String
+    let courseId: EnrollCourseNonDetail
+    let completed: Bool
+    let enrollDate: String
+}
+
 struct UserInfoModel: Codable {
     let _id: String
     let email: String
@@ -14,7 +28,7 @@ struct UserInfoModel: Codable {
     let profileName: String?
     let dateOfBirth: Date?
     let password: String?
-    let enrollCourses: [String] // Assuming course IDs are strings
+    let enrollCourses: [EnrollCourse]? // Assuming course IDs are strings
     let role: UserRole
     let isCommentBlocked: Bool
     let isBlocked: Bool

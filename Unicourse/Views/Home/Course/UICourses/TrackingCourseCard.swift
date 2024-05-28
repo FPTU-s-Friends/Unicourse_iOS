@@ -117,9 +117,10 @@ struct TrackingCourseCard: View {
     }
 }
 
-// Sample Preview
-struct TrackingCourseCard_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackingCourseCard(enrollCourse: EnrolledCourseModel.sampleData)
-    }
-}
+//
+//// Sample Preview
+// struct TrackingCourseCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackingCourseCard(enrollCourse: EnrolledCourseModel.sampleData)
+//    }
+// }

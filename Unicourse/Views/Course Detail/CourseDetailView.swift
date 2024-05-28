@@ -22,7 +22,7 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button -  Favorite Button - Share Button
+                    // Go Back Button -   Favorite Button - Share Button
                     VStack {
                         if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
                             AsyncImage(url: url) { image in
@@ -77,6 +77,7 @@ struct CourseDetailView: View {
             .scrollIndicators(.hidden)
             .padding(.horizontal, 18)
 
+            // Check is enrolled
             VStack {
                 NavigationLink {
                     CourseVideoPlayerView(listTrack: vm.courseDetail?.tracks ?? [], title: vm.courseDetail?.title ?? "")
@@ -87,6 +88,7 @@ struct CourseDetailView: View {
             }
             .padding(.horizontal, 20)
             .background(.white)
+            // End Check is enrolled
 
             if vm.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))

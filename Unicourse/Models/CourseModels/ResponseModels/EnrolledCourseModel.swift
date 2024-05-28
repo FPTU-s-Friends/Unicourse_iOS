@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct TrackProgress: Codable {
+    var track: Track?
+    var completed: Bool?
+    var subTrackProgress: [SubTrackProgress]?
+}
+
 // C
 struct EnrolledCourseModel: Codable {
     var _id: String
@@ -15,15 +21,15 @@ struct EnrolledCourseModel: Codable {
     var completed: Bool
     var enrollDate: String
     var progress: Int
-    var trackProgress: [Track]?
+    var trackProgress: [TrackProgress]?
 
-    static var sampleData = EnrolledCourseModel(_id: "",
-                                                user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""),
-                                                course: CourseModel.sampleData,
-                                                completed: false,
-                                                enrollDate: "",
-                                                progress: 76,
-                                                trackProgress: [Track(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [])])
+//    static var sampleData = EnrolledCourseModel(_id: "",
+//                                                user: BasicUserInfo(_id: "", email: "", fullName: "", profileName: "", profile_image: ""),
+//                                                course: CourseModel.sampleData,
+//                                                completed: false,
+//                                                enrollDate: "",
+//                                                progress: 76,
+//                                                trackProgress: [Track(_id: "", courseId: "", position: 2, chapterTitle: "", track_steps: [])])
 }
 
 struct BasicUserInfo: Codable {

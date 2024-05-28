@@ -94,7 +94,7 @@ class NetworkManager {
         urlComponents.path = path
 
         // Add parameters if available
-        if let parameters = parameters {
+        if let parameters {
             urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         }
 

@@ -27,10 +27,10 @@ struct CourseVideoPlayerView: View {
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
                 .background(.gray.opacity(0.2))
 
-                // Head title
+                // Head  title
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
-                        // Chapter   Title
+                        // Chapter     Title
                         Text(vm.selectedTrack?.chapterTitle ?? "")
                             .font(.system(size: 18, weight: .semibold))
                         // Video Title
@@ -98,12 +98,6 @@ struct CourseVideoPlayerView: View {
                             .frame(width: 10, height: 18)
                             .padding(.horizontal, 15)
                     }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    HStack {
-                        Text(title)
-                        Image(systemName: "books.vertical.fill")
-                    }.foregroundStyle(Color.neutralTextColor)
                 }
             }
             .onAppear {
