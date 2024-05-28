@@ -24,7 +24,13 @@ struct CourseSemesterView: View {
                     } else {
                         ForEach(viewModel.listCourseSemester, id: \._id) { course in
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                                SearchResultItemView(title: course.title, description: course.titleDescription, thumbnail: course.thumbnail)
+                                SearchResultItemView(title: course.title,
+                                                     description: course.titleDescription,
+                                                     thumbnail: course.thumbnail,
+                                                     lectureName: course.lecture?.fullName ?? DefaultTextUser.defaultNameLecture,
+                                                     lectureImage: course.lecture?.profile_image ?? DefaultURL.defaultUserURL,
+                                                     courseType: course.type,
+                                                     courseAmount: course.amount ?? 0)
                             }
                         }
                     }

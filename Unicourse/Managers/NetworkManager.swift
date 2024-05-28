@@ -85,9 +85,7 @@ class NetworkManager {
 //        "Accept": "application/json"
 //    ]
 
-    func callAPI2<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: String]? = nil, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
-        print(path)
-
+    func callAPI2<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, body: Data?, completion: @escaping (Result<T, Error>) -> Void) {
         guard var urlComponents = URLComponents(string: baseURL) else {
             completion(.failure(NSError(domain: "Invalid Base URL", code: 0, userInfo: nil)))
             return
@@ -97,7 +95,7 @@ class NetworkManager {
 
         // Add parameters if available
         if let parameters = parameters {
-            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         }
 
         guard let url = urlComponents.url else {

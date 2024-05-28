@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountMenuView: View {
     @EnvironmentObject var appData: AppData
-    @Binding var menuItems: [MenuItem]
+    var menuItems: [MenuItem]
     @State private var showAlert = false
     @State private var isLoggedOut = false
 
@@ -109,7 +109,7 @@ struct AccountMenuView: View {
                 ContentView()
             })
         }
-        .padding(.horizontal, 40)
+        .padding(.horizontal, 30)
     }
 
     func SignOut() {
@@ -134,5 +134,5 @@ struct AccountMenuView: View {
 }
 
 #Preview {
-    AccountMenuView(menuItems: .constant(AccountViewModel().menuItems))
+    AccountMenuView(menuItems: AccountViewModel().menuItems)
 }

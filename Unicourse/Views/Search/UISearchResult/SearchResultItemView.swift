@@ -5,18 +5,23 @@
 //  Created by Trung Kiên Nguyễn on 17/5/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct SearchResultItemView: View {
     var title: String
     var description: String
     var thumbnail: String
+    var lectureName: String
+    var lectureImage: String
+    var courseType: CourseEnrollType
+    var courseAmount: Int
     
     var body: some View {
         ZStack(alignment: .top) {
             VStack(alignment: .leading) {
                 VStack {
-                    AsyncImage(url: URL(string: thumbnail)) { image in
+                    WebImage(url: URL(string: thumbnail)) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -34,7 +39,7 @@ struct SearchResultItemView: View {
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        AsyncImage(url: URL(string: DefaultURL.defaultUserURL)) { image in
+                        WebImage(url: URL(string: lectureImage)) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 23, height: 23)
@@ -43,7 +48,7 @@ struct SearchResultItemView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                        Text("\(DefaultTextUser.defaultNameLecture)")
+                        Text("\(lectureName)")
                             .font(.system(size: 10, weight: .medium))
                             .multilineTextAlignment(.leading)
                             .lineLimit(1)
@@ -60,19 +65,31 @@ struct SearchResultItemView: View {
                         .padding(.horizontal, 15)
                     
                     Spacer()
-                    HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text("229.000 vnđ")
-                            .font(.system(size: 12, weight: .bold))
-                            .lineSpacing(20)
-                            .foregroundColor(.mainColor1)
-                        Text("339.000 vnđ")
-                            .font(.system(size: 10))
-                            .lineSpacing(20)
-                            .strikethrough()
-                            .foregroundColor(.gray)
+                    
+                    if courseType == .free {
+                        HStack {
+                            Text("Free")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundStyle(.green)
+                        }
+                        .padding(.horizontal, 15)
+                        .padding(.bottom, 10)
+                       
+                    } else if courseType == .fee {
+                        HStack(alignment: .firstTextBaseline, spacing: 4) {
+                            Text("\(courseAmount)")
+                                .font(.system(size: 12, weight: .bold))
+                                .lineSpacing(20)
+                                .foregroundColor(.mainColor1)
+                            Text("\(courseAmount + 20000)")
+                                .font(.system(size: 10))
+                                .lineSpacing(20)
+                                .strikethrough()
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.horizontal, 15)
+                        .padding(.bottom, 10)
                     }
-                    .padding(.horizontal, 15)
-                    .padding(.bottom, 10)
                 }
                 
                 RatingStars(rating: 4)
@@ -86,5 +103,5 @@ struct SearchResultItemView: View {
 }
 
 #Preview {
-    SearchResultItemView(title: "", description: "", thumbnail: "")
+    SearchResultItemView(title: "", description: "", thumbnail: "", lectureName: "", lectureImage: "", courseType: .free, courseAmount: 0)
 }

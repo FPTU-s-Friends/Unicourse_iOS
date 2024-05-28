@@ -55,7 +55,6 @@ struct SemesterChosenView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 20)
             }
         }
     }

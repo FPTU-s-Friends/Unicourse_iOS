@@ -29,12 +29,8 @@ struct SearchEntryView: View {
         .padding(10)
         .background(Color.mainBackgroundColor)
         .navigationDestination(isPresented: $viewModel.isNavigateToResultView) {
-            SearchResultView(
-                searchString: $viewModel.searchString,
-                isLoadingSearch: $viewModel.isLoading,
-                listSearch: $viewModel.listSearch
-            )
-            .navigationBarBackButtonHidden(true)
+            SearchResultView(viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
         }
         .onAppear {
             if !isLoadingFirstTime {

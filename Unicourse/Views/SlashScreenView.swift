@@ -16,10 +16,10 @@ struct SlashScreenView: View {
 //            LoadingIndicatorView(isLoading: .constant(true))
 //                .padding(.top, 400)
 
-            Image("mainIconApp")
+            Image(.appIcon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 80)
+                .frame(width: 100)
                 .padding(.bottom, 50)
         }
     }

@@ -27,7 +27,7 @@ struct CourseVideoPlayerView: View {
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
                 .background(.gray.opacity(0.2))
 
-                // Head title
+                // Head  title
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
                         // Chapter   Title

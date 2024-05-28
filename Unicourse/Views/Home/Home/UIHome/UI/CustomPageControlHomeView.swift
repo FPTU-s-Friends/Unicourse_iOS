@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomPageControlHomeView: View {
     var numberOfPages: Int
     @Binding var currentPage: Int
+    @State private var timer: Timer?
 
     let dotHeight: CGFloat = 4
     let dotSpacing: CGFloat = 10
@@ -32,6 +33,26 @@ struct CustomPageControlHomeView: View {
         }
         .frame(height: 5)
         .padding(.horizontal, 20)
+        .onAppear {
+            startTimer()
+        }
+        .onDisappear {
+            stopTimer()
+        }
+    }
+
+    private func startTimer() {
+        withAnimation(.easeInOut(duration: 1)) {
+            timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+                // Update currentPage to next index
+                currentPage = (currentPage + 1) % numberOfPages
+            }
+        }
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }
 
