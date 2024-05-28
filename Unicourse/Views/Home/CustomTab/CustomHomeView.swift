@@ -50,8 +50,8 @@ struct CustomHomeView: View {
             TabShape(midPoint: tabShapePosition.x)
                 .fill(Color.mainBackgroundColor)
                 .ignoresSafeArea()
-                .shadow(color: tint.opacity(0.2), radius: 5, x: 0, y: -5)
-                .blur(radius: 2)
+                .shadow(color: tint.opacity(0.2), radius: 5, x: 0, y: -2)
+                .blur(radius: 1)
         }
     }
 }

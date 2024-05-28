@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TopCoursesView: View {
-    var freeCourses: [CourseModel]
-    @Binding var isLoadingFreeCourse: Bool
+    var searchCourses: [SearchCourseModel]
+    @Binding var isLoadingSearchCourse: Bool
 
     var body: some View {
         HeaderCategoryView(textCategory: HeaderCategoryText.topCourseText,
@@ -18,12 +18,12 @@ struct TopCoursesView: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                if self.isLoadingFreeCourse || self.freeCourses.isEmpty {
+                if self.isLoadingSearchCourse || self.searchCourses.isEmpty {
                     ForEach(0 ..< 3) { _ in
                         SkeletonCourseProgressCard()
                     }
                 } else {
-                    ForEach(freeCourses, id: \._id) { course in
+                    ForEach(searchCourses, id: \._id) { course in
                         NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                             ZStack {
                                 ZStack(alignment: .topTrailing) {
@@ -55,7 +55,7 @@ struct TopCoursesView: View {
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 20)
                                         
-                                        Text(course.lecture?.fullName ?? "Bố mày")
+                                        Text(course.lecture.fullName)
                                             .font(.system(size: 12, weight: .bold))
                                             .foregroundStyle(.black)
                                             .padding(6)
@@ -93,5 +93,5 @@ struct TopCoursesView: View {
 }
 
 #Preview {
-    TopCoursesView(freeCourses: [], isLoadingFreeCourse: .constant(true))
+    TopCoursesView(searchCourses: [], isLoadingSearchCourse: .constant(true))
 }
