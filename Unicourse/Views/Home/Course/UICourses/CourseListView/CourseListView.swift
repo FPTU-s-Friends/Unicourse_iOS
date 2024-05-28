@@ -53,6 +53,6 @@ struct CourseListView: View {
     }
 }
 
-#Preview {
-    CourseListView(courseItem: EnrolledCourseModel.sampleData)
-}
+//#Preview {
+//    CourseListView(courseItem: EnrolledCourseModel.sampleData)
+//}

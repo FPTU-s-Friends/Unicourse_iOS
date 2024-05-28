@@ -23,7 +23,6 @@ class CourseViewModel: ObservableObject {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.listEnrolledCourses = response.data
-//                    self.logEnrolledCourses()
                 }
                 self.hasFetched = true
             case .failure(let error):
@@ -35,7 +34,7 @@ class CourseViewModel: ObservableObject {
 
     private func logEnrolledCourses() {
         for course in listEnrolledCourses {
-            print(course.trackProgress?.count)
+            print(course.trackProgress?[0].track?.chapterTitle)
         }
     }
 }
