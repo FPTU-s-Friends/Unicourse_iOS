@@ -10,6 +10,7 @@ import Foundation
 enum APICoursePath {
     case getEnrolledCourseByUserId(userId: String)
     case getDetailCourseById(courseId: String)
+    case enrollNewCourse(courseId: String)
 
     // API String returned
     var endPointValue: String {
@@ -18,6 +19,8 @@ enum APICoursePath {
             "/api/user/\(userId)/get-enrolled-course"
         case .getDetailCourseById(courseId: let courseId):
             "/api/course/\(courseId)"
+        case .enrollNewCourse(courseId: let courseId):
+            "/api/course/\(courseId)/enroll-course"
         }
     }
 }

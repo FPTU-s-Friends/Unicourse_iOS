@@ -15,6 +15,12 @@ struct CourseDetailView: View {
     @State private var tabSelection = 0
     var courseId: String
 
+    var isEnrolled: Bool {
+        appData.userInfo?.enrollCourses?.contains { course_enrolled in
+            course_enrolled.courseId._id == courseId
+        } ?? false
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Rectangle()
@@ -22,7 +28,7 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button -   Favorite Button - Share Button
+                    // Go Back Button -    Favorite Button - Share Button
                     VStack {
                         if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
                             AsyncImage(url: url) { image in
@@ -78,16 +84,33 @@ struct CourseDetailView: View {
             .padding(.horizontal, 18)
 
             // Check is enrolled
-            VStack {
-                NavigationLink {
-                    CourseVideoPlayerView(listTrack: vm.courseDetail?.tracks ?? [], title: vm.courseDetail?.title ?? "")
-                        .navigationBarBackButtonHidden(true)
-                } label: {
-                    ButtonGradientUI(titleButton: "Bắt đầu học")
+
+            if isEnrolled {
+                VStack {
+                    NavigationLink {
+                        CourseVideoPlayerView(listTrack: vm.courseDetail?.tracks ?? [], title: vm.courseDetail?.title ?? "")
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        ButtonGradientUI(titleButton: "Bắt đầu học")
+                    }
                 }
+                .padding(.horizontal, 20)
+                .background(.white)
+
+            } else {
+                VStack {
+                    Button {
+                        print("123")
+                    } label: {
+                        HStack {
+                            Text("123")
+                            ButtonGradientUI(titleButton: "Mua ngay")
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+                .background(.white)
             }
-            .padding(.horizontal, 20)
-            .background(.white)
             // End Check is enrolled
 
             if vm.isLoading {
@@ -96,6 +119,7 @@ struct CourseDetailView: View {
         }
         .onAppear {
             vm.fetchCourseDetailById(courseId: courseId)
+            printJSONData(data: appData.userInfo?.enrollCourses)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
