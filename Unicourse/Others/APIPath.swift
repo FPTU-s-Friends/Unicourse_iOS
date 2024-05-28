@@ -10,9 +10,10 @@ import Foundation
 enum APIPath {
     case signIn
     case signUp
+    case getUsers
+    case getUserInfo
     case getAllFreeCourse
     case getCourseSemester
-    case getUsers
     case searchCourse
 
     var stringValue: String {
@@ -21,6 +22,8 @@ enum APIPath {
             "/api/auth/signIn"
         case .signUp:
             "/api/auth/signUp"
+        case .getUserInfo:
+            "/api/user"
         case .getAllFreeCourse:
             "/api/course/free-course"
         case .getCourseSemester:

@@ -11,6 +11,7 @@ import JWTDecode
 
 class AppData: ObservableObject {
     @Published var user: UserProfile?
+    @Published var userInfo: UserInfoModel?
     @Published var token: String
     @Published var isShowingAlert = false
     @Published var isLoading = false
@@ -39,6 +40,8 @@ class AppData: ObservableObject {
 
                 // Updating the user profile in appData
                 self.user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: UserRole(rawValue: role) ?? .student)
+
+                self.getUserInfo(userId: userId, token: token)
             } catch {
                 print(error)
             }
@@ -65,14 +68,41 @@ class AppData: ObservableObject {
             isLoggedIn = true
             NetworkManager.shared.signIn(email: email) { result in
                 switch result {
-                    case let .success(data):
-                        let accessToken = data.data.accessToken.split(separator: " ")[1]
-                        self.token = String(accessToken)
-                        self.decodeJWTTokenAndSetUserProfile(token: String(accessToken))
-                    case let .failure(error):
-                        self.isShowingAlert = true
-                        self.error = error.localizedDescription
+                case let .success(data):
+                    let accessToken = data.data.accessToken.split(separator: " ")[1]
+                    self.token = String(accessToken)
+                    self.decodeJWTTokenAndSetUserProfile(token: String(accessToken))
+
+                case let .failure(error):
+                    self.isShowingAlert = true
+                    self.error = error.localizedDescription
                 }
+            }
+        }
+    }
+
+    func getUserInfo(userId: String, token: String) {
+        isLoading = true
+        NetworkManager.shared.callAPI2(path: "\(APIPath.getUserInfo.stringValue)/\(userId)", method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) {
+            (result: Result<CommonResponse<UserInfoModel>, Error>) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case let .success(response):
+                    switch response.status {
+                    case HTTPStatusCodes.OK.rawValue:
+                        printJSONData(data: response.data)
+                        self.userInfo = response.data
+
+                    default:
+                        print("Get User Info Error")
+                    }
+                case let .failure(error):
+                    self.error = error.localizedDescription
+                    self.isShowingAlert = true
+                    print(error)
+                }
+                self.isLoading = false
             }
         }
     }

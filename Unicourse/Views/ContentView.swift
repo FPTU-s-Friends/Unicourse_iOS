@@ -21,6 +21,11 @@ struct ContentView: View {
                 }
             }
         }
+        .onAppear {
+            guard appData.isLoggedIn else { return }
+            guard let userId = appData.user?.userId else { return }
+            appData.getUserInfo(userId: userId, token: appData.token)
+        }
     }
 }
 
