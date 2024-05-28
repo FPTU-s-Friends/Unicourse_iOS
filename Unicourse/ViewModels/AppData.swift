@@ -91,7 +91,7 @@ class AppData: ObservableObject {
                 case let .success(response):
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
-                        printJSONData(data: response.data)
+//                        printJSONData(data: response.data)
                         self.userInfo = response.data
 
                     default:
