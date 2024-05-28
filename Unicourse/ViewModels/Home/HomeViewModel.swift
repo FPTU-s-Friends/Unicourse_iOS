@@ -18,6 +18,12 @@ class HomeViewModel: ObservableObject {
     @Published var error = ""
     @Published var listEnrolledCourses: [EnrolledCourseModel] = []
     @Published var listLectures: [LectureModel] = []
+    var listFreeCourses: [SearchCourseModel] {
+        searchCourse.filter {
+            $0.type == CourseEnrollType.free
+        }
+    }
+
     private var hasFetched: Bool = false
 
 //    func getAllFreeCourse(token: String) {

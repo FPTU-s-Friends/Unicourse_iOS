@@ -10,9 +10,10 @@ import SwiftUI
 struct TopCoursesView: View {
     var searchCourses: [SearchCourseModel]
     @Binding var isLoadingSearchCourse: Bool
+    var headerText: String
 
     var body: some View {
-        HeaderCategoryView(textCategory: HeaderCategoryText.topCourseText,
+        HeaderCategoryView(textCategory: headerText,
                            textButton: TextButton.viewMore,
                            action: {})
 
@@ -36,12 +37,13 @@ struct TopCoursesView: View {
                                     }
                                     
                                     VStack {
-                                        Text("Now")
+                                        Text("Hot")
                                             .font(.system(size: 12, weight: .semibold))
-                                            .foregroundStyle(.white)
+                                            .foregroundStyle(.black)
                                             .padding(5)
                                             .padding(.horizontal, 10)
-                                            .background(Color.activeColor.cornerRadius(10))
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(20)
                                     }
                                     .padding(.top, 10)
                                     .padding(.trailing, 10)
@@ -64,10 +66,10 @@ struct TopCoursesView: View {
                                         
                                         Spacer()
                                         
-                                        Text("01:42:56")
-                                            .font(.system(size: 10, weight: .light))
-                                            .foregroundStyle(.black)
-                                            .padding(6)
+                                        Text("\(course.type)")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundStyle(course.type == CourseEnrollType.free ? .green : .blue)
+                                            .padding(10)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
                                     }
@@ -93,5 +95,5 @@ struct TopCoursesView: View {
 }
 
 #Preview {
-    TopCoursesView(searchCourses: [], isLoadingSearchCourse: .constant(true))
+    TopCoursesView(searchCourses: [], isLoadingSearchCourse: .constant(true), headerText: HeaderCategoryText.topFreeCourse)
 }

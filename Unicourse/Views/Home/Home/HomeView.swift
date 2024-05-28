@@ -60,7 +60,10 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Khoá học nổi bật
-                    TopCoursesView(searchCourses: viewModel.searchCourse, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse)
+                    TopCoursesView(searchCourses: viewModel.searchCourse, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topCourseText)
+                        .padding(.bottom, 10)
+
+                    TopCoursesView(searchCourses: viewModel.listFreeCourses, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topFreeCourse)
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
