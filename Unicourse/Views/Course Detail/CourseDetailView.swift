@@ -98,14 +98,15 @@ struct CourseDetailView: View {
                 .background(.white)
 
             } else {
-                VStack {
+                HStack(alignment: .center) {
+                    Text(vm.courseDetail?.type == .free ? "Miễn Phí" : "Loading")
+                        .font(.system(size: 25, weight: .bold))
+                        .padding(.top, 10)
+
                     Button {
                         print("123")
                     } label: {
-                        HStack {
-                            Text("123")
-                            ButtonGradientUI(titleButton: "Mua ngay")
-                        }
+                        ButtonGradientUI(titleButton: "Tham gia ngay")
                     }
                 }
                 .padding(.horizontal, 20)
