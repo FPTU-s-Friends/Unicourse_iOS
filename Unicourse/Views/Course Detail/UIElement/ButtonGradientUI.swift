@@ -12,7 +12,7 @@ struct ButtonGradientUI: View {
 
     var body: some View {
         Text(titleButton)
-            .font(.system(size: 14, weight: .medium))
+            .font(.system(size: 16, weight: .medium))
             .frame(maxWidth: .infinity, minHeight: 50)
             .foregroundStyle(.white)
             .background(LinearGradient(
