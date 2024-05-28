@@ -16,7 +16,7 @@ struct RelatedResultTabView: View {
     var body: some View {
         VStack {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 20)], spacing: 10) {
                     if isLoadingSearch {
                         ForEach(0 ..< 6) { _ in
                             SkeletonGridCourseView()
@@ -43,6 +43,9 @@ struct RelatedResultTabView: View {
                     }
                 }
                 .padding()
+            }
+            .background {
+                Color.mainBackgroundColor
             }
             if viewModel.isLoadingMore {
                 ProgressView()

@@ -31,15 +31,15 @@ struct TopCoursesView: View {
                                     AsyncImage(url: URL(string: course.thumbnail)!) { image in
                                         image.resizable()
                                             .aspectRatio(contentMode: .fill)
-                                        
+
                                     } placeholder: {
                                         ProgressView()
                                     }
-                                    
+
                                     VStack {
                                         Text("Hot")
                                             .font(.system(size: 12, weight: .semibold))
-                                            .foregroundStyle(.black)
+                                            .foregroundStyle(.red.gradient)
                                             .padding(5)
                                             .padding(.horizontal, 10)
                                             .background(.ultraThinMaterial)
@@ -48,7 +48,7 @@ struct TopCoursesView: View {
                                     .padding(.top, 10)
                                     .padding(.trailing, 10)
                                 }
-                                
+
                                 VStack(alignment: .leading) {
                                     Spacer()
                                     HStack {
@@ -56,24 +56,27 @@ struct TopCoursesView: View {
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 20)
-                                        
+
                                         Text(course.lecture.fullName)
                                             .font(.system(size: 12, weight: .bold))
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(1)
+                                            .frame(maxWidth: 100)
                                             .foregroundStyle(.black)
                                             .padding(6)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
-                                        
+
                                         Spacer()
-                                        
-                                        Text("\(course.type)")
+
+                                        Text("\(course.type == .free ? "Free" : "Paid")")
                                             .font(.system(size: 12, weight: .semibold))
-                                            .foregroundStyle(course.type == CourseEnrollType.free ? .green : .blue)
-                                            .padding(10)
+                                            .foregroundStyle(course.type == CourseEnrollType.free ? Color.green.gradient : Color.blue.gradient)
+                                            .padding(5)
                                             .background(.ultraThinMaterial)
                                             .cornerRadius(10)
                                     }
-                                    
+
                                     Text(course.title)
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundStyle(.white)
