@@ -32,6 +32,17 @@ class CourseDetailViewModel: ObservableObject {
         }
     }
 
+    func enrolledNewCourse(courseId: String, token: String) {
+        NetworkManager.shared.callAPI(path: APICoursePath.enrollNewCourse(courseId: courseId).endPointValue, method: .post, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<EnrolledNewCourseModel>, Error>) in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+
     private func logEnrolledCourses() {
         if courseDetail != nil {
             print(courseDetail?.lecture)
