@@ -17,7 +17,7 @@ struct SubTrackId: Codable {
 }
 
 struct SubTrackProgress: Codable {
-    var _id: Int?
+    var _id: String?
     var subTrackId: SubTrackId
     var completed: Bool
 }

@@ -99,12 +99,6 @@ struct CourseVideoPlayerView: View {
                             .padding(.horizontal, 15)
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    HStack {
-                        Text(title)
-                        Image(systemName: "books.vertical.fill")
-                    }.foregroundStyle(Color.neutralTextColor)
-                }
             }
             .onAppear {
                 if !listTrack.isEmpty {

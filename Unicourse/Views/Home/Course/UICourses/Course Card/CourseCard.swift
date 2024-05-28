@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct CourseCard: View {
+    @EnvironmentObject var appData: AppData
     private let totalPercentageProcess: Double = 100
     let courseItem: EnrolledCourseModel
+
+    var listTrack: [Track] {
+        courseItem.trackProgress?.map { item in
+            item.track!
+        } ?? []
+    }
 
     var body: some View {
         VStack(spacing: 13) {
@@ -61,10 +68,10 @@ struct CourseCard: View {
                 Spacer()
 
                 // If this course same id with enrolled course => navigate to streaming video
-                NavigationLink(destination:
-                    CourseDetailView(courseId: courseItem.course?._id ?? CourseModel.sampleData._id)
-                        .navigationBarBackButtonHidden(true),
 
+                NavigationLink(destination:
+                    CourseVideoPlayerView(listTrack: listTrack, title: courseItem.course?.subTitle ?? "")
+                        .navigationBarBackButtonHidden(true),
                     label: {
                         Text("Tiếp tục")
                             .font(.system(size: 12, weight: .medium))

@@ -78,7 +78,6 @@ struct CourseDetailView: View {
             .padding(.horizontal, 18)
 
             // Check is enrolled
-
             VStack {
                 NavigationLink {
                     CourseVideoPlayerView(listTrack: vm.courseDetail?.tracks ?? [], title: vm.courseDetail?.title ?? "")
@@ -89,8 +88,8 @@ struct CourseDetailView: View {
             }
             .padding(.horizontal, 20)
             .background(.white)
-
             // End Check is enrolled
+
             if vm.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
