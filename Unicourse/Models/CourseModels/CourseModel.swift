@@ -28,8 +28,8 @@ struct CourseModel: Codable {
     var quiz: [QuizModel]?
     var lecture: LectureModel?
     var semester_number: Int?
-    var created_at: String
-    var updated_at: String
+    var created_at: String?
+    var updated_at: String?
 
     static var sampleData = CourseModel(
         _id: "course123",

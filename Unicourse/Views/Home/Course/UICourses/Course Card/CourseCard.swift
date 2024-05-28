@@ -59,6 +59,8 @@ struct CourseCard: View {
                         .foregroundStyle(Color(hex: "#8D8A8A"))
                 }
                 Spacer()
+
+                // If this course same id with enrolled course => navigate to streaming video
                 NavigationLink(destination:
                     CourseDetailView(courseId: courseItem.course?._id ?? CourseModel.sampleData._id)
                         .navigationBarBackButtonHidden(true),
@@ -71,6 +73,8 @@ struct CourseCard: View {
                             .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom))
                             .clipShape(RoundedRectangle(cornerRadius: 7.0))
                     })
+
+                // End: If this course same id with enrolled course => navigate to streaming video
             }
         }
         .padding(14)

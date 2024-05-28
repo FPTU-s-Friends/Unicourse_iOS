@@ -30,7 +30,7 @@ struct CourseVideoPlayerView: View {
                 // Head  title
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10) {
-                        // Chapter    Title
+                        // Chapter     Title
                         Text(vm.selectedTrack?.chapterTitle ?? "")
                             .font(.system(size: 18, weight: .semibold))
                         // Video Title
