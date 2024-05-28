@@ -3,7 +3,7 @@
 //  Unicourse
 //
 //  Created by Minh Trần Quang on 9/5/24.
-//
+// 
 
 import SwiftUI
 
@@ -22,7 +22,7 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button -   Favorite Button - Share Button
+                    // Go Back Button -    Favorite Button - Share Button
                     VStack {
                         if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
                             AsyncImage(url: url) { image in
