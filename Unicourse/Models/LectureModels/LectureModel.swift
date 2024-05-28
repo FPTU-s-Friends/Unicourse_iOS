@@ -13,12 +13,21 @@ struct Feedback: Codable {
     var rating: Int
     var course_id: String?
     var user_id: BasicUserInfo?
-    var status: String
+    var status: String?
+}
+
+struct my_courses_user: Codable {
+    var _id: String
+    var title: String
+    var thumbnail: String
+    var semester_number: Int
 }
 
 struct Lecture_Info: Codable {
     var _id: String
+//    var my_course: [my_courses_user]?
     var description: String?
+    var feedback: [Feedback]?
 }
 
 struct LectureModel: Codable {

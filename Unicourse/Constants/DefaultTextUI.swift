@@ -12,6 +12,7 @@ enum HeaderCategoryText {
     static var topCourseText = "Khoá học nổi bật"
     static var progressText = "Tiến trình"
     static var headerSemesterText = "Danh Mục"
+    static var topFreeCourse = "Khoá học miễn phí"
 }
 
 enum TextButton {

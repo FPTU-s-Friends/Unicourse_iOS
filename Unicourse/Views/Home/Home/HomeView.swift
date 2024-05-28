@@ -60,7 +60,10 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Khoá học nổi bật
-                    TopCoursesView(freeCourses: viewModel.allFreeCourse, isLoadingFreeCourse: $viewModel.isLoadingAllFreeCourse)
+                    TopCoursesView(searchCourses: viewModel.searchCourse, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topCourseText)
+                        .padding(.bottom, 10)
+
+                    TopCoursesView(searchCourses: viewModel.listFreeCourses, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topFreeCourse)
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
@@ -89,7 +92,8 @@ struct HomeView: View {
     }
 
     func refreshData() {
-        viewModel.getAllFreeCourse(token: appData.token)
+//        viewModel.getAllFreeCourse(token: appData.token)
+        viewModel.search(searchText: "")
         viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
