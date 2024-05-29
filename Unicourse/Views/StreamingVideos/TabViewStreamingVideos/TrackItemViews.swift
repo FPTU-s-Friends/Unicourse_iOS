@@ -10,9 +10,6 @@ import SwiftUI
 struct TrackItemViews: View {
     @ObservedObject var vm: StreamingVideoViewModel
     var track_item: Track
-    var isSelected: Bool {
-        vm.selectedTrack?._id == track_item._id
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -29,17 +26,23 @@ struct TrackItemViews: View {
             .padding(.vertical, 15)
 
             ForEach(track_item.track_steps ?? [], id: \._id) { track_step in
+
+                var isSelected: Bool {
+                    vm.selectedTrack?._id == track_step._id
+                }
+
                 LazyVStack(spacing: 0) {
                     HStack {
                         HStack(spacing: 20) {
                             Text("\(track_step.position)")
-                                .font(.system(size: 18, weight: isSelected ? .bold : .regular))
+                                .font(.system(size: 16, weight: isSelected ? .bold : .regular))
 
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(track_step.title)
-                                    .font(.system(size: 16, weight: isSelected ? .bold : .regular))
+                                    .font(.system(size: 14, weight: isSelected ? .bold : .regular))
+
                                 Text("Độ dài video - \(convertMinutesToString(minutes: track_step.duration))")
-                                    .font(.system(size: 12, weight: .regular))
+                                    .font(.system(size: 10, weight: .regular))
                                     .foregroundStyle(Color.neutralTextColor)
                             }
                         }
@@ -52,12 +55,11 @@ struct TrackItemViews: View {
                     .background(isSelected ? Color(hex: "#eef0ff") : .white)
                 }
                 .onTapGesture {
-                    vm.setSelectedTrack(newTrack: track_item)
+                    vm.setSelectedTrack(newTrack: track_step)
                     vm.getCurrentTrack()
                 }
             }
         }
-
         .frame(maxWidth: .infinity)
     }
 }

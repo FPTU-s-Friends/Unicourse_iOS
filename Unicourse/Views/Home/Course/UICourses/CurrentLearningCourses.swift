@@ -104,7 +104,7 @@ func AllCourseView() -> some View {
     Text("All courses appears here")
 }
 
-//#Preview {
+// #Preview {
 //    CurrentLearningCourses(showingCredits: .constant(false),
 //                           listEnrolledCourses: [EnrolledCourseModel.sampleData], isLoadSkeleton: true)
-//}
+// }

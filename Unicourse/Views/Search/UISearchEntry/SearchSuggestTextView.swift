@@ -5,18 +5,19 @@
 //  Created by Trung Kiên Nguyễn on 24/5/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct SearchSuggestTextView: View {
-    @Binding var searchText: String
-    var suggestions: [SearchSuggestModel]
     @State private var showAllSuggestions = false
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @ObservedObject var viewModel: SearchEntryViewModel
+    @State private var navigateToResultView = false
 
     var body: some View {
-        if !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
+        if !viewModel.searchString.trimmingCharacters(in: .whitespaces).isEmpty {
             VStack(spacing: 8) {
-                ForEach(suggestions.indices, id: \.self) { index in
+                ForEach(viewModel.listSuggestCourse.indices, id: \.self) { index in
                     if !showAllSuggestions && index == 8 {
                         Button(action: {
                             withAnimation {
@@ -32,12 +33,11 @@ struct SearchSuggestTextView: View {
                     }
                     if showAllSuggestions || index < 8 {
                         Button(action: {
-                            withAnimation {
-                                searchText = suggestions[index].searchString
-                            }
+                            viewModel.searchString = viewModel.listSuggestCourse[index].searchString
+                            navigateToResultView = true
                         }) {
                             HStack {
-                                Text(suggestions[index].searchString)
+                                Text(viewModel.listSuggestCourse[index].searchString)
                                     .font(.system(size: 14, weight: .semibold))
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(1)
@@ -45,7 +45,7 @@ struct SearchSuggestTextView: View {
                                     .lineSpacing(20)
                                 Spacer()
 
-                                AsyncImage(url: URL(string: suggestions[index].urlImage)) { image in
+                                WebImage(url: URL(string: viewModel.listSuggestCourse[index].urlImage)) { image in
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
@@ -61,15 +61,14 @@ struct SearchSuggestTextView: View {
                 }
             }
             .padding(.top, 8)
+            .navigationDestination(isPresented: $navigateToResultView) {
+                SearchResultView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
+            }
         }
     }
 }
 
 #Preview {
-    SearchSuggestTextView(searchText: .constant("zxc"), suggestions: [
-        SearchSuggestModel(searchString: "MAD", urlImage: "https://firebasestorage.googleapis.com/v0/b/unicourse-f4020.appspot.com/o/Course%2FCN8%2FPRM392.png?alt=media&token=a2164ded-1dc9-47c6-b952-b499872868b4"),
-        SearchSuggestModel(searchString: "Hoang NT", urlImage: "https://firebasestorage.googleapis.com/v0/b/unicourse-f4020.appspot.com/o/Course%2FCN8%2FPRM392.png?alt=media&token=a2164ded-1dc9-47c6-b952-b499872868b4"),
-        SearchSuggestModel(searchString: "UI Design for beginner", urlImage: "https://firebasestorage.googleapis.com/v0/b/unicourse-f4020.appspot.com/o/Course%2FCN8%2FPRM392.png?alt=media&token=a2164ded-1dc9-47c6-b952-b499872868b4"),
-        SearchSuggestModel(searchString: "Cấu trúc dữ liệu và giải thuật", urlImage: "https://firebasestorage.googleapis.com/v0/b/unicourse-f4020.appspot.com/o/Course%2FCN8%2FPRM392.png?alt=media&token=a2164ded-1dc9-47c6-b952-b499872868b4")
-    ])
+    SearchSuggestTextView(viewModel: SearchEntryViewModel())
 }

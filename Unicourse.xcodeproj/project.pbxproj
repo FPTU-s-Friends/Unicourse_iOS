@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B50030C12BFF65C000508314 /* SkeletonLectureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */; };
 		B50030C32BFF67DA00508314 /* SkeletonBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */; };
+		B50906DC2C07476E005B334A /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50906DB2C07476E005B334A /* AddToCartButton.swift */; };
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
 		B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725F2BFE05F400D3B549 /* TrackModel.swift */; };
@@ -168,6 +169,7 @@
 /* Begin PBXFileReference section */
 		B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureInfo.swift; sourceTree = "<group>"; };
 		B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBasicInfo.swift; sourceTree = "<group>"; };
+		B50906DB2C07476E005B334A /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		B50A725F2BFE05F400D3B549 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				B5898FA02BEE094A00C315B8 /* LectureInfo.swift */,
 				B5898FA22BEE0A5A00C315B8 /* DetailInformationCourse.swift */,
 				B5898FA62BEE106400C315B8 /* CustomProcessRating.swift */,
+				B50906DB2C07476E005B334A /* AddToCartButton.swift */,
 			);
 			path = UIElement;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */,
 				C56749752BE8CB7100DA6A58 /* HeaderButtonView.swift in Sources */,
 				C5688C622C042C3F003669C0 /* SaleResultTabView.swift in Sources */,
+				B50906DC2C07476E005B334A /* AddToCartButton.swift in Sources */,
 				C5688C622C042C3F003669C0 /* SaleResultTabView.swift in Sources */,
 				B5A43A232BFAFE3B00AE89C4 /* HTTPStatusCode.swift in Sources */,
 				C56749652BE899D700DA6A58 /* SignInRequestModel.swift in Sources */,

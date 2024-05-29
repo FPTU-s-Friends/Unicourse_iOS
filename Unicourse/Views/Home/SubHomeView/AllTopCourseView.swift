@@ -10,12 +10,13 @@ import SwiftUI
 
 struct AllTopCourseView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @StateObject var viewModel = AllTopCourseViewModel()
 
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 20)], spacing: 10) {
-                    ForEach(searchCourses, id: \._id) { course in
+                    ForEach(viewModel.searchCourses, id: \._id) { course in
                         NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                             ZStack {
                                 VStack {

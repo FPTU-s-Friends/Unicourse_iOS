@@ -12,7 +12,7 @@ struct ButtonGradientUI: View {
 
     var body: some View {
         Text(titleButton)
-            .font(.system(size: 14, weight: .medium))
+            .font(.system(size: 16, weight: .medium))
             .frame(maxWidth: .infinity, minHeight: 50)
             .foregroundStyle(.white)
             .background(LinearGradient(
@@ -24,7 +24,8 @@ struct ButtonGradientUI: View {
                 endPoint: UnitPoint(x: 1, y: 0.5)
             ))
             .cornerRadius(10.0)
-            .padding([.horizontal, .top], 10)
+            .padding(.horizontal, 5)
+            .padding(.top, 10)
             .padding(.bottom, 2)
     }
 }

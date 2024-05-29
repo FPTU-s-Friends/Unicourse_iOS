@@ -13,21 +13,23 @@ struct SearchEntryView: View {
     @Environment(\.dismiss) var dismiss: DismissAction
     var body: some View {
         VStack(spacing: 5) {
-            VStack {
-                // Search Matching
-                SearchSuggestTextView(searchText: $viewModel.searchString, suggestions: viewModel.listSuggestCourse)
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    // Search Matching
+                    SearchSuggestTextView(viewModel: viewModel)
 
-                //            Suggest Course
-                SuggestCourseView(listSearch: $viewModel.listSearch,
-                                  isLoadingSearch: $viewModel.isLoading)
-            }
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("Tìm kiếm khoá học")
-            .navigationBarTitleDisplayMode(.large)
-            .searchable(text: $viewModel.searchString,
-                        prompt: Text("Tìm Khoá Học"))
-            .onSubmit(of: .search) {
-                viewModel.isNavigateToResultView = true
+                    //            Suggest Course
+                    SuggestCourseView(listSearch: $viewModel.listSearch,
+                                      isLoadingSearch: $viewModel.isLoading)
+                }
+                .navigationBarBackButtonHidden(true)
+                .navigationTitle("Tìm kiếm khoá học")
+                .navigationBarTitleDisplayMode(.automatic)
+                .searchable(text: $viewModel.searchString,
+                            prompt: Text("Tìm Khoá Học"))
+                .onSubmit(of: .search) {
+                    viewModel.isNavigateToResultView = true
+                }
             }
         }
         .toolbar {

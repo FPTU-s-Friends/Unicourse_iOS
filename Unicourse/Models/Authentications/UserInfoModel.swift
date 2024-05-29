@@ -57,7 +57,7 @@ struct UserInfoModel: Codable {
     let quizInterest: [String]? // chỉnh sửa sau
     let quizProcess: [String]? // chỉnh sửa sau
     let lectureInfo: LectureModel?
-    let wishList: [WisListUserInfo]? // chỉnh sửa sau
+    let wishList: [WisListUserInfo]?
 
     enum CodingKeys: String, CodingKey, Codable {
         case _id

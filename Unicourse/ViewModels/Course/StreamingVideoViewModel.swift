@@ -8,9 +8,9 @@
 import Foundation
 
 class StreamingVideoViewModel: ObservableObject {
-    @Published var selectedTrack: Track? = nil
+    @Published var selectedTrack: TrackStep? = nil
 
-    func setSelectedTrack(newTrack: Track) {
+    func setSelectedTrack(newTrack: TrackStep) {
         selectedTrack = newTrack
     }
 

@@ -33,9 +33,12 @@ struct SearchResultView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.search(searchText: viewModel.searchString)
+        }
         .searchable(text: $viewModel.searchString, prompt: Text("Tìm Khoá Học"))
         .navigationTitle("Tìm kiếm khoá học")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.automatic)
         .sheet(isPresented: $isPresentedFilter) {
             VStack {
                 Text("Filter ở đây")

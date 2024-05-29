@@ -13,6 +13,11 @@ struct CourseDetailView: View {
     @StateObject private var vm = CourseDetailViewModel()
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
+    @State private var isPres = false
+    private var isFree: Bool {
+        vm.courseDetail?.type == .free
+    }
+
     var courseId: String
 
     var isEnrolled: Bool {
@@ -28,7 +33,7 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button -    Favorite Button - Share Button
+                    // Go Back Button -     Favorite Button - Share Button
                     VStack {
                         if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
                             AsyncImage(url: url) { image in
@@ -53,7 +58,7 @@ struct CourseDetailView: View {
                     // Go Back Button - Favorite Button - Share Button
 
                     // Basic info
-                    BasicInfo(courseName: vm.courseDetail?.title ?? DefaultTextUser.defaultNameLecture, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: vm.courseDetail?.enrollmentCount ?? -1, isLoading: vm.isLoading)
+                    BasicInfo(courseName: vm.courseDetail?.title ?? DefaultTextUser.defaultNameLecture, courseAvgRating: 4.3, courseTotalRatingCount: 300, memberCount: vm.courseDetail?.enrollmentCount ?? -1, isLoading: vm.isLoading, courseType: vm.courseDetail?.type ?? .free)
                     // End basic info
 
                     // Tab bar
@@ -98,15 +103,19 @@ struct CourseDetailView: View {
                 .background(.white)
 
             } else {
-                VStack {
-                    Button {
-                        print("123")
-                    } label: {
-                        HStack {
-                            Text("123")
-                            ButtonGradientUI(titleButton: "Mua ngay")
+                HStack(alignment: .center) {
+                    AddToCartButton {
+                        if isFree {
+                            isPres.toggle()
+                        } else {
+                            print("Khoá trả phí")
                         }
                     }
+
+                    ButtonGradientUI(titleButton: "Tham gia ngay")
+                }
+                .alert(isPresented: $isPres) {
+                    Alert(title: Text("Khoá học miễn phí"), message: Text("Đây là khoá miễn phí, nên bạn chỉ cần bấm \"Tham gia ngay\"."), dismissButton: .default(Text("Đồng ý")))
                 }
                 .padding(.horizontal, 20)
                 .background(.white)

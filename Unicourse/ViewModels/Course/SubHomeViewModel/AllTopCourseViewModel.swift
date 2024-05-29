@@ -8,6 +8,6 @@
 import Foundation
 
 class AllTopCourseViewModel: ObservableObject {
-    @Published var searchCourses: [SearchCourseModel]
+    @Published var searchCourses: [SearchCourseModel] = []
     @Published var isPresentedFilter = false
 }

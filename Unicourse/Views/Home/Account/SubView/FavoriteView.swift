@@ -6,6 +6,7 @@
 //
 
 import SDWebImageSwiftUI
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct FavoriteView: View {

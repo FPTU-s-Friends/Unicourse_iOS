@@ -23,39 +23,36 @@ class HomeViewModel: ObservableObject {
             $0.type == CourseEnrollType.free
         }
     }
-
+    
     private var hasFetched: Bool = false
-
+    
     func search(searchText: String, page: Int? = 1, limit: Int = 6) {
         isLoadingSearchCourse = true
         let pageToUse = page ?? currentPage
-
+        
         let params: [String: Any] = ["text": searchText, "page": pageToUse, "limit": limit]
-
+        
         NetworkManager.shared.callAPI2(path: APIPath.searchCourse.stringValue, method: .get, parameters: params, body: nil) {
             (result: Result<CommonResponse<SearchResponseModel>, Error>) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 switch result {
-                case .success(let response):
-                    self.searchCourse = response.data.course
-                    self.currentPage = pageToUse
-
-                case .failure(let error):
-                    self.error = error.localizedDescription
-                    self.isShowingAlert = true
-                    print(error)
+                    case .success(let response):
+                        self.searchCourse = response.data.course
+                        self.currentPage = pageToUse
+                        
+                    case .failure(let error):
+                        self.error = error.localizedDescription
+                        self.isShowingAlert = true
+                        print(error)
                 }
                 self.isLoadingSearchCourse = false
             }
         }
     }
-
+    
     // get list enrolled course
     func fetchListEnrolledCourses(userId: String, token: String, isRefresh: Bool) {
-        print("userId", userId)
-        print("token", token)
-
         if !isRefresh {
             guard !hasFetched else { return }
         }
@@ -63,27 +60,43 @@ class HomeViewModel: ObservableObject {
         NetworkManager.shared.callAPI2(path: APICoursePath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[EnrolledCourseModel]>, Error>) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let response):
-                    printJSONData(data: response)
-                    switch response.status {
-                    case HTTPStatusCodes.OK.rawValue:
-                        self.listEnrolledCourses = response.data
-                        self.hasFetched = true
-                    default:
-                        self.error = "Unexpected status code: \(response.status)"
-                    }
-
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    case .success(let response):
+                        printJSONData(data: response)
+                        switch response.status {
+                            case HTTPStatusCodes.OK.rawValue:
+                                self.listEnrolledCourses = response.data
+                                self.hasFetched = true
+                            default:
+                                self.error = "Unexpected status code: \(response.status)"
+                        }
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
                 }
+                DispatchQueue.main.async {
+                    switch result {
+                        case .success(let response):
+                            printJSONData(data: response)
+                            switch response.status {
+                                case HTTPStatusCodes.OK.rawValue:
+                                    self.listEnrolledCourses = response.data
+                                    self.hasFetched = true
+                                default:
+                                    self.error = "Unexpected status code: \(response.status)"
+                            }
+                            
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                    }
+                }
+                self.isLoadingListEnrolled = false
             }
-            self.isLoadingListEnrolled = false
         }
     }
-
+        
     func getUsersPaginationByRole(role: UserRole, pageSize: Int, pageNum: Int, sortBy: String, order: Order, token: String) {
         isLoadingGetUser = true
-
+            
         let parameters: [String: Any] = [
             "role": role.rawValue,
             "pageSize": pageSize,
@@ -91,29 +104,30 @@ class HomeViewModel: ObservableObject {
             "sortBy": sortBy,
             "order": order.toString
         ]
-
+            
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: parameters)
-
+                
             NetworkManager.shared.callAPI2(path: APIPath.getUsers.stringValue,
                                            method: .post,
                                            headers: ["Authorization": "Bearer \(token)"],
                                            body: jsonData)
             {
                 (result: Result<CommonResponse<PaginationResponse<[LectureModel]>>, Error>) in
-
+                    
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let response):
-                        switch response.status {
-                        case HTTPStatusCodes.OK.rawValue:
-                            self.listLectures = response.data.data
-                        default:
-                            self.error = "Unexpected status code: \(response.status)"
-                        }
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                        self.error = error.localizedDescription
+                        case .success(let response):
+                            switch response.status {
+                                case HTTPStatusCodes.OK.rawValue:
+                                    self.listLectures = response.data.data
+                                default:
+                                    self.error = "Unexpected status code: \(response.status)"
+                            }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                            print(error.localizedDescription)
+                            self.error = error.localizedDescription
                     }
                     self.isLoadingGetUser = false
                 }
@@ -139,6 +153,29 @@ class SlideData: ObservableObject {
         Slide(imageName: "home-banner3")
     ]
 }
+
+//    func getAllFreeCourse(token: String) {
+//        isLoadingAllFreeCourse = true
+//        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let response):
+//                    switch response.status {
+//                    case HTTPStatusCodes.OK.rawValue:
+//                        printJSONData(data: response)
+//                        self.allFreeCourse = response.data
+//                    default:
+//                        self.error = "Unexpected status code: \(response.status)"
+//                    }
+//
+//                case .failure(let error):
+//                    print(error)
+//                    self.error = error.localizedDescription
+//                }
+//                self.isLoadingAllFreeCourse = false
+//            }
+//        }
+//    }
 
 //    func getAllFreeCourse(token: String) {
 //        isLoadingAllFreeCourse = true
