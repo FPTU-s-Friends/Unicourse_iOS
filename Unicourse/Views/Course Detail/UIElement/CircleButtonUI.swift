@@ -25,8 +25,8 @@ struct CircleButtonUI: View {
             .symbolRenderingMode(symbolRenderingMode)
             .frame(width: 24, height: 24)
             .padding(6)
-            .background(.white.opacity(0.5))
-            .clipShape(Circle())
+//            .background(.white.opacity(0.5))
+//            .clipShape(Circle())
     }
 }
 

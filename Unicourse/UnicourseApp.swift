@@ -32,9 +32,13 @@ struct UnicourseApp: App {
             .animation(.spring(), value: appData.isShowSlashScreen)
             .onAppear {
                 Task {
-                    try await appData.checkUserAuthentication()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    do {
+                        try await appData.checkUserAuthentication()
+                        try await Task.sleep(nanoseconds: 1_000_000_000)
                         appData.isShowSlashScreen = false
+                    } catch {
+                        print("Authentication error: \(error)")
+                        // Handle the error, potentially show a login screen
                     }
                 }
             }
