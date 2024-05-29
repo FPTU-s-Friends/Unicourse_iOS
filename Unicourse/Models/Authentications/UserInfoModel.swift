@@ -14,11 +14,19 @@ struct EnrollCourseNonDetail: Codable {
     let thumbnail: String
 }
 
-struct EnrollCourse: Codable {
+struct EnrollCourseUserInfo: Codable {
     let _id: String
     let courseId: EnrollCourseNonDetail
     let completed: Bool
     let enrollDate: String
+}
+
+struct WisListUserInfo: Codable {
+    let _id: String
+    let title: String
+    let titleDescription: String
+    let thumbnail: String
+    let semester_number: Int
 }
 
 struct UserInfoModel: Codable {
@@ -26,9 +34,8 @@ struct UserInfoModel: Codable {
     let email: String
     let fullName: String
     let profileName: String?
-    let dateOfBirth: Date?
-    let password: String?
-    let enrollCourses: [EnrollCourse]? // Assuming course IDs are strings
+    let dateOfBirth: String?
+    let enrollCourses: [EnrollCourseUserInfo]? // Assuming course IDs are strings
     let role: UserRole
     let isCommentBlocked: Bool
     let isBlocked: Bool
@@ -40,7 +47,7 @@ struct UserInfoModel: Codable {
     let quizInterest: [String]? // chỉnh sửa sau
     let quizProcess: [String]? // chỉnh sửa sau
     let lectureInfo: LectureModel?
-    let wishList: [String]? // chỉnh sửa sau
+    let wishList: [WisListUserInfo]? // chỉnh sửa sau
 
     enum CodingKeys: String, CodingKey, Codable {
         case _id
@@ -48,7 +55,6 @@ struct UserInfoModel: Codable {
         case fullName
         case profileName
         case dateOfBirth
-        case password
         case enrollCourses
         case role
         case isCommentBlocked = "is_comment_blocked"

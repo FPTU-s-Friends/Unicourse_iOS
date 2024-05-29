@@ -63,21 +63,43 @@ class AppData: ObservableObject {
     }
 
     // Kiểm tra trạng thái đăng nhập của người dùng
-    func checkUserAuthentication() async throws {
-        if let email = Auth.auth().currentUser?.email {
-            isLoggedIn = true
-            NetworkManager.shared.signIn(email: email) { result in
-                switch result {
-                case let .success(data):
-                    let accessToken = data.data.accessToken.split(separator: " ")[1]
-                    self.token = String(accessToken)
-                    self.decodeJWTTokenAndSetUserProfile(token: String(accessToken))
+//    func checkUserAuthentication() async throws {
+//        if let email = Auth.auth().currentUser?.email {
+//            isLoggedIn = true
+//            NetworkManager.shared.signIn(email: email) { result in
+//                switch result {
+//                case let .success(data):
+//                    printJSONData(data: data)
+//                    let accessToken = data.data.accessToken.split(separator: " ")[1]
+//                    self.token = String(accessToken)
+//                    self.decodeJWTTokenAndSetUserProfile(token: String(accessToken))
+//
+//                case let .failure(error):
+//                    self.isShowingAlert = true
+//                    self.error = error.localizedDescription
+//                }
+//            }
+//        }
+//    }
 
-                case let .failure(error):
-                    self.isShowingAlert = true
-                    self.error = error.localizedDescription
-                }
-            }
+    func checkUserAuthentication() async throws {
+        guard let email = Auth.auth().currentUser?.email else {
+            return // No user logged in, handle as needed (e.g., show login)
+        }
+
+        do {
+            let data = try await NetworkManager.shared.signIn(email: email)
+
+            let accessToken = data.data.accessToken
+
+            let tokenSplitString = accessToken.split(separator: " ")[1]
+            token = String(tokenSplitString)
+            decodeJWTTokenAndSetUserProfile(token: String(tokenSplitString))
+            isLoggedIn = true
+        } catch {
+            isShowingAlert = true
+            self.error = error.localizedDescription
+            throw error
         }
     }
 
@@ -91,9 +113,7 @@ class AppData: ObservableObject {
                 case let .success(response):
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
-//                        printJSONData(data: response.data)
                         self.userInfo = response.data
-
                     default:
                         print("Get User Info Error")
                     }

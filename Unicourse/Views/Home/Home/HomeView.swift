@@ -54,16 +54,15 @@ struct HomeView: View {
                     // Danh mục kỳ semester
                     SemesterChosenView()
                         .padding(.bottom, 10)
+                    // Khoá học nổi bật
+                    TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, searchCourses: viewModel.searchCourse, headerText: HeaderCategoryText.topCourseText)
+                        .padding(.bottom, 10)
+
+                    TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, searchCourses: viewModel.listFreeCourses, headerText: HeaderCategoryText.topFreeCourse)
+                        .padding(.bottom, 10)
 
                     // Tiến trình khoá học
                     ProgressCourseView(listEnrollCourses: viewModel.listEnrolledCourses, isLoading: $viewModel.isLoadingListEnrolled)
-                        .padding(.bottom, 10)
-
-                    // Khoá học nổi bật
-                    TopCoursesView(searchCourses: viewModel.searchCourse, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topCourseText)
-                        .padding(.bottom, 10)
-
-                    TopCoursesView(searchCourses: viewModel.listFreeCourses, isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, headerText: HeaderCategoryText.topFreeCourse)
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
@@ -74,7 +73,7 @@ struct HomeView: View {
                 }
 
                 .refreshable {
-                    refreshData()
+                    fetchData()
                 }
             }
             if viewModel.isLoadingListEnrolled {
@@ -84,17 +83,18 @@ struct HomeView: View {
 
         .onAppear {
             if !hasLoadedDataInitially {
-                refreshData()
+                fetchData()
                 hasLoadedDataInitially = true
             }
         }
         .background(Color.mainBackgroundColor)
     }
 
-    func refreshData() {
+    func fetchData() {
 //        viewModel.getAllFreeCourse(token: appData.token)
+
         viewModel.search(searchText: "")
-        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "", token: appData.token, isRefresh: true)
+        viewModel.fetchListEnrolledCourses(userId: appData.userInfo?._id ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
 }
