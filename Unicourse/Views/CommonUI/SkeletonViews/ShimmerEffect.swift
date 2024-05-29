@@ -21,14 +21,14 @@ struct WaveShimmer: View {
 
     var body: some View {
         LinearGradient(
-            gradient: Gradient(colors: [.clear, Color.mainColor1.opacity(0.9), .clear]),
+            gradient: Gradient(colors: [.clear, Color.mainColor1, .clear]),
             startPoint: .leading,
             endPoint: .trailing
         )
-        .frame(width: 400, height: 400)
+        .frame(width: 600, height: 400)
         .offset(x: self.phase)
         .onAppear {
-            withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
+            withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
                 self.phase = 400
             }
         }

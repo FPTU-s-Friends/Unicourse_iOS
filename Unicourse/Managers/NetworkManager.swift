@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     case invalidURL
+    case invalidBaseURL
     case invalidResponse(URLResponse?)
     case decodingError(Error)
     case encodingError
@@ -28,6 +29,7 @@ class NetworkManager {
 
         let signInRequest = SignInRequestModel(email: email)
         guard let bodyData = try? JSONEncoder().encode(signInRequest) else {
+            throw NetworkError.encodingError // Use custom error
             throw NetworkError.encodingError // Use custom error
         }
 
@@ -50,8 +52,18 @@ class NetworkManager {
 
     // MARK: - Call API Method
 
-    func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, body: Data?) async throws -> T {
-        guard let url = URL(string: baseURL)?.appendingPathComponent(path) else {
+    func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, body: Data?) async throws -> T {
+        guard var urlComponents = URLComponents(string: baseURL) else {
+            throw NetworkError.invalidBaseURL
+        }
+
+        urlComponents.path = path
+
+        if let parameters {
+            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        }
+
+        guard let url = urlComponents.url else {
             throw NetworkError.invalidURL
         }
 
@@ -97,6 +109,8 @@ class NetworkManager {
         if let additionalHeaders = headers {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
         }
+
+        print(url)
 
         let request = HTTPRequest(url: url, method: method, headers: defaultHeaders, body: body)
         HTTPClient.shared.sendRequest(request) { result in

@@ -10,6 +10,7 @@ import SwiftUI
 extension Color {
     static var mainColor1 = Color(hex: "5EDFF5")
     static var mainColor2 = Color(hex: "9F80F8")
+    static let mainColor3 = Color(hex: "#DCEEFD")
     static var activeColor = Color(hex: "2C9FFF")
     static var activeButtonColor = Color(hex: "4284F4")
     static var mainBackgroundColor = Color(hex: "F3FBFF")

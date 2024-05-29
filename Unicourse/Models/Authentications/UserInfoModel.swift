@@ -12,6 +12,11 @@ struct EnrollCourseNonDetail: Codable {
     let title: String
     let titleDescription: String
     let thumbnail: String
+
+    static let sampleData = EnrollCourseNonDetail(_id: "65a8790ba30979a347d026c9",
+                                                  title: "Khóa học CSI104",
+                                                  titleDescription: "Kiến thức của bài giảng của khóa CSI101",
+                                                  thumbnail: "https://anhcocvang.com/static/media/CSI104.2184a7868fa678077f03.png")
 }
 
 struct EnrollCourseUserInfo: Codable {
@@ -19,6 +24,11 @@ struct EnrollCourseUserInfo: Codable {
     let courseId: EnrollCourseNonDetail
     let completed: Bool
     let enrollDate: String
+
+    static let sampleData = EnrollCourseUserInfo(_id: "66514f71d51b1f8bc799391b",
+                                                 courseId: EnrollCourseNonDetail.sampleData,
+                                                 completed: false,
+                                                 enrollDate: "2024-05-24T17:21:40.302Z")
 }
 
 struct WisListUserInfo: Codable {
@@ -35,7 +45,7 @@ struct UserInfoModel: Codable {
     let fullName: String
     let profileName: String?
     let dateOfBirth: String?
-    let enrollCourses: [EnrollCourseUserInfo]? // Assuming course IDs are strings
+    let enrollCourses: [EnrollCourseUserInfo]?
     let role: UserRole
     let isCommentBlocked: Bool
     let isBlocked: Bool
@@ -47,7 +57,7 @@ struct UserInfoModel: Codable {
     let quizInterest: [String]? // chỉnh sửa sau
     let quizProcess: [String]? // chỉnh sửa sau
     let lectureInfo: LectureModel?
-    let wishList: [WisListUserInfo]? // chỉnh sửa sau
+    let wishList: [WisListUserInfo]?
 
     enum CodingKeys: String, CodingKey, Codable {
         case _id

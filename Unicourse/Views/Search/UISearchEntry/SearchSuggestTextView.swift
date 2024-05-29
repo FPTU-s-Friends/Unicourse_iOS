@@ -5,78 +5,70 @@
 //  Created by Trung Kiên Nguyễn on 24/5/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct SearchSuggestTextView: View {
-    @Binding var searchText: String
+    @State private var showAllSuggestions = false
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @ObservedObject var viewModel: SearchEntryViewModel
+    @State private var navigateToResultView = false
 
     var body: some View {
-        if !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
-            VStack {
-                VStack {
-                    HStack {
-                        Text("MAD")
-                            .font(.system(size: 14, weight: .semibold))
-                            .lineSpacing(20)
-
-                        Spacer()
-
-                        Image(systemName: "clock")
+        if !viewModel.searchString.trimmingCharacters(in: .whitespaces).isEmpty {
+            VStack(spacing: 8) {
+                ForEach(viewModel.listSuggestCourse.indices, id: \.self) { index in
+                    if !showAllSuggestions && index == 8 {
+                        Button(action: {
+                            withAnimation {
+                                showAllSuggestions.toggle()
+                            }
+                        }) {
+                            Text("Xem thêm")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundColor(.white)
+                                .padding(8)
+                                .background(Color.activeButtonColor.cornerRadius(20))
+                        }
                     }
-                    .padding(10)
-                }
+                    if showAllSuggestions || index < 8 {
+                        Button(action: {
+                            viewModel.searchString = viewModel.listSuggestCourse[index].searchString
+                            navigateToResultView = true
+                        }) {
+                            HStack {
+                                Text(viewModel.listSuggestCourse[index].searchString)
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(1)
+                                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                    .lineSpacing(20)
+                                Spacer()
 
-                VStack {
-                    HStack {
-                        Text("Hoang NT")
-                            .font(.system(size: 14, weight: .semibold))
-                            .lineSpacing(20)
-
-                        Spacer()
-
-                        Image(systemName: "lightbulb.led.wide")
+                                WebImage(url: URL(string: viewModel.listSuggestCourse[index].urlImage)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 40, height: 30)
+                                        .cornerRadius(5)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                            }
+                            .padding(10)
+                        }
                     }
-                    .padding(10)
                 }
-
-                VStack {
-                    HStack {
-                        Text("UI Design for beginner")
-                            .font(.system(size: 14, weight: .semibold))
-                            .lineSpacing(20)
-
-                        Spacer()
-
-                        Image(systemName: "pencil.circle")
-                    }
-                    .padding(10)
-                }
-                VStack {
-                    HStack {
-                        Text("Cấu trúc dữ liệu và giải thuật")
-                            .font(.system(size: 14, weight: .semibold))
-                            .lineSpacing(20)
-
-                        Spacer()
-
-                        Image(systemName: "person")
-                    }
-                    .padding(10)
-                }
-
-                Button(action: {}, label: {
-                    Text("Xem thêm")
-                        .font(.system(size: .mainTitleButtonPath))
-                        .foregroundStyle(.white)
-                        .padding(6)
-                        .padding(.horizontal, 10)
-                        .background(Color.activeButtonColor.cornerRadius(20))
-                })
+            }
+            .padding(.top, 8)
+            .navigationDestination(isPresented: $navigateToResultView) {
+                SearchResultView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }
 }
 
 #Preview {
-    SearchSuggestTextView(searchText: .constant(""))
+    SearchSuggestTextView(viewModel: SearchEntryViewModel())
 }

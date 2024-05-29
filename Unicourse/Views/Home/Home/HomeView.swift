@@ -66,8 +66,10 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
-                    TopLecturesView(listLectures: viewModel.listLectures)
-                        .padding(.bottom, 10)
+                    VStack {
+                        TopLecturesView(listLectures: viewModel.listLectures)
+                    }
+                    .padding(.bottom, 50)
 
                     Spacer()
                 }

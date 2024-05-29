@@ -8,36 +8,30 @@
 import SwiftUI
 
 struct SearchEntryView: View {
-    @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isLoadingFirstTime = false
-
+    @Environment(\.dismiss) var dismiss: DismissAction
     var body: some View {
         VStack(spacing: 5) {
-            // Search Matching
-            SearchSuggestTextView(searchText: $viewModel.searchString)
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    // Search Matching
+                    SearchSuggestTextView(viewModel: viewModel)
 
-//            Suggest Course
-            SuggestCourseView(listSearch: $viewModel.listSearch,
-                              isLoadingSearch: $viewModel.isLoading)
-        }
-        .searchable(text: $viewModel.searchString,
-                    prompt: Text("Tìm Khoá Học"))
-        .onSubmit(of: .search) {
-            viewModel.isNavigateToResultView = true
-        }
-        .padding(10)
-        .background(Color.mainBackgroundColor)
-        .navigationDestination(isPresented: $viewModel.isNavigateToResultView) {
-            SearchResultView(viewModel: viewModel)
+                    //            Suggest Course
+                    SuggestCourseView(listSearch: $viewModel.listSearch,
+                                      isLoadingSearch: $viewModel.isLoading)
+                }
                 .navigationBarBackButtonHidden(true)
-        }
-        .onAppear {
-            if !isLoadingFirstTime {
-                viewModel.search(searchText: "")
+                .navigationTitle("Tìm kiếm khoá học")
+                .navigationBarTitleDisplayMode(.automatic)
+                .searchable(text: $viewModel.searchString,
+                            prompt: Text("Tìm Khoá Học"))
+                .onSubmit(of: .search) {
+                    viewModel.isNavigateToResultView = true
+                }
             }
         }
-        .navigationBarTitle("Tìm kiếm khoá học", displayMode: .large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -68,6 +62,18 @@ struct SearchEntryView: View {
                             .stroke(Color(red: 0.26, green: 0.52, blue: 0.96), lineWidth: 0.25)
                     )
                 })
+            }
+        }
+
+        .padding(10)
+        .background(Color.mainBackgroundColor)
+        .navigationDestination(isPresented: $viewModel.isNavigateToResultView) {
+            SearchResultView(viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
+        }
+        .onAppear {
+            if !isLoadingFirstTime {
+                viewModel.search(searchText: "")
             }
         }
     }
