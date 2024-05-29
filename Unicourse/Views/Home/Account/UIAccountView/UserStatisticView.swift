@@ -69,7 +69,7 @@ struct UserStatisticView: View {
                     .font(.system(size: 12, weight: .light))
                     .foregroundStyle(.gray)
 
-                Text("6 Khoá")
+                Text("\(appData.userInfo?.enrollCourses?.count ?? 0) Khoá")
                     .font(.system(size: 14, weight: .bold))
             }
         }

@@ -26,29 +26,6 @@ class HomeViewModel: ObservableObject {
 
     private var hasFetched: Bool = false
 
-//    func getAllFreeCourse(token: String) {
-//        isLoadingAllFreeCourse = true
-//        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let response):
-//                    switch response.status {
-//                    case HTTPStatusCodes.OK.rawValue:
-//                        printJSONData(data: response)
-//                        self.allFreeCourse = response.data
-//                    default:
-//                        self.error = "Unexpected status code: \(response.status)"
-//                    }
-//
-//                case .failure(let error):
-//                    print(error)
-//                    self.error = error.localizedDescription
-//                }
-//                self.isLoadingAllFreeCourse = false
-//            }
-//        }
-//    }
-
     func search(searchText: String, page: Int? = 1, limit: Int = 6) {
         isLoadingSearchCourse = true
         let pageToUse = page ?? currentPage
@@ -76,19 +53,29 @@ class HomeViewModel: ObservableObject {
 
     // get list enrolled course
     func fetchListEnrolledCourses(userId: String, token: String, isRefresh: Bool) {
+        print("userId", userId)
+        print("token", token)
+        
         if !isRefresh {
             guard !hasFetched else { return }
         }
         isLoadingListEnrolled = true
         NetworkManager.shared.callAPI2(path: APICoursePath.getEnrolledCourseByUserId(userId: userId).endPointValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[EnrolledCourseModel]>, Error>) in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self.listEnrolledCourses = response.data
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    printJSONData(data: response)
+                    switch response.status {
+                    case HTTPStatusCodes.OK.rawValue:
+                        self.listEnrolledCourses = response.data
+                        self.hasFetched = true
+                    default:
+                        self.error = "Unexpected status code: \(response.status)"
+                    }
+
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-                self.hasFetched = true
-            case .failure(let error):
-                print(error)
             }
             self.isLoadingListEnrolled = false
         }
@@ -125,7 +112,7 @@ class HomeViewModel: ObservableObject {
                             self.error = "Unexpected status code: \(response.status)"
                         }
                     case .failure(let error):
-                        print(error)
+                        print(error.localizedDescription)
                         self.error = error.localizedDescription
                     }
                     self.isLoadingGetUser = false
@@ -151,3 +138,26 @@ class SlideData: ObservableObject {
         Slide(imageName: "home-banner3")
     ]
 }
+
+//    func getAllFreeCourse(token: String) {
+//        isLoadingAllFreeCourse = true
+//        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let response):
+//                    switch response.status {
+//                    case HTTPStatusCodes.OK.rawValue:
+//                        printJSONData(data: response)
+//                        self.allFreeCourse = response.data
+//                    default:
+//                        self.error = "Unexpected status code: \(response.status)"
+//                    }
+//
+//                case .failure(let error):
+//                    print(error)
+//                    self.error = error.localizedDescription
+//                }
+//                self.isLoadingAllFreeCourse = false
+//            }
+//        }
+//    }
