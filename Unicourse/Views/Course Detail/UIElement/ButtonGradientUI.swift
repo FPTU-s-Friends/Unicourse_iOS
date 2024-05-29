@@ -24,7 +24,8 @@ struct ButtonGradientUI: View {
                 endPoint: UnitPoint(x: 1, y: 0.5)
             ))
             .cornerRadius(10.0)
-            .padding([.horizontal, .top], 10)
+            .padding(.horizontal, 5)
+            .padding(.top, 10)
             .padding(.bottom, 2)
     }
 }

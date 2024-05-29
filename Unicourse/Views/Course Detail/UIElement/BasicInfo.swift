@@ -15,6 +15,7 @@ struct BasicInfo: View {
     var newPrice: Double?
     var oldPrice: Double?
     var isLoading: Bool
+    var courseType: CourseEnrollType
 
     var body: some View {
         VStack {
@@ -45,14 +46,21 @@ struct BasicInfo: View {
                     Spacer(minLength: 16)
 
                     HStack {
-                        Text("299.000 vnđ")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundStyle(Color(hex: "#8D8A8A"))
-
-                        Text("499.000 vnđ")
-                            .font(.system(size: 12))
-                            .strikethrough()
-                            .foregroundStyle(Color(hex: "#8D8A8A"))
+                        if courseType == .free {
+                            Text("Miễn phí")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundStyle(Color(hex: "#8D8A8A"))
+                        } else {
+                            HStack {
+                                Text("299.000 vnđ")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundStyle(Color(hex: "#8D8A8A"))
+                                Text("499.000 vnđ")
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundStyle(Color(hex: "#8D8A8A"))
+                                    .strikethrough(true, color: Color(hex: "#8D8A8A"))
+                            }
+                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -62,5 +70,5 @@ struct BasicInfo: View {
 }
 
 #Preview {
-    BasicInfo(courseName: "Khoá học OSG202 - Hệ điều hành", courseAvgRating: 3.3, courseTotalRatingCount: 100, memberCount: 92, newPrice: 299.000, oldPrice: 1.000, isLoading: false)
+    BasicInfo(courseName: "Khoá học OSG202 - Hệ điều hành", courseAvgRating: 3.3, courseTotalRatingCount: 100, memberCount: 92, newPrice: 299.000, oldPrice: 1.000, isLoading: false, courseType: .free)
 }
