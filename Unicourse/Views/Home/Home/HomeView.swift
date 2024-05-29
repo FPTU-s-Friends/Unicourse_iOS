@@ -66,8 +66,10 @@ struct HomeView: View {
                         .padding(.bottom, 10)
 
                     // Giảng viên nổi bật
-                    TopLecturesView(listLectures: viewModel.listLectures)
-                        .padding(.bottom, 10)
+                    VStack {
+                        TopLecturesView(listLectures: viewModel.listLectures)
+                    }
+                    .padding(.bottom, 50)
 
                     Spacer()
                 }
@@ -94,7 +96,7 @@ struct HomeView: View {
 //        viewModel.getAllFreeCourse(token: appData.token)
 
         viewModel.search(searchText: "")
-        viewModel.fetchListEnrolledCourses(userId: appData.userInfo?._id ?? "", token: appData.token, isRefresh: true)
+        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
 }

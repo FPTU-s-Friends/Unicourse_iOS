@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     case invalidURL
+    case invalidBaseURL
     case invalidResponse(URLResponse?)
     case decodingError(Error)
     case encodingError
@@ -50,8 +51,18 @@ class NetworkManager {
 
     // MARK: - Call API Method
 
-    func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, body: Data?) async throws -> T {
-        guard let url = URL(string: baseURL)?.appendingPathComponent(path) else {
+    func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, body: Data?) async throws -> T {
+        guard var urlComponents = URLComponents(string: baseURL) else {
+            throw NetworkError.invalidBaseURL
+        }
+
+        urlComponents.path = path
+
+        if let parameters {
+            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        }
+
+        guard let url = urlComponents.url else {
             throw NetworkError.invalidURL
         }
 

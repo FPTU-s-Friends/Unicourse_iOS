@@ -11,8 +11,7 @@ struct HeaderButtonView: View {
     var body: some View {
         HStack {
             NavigationLink(destination:
-                SearchEntryView()
-                    .navigationBarBackButtonHidden(true),
+                SearchEntryView(),
 
                 label: {
                     Image(systemName: "magnifyingglass")

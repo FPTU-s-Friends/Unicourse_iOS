@@ -1,6 +1,11 @@
 import Combine
 import SwiftUI
 
+struct SearchSuggestModel {
+    let searchString: String
+    let urlImage: String
+}
+
 class SearchEntryViewModel: ObservableObject {
     @Published var isNavigateToResultView = false
     @Published var searchString: String = "" {
@@ -12,6 +17,7 @@ class SearchEntryViewModel: ObservableObject {
     }
 
     @Published var listSearch: SearchResponseModel = .init(course: [], quiz: [], blog: [])
+    @Published var listSuggestCourse: [SearchSuggestModel] = []
     @Published var isLoading = false
     @Published var isLoadingMore = false
     @Published var error = ""
@@ -45,6 +51,9 @@ class SearchEntryViewModel: ObservableObject {
                 switch result {
                 case .success(let response):
                     self.listSearch = response.data
+                    self.listSuggestCourse = response.data.course.map { course in
+                        SearchSuggestModel(searchString: course.title.localizedLowercase, urlImage: course.thumbnail)
+                    }
                     self.currentPage = pageToUse // Cập nhật currentPage
 
                 case .failure(let error):

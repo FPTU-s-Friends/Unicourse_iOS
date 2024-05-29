@@ -55,7 +55,7 @@ class HomeViewModel: ObservableObject {
     func fetchListEnrolledCourses(userId: String, token: String, isRefresh: Bool) {
         print("userId", userId)
         print("token", token)
-        
+
         if !isRefresh {
             guard !hasFetched else { return }
         }
@@ -133,6 +133,7 @@ struct Slide: Identifiable {
 
 class SlideData: ObservableObject {
     @Published var slides: [Slide] = [
+        Slide(imageName: "MainBanner"),
         Slide(imageName: "home-banner1"),
         Slide(imageName: "home-banner2"),
         Slide(imageName: "home-banner3")
