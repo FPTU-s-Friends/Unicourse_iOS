@@ -22,7 +22,7 @@ struct CourseVideoPlayerView: View {
             VStack(spacing: 0) {
                 // Stream view
                 VStack {
-                    VideoStreamingView(videoID: vm.selectedTrack?.track_steps?[0].content_url ?? "")
+                    VideoStreamingView(videoID: vm.selectedTrack?.content_url ?? "")
                 }
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
                 .background(.gray.opacity(0.2))
@@ -32,21 +32,24 @@ struct CourseVideoPlayerView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         // Chapter     Title
                         Text(vm.selectedTrack?.chapterTitle ?? "")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.system(size: 16, weight: .semibold))
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
                         // Video Title
                         HStack {
                             Image(systemName: "play.rectangle")
-                            Text("Đang phát:")
-                            Text("Video 1")
+                            Text(vm.selectedTrack?.title ?? "")
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
                         }
-                        .font(.system(size: 15, weight: .regular))
+                        .font(.system(size: 14, weight: .regular))
 
                         HStack {
                             Image(systemName: "person.fill")
                             Text("Giảng viên:")
                             Text("Giảng viên Unicourse")
                         }
-                        .font(.system(size: 15, weight: .regular))
+                        .font(.system(size: 14, weight: .regular))
                     }
                     Spacer()
                     Button {} label: {
@@ -78,7 +81,7 @@ struct CourseVideoPlayerView: View {
                         .tag(0)
 
                         VStack {
-                            Text("Tab2")
+                            Text("Đang cập nhật...")
                         }
                         .tag(1)
                     }
@@ -102,7 +105,7 @@ struct CourseVideoPlayerView: View {
             }
             .onAppear {
                 if !listTrack.isEmpty {
-                    vm.selectedTrack = listTrack[0]
+                    vm.selectedTrack = listTrack[0].track_steps![0]
                 }
             }
         }

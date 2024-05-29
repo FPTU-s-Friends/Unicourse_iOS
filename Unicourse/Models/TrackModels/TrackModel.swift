@@ -30,7 +30,7 @@ struct TrackStep: Codable {
     var duration: Int
     var content_url: String
     var type: String
-
+    var chapterTitle: String?
     static var sampleData = TrackStep(_id: "",
                                       title: "",
                                       position: 9,
