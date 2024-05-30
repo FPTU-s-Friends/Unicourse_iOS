@@ -18,6 +18,7 @@ struct FavoriteView: View {
     var body: some View {
         List {
             ForEach(appData.userInfo?.wishList ?? [], id: \._id) { wistItem in
+            // 
                 FavoriteItemView(wishItem: wistItem)
                     .background(Color.white.cornerRadius(10))
                     .swipeActions {
