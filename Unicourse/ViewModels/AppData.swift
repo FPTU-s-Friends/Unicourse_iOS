@@ -19,6 +19,7 @@ class AppData: ObservableObject {
     @Published var error: String = ""
     @Published var mainTabSelection = 0
     @Published var isLoggedIn: Bool = false
+    @Published var listCurrentEnrolled: [String] = []
 
     init(user: UserProfile? = nil, token: String = "") {
         self.user = user
@@ -108,21 +109,21 @@ class AppData: ObservableObject {
         NetworkManager.shared.callAPI2(path: "\(APIPath.getUserInfo.stringValue)/\(userId)", method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) {
             (result: Result<CommonResponse<UserInfoModel>, Error>) in
             DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch result {
                 case let .success(response):
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
-                        self.userInfo = response.data
+                        userInfo = response.data
                     default:
                         print("Get User Info Error")
                     }
                 case let .failure(error):
                     self.error = error.localizedDescription
-                    self.isShowingAlert = true
+                    isShowingAlert = true
                     print(error)
                 }
-                self.isLoading = false
+                isLoading = false
             }
         }
     }
