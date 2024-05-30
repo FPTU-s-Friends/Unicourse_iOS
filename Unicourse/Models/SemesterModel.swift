@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//s
+//s 
 struct SemesterModel: Identifiable {
     let id = UUID()
     let name: String
