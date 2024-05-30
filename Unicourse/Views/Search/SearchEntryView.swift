@@ -24,7 +24,7 @@ struct SearchEntryView: View {
                 }
                 .navigationBarBackButtonHidden(true)
                 .navigationTitle("Tìm kiếm khoá học")
-                .navigationBarTitleDisplayMode(.automatic)
+                .navigationBarTitleDisplayMode(.large)
                 .searchable(text: $viewModel.searchString,
                             prompt: Text("Tìm Khoá Học"))
                 .onSubmit(of: .search) {
