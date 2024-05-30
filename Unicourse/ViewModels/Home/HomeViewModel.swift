@@ -61,7 +61,6 @@ class HomeViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                     case .success(let response):
-                        printJSONData(data: response)
                         switch response.status {
                             case HTTPStatusCodes.OK.rawValue:
                                 self.listEnrolledCourses = response.data
@@ -76,7 +75,6 @@ class HomeViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     switch result {
                         case .success(let response):
-                            printJSONData(data: response)
                             switch response.status {
                                 case HTTPStatusCodes.OK.rawValue:
                                     self.listEnrolledCourses = response.data

@@ -130,6 +130,7 @@ struct CourseDetailView: View {
             vm.fetchCourseDetailById(courseId: courseId)
             printJSONData(data: appData.userInfo?.enrollCourses)
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
