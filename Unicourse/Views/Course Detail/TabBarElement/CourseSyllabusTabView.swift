@@ -67,7 +67,7 @@ struct CourseSyllabusTabView: View {
                     Spacer()
                 }
                 .padding(.top, 20)
-              
+
             } else {
                 ScrollView {
                     VStack {
@@ -89,8 +89,9 @@ struct CourseSyllabusTabView: View {
                                             ForEach(chapter.track_steps ?? [], id: \._id) { item in
                                                 HStack(spacing: 20) {
                                                     Image(systemName: "play.rectangle.fill")
-                                                        .font(.system(size: 16, weight: .regular))
+                                                        .font(.system(size: 14, weight: .regular))
                                                     Text(item.title)
+                                                        .font(.system(size: 14, weight: .regular))
                                                     Spacer()
                                                     Text(convertMinutesToString(minutes: item.duration))
                                                         .font(.system(size: 12, weight: .regular))
