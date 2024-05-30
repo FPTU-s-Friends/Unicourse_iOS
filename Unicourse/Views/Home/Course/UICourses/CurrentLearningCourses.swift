@@ -37,7 +37,7 @@ struct CurrentLearningCourses: View {
                 } else {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(listEnrolledCourses, id: \._id) { courseItem in
+                            ForEach(listEnrolledCourses.reversed(), id: \._id) { courseItem in
                                 CourseCard(courseItem: courseItem)
                             }
                         }
