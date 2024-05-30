@@ -156,6 +156,7 @@ struct CourseDetailView: View {
         .onAppear {
             vm.fetchCourseDetailById(courseId: courseId)
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

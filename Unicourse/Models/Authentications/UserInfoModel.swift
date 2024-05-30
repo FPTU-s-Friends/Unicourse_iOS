@@ -7,16 +7,32 @@
 
 import Foundation
 
+struct UserInfoLectureCourseModel: Codable {
+    let _id: String
+    let fullName: String
+    let profileName: String?
+    let profile_image: String
+
+    static let sampleData = UserInfoLectureCourseModel(_id: "662f61f6b57741e90fac0a5b",
+                                                       fullName: "Giảng viên Unicourse",
+                                                       profileName: "",
+                                                       profile_image: "https://lh3.googleusercontent.com/a/ACg8ocLzW-T4UHAYsYHdEUvPk9ukeshyAZpPbTHHpva5ndCUGFNUlw=s96-c")
+}
+
 struct EnrollCourseNonDetail: Codable {
     let _id: String
     let title: String
     let titleDescription: String
+    let amount: Int
     let thumbnail: String
+    let lecture: UserInfoLectureCourseModel
 
     static let sampleData = EnrollCourseNonDetail(_id: "65a8790ba30979a347d026c9",
                                                   title: "Khóa học CSI104",
                                                   titleDescription: "Kiến thức của bài giảng của khóa CSI101",
-                                                  thumbnail: "https://anhcocvang.com/static/media/CSI104.2184a7868fa678077f03.png")
+                                                  amount: 0,
+                                                  thumbnail: "https://anhcocvang.com/static/media/CSI104.2184a7868fa678077f03.png",
+                                                  lecture: UserInfoLectureCourseModel.sampleData)
 }
 
 struct EnrollCourseUserInfo: Codable {
@@ -35,8 +51,18 @@ struct WisListUserInfo: Codable {
     let _id: String
     let title: String
     let titleDescription: String
+    let amount: Int
     let thumbnail: String
+    let lecture: UserInfoLectureCourseModel
     let semester_number: Int
+
+    static let sampleData = WisListUserInfo(_id: "",
+                                            title: "",
+                                            titleDescription: "",
+                                            amount: 0,
+                                            thumbnail: "",
+                                            lecture: UserInfoLectureCourseModel.sampleData,
+                                            semester_number: 2)
 }
 
 struct UserInfoModel: Codable {

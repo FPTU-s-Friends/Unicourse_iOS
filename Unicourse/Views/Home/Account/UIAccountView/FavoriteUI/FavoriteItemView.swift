@@ -37,12 +37,21 @@ struct FavoriteItemView: View {
                             .foregroundStyle(.black)
 
                         HStack {
-                            Image("User")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                            AsyncImage(url: URL(string: wishItem.lecture.profile_image)) { image in
+                                image.resizable()
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20)
+                                    .cornerRadius(20)
+                            } placeholder: {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: 20, height: 20)
+                                }
+                            }
 
-                            Text("Nguyễn Trung Kiên")
+                            Text(wishItem.lecture.fullName)
                                 .font(.system(size: 10, weight: .light))
                                 .foregroundStyle(.gray)
                         }
@@ -50,12 +59,16 @@ struct FavoriteItemView: View {
                         RatingStars(rating: 3.5, maxRating: 5)
 
                         HStack {
-                            Text("50.000 VND")
+                            Text("\(wishItem.amount) VND")
                                 .font(.system(size: 12, weight: .bold))
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
                                 .foregroundColor(.activeColor)
                             // ---
-                            Text("70.000 VND")
+                            Text("\(wishItem.amount + 10000) VND")
                                 .font(.system(size: 10, weight: .bold))
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
                                 .strikethrough()
                                 .foregroundColor(.gray)
                         }
@@ -69,5 +82,5 @@ struct FavoriteItemView: View {
 }
 
 #Preview {
-    FavoriteItemView(wishItem: WisListUserInfo(_id: "", title: "", titleDescription: "", thumbnail: "", semester_number: 1))
+    FavoriteItemView(wishItem: WisListUserInfo.sampleData)
 }
