@@ -10,12 +10,11 @@ import Foundation
 class CourseDetailViewModel: ObservableObject {
     @Published var courseDetail: CourseModel? = nil
     @Published var isLoading: Bool = false
-    private var hasFetched: Bool = false
+    @Published var isLoadingEnroll: Bool = false
+    @Published var newCourseEnrolled: EnrolledNewCourseModel? = nil
+    @Published var isShowSuccess: Bool = false
 
     func fetchCourseDetailById(courseId: String) {
-        guard !hasFetched else {
-            return
-        }
         isLoading = true
 
         NetworkManager.shared.callAPI2(path: APICoursePath.getDetailCourseById(courseId: courseId).endPointValue, method: .get, body: nil) { (result: Result<CommonResponse<CourseModel>, Error>) in
@@ -24,7 +23,6 @@ class CourseDetailViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.courseDetail = response.data
                 }
-                self.hasFetched = true
             case .failure(let error):
                 print(error)
             }
@@ -32,14 +30,20 @@ class CourseDetailViewModel: ObservableObject {
         }
     }
 
-    func enrolledNewCourse(courseId: String, token: String) {
+    func enrolledNewCourse(courseId: String, token: String, appData: AppData) {
+        isLoadingEnroll = true
         NetworkManager.shared.callAPI2(path: APICoursePath.enrollNewCourse(courseId: courseId).endPointValue, method: .post, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<EnrolledNewCourseModel>, Error>) in
             switch result {
             case .success(let response):
-                print(response)
+                DispatchQueue.main.async {
+                    self.newCourseEnrolled = response.data
+                    appData.listCurrentEnrolled.append(response.data.course._id)
+                }
             case .failure(let err):
                 print(err)
             }
+            self.isLoadingEnroll = false
+            self.isShowSuccess = true
         }
     }
 

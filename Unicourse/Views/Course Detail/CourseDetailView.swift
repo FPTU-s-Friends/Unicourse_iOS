@@ -13,7 +13,9 @@ struct CourseDetailView: View {
     @StateObject private var vm = CourseDetailViewModel()
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
-    @State private var isPres = false
+    @State private var isAddToCart = false
+    @State private var isShowSuccess: Bool = false
+    @State private var confirmEnrollFreeCourse: Bool = false
     private var isFree: Bool {
         vm.courseDetail?.type == .free
     }
@@ -21,9 +23,12 @@ struct CourseDetailView: View {
     var courseId: String
 
     var isEnrolled: Bool {
-        appData.userInfo?.enrollCourses?.contains { course_enrolled in
+        if appData.userInfo?.enrollCourses?.contains(where: { course_enrolled in
             course_enrolled.courseId._id == courseId
-        } ?? false
+        }) ?? false || appData.listCurrentEnrolled.contains(courseId) {
+            return true
+        }
+        return false
     }
 
     var body: some View {
@@ -106,29 +111,50 @@ struct CourseDetailView: View {
                 HStack(alignment: .center) {
                     AddToCartButton {
                         if isFree {
-                            isPres.toggle()
+                            isAddToCart.toggle()
                         } else {
                             print("Khoá trả phí")
                         }
                     }
-
-                    ButtonGradientUI(titleButton: "Tham gia ngay")
-                }
-                .alert(isPresented: $isPres) {
-                    Alert(title: Text("Khoá học miễn phí"), message: Text("Đây là khoá miễn phí, nên bạn chỉ cần bấm \"Tham gia ngay\"."), dismissButton: .default(Text("Đồng ý")))
+                    .alert(isPresented: $isAddToCart) {
+                        Alert(title: Text("Khoá miễn phí"), dismissButton: .default(Text("Đồng ý")))
+                    }
+                    if isFree {
+                        Button {
+                            confirmEnrollFreeCourse.toggle()
+                        } label: {
+                            ButtonGradientUI(titleButton: "Tham gia ngay")
+                        }
+                        .alert(isPresented: $confirmEnrollFreeCourse) {
+                            Alert(title: Text("Bạn có chắc chắn tham gia ?"), primaryButton: .default(Text("Tham gia")) {
+                                vm.enrolledNewCourse(courseId: courseId, token: appData.token, appData: appData)
+                            }, secondaryButton: .destructive(Text("Huỷ")))
+                        }
+                    } else {
+                        Button {
+                            print("Khoa tra phi")
+                        } label: {
+                            ButtonGradientUI(titleButton: "Mua ngay")
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
                 .background(.white)
             }
             // End Check is enrolled
 
-            if vm.isLoading {
+            if vm.isLoading || vm.isLoadingEnroll {
                 LoadingIndicatorView(isLoading: .constant(true))
+            }
+        }
+        .sheet(isPresented: $vm.isShowSuccess) {
+            if vm.newCourseEnrolled != nil {
+                SuccessEnrolledCourse(courseReponse: vm.newCourseEnrolled!)
+                    .presentationDetents([.medium])
             }
         }
         .onAppear {
             vm.fetchCourseDetailById(courseId: courseId)
-            printJSONData(data: appData.userInfo?.enrollCourses)
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -171,9 +197,10 @@ struct CourseDetailView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
-            .environmentObject(AppData())
-    }
-}
+//
+// #Preview {
+//    NavigationStack {
+//        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
+//            .environmentObject(AppData())
+//    }
+// }
