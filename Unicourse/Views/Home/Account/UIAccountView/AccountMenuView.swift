@@ -66,7 +66,7 @@ struct AccountMenuView: View {
                 }
             }
 
-            LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut)
+            LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut, action: { appData.signOutUser() })
                 .padding(.top, 10)
                 .padding(.leading, 2)
         }
@@ -129,6 +129,7 @@ struct MenuItemView: View {
 struct LogoutButtonView: View {
     @Binding var showAlert: Bool
     @Binding var isLoggedOut: Bool
+    var action: () -> Void
 
     var body: some View {
         Button {
@@ -148,13 +149,15 @@ struct LogoutButtonView: View {
                 title: Text("Xác nhận"),
                 message: Text("Bạn có chắc chắn muốn đăng xuất không?"),
                 primaryButton: .destructive(Text("Có")) {
-                    // Call your sign out function here
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        action()
+                    }
                 },
                 secondaryButton: .cancel(Text("Không"))
             )
         }
         .fullScreenCover(isPresented: $isLoggedOut) {
-            ContentView()
+            LoginView()
         }
     }
 }

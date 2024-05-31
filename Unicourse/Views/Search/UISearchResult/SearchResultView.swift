@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchResultView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismissSearch) var dismissSearch: DismissSearchAction
     @ObservedObject var viewModel: SearchEntryViewModel
     @State var tabSelection: Int = 0
     @State var isPresentedFilter = false
@@ -36,6 +37,7 @@ struct SearchResultView: View {
         .onAppear {
             viewModel.search(searchText: viewModel.searchString)
         }
+
         .searchable(text: $viewModel.searchString, prompt: Text("Tìm Khoá Học"))
         .navigationTitle("Tìm kiếm khoá học")
         .navigationBarTitleDisplayMode(.automatic)

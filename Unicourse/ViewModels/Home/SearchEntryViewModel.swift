@@ -18,6 +18,7 @@ class SearchEntryViewModel: ObservableObject {
 
     @Published var listSearch: SearchResponseModel = .init(course: [], quiz: [], blog: [])
     @Published var listSuggestCourse: [SearchSuggestModel] = []
+    @Published var listFreeCourse: [SearchCourseModel] = []
     @Published var isLoading = false
     @Published var isLoadingMore = false
     @Published var error = ""
@@ -54,6 +55,7 @@ class SearchEntryViewModel: ObservableObject {
                     self.listSuggestCourse = response.data.course.map { course in
                         SearchSuggestModel(searchString: course.title.localizedLowercase, urlImage: course.thumbnail)
                     }
+                    self.filterFreeCourses()
                     self.currentPage = pageToUse // Cập nhật currentPage
 
                 case .failure(let error):
@@ -82,6 +84,7 @@ class SearchEntryViewModel: ObservableObject {
                     self.listSearch.course.append(contentsOf: response.data.course)
                     self.listSearch.quiz.append(contentsOf: response.data.quiz)
                     self.listSearch.blog.append(contentsOf: response.data.blog)
+                    self.filterFreeCourses()
                     self.currentPage = nextPage
                 case .failure(let error):
                     self.error = error.localizedDescription
@@ -90,6 +93,12 @@ class SearchEntryViewModel: ObservableObject {
                 }
                 self.isLoadingMore = false
             }
+        }
+    }
+
+    private func filterFreeCourses() {
+        listFreeCourse = listSearch.course.filter { $0.type == .free }.map { course in
+            SearchCourseModel(_id: course._id, title: course.title, titleDescription: course.titleDescription, enrollmentCount: course.enrollmentCount, type: course.type, amount: course.amount, thumbnail: course.thumbnail, lecture: course.lecture)
         }
     }
 }

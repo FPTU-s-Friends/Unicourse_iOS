@@ -198,10 +198,9 @@ struct CourseDetailView: View {
     }
 }
 
-//
-// #Preview {
-//    NavigationStack {
-//        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
-//            .environmentObject(AppData())
-//    }
-// }
+#Preview {
+    NavigationStack {
+        CourseDetailView(courseId: "65a8790ba30979a347d026c9")
+            .environmentObject(AppData())
+    }
+}

@@ -10,6 +10,7 @@ import Foundation
 enum Tab: String, CaseIterable {
     case home = "Trang chủ"
     case course = "Khoá học"
+    case quiz = "Ôn tập"
     case community = "Cộng đồng"
     case account = "Tài khoản"
 
@@ -19,6 +20,8 @@ enum Tab: String, CaseIterable {
                 return "house.fill"
             case .course:
                 return "book.fill"
+            case .quiz:
+                return "puzzlepiece.extension.fill"
             case .community:
                 return "person.3.fill"
             case .account:

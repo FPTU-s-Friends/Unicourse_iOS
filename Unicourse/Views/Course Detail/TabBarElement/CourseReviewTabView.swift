@@ -91,7 +91,7 @@ struct CommentRating: View {
         VStack {
             HStack(spacing: 12) {
                 // Image
-                Image(.kien)
+                Image(.defaultProfile)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 36, height: 36)

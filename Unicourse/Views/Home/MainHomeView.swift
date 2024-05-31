@@ -13,6 +13,7 @@ struct MainHomeView: View {
     let tabBarItems = [
         ("Trang chủ", "house"),
         ("Khoá học", "book"),
+        ("Ôn tập", "square.2.layers.3d.fill"),
         ("Cộng đồng", "person.3"),
         ("Tài khoản", "person.circle.fill")
     ]
@@ -40,8 +41,9 @@ struct MainHomeView: View {
         switch index {
         case 0: HomeView()
         case 1: CourseView()
-        case 2: CommunityView()
-        case 3: AccountView()
+        case 2: QuizView()
+        case 3: CommunityView()
+        case 4: AccountView()
         default: EmptyView()
         }
     }

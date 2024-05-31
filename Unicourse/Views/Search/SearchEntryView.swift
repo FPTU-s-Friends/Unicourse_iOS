@@ -11,13 +11,13 @@ struct SearchEntryView: View {
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isLoadingFirstTime = false
     @Environment(\.dismiss) var dismiss: DismissAction
+
     var body: some View {
         VStack(spacing: 5) {
             ScrollView(showsIndicators: false) {
                 VStack {
                     // Search Matching
                     SearchSuggestTextView(viewModel: viewModel)
-
                     //            Suggest Course
                     SuggestCourseView(listSearch: $viewModel.listSearch,
                                       isLoadingSearch: $viewModel.isLoading)
@@ -27,6 +27,7 @@ struct SearchEntryView: View {
                 .navigationBarTitleDisplayMode(.large)
                 .searchable(text: $viewModel.searchString,
                             prompt: Text("Tìm Khoá Học"))
+
                 .onSubmit(of: .search) {
                     viewModel.isNavigateToResultView = true
                 }
