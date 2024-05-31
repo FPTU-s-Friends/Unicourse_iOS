@@ -76,7 +76,8 @@ struct CourseDetailView: View {
                                                 isLoading: vm.isLoading,
                                                 subTitleDescription: vm.courseDetail?.subTitleDescription ?? [],
                                                 subTitle: vm.courseDetail?.subTitle ?? "",
-                                                courseName: vm.courseDetail?.title ?? "").tag(0)
+                                                courseName: vm.courseDetail?.title ?? "",
+                                                lecture_id: vm.courseDetail?.lecture?._id ?? "").tag(0)
 
                             CourseSyllabusTabView(listTrack: vm.courseDetail?.tracks ?? []).tag(1)
 

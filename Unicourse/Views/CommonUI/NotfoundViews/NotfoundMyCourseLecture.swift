@@ -1,19 +1,19 @@
 //
-//  NotfoundMyCourseView.swift
+//  NotfoundMyCourseLecture.swift
 //  Unicourse
 //
-//  Created by Minh Trần Quang on 24/5/24.
+//  Created by Minh Trần Quang on 31/5/24.
 //
 
 import SwiftUI
 
-struct NotfoundMyCourseView: View {
+struct NotfoundMyCourseLecture: View {
     var body: some View {
         VStack(spacing: 10) {
-            Image(systemName: "basket")
+            Image(systemName: "shippingbox.fill")
                 .font(.system(size: 40, weight: .light))
                 .foregroundStyle(Color.gray)
-            Text("Hiện tại, bạn chưa đăng ký khoá học nào !")
+            Text("Giảng viên hiện chưa có khoá học nào !")
                 .font(.system(size: 12, weight: .light))
         }
         .padding(20)
@@ -30,5 +30,5 @@ struct NotfoundMyCourseView: View {
 }
 
 #Preview {
-    NotfoundMyCourseView()
+    NotfoundMyCourseLecture()
 }

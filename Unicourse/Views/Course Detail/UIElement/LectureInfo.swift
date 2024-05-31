@@ -14,6 +14,7 @@ struct LectureInfo: View {
     let courseAuthorBio: String
     let imageLectureURL: String
     let isLoading: Bool
+    let lecture_id: String
 
     var body: some View {
         VStack(spacing: 14) {
@@ -54,7 +55,8 @@ struct LectureInfo: View {
                         }
                     }
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+
+                    NavigationLink(destination: LectureInfoView(lecture_id: lecture_id)) {
                         Text("Xem thông tin")
                             .frame(height: 20)
                             .padding(.vertical, 5)
@@ -62,8 +64,7 @@ struct LectureInfo: View {
                             .font(.system(size: 12, weight: .medium))
                             .background(Color(hex: "#4284F4"))
                             .cornerRadius(7.0)
-
-                    })
+                    }
                     .tint(.white)
                 }
 

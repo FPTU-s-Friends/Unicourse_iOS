@@ -33,11 +33,11 @@ struct CurrentLearningCourses: View {
                         }
                     }
                 } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
-                    NotfoundMyCourseView()
+                    NotfoundView(systemName: "basket", message: "Hiện tại bạn chưa tham gia khoá học nào")
                 } else {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(listEnrolledCourses.reversed(), id: \._id) { courseItem in
+                            ForEach(listEnrolledCourses, id: \._id) { courseItem in
                                 CourseCard(courseItem: courseItem)
                             }
                         }
@@ -81,7 +81,7 @@ struct CurrentLearningCourses: View {
                             SkeletonCourseListView()
                         }
                     } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
-                        NotfoundMyCourseView()
+                        NotfoundView(systemName: "basket", message: "Hiện tại bạn chưa tham gia khoá học nào")
                     } else {
                         ForEach(listEnrolledCourses, id: \._id) {
                             courseItem in
