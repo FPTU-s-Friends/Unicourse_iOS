@@ -13,7 +13,7 @@ enum APILecturePath {
     var endPointValue: String {
         switch self {
         case .getLectureById(lectureId: let lectureId):
-            ""
+            "/api/lecture/\(lectureId)"
         }
     }
 }
