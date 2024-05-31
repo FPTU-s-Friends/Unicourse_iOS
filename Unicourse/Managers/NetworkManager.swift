@@ -30,7 +30,6 @@ class NetworkManager {
         let signInRequest = SignInRequestModel(email: email)
         guard let bodyData = try? JSONEncoder().encode(signInRequest) else {
             throw NetworkError.encodingError // Use custom error
-            throw NetworkError.encodingError // Use custom error
         }
 
         return try await callAPI(path: path, method: method, headers: headers, body: bodyData) // Await result
@@ -109,8 +108,6 @@ class NetworkManager {
         if let additionalHeaders = headers {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
         }
-
-        print(url)
 
         let request = HTTPRequest(url: url, method: method, headers: defaultHeaders, body: body)
         HTTPClient.shared.sendRequest(request) { result in

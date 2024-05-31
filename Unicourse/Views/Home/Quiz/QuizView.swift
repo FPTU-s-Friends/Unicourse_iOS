@@ -14,7 +14,7 @@ struct QuizView: View {
         ZStack {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
-            if viewModel.filteredQuizzes.isEmpty {
+            if viewModel.isLoadingFetch == false && viewModel.filteredQuizzes.isEmpty {
                 VStack {
                     Text("Không tìm thấy chủ đề phù hợp")
                         .font(.system(size: 24, weight: .bold))
