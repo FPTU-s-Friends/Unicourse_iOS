@@ -18,22 +18,26 @@ struct TopLecturesView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
                 ForEach(listLectures, id: \._id) { lecture in
-                    VStack {
-                        AsyncImage(url: URL(string: lecture.profile_image)!) { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 60, height: 60)
-                                .clipShape(Circle())
+                    NavigationLink {
+                        LectureInfoView(lecture_id: lecture._id)
+                    } label: {
+                        VStack {
+                            AsyncImage(url: URL(string: lecture.profile_image)!) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
 
-                        } placeholder: {
-                            ProgressView()
+                            } placeholder: {
+                                ProgressView()
+                            }
+
+                            Text(lecture.fullName)
+                                .font(.system(size: 10, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .lineLimit(1)
+                                .frame(width: 100)
                         }
-
-                        Text(lecture.fullName)
-                            .font(.system(size: 10, weight: .semibold))
-                            .multilineTextAlignment(.center)
-                            .lineLimit(1)
-                            .frame(width: 100)
                     }
                 }
             }
