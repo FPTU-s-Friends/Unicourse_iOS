@@ -20,6 +20,9 @@ struct CustomHomeView: View {
                 CourseView()
                     .tag(Tab.course)
 
+                QuizView()
+                    .tag(Tab.quiz)
+
                 CommunityView()
                     .tag(Tab.community)
 

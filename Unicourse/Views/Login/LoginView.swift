@@ -90,15 +90,17 @@ struct LoginView: View {
     // Function to handle sign in
     private func handleSignIn() async {
         appData.isLoading = true
-        do {
-            let token = try await viewModel.signInGoogle() // Await the sign-in result
-            appData.token = token
-            let jwtToken = token.split(separator: " ")[1]
-            appData.decodeJWTTokenAndSetUserProfile(token: String(jwtToken))
-        } catch {
-            appData.error = error.localizedDescription
-            appData.isShowingAlert = true
-            print("Error during sign-in:", error) // Optional: Log the error for debugging
+        Task {
+            do {
+                let token = try await viewModel.signInGoogle()
+                let jwtToken = String(token.split(separator: " ")[1])
+                appData.token = jwtToken
+                appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
+            } catch {
+                appData.error = error.localizedDescription
+                appData.isShowingAlert = true
+                print("Error during sign-in:", error)
+            }
         }
 
         appData.isLoading = false

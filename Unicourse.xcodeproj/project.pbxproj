@@ -166,6 +166,11 @@
 		C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */; };
 		C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */; };
 		C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */; };
+		C5F038312C089AAD00EB1F97 /* AllFreeCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F038302C089AAD00EB1F97 /* AllFreeCoursesView.swift */; };
+		C5F038332C089B1E00EB1F97 /* TopFreeCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F038322C089B1E00EB1F97 /* TopFreeCourseView.swift */; };
+		C5F038352C09782900EB1F97 /* JustLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F038342C09782900EB1F97 /* JustLoadingView.swift */; };
+		C5F038372C0981B400EB1F97 /* SkeletonTopCourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F038362C0981B400EB1F97 /* SkeletonTopCourseItem.swift */; };
+		C5F038392C099CD000EB1F97 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F038382C099CD000EB1F97 /* QuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,6 +327,11 @@
 		C5E98B092BFF1A8C00630823 /* TrackingCourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCourseCard.swift; sourceTree = "<group>"; };
 		C5EA2CF82BF76BE8002C6144 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C5EA2CFB2BF7716B002C6144 /* PaymentMethodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodItemView.swift; sourceTree = "<group>"; };
+		C5F038302C089AAD00EB1F97 /* AllFreeCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFreeCoursesView.swift; sourceTree = "<group>"; };
+		C5F038322C089B1E00EB1F97 /* TopFreeCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFreeCourseView.swift; sourceTree = "<group>"; };
+		C5F038342C09782900EB1F97 /* JustLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustLoadingView.swift; sourceTree = "<group>"; };
+		C5F038362C0981B400EB1F97 /* SkeletonTopCourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonTopCourseItem.swift; sourceTree = "<group>"; };
+		C5F038382C099CD000EB1F97 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +522,7 @@
 				B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */,
 				C54107432C0332EE0096F64A /* SkeletonSuggestCourse.swift */,
 				C5DEAA4F2C0722E400955E1C /* SkeletonCourseRecentView.swift */,
+				C5F038362C0981B400EB1F97 /* SkeletonTopCourseItem.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -520,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				C5DDACFF2BEC6ADA00CDF642 /* LoadingIndicatorView.swift */,
+				C5F038342C09782900EB1F97 /* JustLoadingView.swift */,
 			);
 			path = LoadingViews;
 			sourceTree = "<group>";
@@ -778,6 +790,8 @@
 				C54DADAA2BE9D75900E968CE /* ProgressCourseView.swift */,
 				C54DADAE2BE9DE9F00E968CE /* TopCoursesView.swift */,
 				C54DADB02BE9E47800E968CE /* TopLecturesView.swift */,
+				C5F038322C089B1E00EB1F97 /* TopFreeCourseView.swift */,
+				C5F038382C099CD000EB1F97 /* QuizView.swift */,
 			);
 			path = UIHome;
 			sourceTree = "<group>";
@@ -1065,6 +1079,7 @@
 			isa = PBXGroup;
 			children = (
 				C5DEAA552C075A6B00955E1C /* AllTopCourseView.swift */,
+				C5F038302C089AAD00EB1F97 /* AllFreeCoursesView.swift */,
 			);
 			path = SubHomeView;
 			sourceTree = "<group>";
@@ -1196,6 +1211,7 @@
 				C5D8D5F52BFEF94900DE7EBA /* SkeletonCourseProgressCard.swift in Sources */,
 				C567495C2BE8910400DA6A58 /* NetworkManager.swift in Sources */,
 				C57ED1B62BEF4C8500641532 /* TabSelectionView.swift in Sources */,
+				C5F038372C0981B400EB1F97 /* SkeletonTopCourseItem.swift in Sources */,
 				B5A43A2E2BFB54C000AE89C4 /* CourseDetailViewModel.swift in Sources */,
 				B5898F9C2BEDFF5600C315B8 /* ButtonGradientUI.swift in Sources */,
 				C53E80442BF0BCAA003DFC4B /* RecentView.swift in Sources */,
@@ -1240,6 +1256,7 @@
 				C56749512BE8810F00DA6A58 /* AppData.swift in Sources */,
 				C56749632BE8994B00DA6A58 /* APIPath.swift in Sources */,
 				C56749562BE885BF00DA6A58 /* HTTPClient.swift in Sources */,
+				C5F038352C09782900EB1F97 /* JustLoadingView.swift in Sources */,
 				C56881812BF840BD00B2C3F3 /* ChatGroupMiniView.swift in Sources */,
 				C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */,
 				C56749752BE8CB7100DA6A58 /* HeaderButtonView.swift in Sources */,
@@ -1262,6 +1279,7 @@
 				C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */,
+				C5F038312C089AAD00EB1F97 /* AllFreeCoursesView.swift in Sources */,
 				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
@@ -1279,7 +1297,9 @@
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
 				B5898FA12BEE094A00C315B8 /* LectureInfo.swift in Sources */,
+				C5F038332C089B1E00EB1F97 /* TopFreeCourseView.swift in Sources */,
 				C56749792BE8DAA900DA6A58 /* CustomPageControlHomeView.swift in Sources */,
+				C5F038392C099CD000EB1F97 /* QuizView.swift in Sources */,
 				C579AF782C009B89004BB9A6 /* SearchModel.swift in Sources */,
 				C5DEAA4C2C07032F00955E1C /* FavoriteItemView.swift in Sources */,
 				C541D9FE2BE355490022079E /* ButtonMain.swift in Sources */,

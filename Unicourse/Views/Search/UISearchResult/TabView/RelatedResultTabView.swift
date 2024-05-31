@@ -48,8 +48,10 @@ struct RelatedResultTabView: View {
                 Color.mainBackgroundColor
             }
             if viewModel.isLoadingMore {
-                ProgressView()
-                    .frame(maxWidth: .infinity, alignment: .center)
+                VStack {
+                    JustLoadingView(isLoading: .constant(true))
+                }
+                .padding(.horizontal, 10)
             }
         }
         .onDisappear {

@@ -1,14 +1,14 @@
 //
-//  AllTopCourseView.swift
+//  AllFreeCoursesView.swift
 //  Unicourse
 //
-//  Created by Trung Kiên Nguyễn on 29/5/24.
+//  Created by Trung Kiên Nguyễn on 30/5/24.
 //
 
 import SDWebImageSwiftUI
 import SwiftUI
 
-struct AllTopCourseView: View {
+struct AllFreeCoursesView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.dismiss) var dismiss: DismissAction
     @StateObject var viewModel = SearchEntryViewModel()
@@ -18,30 +18,21 @@ struct AllTopCourseView: View {
         ZStack {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
-
-            ScrollView {
-                VStack {
+            VStack {
+                ScrollView {
                     if viewModel.isLoading {
                         ForEach(0 ..< 3) { _ in
                             SkeletonTopCourseItem()
                         }
 
                     } else {
-                        ForEach(viewModel.listSearch.course.indices, id: \.self) { index in
-                            let course = viewModel.listSearch.course[index]
+                        ForEach(viewModel.listFreeCourse, id: \._id) { course in
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                                TopCourseView(course: course)
-                                    .background(colorScheme == .dark ? .black : .white)
-                                    .cornerRadius(20)
+                                FreeCourseView(course: course)
                             }
-                            .onAppear {
-                                if index == viewModel.listSearch.course.count - 1 {
-                                    viewModel.loadMore(searchText: viewModel.searchString)
-                                }
-                            }
+                            .padding(.vertical, 10)
                         }
-                        .padding(.horizontal, 15)
-                        .padding(.top, 10)
+                        .padding()
                     }
                 }
 
@@ -52,7 +43,7 @@ struct AllTopCourseView: View {
             }
         }
         .searchable(text: $viewModel.searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
-        .navigationTitle("Khoá học nổi bật 📚")
+        .navigationTitle("Khoá học miễn phí 📖")
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -84,13 +75,14 @@ struct AllTopCourseView: View {
                 })
             }
         }
+
         .onDisappear {
             SDImageCache.shared.clearMemory()
         }
     }
 }
 
-struct TopCourseView: View {
+struct FreeCourseView: View {
     var course: SearchCourseModel
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
@@ -126,7 +118,7 @@ struct TopCourseView: View {
                     HStack(alignment: .top, spacing: 0) {
                         WebImage(url: URL(string: course.lecture.profile_image)) { image in
                             image.resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 28)
                                 .cornerRadius(20)
                         } placeholder: {
@@ -201,7 +193,5 @@ struct TopCourseView: View {
 }
 
 #Preview {
-    NavigationStack {
-        AllTopCourseView()
-    }
+    AllFreeCoursesView()
 }
