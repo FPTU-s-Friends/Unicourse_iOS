@@ -17,7 +17,7 @@ enum NetworkError: Error {
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let baseURL = "http://localhost:4040"
+    private let baseURL = "https://unicourse-server-test.up.railway.app"
 //    private let baseURL = "https://unicourse-api-production.up.railway.app"
 
     // MARK: - Public Methods
@@ -29,7 +29,6 @@ class NetworkManager {
 
         let signInRequest = SignInRequestModel(email: email)
         guard let bodyData = try? JSONEncoder().encode(signInRequest) else {
-            throw NetworkError.encodingError // Use custom error
             throw NetworkError.encodingError // Use custom error
         }
 
@@ -109,8 +108,6 @@ class NetworkManager {
         if let additionalHeaders = headers {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
         }
-
-        print(url)
 
         let request = HTTPRequest(url: url, method: method, headers: defaultHeaders, body: body)
         HTTPClient.shared.sendRequest(request) { result in
