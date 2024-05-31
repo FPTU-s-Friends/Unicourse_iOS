@@ -41,7 +41,7 @@ class AppData: ObservableObject {
 
                 // Updating the user profile in appData
                 self.user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: UserRole(rawValue: role) ?? .student)
-
+                self.token = token
                 self.getUserInfo(userId: userId, token: token)
             } catch {
                 print(error)
@@ -53,6 +53,7 @@ class AppData: ObservableObject {
         DispatchQueue.main.async {
             self.isLoggedIn = false
             self.user = nil
+            self.userInfo = nil
         }
     }
 
@@ -105,6 +106,9 @@ class AppData: ObservableObject {
     }
 
     func getUserInfo(userId: String, token: String) {
+        print("userId", userId)
+        print("token", token)
+        
         isLoading = true
         NetworkManager.shared.callAPI2(path: "\(APIPath.getUserInfo.stringValue)/\(userId)", method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) {
             (result: Result<CommonResponse<UserInfoModel>, Error>) in

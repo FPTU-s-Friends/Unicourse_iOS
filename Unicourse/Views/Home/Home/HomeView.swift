@@ -55,10 +55,14 @@ struct HomeView: View {
                     SemesterChosenView()
                         .padding(.bottom, 10)
                     // Khoá học nổi bật
-                    TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, searchCourses: viewModel.searchCourse, headerText: HeaderCategoryText.topCourseText)
+                    TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse,
+                                   searchCourses: viewModel.searchCourse,
+                                   headerText: HeaderCategoryText.topCourseText)
                         .padding(.bottom, 10)
 
-                    TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse, searchCourses: viewModel.listFreeCourses, headerText: HeaderCategoryText.topFreeCourse)
+                    TopFreeCourseView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse,
+                                      freeCourse: viewModel.listFreeCourses,
+                                      headerText: HeaderCategoryText.topFreeCourse)
                         .padding(.bottom, 10)
 
                     // Tiến trình khoá học
@@ -96,7 +100,7 @@ struct HomeView: View {
 //        viewModel.getAllFreeCourse(token: appData.token)
 
         viewModel.search(searchText: "")
-        viewModel.fetchListEnrolledCourses(userId: appData.userInfo?._id ?? "", token: appData.token, isRefresh: true)
+        viewModel.fetchListEnrolledCourses(userId: appData.user?.userId ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)
     }
 }
