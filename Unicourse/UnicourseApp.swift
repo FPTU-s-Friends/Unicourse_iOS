@@ -38,7 +38,6 @@ struct UnicourseApp: App {
                         appData.isShowSlashScreen = false
                     } catch {
                         print("Authentication error: \(error)")
-                        // Handle the error, potentially show a login screen
                     }
                 }
             }

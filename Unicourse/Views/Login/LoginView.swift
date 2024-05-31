@@ -24,7 +24,7 @@ struct LoginView: View {
                     Image("appIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 200)
+                        .frame(width: 100)
                         .padding()
                         .padding(.top, 20)
                     Text("UniCourse")
@@ -38,14 +38,9 @@ struct LoginView: View {
 
                     Spacer()
 
-                    ButtonLoginView(action: {
-                        Task {
-                            await handleSignIn()
-                        }
-                    }, iconImage: "googleIcon", textDetail: "Đăng nhập với Google")
-                        .padding(.bottom, 10)
+                    GoogleLoginButtonView(viewModel: viewModel)
 
-                    ButtonLoginView(action: {}, iconImage: "githubIcon", textDetail: "Đăng nhập với Github")
+                    GithubLoginButtonView(viewModel: viewModel)
 
                     Spacer()
 
@@ -76,7 +71,7 @@ struct LoginView: View {
             }
             .ignoresSafeArea(.all)
             .navigationDestination(isPresented: Binding<Bool>(
-                get: { appData.user != nil },
+                get: { appData.userInfo != nil },
                 set: { _ in
                     // Không làm gì khi giá trị set thay đổi
                 }
@@ -85,25 +80,6 @@ struct LoginView: View {
                     .navigationBarBackButtonHidden(true)
             })
         }
-    }
-
-    // Function to handle sign in
-    private func handleSignIn() async {
-        appData.isLoading = true
-        Task {
-            do {
-                let token = try await viewModel.signInGoogle()
-                let jwtToken = String(token.split(separator: " ")[1])
-                appData.token = jwtToken
-                appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
-            } catch {
-                appData.error = error.localizedDescription
-                appData.isShowingAlert = true
-                print("Error during sign-in:", error)
-            }
-        }
-
-        appData.isLoading = false
     }
 }
 

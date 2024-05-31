@@ -148,6 +148,9 @@
 		C57ED1BE2BEF4CC900641532 /* SuggestCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1BD2BEF4CC900641532 /* SuggestCourseView.swift */; };
 		C57ED1C12BEF4D1000641532 /* ResultUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1C02BEF4D1000641532 /* ResultUserView.swift */; };
 		C57ED1C32BEF4D1500641532 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1C22BEF4D1500641532 /* SearchResultView.swift */; };
+		C58EC8FE2C0A33DA00C20151 /* GoogleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC8FD2C0A33DA00C20151 /* GoogleLoginButtonView.swift */; };
+		C58EC9002C0A345A00C20151 /* GithubLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC8FF2C0A345A00C20151 /* GithubLoginButtonView.swift */; };
+		C58EC9022C0A34A800C20151 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC9012C0A34A800C20151 /* AppleLoginButtonView.swift */; };
 		C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C596D7BC2BF73810004D02F9 /* CourseVideoPlayerView.swift */; };
 		C5BCE2BB2C05A0450018CF11 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCE2BA2C05A0450018CF11 /* UserInfoModel.swift */; };
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
@@ -320,6 +323,10 @@
 		C57ED1BD2BEF4CC900641532 /* SuggestCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestCourseView.swift; sourceTree = "<group>"; };
 		C57ED1C02BEF4D1000641532 /* ResultUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUserView.swift; sourceTree = "<group>"; };
 		C57ED1C22BEF4D1500641532 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		C58EC8FC2C0A316C00C20151 /* Unicourse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unicourse.entitlements; sourceTree = "<group>"; };
+		C58EC8FD2C0A33DA00C20151 /* GoogleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButtonView.swift; sourceTree = "<group>"; };
+		C58EC8FF2C0A345A00C20151 /* GithubLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginButtonView.swift; sourceTree = "<group>"; };
+		C58EC9012C0A34A800C20151 /* AppleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButtonView.swift; sourceTree = "<group>"; };
 		C596D7BC2BF73810004D02F9 /* CourseVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVideoPlayerView.swift; sourceTree = "<group>"; };
 		C5BCE2BA2C05A0450018CF11 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLearningCourses.swift; sourceTree = "<group>"; };
@@ -747,6 +754,9 @@
 			children = (
 				C541DA142BE363110022079E /* DeviderCustomView.swift */,
 				C541DA122BE35E020022079E /* ButtonLoginView.swift */,
+				C58EC8FD2C0A33DA00C20151 /* GoogleLoginButtonView.swift */,
+				C58EC8FF2C0A345A00C20151 /* GithubLoginButtonView.swift */,
+				C58EC9012C0A34A800C20151 /* AppleLoginButtonView.swift */,
 			);
 			path = UILogin;
 			sourceTree = "<group>";
@@ -953,6 +963,7 @@
 		C56F69362BE2026A0093E51B /* Unicourse */ = {
 			isa = PBXGroup;
 			children = (
+				C58EC8FC2C0A316C00C20151 /* Unicourse.entitlements */,
 				C56749432BE86E9B00DA6A58 /* Info.plist */,
 				C56749402BE86E2800DA6A58 /* Others */,
 				C5D7DD0D2BF7116C00FC0DF7 /* Config */,
@@ -1424,6 +1435,7 @@
 				C567497B2BE8DEB200DA6A58 /* CustomProgressView.swift in Sources */,
 				B5946C422C089AD900314B7F /* LectureViewModel.swift in Sources */,
 				C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */,
+				C58EC8FE2C0A33DA00C20151 /* GoogleLoginButtonView.swift in Sources */,
 				C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */,
 				B54199922BF3879E0034BC08 /* ExpandedView.swift in Sources */,
 				B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */,
@@ -1445,6 +1457,7 @@
 				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
 				C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
+				C58EC9002C0A345A00C20151 /* GithubLoginButtonView.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
 				B5898F9F2BEE003F00C315B8 /* CourseDetailTabView.swift in Sources */,
@@ -1498,6 +1511,7 @@
 				C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */,
 				B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */,
 				C548DDA32C0463B900764E13 /* TabPosition.swift in Sources */,
+				C58EC9022C0A34A800C20151 /* AppleLoginButtonView.swift in Sources */,
 				C5DEAA562C075A6B00955E1C /* AllTopCourseView.swift in Sources */,
 				C548DDA32C0463B900764E13 /* TabPosition.swift in Sources */,
 				C567494D2BE8764200DA6A58 /* UserProfile.swift in Sources */,
@@ -1632,6 +1646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Unicourse/Unicourse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
@@ -1662,6 +1677,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Unicourse/Unicourse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";

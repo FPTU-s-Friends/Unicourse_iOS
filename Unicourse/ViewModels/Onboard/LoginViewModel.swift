@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import FirebaseCore
 import Foundation
 import GoogleSignIn
@@ -37,6 +38,34 @@ final class LoginViewModel: ObservableObject {
 
             return try await AuthenticationManager.shared.signInWithGoogle(idToken: idToken, accessToken: accessToken)
         } catch {
+            throw error
+        }
+    }
+
+    func signInGithub() async throws -> String {
+        do {
+            // Attempt to sign in with GitHub
+            let accessToken = try await AuthenticationManager.shared.signInWithGitHub()
+
+            // Fetch user details from GitHub
+            let email = try await AuthenticationManager.shared.fetchGithubEmail(accessToken: accessToken)
+            let (name, image) = try await AuthenticationManager.shared.fetchGithubUserInfo(accessToken: accessToken)
+
+            // Try signing in with the obtained email
+            do {
+                let signInResponse = try await NetworkManager.shared.signIn(email: email)
+                return signInResponse.data.accessToken
+            } catch AuthenticationError.userNotFound {
+                // If user not found, try signing up
+                let signUpResponse = try await NetworkManager.shared.signUp(
+                    email: email,
+                    fullName: name,
+                    profileImage: image
+                )
+                return signUpResponse.data.accessToken
+            }
+        } catch {
+            // Handle other errors
             throw error
         }
     }

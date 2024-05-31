@@ -79,7 +79,7 @@ struct UserInfoModel: Codable {
     let profileImage: String
     let publishedAt: String?
     let userClass: Int
-    let coins: [String]? // chỉnh sửa sau
+    let coins: [coinsUserInfoModel]? // chỉnh sửa sau
     let quizInterest: [String]? // chỉnh sửa sau
     let quizProcess: [String]? // chỉnh sửa sau
     let lectureInfo: LectureModel?
@@ -105,4 +105,14 @@ struct UserInfoModel: Codable {
         case lectureInfo = "lecture_info"
         case wishList = "wish_list"
     }
+}
+
+struct coinsUserInfoModel: Codable {
+    let _id: String
+    let title: String
+    let description: String
+    let coin: Int
+    let type: String
+    let date_used: String?
+    let status: String // Chỉnh sửa sau
 }
