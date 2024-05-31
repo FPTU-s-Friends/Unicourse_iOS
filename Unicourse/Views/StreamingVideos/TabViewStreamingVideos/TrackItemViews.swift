@@ -54,6 +54,7 @@ struct TrackItemViews: View {
                     .padding(.vertical, 5)
                     .background(isSelected ? Color(hex: "#eef0ff") : .white)
                 }
+
                 .onTapGesture {
                     vm.setSelectedTrack(newTrack: track_step)
                     vm.getCurrentTrack()
