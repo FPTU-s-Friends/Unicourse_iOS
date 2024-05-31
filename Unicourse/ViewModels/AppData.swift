@@ -49,11 +49,14 @@ class AppData: ObservableObject {
         }
     }
 
-    func signOutUser() {
-        DispatchQueue.main.async {
-            self.isLoggedIn = false
-            self.user = nil
-            self.userInfo = nil
+    func signOutUser() throws {
+        do {
+            try Auth.auth().signOut()
+            isLoggedIn = false
+            user = nil
+            userInfo = nil
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
         }
     }
 
@@ -108,7 +111,7 @@ class AppData: ObservableObject {
     func getUserInfo(userId: String, token: String) {
         print("userId", userId)
         print("token", token)
-        
+
         isLoading = true
         NetworkManager.shared.callAPI2(path: "\(APIPath.getUserInfo.stringValue)/\(userId)", method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) {
             (result: Result<CommonResponse<UserInfoModel>, Error>) in

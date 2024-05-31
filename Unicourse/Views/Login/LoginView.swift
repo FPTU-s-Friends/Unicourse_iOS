@@ -45,7 +45,11 @@ struct LoginView: View {
                     }, iconImage: "googleIcon", textDetail: "Đăng nhập với Google")
                         .padding(.bottom, 10)
 
-                    ButtonLoginView(action: {}, iconImage: "githubIcon", textDetail: "Đăng nhập với Github")
+                    ButtonLoginView(action: {
+                        Task {
+                            await handleSignInGit()
+                        }
+                    }, iconImage: "githubIcon", textDetail: "Đăng nhập với Github")
 
                     Spacer()
 
@@ -104,6 +108,18 @@ struct LoginView: View {
         }
 
         appData.isLoading = false
+    }
+
+    private func handleSignInGit() async {
+        appData.isLoading = true
+        Task {
+            do {
+                let token = try await viewModel.signInGithub()
+                print(token)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 

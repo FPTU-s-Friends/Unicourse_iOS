@@ -66,9 +66,17 @@ struct AccountMenuView: View {
                 }
             }
 
-            LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut, action: { appData.signOutUser() })
-                .padding(.top, 10)
-                .padding(.leading, 2)
+            LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut, action: {
+                Task {
+                    do {
+                        try appData.signOutUser()
+                    } catch {
+                        print(error)
+                    }
+                }
+            })
+            .padding(.top, 10)
+            .padding(.leading, 2)
         }
         .padding(.horizontal, 30)
     }
