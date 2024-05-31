@@ -17,7 +17,7 @@ enum NetworkError: Error {
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let baseURL = "http://localhost:4040"
+    private let baseURL = "https://unicourse-server-test.up.railway.app"
 //    private let baseURL = "https://unicourse-api-production.up.railway.app"
 
     // MARK: - Public Methods

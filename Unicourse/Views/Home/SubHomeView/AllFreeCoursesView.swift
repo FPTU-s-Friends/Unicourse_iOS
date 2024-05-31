@@ -30,9 +30,9 @@ struct AllFreeCoursesView: View {
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                                 FreeCourseView(course: course)
                             }
-                            .padding(.vertical, 10)
                         }
-                        .padding()
+                        .padding(.horizontal, 15)
+                        .padding(.top, 10)
                     }
                 }
 

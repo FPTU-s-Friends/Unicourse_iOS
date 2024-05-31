@@ -57,6 +57,9 @@
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
 		C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */; };
 		C52F5C452C04B0E900A2FB8A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */; };
+		C539C4D02C09BC7B008F14B6 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539C4CF2C09BC7B008F14B6 /* QuizViewModel.swift */; };
+		C539C4D32C09BD72008F14B6 /* AllQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */; };
+		C539C4D52C09BF0F008F14B6 /* QuizItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539C4D42C09BF0F008F14B6 /* QuizItemView.swift */; };
 		C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */; };
 		C53E803E2BF0BC58003DFC4B /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */; };
 		C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E803F2BF0BC78003DFC4B /* DiscountView.swift */; };
@@ -227,6 +230,9 @@
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		C52F5C402C04871B00A2FB8A /* HeaderUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderUserView.swift; sourceTree = "<group>"; };
+		C539C4CF2C09BC7B008F14B6 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQuizModel.swift; sourceTree = "<group>"; };
+		C539C4D42C09BF0F008F14B6 /* QuizItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItemView.swift; sourceTree = "<group>"; };
 		C53E803B2BF0B357003DFC4B /* SlashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlashScreenView.swift; sourceTree = "<group>"; };
 		C53E803D2BF0BC58003DFC4B /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		C53E803F2BF0BC78003DFC4B /* DiscountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountView.swift; sourceTree = "<group>"; };
@@ -364,6 +370,7 @@
 		B50A725A2BFE03BE00D3B549 /* QuizModels */ = {
 			isa = PBXGroup;
 			children = (
+				C539C4D12C09BD5A008F14B6 /* Response */,
 				B50A725B2BFE03C800D3B549 /* QuizModel.swift */,
 			);
 			path = QuizModels;
@@ -605,6 +612,39 @@
 			path = CustomTabUI;
 			sourceTree = "<group>";
 		};
+		C539C4CC2C09AF4F008F14B6 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				C539C4CD2C09B130008F14B6 /* QuizUI */,
+				C5F038382C099CD000EB1F97 /* QuizView.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		C539C4CD2C09B130008F14B6 /* QuizUI */ = {
+			isa = PBXGroup;
+			children = (
+				C539C4D42C09BF0F008F14B6 /* QuizItemView.swift */,
+			);
+			path = QuizUI;
+			sourceTree = "<group>";
+		};
+		C539C4CE2C09BC6D008F14B6 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				C539C4CF2C09BC7B008F14B6 /* QuizViewModel.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		C539C4D12C09BD5A008F14B6 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		C53E803A2BF0AE38003DFC4B /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +766,7 @@
 		C567493D2BE86CDE00DA6A58 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C539C4CC2C09AF4F008F14B6 /* Quiz */,
 				C5DEAA542C075A4500955E1C /* SubHomeView */,
 				C548DDA42C0468D100764E13 /* CustomTab */,
 				C54DADB22BE9E50000E968CE /* Account */,
@@ -833,7 +874,6 @@
 				C54DADAE2BE9DE9F00E968CE /* TopCoursesView.swift */,
 				C54DADB02BE9E47800E968CE /* TopLecturesView.swift */,
 				C5F038322C089B1E00EB1F97 /* TopFreeCourseView.swift */,
-				C5F038382C099CD000EB1F97 /* QuizView.swift */,
 			);
 			path = UIHome;
 			sourceTree = "<group>";
@@ -960,6 +1000,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C539C4CE2C09BC6D008F14B6 /* Quiz */,
 				B5946C402C089ACA00314B7F /* Lecture */,
 				B5A43A2C2BFB54B100AE89C4 /* Course */,
 				C53E80482BF0BD19003DFC4B /* Onboard */,
@@ -1339,6 +1380,7 @@
 				C567494F2BE87D5D00DA6A58 /* LoginViewModel.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
+				C539C4D52C09BF0F008F14B6 /* QuizItemView.swift in Sources */,
 				C53E804A2BF0BD32003DFC4B /* AccountViewModel.swift in Sources */,
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
@@ -1364,6 +1406,7 @@
 				C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */,
 				B54199922BF3879E0034BC08 /* ExpandedView.swift in Sources */,
 				B578A8902BFC9309003CBFFA /* CourseViewModel.swift in Sources */,
+				C539C4D02C09BC7B008F14B6 /* QuizViewModel.swift in Sources */,
 				C541DA152BE363110022079E /* DeviderCustomView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
@@ -1371,6 +1414,7 @@
 				C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */,
 				C5688C602C042BEC003669C0 /* NewestResultTabView.swift in Sources */,
 				C5688C602C042BEC003669C0 /* NewestResultTabView.swift in Sources */,
+				C539C4D32C09BD72008F14B6 /* AllQuizModel.swift in Sources */,
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
