@@ -35,7 +35,8 @@ struct LectureDetailModel: Codable {
     let email: String
     let fullName: String
     let profileName: String
-    let dateOfBirth: String
+    let dateOfBirth: String?
     let role: String
     let profile_image: String
+    let lecture_info: LectureInfoDetail
 }
