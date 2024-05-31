@@ -13,6 +13,10 @@
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
 		B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725F2BFE05F400D3B549 /* TrackModel.swift */; };
+		B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */; };
+		B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */; };
+		B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */; };
+		B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F832C09C71000ECC191 /* NotfoundMyCourseLecture.swift */; };
 		B541998B2BF383950034BC08 /* CourseSyllabusTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */; };
 		B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998D2BF3857A0034BC08 /* ExpandableView.swift */; };
 		B54199902BF387840034BC08 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541998F2BF387840034BC08 /* ThumbnailView.swift */; };
@@ -49,7 +53,7 @@
 		B5D0DA282C03434500773956 /* StreamingVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */; };
 		B5D0DA2B2C034A5500773956 /* TrackItemViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */; };
 		B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */; };
-		B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */; };
+		B5F06B152C007747001316BC /* NotfoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundView.swift */; };
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
@@ -184,6 +188,10 @@
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		B50A725F2BFE05F400D3B549 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureDetail.swift; sourceTree = "<group>"; };
+		B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseLectureItem.swift; sourceTree = "<group>"; };
+		B5328F832C09C71000ECC191 /* NotfoundMyCourseLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundMyCourseLecture.swift; sourceTree = "<group>"; };
 		B541998A2BF383950034BC08 /* CourseSyllabusTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSyllabusTabView.swift; sourceTree = "<group>"; };
 		B541998D2BF3857A0034BC08 /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B541998F2BF387840034BC08 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -220,7 +228,7 @@
 		B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingVideoViewModel.swift; sourceTree = "<group>"; };
 		B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItemViews.swift; sourceTree = "<group>"; };
 		B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledNewCourseModel.swift; sourceTree = "<group>"; };
-		B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundMyCourseView.swift; sourceTree = "<group>"; };
+		B5F06B142C007747001316BC /* NotfoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundView.swift; sourceTree = "<group>"; };
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
@@ -386,6 +394,14 @@
 			path = TrackModels;
 			sourceTree = "<group>";
 		};
+		B5328F7C2C09BCC600ECC191 /* ShimmerViews */ = {
+			isa = PBXGroup;
+			children = (
+				B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */,
+			);
+			path = ShimmerViews;
+			sourceTree = "<group>";
+		};
 		B541998C2BF385630034BC08 /* ExpandableElement */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +417,7 @@
 			children = (
 				B55016032C08988A006CC44F /* LectureViewUIs */,
 				B55016012C089882006CC44F /* LectureInfoView.swift */,
+				B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */,
 			);
 			path = Lectures;
 			sourceTree = "<group>";
@@ -564,6 +581,7 @@
 				C54107432C0332EE0096F64A /* SkeletonSuggestCourse.swift */,
 				C5DEAA4F2C0722E400955E1C /* SkeletonCourseRecentView.swift */,
 				C5F038362C0981B400EB1F97 /* SkeletonTopCourseItem.swift */,
+				B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -580,7 +598,8 @@
 		B5F06B132C00772F001316BC /* NotfoundViews */ = {
 			isa = PBXGroup;
 			children = (
-				B5F06B142C007747001316BC /* NotfoundMyCourseView.swift */,
+				B5F06B142C007747001316BC /* NotfoundView.swift */,
+				B5328F832C09C71000ECC191 /* NotfoundMyCourseLecture.swift */,
 			);
 			path = NotfoundViews;
 			sourceTree = "<group>";
@@ -1096,6 +1115,7 @@
 		C5D8D5F32BFEF93700DE7EBA /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				B5328F7C2C09BCC600ECC191 /* ShimmerViews */,
 				B5F06B132C00772F001316BC /* NotfoundViews */,
 				B5F06B122C007727001316BC /* LoadingViews */,
 				B5F06B112C0076FB001316BC /* SkeletonViews */,
@@ -1271,6 +1291,7 @@
 				C5688C692C04558D003669C0 /* CustomHomeView.swift in Sources */,
 				C53E80422BF0BC94003DFC4B /* TransactionHistoryView.swift in Sources */,
 				C567493F2BE86D0100DA6A58 /* MainHomeView.swift in Sources */,
+				B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
@@ -1335,7 +1356,7 @@
 				C541D9F92BE342DA0022079E /* OnBoardView.swift in Sources */,
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
 				B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */,
-				B5F06B152C007747001316BC /* NotfoundMyCourseView.swift in Sources */,
+				B5F06B152C007747001316BC /* NotfoundView.swift in Sources */,
 				C567494F2BE87D5D00DA6A58 /* LoginViewModel.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
@@ -1363,6 +1384,7 @@
 				C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */,
 				C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */,
 				B54199922BF3879E0034BC08 /* ExpandedView.swift in Sources */,
+				B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */,
 				B578A8902BFC9309003CBFFA /* CourseViewModel.swift in Sources */,
 				C541DA152BE363110022079E /* DeviderCustomView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
@@ -1374,6 +1396,7 @@
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
+				B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
 				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
 				C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */,
@@ -1429,6 +1452,7 @@
 				C5688C5B2C0427E8003669C0 /* TabSelectionSearchView.swift in Sources */,
 				C5688C5B2C0427E8003669C0 /* TabSelectionSearchView.swift in Sources */,
 				C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */,
+				B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */,
 				C548DDA32C0463B900764E13 /* TabPosition.swift in Sources */,
 				C5DEAA562C075A6B00955E1C /* AllTopCourseView.swift in Sources */,
 				C548DDA32C0463B900764E13 /* TabPosition.swift in Sources */,

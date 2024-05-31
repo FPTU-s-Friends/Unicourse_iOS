@@ -65,6 +65,7 @@ struct LectureInfo: View {
                             .background(Color(hex: "#4284F4"))
                             .cornerRadius(7.0)
                     }
+                    .tint(.white)
                 }
 
                 VStack {
