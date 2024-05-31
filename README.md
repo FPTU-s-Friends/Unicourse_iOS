@@ -5,8 +5,9 @@
 ### ONBOARDING SCREEN
 
 <div style="display: flex; justify-content: center; align-items: center; margin: auto; width: 100%;">
-  <img width="22%" src="./assets/image_readme/onboar1.png" style="background-color: black; padding: 10px; border-radius: 10px; margin: 10px;" />
-  <img width="22%" src="./assets/image_readme/onboar2.png" style="background-color: black; padding: 10px; border-radius: 10px; margin: 10px;" />
-  <img width="22%" src="./assets/image_readme/onboar3.png" style="background-color: black; padding: 10px; border-radius: 10px; margin: 10px;" />
-  <img width="22%" src="./assets/image_readme/login_screen.png" style="background-color: black; padding: 10px; border-radius: 10px; margin: 10px;" />
+  <img width="18%" src="./images/Simulator Screenshot - iPhone 15 Pro Max - 2024-05-31 at 16.16.33.png" style=" padding: 10px; border-radius: 20px; margin: 10px;" />
+  <img width="18%" src="./images/Simulator Screenshot - iPhone 15 Pro Max - 2024-05-31 at 16.17.39.png" style=" padding: 10px; border-radius: 20px; margin: 10px;" />
+  <img width="18%" src="./images/Simulator Screenshot - iPhone 15 Pro Max - 2024-05-31 at 16.17.58.png" style=" padding: 10px; border-radius: 20px; margin: 10px;" />
+  <img width="18%" src="./images/Simulator Screenshot - iPhone 15 Pro Max - 2024-05-31 at 16.18.05.png" style=" padding: 10px; border-radius: 20px; margin: 10px;" />
+  <img width="18%" src="./images/Simulator Screenshot - iPhone 15 Pro Max - 2024-05-31 at 16.18.08.png" style=" padding: 10px; border-radius: 20px; margin: 10px;" />
 </div>
