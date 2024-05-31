@@ -13,6 +13,7 @@ struct CourseVideoPlayerView: View {
     let title: String
     @StateObject var vm = StreamingVideoViewModel()
     @State private var tabSelection = 0
+    @State private var videoIndex: Int = 1
     private var listTrackSorted: [Track] {
         listTrack.sorted(by: { ($0.position ?? 0) < ($1.position ?? 0) })
     }

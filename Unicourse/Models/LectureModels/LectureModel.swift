@@ -16,7 +16,7 @@ struct Feedback: Codable {
     var status: String?
 }
 
-struct my_courses_user: Codable {
+struct my_courses: Codable {
     var _id: String
     var title: String
     var thumbnail: String
@@ -25,7 +25,7 @@ struct my_courses_user: Codable {
 
 struct Lecture_Info: Codable {
     var _id: String
-//    var my_course: [my_courses_user]?
+//    var my_course: [my_courses]?
     var description: String?
     var feedback: [Feedback]?
 }
