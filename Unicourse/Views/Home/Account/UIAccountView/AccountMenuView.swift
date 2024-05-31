@@ -41,16 +41,21 @@ struct AccountMenuView: View {
                         }
                         .padding(.top, 15)
 
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 10) {
-                                ForEach((appData.userInfo?.enrollCourses ?? []).sorted(by: { $0.enrollDate > $1.enrollDate }), id: \._id) { course in
-                                    NavigationLink(destination: CourseDetailView(courseId: course.courseId._id)) {
-                                        CourseItemView(course: course, colorScheme: colorScheme)
+                        if appData.userInfo?.enrollCourses == nil {
+                            EmptyView()
+                        } else {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack(spacing: 10) {
+                                    ForEach((appData.userInfo?.enrollCourses ?? []).sorted(by: { $0.enrollDate > $1.enrollDate }), id: \._id) { course in
+                                        NavigationLink(destination: CourseDetailView(courseId: course.courseId._id)) {
+                                            CourseItemView(course: course, colorScheme: colorScheme)
+                                        }
                                     }
                                 }
+                                .frame(height: 70)
                             }
-                            .frame(height: 70)
                         }
+                        Divider()
 
                     } else {
                         NavigationLink(destination: menuItem.destination
@@ -67,6 +72,7 @@ struct AccountMenuView: View {
             }
 
             LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut, action: {
+                appData.isLoading = true
                 Task {
                     do {
                         try appData.signOutUser()
@@ -74,6 +80,7 @@ struct AccountMenuView: View {
                         print(error)
                     }
                 }
+                appData.isLoading = false
             })
             .padding(.top, 10)
             .padding(.leading, 2)

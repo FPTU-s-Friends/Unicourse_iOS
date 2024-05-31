@@ -22,9 +22,15 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            guard appData.isLoggedIn else { return }
-            guard let userId = appData.user?.userId else { return }
-            appData.getUserInfo(userId: userId, token: appData.token)
+            Task {
+                do {
+                    guard appData.isLoggedIn else { return }
+                    guard let userId = appData.user?.userId else { return }
+                    try await appData.getUserInfo(userId: userId, token: appData.token)
+                } catch {
+                    print(error)
+                }
+            }
         }
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Trung Kiên Nguyễn on 6/5/24.
 //
 
-import Combine
 import Firebase
 import FirebaseAuth
 import FirebaseCore
@@ -44,46 +43,30 @@ final class LoginViewModel: ObservableObject {
     }
 
     func signInGithub() async throws -> String {
-        let provider = OAuthProvider(providerID: "github.com")
-        provider.scopes = ["user:email"]
-        provider.customParameters = ["allow_signup": "true"]
+        do {
+            // Attempt to sign in with GitHub
+            let accessToken = try await AuthenticationManager.shared.signInWithGitHub()
 
-        guard let topVC = Utilities.shared.visibleTopViewController() else {
-            throw URLError(.cannotFindHost)
-        }
+            // Fetch user details from GitHub
+            let email = try await AuthenticationManager.shared.fetchGithubEmail(accessToken: accessToken)
+            let (name, image) = try await AuthenticationManager.shared.fetchGithubUserInfo(accessToken: accessToken)
 
-        // Create a Future to encapsulate the async operation
-        return try await withCheckedThrowingContinuation { continuation in
-
-            provider.getCredentialWith(nil) { credential, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                guard let credential = credential else {
-                    let error = NSError(domain: "signInGithub", code: 0, userInfo: [NSLocalizedDescriptionKey: "Can find credential when login with github"])
-                    continuation.resume(throwing: error)
-                    return
-                }
-
-                Auth.auth().signIn(with: credential) { authResult, error in
-                    if let error = error {
-                        continuation.resume(throwing: error)
-                        return
-                    }
-
-                    guard let oauthCredential = authResult?.credential as? OAuthCredential,
-                          let accessToken = oauthCredential.accessToken
-                    else {
-                        let error = NSError(domain: "signInGithub", code: 1, userInfo: [NSLocalizedDescriptionKey: "Can find credential when login with github"])
-                        continuation.resume(throwing: error)
-                        return
-                    }
-
-                    continuation.resume(returning: accessToken)
-                }
+            // Try signing in with the obtained email
+            do {
+                let signInResponse = try await NetworkManager.shared.signIn(email: email)
+                return signInResponse.data.accessToken
+            } catch AuthenticationError.userNotFound {
+                // If user not found, try signing up
+                let signUpResponse = try await NetworkManager.shared.signUp(
+                    email: email,
+                    fullName: name,
+                    profileImage: image
+                )
+                return signUpResponse.data.accessToken
             }
+        } catch {
+            // Handle other errors
+            throw error
         }
     }
 }

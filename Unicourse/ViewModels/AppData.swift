@@ -26,26 +26,24 @@ class AppData: ObservableObject {
         self.token = token
     }
 
-    func decodeJWTTokenAndSetUserProfile(token: String) {
-        DispatchQueue.main.async {
-            do {
-                // Decoding the JWT token
-                let jwt = try JWTDecode.decode(jwt: token)
+    func decodeJWTTokenAndSetUserProfile(token: String) async throws {
+        do {
+            // Decoding the JWT token
+            let jwt = try JWTDecode.decode(jwt: token)
 
-                // Extracting user information from the JWT claims
-                let userId = jwt.claim(name: "_id").string ?? ""
-                let fullName = jwt.claim(name: "fullName").string ?? ""
-                let email = jwt.claim(name: "email").string ?? ""
-                let profileImage = jwt.claim(name: "profile_image").string ?? ""
-                let role = jwt.claim(name: "role").string ?? ""
+            // Extracting user information from the JWT claims
+            let userId = jwt.claim(name: "_id").string ?? ""
+            let fullName = jwt.claim(name: "fullName").string ?? ""
+            let email = jwt.claim(name: "email").string ?? ""
+            let profileImage = jwt.claim(name: "profile_image").string ?? ""
+            let role = jwt.claim(name: "role").string ?? ""
 
-                // Updating the user profile in appData
-                self.user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: UserRole(rawValue: role) ?? .student)
-                self.token = token
-                self.getUserInfo(userId: userId, token: token)
-            } catch {
-                print(error)
-            }
+            // Updating the user profile in appData
+            user = UserProfile(userId: userId, email: email, fullName: fullName, profileImageURL: URL(string: profileImage), role: UserRole(rawValue: role) ?? .student)
+            self.token = token
+            try await getUserInfo(userId: userId, token: token)
+        } catch {
+            print(error)
         }
     }
 
@@ -99,7 +97,7 @@ class AppData: ObservableObject {
 
             let tokenSplitString = accessToken.split(separator: " ")[1]
             token = String(tokenSplitString)
-            decodeJWTTokenAndSetUserProfile(token: String(tokenSplitString))
+            try await decodeJWTTokenAndSetUserProfile(token: String(tokenSplitString))
             isLoggedIn = true
         } catch {
             isShowingAlert = true
@@ -108,30 +106,23 @@ class AppData: ObservableObject {
         }
     }
 
-    func getUserInfo(userId: String, token: String) {
-        print("userId", userId)
-        print("token", token)
+    func fetchUserInfo(userId: String, token: String) async throws -> CommonResponse<UserInfoModel> {
+        let path = "\(APIPath.getUserInfo.stringValue)/\(userId)"
+        let method = HTTPMethod.get
+        let headers = ["Authorization": "Bearer \(token)"]
 
-        isLoading = true
-        NetworkManager.shared.callAPI2(path: "\(APIPath.getUserInfo.stringValue)/\(userId)", method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) {
-            (result: Result<CommonResponse<UserInfoModel>, Error>) in
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                switch result {
-                case let .success(response):
-                    switch response.status {
-                    case HTTPStatusCodes.OK.rawValue:
-                        userInfo = response.data
-                    default:
-                        print("Get User Info Error")
-                    }
-                case let .failure(error):
-                    self.error = error.localizedDescription
-                    isShowingAlert = true
-                    print(error)
-                }
-                isLoading = false
-            }
+        return try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: nil)
+    }
+
+    func getUserInfo(userId: String, token: String) async throws {
+        do {
+            let data = try await fetchUserInfo(userId: userId, token: token)
+            userInfo = data.data
+        } catch {
+            print("Get User Info Error")
+            self.error = error.localizedDescription
+            isShowingAlert = true
+            print(error)
         }
     }
 }

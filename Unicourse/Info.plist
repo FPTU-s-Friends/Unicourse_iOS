@@ -23,5 +23,11 @@
 	</array>
 	<key>GIDClientID</key>
 	<string>571256265329-1hkssuvi55ng32drt67mkg4k8bv96rmc.apps.googleusercontent.com</string>
+	<key>GITHUB_CLIENT_ID</key>
+	<string>114e1315349d8e1c5ea1</string>
+	<key>GITHUB_CLIENT_SECRET</key>
+	<string>01c73ab20a77248a2acaeab1b58115487eae81e7</string>
+	<key>GITHUB_REDIRECT_URI</key>
+	<string>https://unicourse-f4020.firebaseapp.com/__/auth/handler</string>
 </dict>
 </plist>

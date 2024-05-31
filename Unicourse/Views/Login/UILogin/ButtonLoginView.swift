@@ -22,6 +22,7 @@ struct ButtonLoginView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 25, height: 25)
+                        .padding(.horizontal, 5)
                     Text(textDetail)
                         .font(.system(size: .mainTitlePath, weight: .bold, design: .default))
                         .foregroundColor(.black)
@@ -29,7 +30,7 @@ struct ButtonLoginView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.white)
-                .cornerRadius(20)
+                .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color(hex: "EDEDED"), lineWidth: 1)
