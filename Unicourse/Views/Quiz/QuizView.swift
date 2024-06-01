@@ -14,7 +14,7 @@ struct QuizView: View {
         ZStack {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
-            if viewModel.isLoadingFetch == false && viewModel.filteredQuizzes.isEmpty {
+            if viewModel.isLoadingFetch == false, viewModel.filteredQuizzes.isEmpty {
                 VStack {
                     Text("Không tìm thấy chủ đề phù hợp")
                         .font(.system(size: 24, weight: .bold))
@@ -23,7 +23,9 @@ struct QuizView: View {
             }
             List {
                 ForEach(viewModel.filteredQuizzes, id: \._id) { quiz in
-                    QuizItemView(quizItem: quiz)
+                    NavigationLink(destination: QuizDetailView()) {
+                        QuizItemView(quizItem: quiz)
+                    }
                 }
             }
             .listRowSeparator(.hidden, edges: .all)
