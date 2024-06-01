@@ -38,12 +38,11 @@ struct ChatGroupMiniView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 14)
-                    .foregroundStyle(.green)
+                    .foregroundStyle(Color.mainColor1)
             }
             .padding(.horizontal, 10)
         }
-        .frame(width: .infinity)
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 10)
         .padding(.top, 16)
     }
 }

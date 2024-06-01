@@ -52,7 +52,7 @@ struct OnBoardView: View {
             dotAppearance.pageIndicatorTintColor = UIColor(Color(hex: "BEBFC2"))
         }
         .background(LinearGradient(colors: [Color.mainColor1, .white], startPoint: .leading, endPoint: .bottom))
-        .fullScreenCover(isPresented: $viewModel.navigateToLogin) {
+        .navigationDestination(isPresented: $viewModel.navigateToLogin) {
             LoginView()
         }
     }

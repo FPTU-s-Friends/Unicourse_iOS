@@ -20,6 +20,7 @@ struct UnicourseApp: App {
                 } else {
                     ContentView()
                         .environmentObject(appData)
+                        .environmentObject(SocketIOManager.shared)
                         .alert("Error", isPresented: $appData.isShowingAlert) {
                             Button("OK", role: .cancel) {
                                 appData.isShowingAlert = false
