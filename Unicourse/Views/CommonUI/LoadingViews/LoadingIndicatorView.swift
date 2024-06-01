@@ -20,12 +20,12 @@ struct LoadingIndicatorView: View {
                 animationBackgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Circle()
-                        .trim(from: 0, to: 0.7)
-                        .stroke(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom), lineWidth: 5)
-                        .frame(width: 50, height: 50)
+                        .trim(from: 0, to: 0.8)
+                        .stroke(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom), lineWidth: 6.5)
+                        .frame(width: 45, height: 45)
                         .rotationEffect(Angle(degrees: isAnimation ? 360 : 0))
                         .onAppear {
-                            withAnimation(Animation.linear(duration: 0.6).repeatForever(autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: 0.75).repeatForever(autoreverses: false)) {
                                 isAnimation = true
                             }
                         }

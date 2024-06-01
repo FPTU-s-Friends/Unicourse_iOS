@@ -16,6 +16,7 @@ enum APIPath {
     case getCourseSemester
     case searchCourse
     case getQuiz
+    case getBanners
 
     var stringValue: String {
         switch self {
@@ -35,6 +36,8 @@ enum APIPath {
             "/api/common/search"
         case .getQuiz:
             "/api/quiz/interest"
+        case .getBanners:
+            "/api/banner"
         }
     }
 }

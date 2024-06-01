@@ -11,9 +11,10 @@ import SwiftUI
 struct AccountMenuView: View {
     @EnvironmentObject var appData: AppData
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    var menuItems: [MenuItem]
-    @State private var showAlert = false
     @State private var isLoggedOut = false
+    @State private var isShowAlertSignOut1 = false
+    @State private var isShowAlertSignOut2 = false
+    var menuItems: [MenuItem]
 
     var body: some View {
         VStack(spacing: 5) {
@@ -70,20 +71,48 @@ struct AccountMenuView: View {
                     }
                 }
             }
-
-            LogoutButtonView(showAlert: $showAlert, isLoggedOut: $isLoggedOut, action: {
-                appData.isLoading = true
-                Task {
-                    do {
-                        try appData.signOutUser()
-                    } catch {
-                        print(error)
+            .alert(isPresented: $appData.isShowingAlert) {
+                Alert(
+                    title: Text("Error").foregroundStyle(Color.red),
+                    message: Text(appData.error),
+                    dismissButton: .cancel(Text("Ok")) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            appData.isShowingAlert = false
+                        }
                     }
+                )
+            }
+
+            LogoutButtonView(showAlert: $isShowAlertSignOut1)
+                .padding(.top, 10)
+                .padding(.leading, 2)
+                .alert(isPresented: $isShowAlertSignOut1) {
+                    Alert(
+                        title: Text("Xác nhận"),
+                        message: Text("Bạn có chắc chắn muốn đăng xuất không?"),
+                        primaryButton: .destructive(Text("Có")) {
+                            withAnimation(.spring) {
+                                appData.isLoading = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    Task {
+                                        do {
+                                            try appData.signOutUser()
+                                            isLoggedOut = true // Set isLoggedOut to true after sign out
+                                        } catch {
+                                            appData.error = "Lỗi khi đăng xuất"
+                                            appData.isShowingAlert = true
+                                        }
+                                        appData.isLoading = false
+                                    }
+                                }
+                            }
+                        },
+                        secondaryButton: .cancel(Text("Không"))
+                    )
                 }
-                appData.isLoading = false
-            })
-            .padding(.top, 10)
-            .padding(.leading, 2)
+                .navigationDestination(isPresented: $isLoggedOut) {
+                    LoginView()
+                }
         }
         .padding(.horizontal, 30)
     }
@@ -143,8 +172,6 @@ struct MenuItemView: View {
 
 struct LogoutButtonView: View {
     @Binding var showAlert: Bool
-    @Binding var isLoggedOut: Bool
-    var action: () -> Void
 
     var body: some View {
         Button {
@@ -158,21 +185,6 @@ struct LogoutButtonView: View {
                     .fontWeight(.semibold)
                 Spacer()
             }
-        }
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Xác nhận"),
-                message: Text("Bạn có chắc chắn muốn đăng xuất không?"),
-                primaryButton: .destructive(Text("Có")) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        action()
-                    }
-                },
-                secondaryButton: .cancel(Text("Không"))
-            )
-        }
-        .fullScreenCover(isPresented: $isLoggedOut) {
-            LoginView()
         }
     }
 }

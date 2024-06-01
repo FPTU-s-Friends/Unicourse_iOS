@@ -5,6 +5,7 @@
 //  Created by Trung Kiên Nguyễn on 6/5/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct HomeView: View {
@@ -19,37 +20,47 @@ struct HomeView: View {
             VStack {
                 HStack {
                     HeaderUserView()
-                        .padding(.horizontal, 10)
 
                     Spacer()
 
                     HeaderButtonView()
-                        .padding(.horizontal, 10)
                 }
+                .padding(.horizontal, 15)
                 ScrollView {
-                    VStack {
-                        ZStack(alignment: .top) {
-                            TabView(selection: $viewModel.currentPage) {
-                                ForEach(viewModel.slideData.slides.indices, id: \.self) { index in
-                                    Image(viewModel.slideData.slides[index].imageName)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .cornerRadius(10)
-                                        .padding(.horizontal, 10)
-                                        .tag(index)
-                                }
-                            }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                            .frame(height: 250)
-                            .transition(.slide) // Add slide transition effect
-                            .animation(.easeInOut(duration: 1), value: viewModel.currentPage)
-                            // Add animation with easeInOut timing and duration of 0.5 seconds
-
-                            CustomPageControlHomeView(numberOfPages: viewModel.slideData.slides.count, currentPage: $viewModel.currentPage)
-                                .offset(y: 20)
+                    if viewModel.isLoadingBanner {
+                        VStack {
+                            ProgressView()
                         }
+                    } else {
+                        VStack {
+                            ZStack(alignment: .top) {
+                                TabView(selection: $viewModel.currentPage) {
+                                    ForEach(viewModel.banners.indices, id: \.self) { index in
+                                        WebImage(url: URL(string: viewModel.banners[index].img)) { img in
+                                            img
+                                                .resizable()
+                                                .scaledToFit()
+                                                .cornerRadius(10)
+                                                .padding(.horizontal, 10)
+                                                .tag(index)
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                    }
+                                }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                .frame(height: 250)
+                                .transition(.slide) // Add slide transition effect
+                                .animation(.easeInOut(duration: 1), value: viewModel.currentPage)
+                                // Add animation with easeInOut timing and duration of 0.5 seconds
+
+                                CustomPageControlHomeView(numberOfPages: viewModel.banners.count,
+                                                          currentPage: $viewModel.currentPage)
+                                    .offset(y: 20)
+                            }
+                        }
+                        .background(Color.mainBackgroundColor)
                     }
-                    .background(Color.mainBackgroundColor)
 
                     // Danh mục kỳ semester
                     SemesterChosenView()
@@ -79,7 +90,9 @@ struct HomeView: View {
                 }
 
                 .refreshable {
-                    fetchData()
+                    Task {
+                        try await fetchData()
+                    }
                 }
             }
             if viewModel.isLoadingListEnrolled {
@@ -89,16 +102,19 @@ struct HomeView: View {
 
         .onAppear {
             if !hasLoadedDataInitially {
-                fetchData()
-                hasLoadedDataInitially = true
+                Task {
+                    try await fetchData()
+                    hasLoadedDataInitially = true
+                }
             }
         }
         .background(Color.mainBackgroundColor)
     }
 
-    func fetchData() {
+    func fetchData() async throws {
 //        viewModel.getAllFreeCourse(token: appData.token)
 
+        try await viewModel.getBanners()
         viewModel.search(searchText: "")
         viewModel.fetchListEnrolledCourses(userId: appData.userInfo?._id ?? "", token: appData.token, isRefresh: true)
         viewModel.getUsersPaginationByRole(role: .lecture, pageSize: 10, pageNum: 1, sortBy: "lecture_info.feedback", order: .DES, token: appData.token)

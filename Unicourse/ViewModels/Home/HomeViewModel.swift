@@ -9,11 +9,12 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var currentPage = 0
-    @Published var slideData = SlideData()
+    @Published var banners: [BannerModel] = []
     @Published var searchCourse: [SearchCourseModel] = []
     @Published var isLoadingListEnrolled = false
     @Published var isLoadingSearchCourse = false
     @Published var isLoadingGetUser = false
+    @Published var isLoadingBanner = false
     @Published var isShowingAlert = false
     @Published var error = ""
     @Published var listEnrolledCourses: [EnrolledCourseModel] = []
@@ -136,44 +137,22 @@ class HomeViewModel: ObservableObject {
             isLoadingGetUser = false
         }
     }
+    
+    func getBanners() async throws {
+        let path = APIPath.getBanners.stringValue
+        let method = HTTPMethod.get
+       
+        do {
+            isLoadingBanner = true
+            let response: CommonResponse<[BannerModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, body: nil)
+            banners = response.data
+        } catch {
+            self.error = "Không lấy được dữ liệu banner"
+            isShowingAlert = true
+        }
+        isLoadingBanner = false
+    }
 }
-
-struct Slide: Identifiable {
-    let id = UUID()
-    let imageName: String
-}
-
-class SlideData: ObservableObject {
-    @Published var slides: [Slide] = [
-        Slide(imageName: "MainBanner"),
-        Slide(imageName: "home-banner1"),
-        Slide(imageName: "home-banner2"),
-        Slide(imageName: "home-banner3")
-    ]
-}
-
-//    func getAllFreeCourse(token: String) {
-//        isLoadingAllFreeCourse = true
-//        NetworkManager.shared.callAPI2(path: APIPath.getAllFreeCourse.stringValue, method: .get, headers: ["Authorization": "Bearer \(token)"], body: nil) { (result: Result<CommonResponse<[CourseModel]>, Error>) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let response):
-//                    switch response.status {
-//                    case HTTPStatusCodes.OK.rawValue:
-//                        printJSONData(data: response)
-//                        self.allFreeCourse = response.data
-//                    default:
-//                        self.error = "Unexpected status code: \(response.status)"
-//                    }
-//
-//                case .failure(let error):
-//                    print(error)
-//                    self.error = error.localizedDescription
-//                }
-//                self.isLoadingAllFreeCourse = false
-//            }
-//        }
-//    }
 
 //    func getAllFreeCourse(token: String) {
 //        isLoadingAllFreeCourse = true

@@ -17,25 +17,28 @@ struct GithubLoginButtonView: View {
                 Task {
                     try await handleSignInGit()
                 }
+
             }, iconImage: "githubIcon", textDetail: "Đăng nhập với Github")
         }
         .padding(.bottom, 10)
     }
 
     private func handleSignInGit() async throws {
-        Task {
-            do {
-                appData.isLoading = true
-                let token = try await viewModel.signInGithub()
-                let jwtToken = String(token.split(separator: " ")[1])
-                appData.token = jwtToken
-                try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
-            } catch {
-                appData.error = error.localizedDescription
-                appData.isShowingAlert = true
-                print("Error during Github sign-in:", error)
+        withAnimation(.spring) {
+            appData.isLoading = true
+            Task {
+                do {
+                    let token = try await viewModel.signInGithub()
+                    let jwtToken = String(token.split(separator: " ")[1])
+                    appData.token = jwtToken
+                    try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
+                } catch {
+                    appData.error = error.localizedDescription
+                    appData.isShowingAlert = true
+                    print("Error during Github sign-in:", error)
+                }
+                appData.isLoading = false
             }
-            appData.isLoading = false
         }
     }
 }
