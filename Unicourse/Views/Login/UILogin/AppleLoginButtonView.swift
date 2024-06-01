@@ -6,20 +6,43 @@
 //
 
 import AuthenticationServices
+import Firebase
 import SwiftUI
 
 struct AppleLoginButtonView: View {
+    @EnvironmentObject var appData: AppData
+    @ObservedObject var viewModel: LoginViewModel
+    @State var error = ""
+
     var body: some View {
         VStack {
             SignInWithAppleButton(.signIn) { request in
-                // Handle authorization request if needed
+
+                // Set requestedScopes and nonce
+                viewModel.currentNonce = randomNonceString()
                 request.requestedScopes = [.email, .fullName]
+                request.nonce = sha256(viewModel.currentNonce)
+
             } onCompletion: { result in
                 switch result {
-                    case .success(let authorization):
-                        signInWithApple(authorization)
-                    case .failure(let error):
-                        print(error)
+                case .success(let authorization):
+                    guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                        print("Error with Firebase.")
+                        error = "Error with Firebase."
+                        return
+                    }
+
+                    Task {
+                        do {
+                            try await viewModel.signInWithApple(credential: credential)
+                        } catch {
+                            print("Apple sign-in error: \(error.localizedDescription)")
+                            self.error = error.localizedDescription
+                        }
+                    }
+                case .failure(let error):
+                    print("Apple sign-in error: \(error.localizedDescription)")
+                    self.error = error.localizedDescription
                 }
             }
         }
@@ -33,12 +56,8 @@ struct AppleLoginButtonView: View {
             .allowsHitTesting(false)
         }
     }
-
-    private func signInWithApple(_ authorization: ASAuthorization) {
-        // Perform sign-in with Apple logic here
-    }
 }
 
 #Preview {
-    AppleLoginButtonView()
+    AppleLoginButtonView(viewModel: LoginViewModel())
 }

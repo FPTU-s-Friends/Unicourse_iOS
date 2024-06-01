@@ -13,6 +13,9 @@ struct AccountView: View {
 
     var body: some View {
         ZStack {
+            LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
+                .ignoresSafeArea()
+
             VStack {
                 HeaderAccountView()
                     .padding(.trailing, 10)
@@ -25,20 +28,16 @@ struct AccountView: View {
                     }
                     .background {
                         Color.white
-                            .frame(width: .infinity, height: .infinity)
                             .cornerRadius(20)
                             .offset(y: 30)
                     }
                     .padding(.horizontal, 30)
                 }
             }
+
             if appData.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
-        }
-        .background {
-            LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom)
-                .ignoresSafeArea()
         }
     }
 }

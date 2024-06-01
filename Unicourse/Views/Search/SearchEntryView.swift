@@ -16,8 +16,8 @@ struct SearchEntryView: View {
         VStack(spacing: 5) {
             ScrollView(showsIndicators: false) {
                 VStack {
-                    // Search Matching
-                    SearchSuggestTextView(viewModel: viewModel)
+//                    // Search Matching
+//                    SearchSuggestTextView(viewModel: viewModel)
                     //            Suggest Course
                     SuggestCourseView(listSearch: $viewModel.listSearch,
                                       isLoadingSearch: $viewModel.isLoading)

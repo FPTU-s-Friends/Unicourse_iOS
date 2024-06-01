@@ -24,11 +24,11 @@ struct LoginView: View {
                     Image("appIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100)
+                        .frame(width: 120)
                         .padding()
                         .padding(.top, 20)
                     Text("UniCourse")
-                        .font(.system(size: 36, weight: .semibold, design: .default))
+                        .font(.system(size: 30, weight: .semibold, design: .default))
                     Text("Học theo cách của riêng bạn với các bài học tương tác và giao diện trực quan.")
                         .multilineTextAlignment(.center)
                         .font(.system(size: 12))
@@ -41,6 +41,8 @@ struct LoginView: View {
                     GoogleLoginButtonView(viewModel: viewModel)
 
                     GithubLoginButtonView(viewModel: viewModel)
+
+                    AppleLoginButtonView(viewModel: viewModel)
 
                     Spacer()
 
@@ -67,7 +69,7 @@ struct LoginView: View {
 
                 LoadingIndicatorView(isLoading: $appData.isLoading)
                     .opacity(1)
-                    .animation(.easeInOut(duration: 0.5), value: appData.isLoading)
+                    .animation(.spring, value: appData.isLoading)
             }
             .ignoresSafeArea(.all)
             .navigationDestination(isPresented: Binding<Bool>(
