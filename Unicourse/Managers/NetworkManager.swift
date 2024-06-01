@@ -62,8 +62,6 @@ class NetworkManager {
             urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         }
 
-        printJSONData(data: urlComponents)
-
         guard let url = urlComponents.url else {
             throw NetworkError.invalidURL
         }
