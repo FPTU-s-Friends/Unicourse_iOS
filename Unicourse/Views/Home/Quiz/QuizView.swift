@@ -57,7 +57,7 @@ struct QuizView: View {
                     }) {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                             .font(.system(size: 16))
-                            .foregroundColor(.black)
+                            .foregroundStyle(Color.mainColor1.gradient)
                             .frame(width: 10, height: 18)
                             .padding(.trailing, 15)
                     }
@@ -68,7 +68,7 @@ struct QuizView: View {
                     }) {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 16))
-                            .foregroundColor(.black)
+                            .foregroundStyle(Color.mainColor1.gradient)
                             .frame(width: 10, height: 18)
                             .padding(.trailing, 15)
                     }

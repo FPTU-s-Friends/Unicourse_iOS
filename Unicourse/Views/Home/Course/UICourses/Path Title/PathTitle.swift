@@ -35,7 +35,7 @@ struct PathTitle: View {
                         .font(.system(size: .mainTitleButtonPath, weight: .regular))
                         .foregroundStyle(.white)
                         .frame(height: 25)
-                        .background(.blue)
+                        .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .clipShape(Capsule())
                 })
             }

@@ -11,7 +11,7 @@ enum Tab: String, CaseIterable {
     case home = "Trang chủ"
     case course = "Khoá học"
     case quiz = "Ôn tập"
-    case community = "Cộng đồng"
+    case blog = "Bài viết"
     case account = "Tài khoản"
 
     var systemImage: String {
@@ -22,8 +22,8 @@ enum Tab: String, CaseIterable {
                 return "book.fill"
             case .quiz:
                 return "puzzlepiece.extension.fill"
-            case .community:
-                return "person.3.fill"
+            case .blog:
+                return "newspaper.fill"
             case .account:
                 return "person.crop.circle.fill"
         }

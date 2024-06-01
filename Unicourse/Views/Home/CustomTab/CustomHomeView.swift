@@ -25,8 +25,10 @@ struct CustomHomeView: View {
                 }
                 .tag(Tab.quiz)
 
-                CommunityView()
-                    .tag(Tab.community)
+                NavigationView {
+                    BlogView()
+                }
+                .tag(Tab.blog)
 
                 AccountView()
                     .tag(Tab.account)

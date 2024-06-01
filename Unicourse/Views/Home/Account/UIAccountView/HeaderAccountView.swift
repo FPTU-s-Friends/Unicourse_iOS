@@ -39,7 +39,7 @@ struct HeaderAccountView: View {
                         }
                     }
                     Button(action: {}, label: {
-                        Image(systemName: "pencil")
+                        Image(systemName: "square.and.pencil")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 18)

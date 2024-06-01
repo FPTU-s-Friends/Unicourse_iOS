@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = ContentViewModel()
     @EnvironmentObject var appData: AppData
+    @EnvironmentObject var socketIOManager: SocketIOManager
+    @StateObject var viewModel = ContentViewModel()
 
     var body: some View {
         ZStack {
@@ -32,6 +33,7 @@ struct ContentView: View {
                 }
             }
         }
+        .onAppear {}
     }
 }
 

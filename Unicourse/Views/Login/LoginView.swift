@@ -62,6 +62,17 @@ struct LoginView: View {
                     .cornerRadius(30)
 
                     Spacer()
+
+                    NavigationLink(
+                        destination: CustomHomeView()
+                            .navigationBarBackButtonHidden(true),
+                        isActive: Binding<Bool>(
+                            get: { appData.userInfo != nil },
+                            set: { _ in }
+                        )
+                    ) {
+                        EmptyView()
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.80)
                 .background(Color(hex: "F7F8FC"))
@@ -72,15 +83,7 @@ struct LoginView: View {
                     .animation(.spring, value: appData.isLoading)
             }
             .ignoresSafeArea(.all)
-            .navigationDestination(isPresented: Binding<Bool>(
-                get: { appData.userInfo != nil },
-                set: { _ in
-                    // Không làm gì khi giá trị set thay đổi
-                }
-            ), destination: {
-                CustomHomeView()
-                    .navigationBarBackButtonHidden(true)
-            })
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

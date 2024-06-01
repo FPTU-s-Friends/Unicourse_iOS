@@ -8,84 +8,68 @@
 import SwiftUI
 
 struct CommunityView: View {
+    @Environment(\.dismiss) var dismiss: DismissAction
     @State var searchString: String = ""
+    @State private var gradientHeight: CGFloat = 0
+    @State var isPresentedCreateGroup = false
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.mainBackgroundColor.ignoresSafeArea()
-
-            VStack {
-                VStack {
-                    // Header Cards
-                    HStack {
-                        Text("Cộng Đồng")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundStyle(.white)
-                        Spacer()
-
-                        Button(action: {}, label: {
-                            Image(systemName: "bell")
-                                .font(.system(size: 20))
-                                .padding(10)
-                                .foregroundColor(.white)
-                                .background(Color.activeButtonColor)
-                                .clipShape(Circle())
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.gray, lineWidth: 0.1)
-                                )
-                        })
-                    }
-                    .frame(height: 50)
-                    .padding(.horizontal, 10)
-
-                    // Search Field
-                    HStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.blue)
-                                TextField("Tìm kiếm", text: $searchString)
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .lineSpacing(20)
-                                    .foregroundStyle(.gray)
-                                    .padding(.horizontal, 4)
-                                    .padding(.vertical, 8)
-                            }
-                            .padding(12)
-                            .frame(height: 44)
-                            .background(.white)
-                            .cornerRadius(16)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .inset(by: 0.25)
-                                    .stroke(Color(red: 0.93, green: 0.93, blue: 0.93), lineWidth: 0.25)
-                            )
-                        }
-                    }
-                    .padding(EdgeInsets(top: 6, leading: 18, bottom: 6, trailing: 18))
-                    .frame(width: 375, height: 56)
+        VStack {
+            List {
+                ForEach(1 ..< 10) { _ in
+                    ChatGroupMiniView()
                 }
-                .padding([.horizontal, .bottom], 18)
-                .safeAreaPadding(.top, 60)
-                .frame(maxWidth: .infinity)
-                .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .top, endPoint: .bottom)
-                )
-                .cornerRadius(40)
-
-                ScrollView {
-                    ForEach(1 ..< 10) { _ in
-                        ChatGroupMiniView()
-                    }
-                }
-
-                Spacer()
             }
-            .ignoresSafeArea()
+            .listStyle(.plain)
+            .searchable(text: $searchString, prompt: Text("Tìm kiếm"))
+        }
+        .background {
+            Color.mainBackgroundColor.ignoresSafeArea()
+        }
+        .navigationTitle("Cộng đồng ")
+        .navigationBarBackButtonHidden(true)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
+        .toolbarBackground(
+            .automatic,
+            for: .navigationBar
+        )
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                        .frame(width: 10, height: 18)
+                        .padding(.horizontal, 15)
+                }
+            }
+
+            ToolbarItem(placement: .destructiveAction) {
+                Button {
+                    withAnimation {
+                        isPresentedCreateGroup = true
+                    }
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 20)
+                }
+            }
+        }
+        .toolbarTitleDisplayMode(.large)
+        .sheet(isPresented: $isPresentedCreateGroup) {
+            Text("Tạo group ở đây")
+                .presentationDetents([.large, .medium])
         }
     }
 }
 
 #Preview {
-    CommunityView()
+    NavigationStack {
+        CommunityView()
+    }
 }

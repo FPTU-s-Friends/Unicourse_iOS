@@ -57,6 +57,14 @@
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C52151ED2C0AD7CC002855B6 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151EC2C0AD7CC002855B6 /* BannerModel.swift */; };
+		C52151F02C0AF607002855B6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C52151EF2C0AF607002855B6 /* SocketIO */; };
+		C52151F22C0AF8EF002855B6 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */; };
+		C52151F52C0B0D56002855B6 /* BlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151F42C0B0D56002855B6 /* BlogView.swift */; };
+		C52151F82C0B28D8002855B6 /* LatestBlogItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151F72C0B28D8002855B6 /* LatestBlogItemView.swift */; };
+		C52151FA2C0B2BAB002855B6 /* TopicBlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151F92C0B2BAB002855B6 /* TopicBlogView.swift */; };
+		C52151FC2C0B3068002855B6 /* TopicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151FB2C0B3068002855B6 /* TopicTextView.swift */; };
+		C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151FE2C0B3129002855B6 /* BlogModel.swift */; };
+		C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52152012C0B3328002855B6 /* BlogViewModel.swift */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
@@ -239,6 +247,13 @@
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C52151EC2C0AD7CC002855B6 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		C52151F42C0B0D56002855B6 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
+		C52151F72C0B28D8002855B6 /* LatestBlogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestBlogItemView.swift; sourceTree = "<group>"; };
+		C52151F92C0B2BAB002855B6 /* TopicBlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicBlogView.swift; sourceTree = "<group>"; };
+		C52151FB2C0B3068002855B6 /* TopicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTextView.swift; sourceTree = "<group>"; };
+		C52151FE2C0B3129002855B6 /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
+		C52152012C0B3328002855B6 /* BlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewModel.swift; sourceTree = "<group>"; };
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
@@ -378,6 +393,7 @@
 				C541DA0A2BE359060022079E /* FirebaseAuth in Frameworks */,
 				C541DA0E2BE359060022079E /* FirebaseStorage in Frameworks */,
 				C541DA072BE358D30022079E /* GoogleSignInSwift in Frameworks */,
+				C52151F02C0AF607002855B6 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,12 +646,47 @@
 			path = StreamingVideos;
 			sourceTree = "<group>";
 		};
-		C52151EB2C0AD7BE002855B6 /* Banner */ = {
+		C52151EB2C0AD7BE002855B6 /* BannerModels */ = {
 			isa = PBXGroup;
 			children = (
 				C52151EC2C0AD7CC002855B6 /* BannerModel.swift */,
 			);
-			path = Banner;
+			path = BannerModels;
+			sourceTree = "<group>";
+		};
+		C52151F32C0B0D48002855B6 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				C52151F62C0B28BE002855B6 /* UIBlog */,
+				C52151F42C0B0D56002855B6 /* BlogView.swift */,
+			);
+			path = Blog;
+			sourceTree = "<group>";
+		};
+		C52151F62C0B28BE002855B6 /* UIBlog */ = {
+			isa = PBXGroup;
+			children = (
+				C52151F72C0B28D8002855B6 /* LatestBlogItemView.swift */,
+				C52151F92C0B2BAB002855B6 /* TopicBlogView.swift */,
+				C52151FB2C0B3068002855B6 /* TopicTextView.swift */,
+			);
+			path = UIBlog;
+			sourceTree = "<group>";
+		};
+		C52151FD2C0B3101002855B6 /* BlogModels */ = {
+			isa = PBXGroup;
+			children = (
+				C52151FE2C0B3129002855B6 /* BlogModel.swift */,
+			);
+			path = BlogModels;
+			sourceTree = "<group>";
+		};
+		C52152002C0B331C002855B6 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				C52152012C0B3328002855B6 /* BlogViewModel.swift */,
+			);
+			path = Blog;
 			sourceTree = "<group>";
 		};
 		C52F5C422C0488B800A2FB8A /* CustomTabUI */ = {
@@ -805,9 +856,10 @@
 		C567493D2BE86CDE00DA6A58 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C539C4CC2C09AF4F008F14B6 /* Quiz */,
-				C5DEAA542C075A4500955E1C /* SubHomeView */,
 				C548DDA42C0468D100764E13 /* CustomTab */,
+				C5DEAA542C075A4500955E1C /* SubHomeView */,
+				C52151F32C0B0D48002855B6 /* Blog */,
+				C539C4CC2C09AF4F008F14B6 /* Quiz */,
 				C54DADB22BE9E50000E968CE /* Account */,
 				C567496C2BE8C56A00DA6A58 /* Community */,
 				C567496B2BE8C56500DA6A58 /* Course */,
@@ -845,6 +897,7 @@
 				C56749552BE885BF00DA6A58 /* HTTPClient.swift */,
 				C567494A2BE8756200DA6A58 /* AuthenticationManager.swift */,
 				C567495B2BE8910400DA6A58 /* NetworkManager.swift */,
+				C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1002,9 +1055,10 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C52151EB2C0AD7BE002855B6 /* Banner */,
+				C52151FD2C0B3101002855B6 /* BlogModels */,
+				C52151EB2C0AD7BE002855B6 /* BannerModels */,
 				C5688C652C04548B003669C0 /* UIModel */,
-				C5C665A82BFF3214009A733B /* Authentications */,
+				C5C665A82BFF3214009A733B /* AuthenticationModels */,
 				B50A725E2BFE05E800D3B549 /* TrackModels */,
 				B50A725D2BFE05CA00D3B549 /* LectureModels */,
 				B50A725A2BFE03BE00D3B549 /* QuizModels */,
@@ -1041,6 +1095,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C52152002C0B331C002855B6 /* Blog */,
 				C539C4CE2C09BC6D008F14B6 /* Quiz */,
 				B5946C402C089ACA00314B7F /* Lecture */,
 				B5A43A2C2BFB54B100AE89C4 /* Course */,
@@ -1101,7 +1156,7 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		C5C665A82BFF3214009A733B /* Authentications */ = {
+		C5C665A82BFF3214009A733B /* AuthenticationModels */ = {
 			isa = PBXGroup;
 			children = (
 				C567494C2BE8764200DA6A58 /* UserProfile.swift */,
@@ -1109,7 +1164,7 @@
 				C56749542BE884D100DA6A58 /* ResponseModels */,
 				C5BCE2BA2C05A0450018CF11 /* UserInfoModel.swift */,
 			);
-			path = Authentications;
+			path = AuthenticationModels;
 			sourceTree = "<group>";
 		};
 		C5C665A92BFF3224009A733B /* RequestModels */ = {
@@ -1269,6 +1324,7 @@
 				C56749602BE896F200DA6A58 /* JWTDecode */,
 				C579AF7A2C00A307004BB9A6 /* SwiftyJSON */,
 				C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */,
+				C52151EF2C0AF607002855B6 /* SocketIO */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1304,6 +1360,7 @@
 				C567495F2BE896F200DA6A58 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -1352,6 +1409,7 @@
 				C5688C692C04558D003669C0 /* CustomHomeView.swift in Sources */,
 				C5BCE2BB2C05A0450018CF11 /* UserInfoModel.swift in Sources */,
 				C5688C692C04558D003669C0 /* CustomHomeView.swift in Sources */,
+				C52151F52C0B0D56002855B6 /* BlogView.swift in Sources */,
 				C53E80422BF0BC94003DFC4B /* TransactionHistoryView.swift in Sources */,
 				C567493F2BE86D0100DA6A58 /* MainHomeView.swift in Sources */,
 				B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */,
@@ -1407,6 +1465,7 @@
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
 				C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
+				C52151F22C0AF8EF002855B6 /* SocketIOManager.swift in Sources */,
 				C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */,
 				C5F038312C089AAD00EB1F97 /* AllFreeCoursesView.swift in Sources */,
 				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
@@ -1415,6 +1474,7 @@
 				B55015FF2C0892E6006CC44F /* APILecturePath.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
+				C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */,
 				C54DADAD2BE9D88300E968CE /* HeaderCategoryView.swift in Sources */,
 				C541D9F92BE342DA0022079E /* OnBoardView.swift in Sources */,
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
@@ -1430,6 +1490,7 @@
 				B5898FA12BEE094A00C315B8 /* LectureInfo.swift in Sources */,
 				C5F038332C089B1E00EB1F97 /* TopFreeCourseView.swift in Sources */,
 				C56749792BE8DAA900DA6A58 /* CustomPageControlHomeView.swift in Sources */,
+				C52151FC2C0B3068002855B6 /* TopicTextView.swift in Sources */,
 				C5F038392C099CD000EB1F97 /* QuizView.swift in Sources */,
 				C579AF782C009B89004BB9A6 /* SearchModel.swift in Sources */,
 				C5DEAA4C2C07032F00955E1C /* FavoriteItemView.swift in Sources */,
@@ -1466,6 +1527,7 @@
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
 				B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
+				C52151FA2C0B2BAB002855B6 /* TopicBlogView.swift in Sources */,
 				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
 				C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
@@ -1483,6 +1545,7 @@
 				C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */,
 				C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */,
 				C5DDAD002BEC6ADA00CDF642 /* LoadingIndicatorView.swift in Sources */,
+				C52151F82C0B28D8002855B6 /* LatestBlogItemView.swift in Sources */,
 				C53E80512BF0BF38003DFC4B /* HeaderAccountView.swift in Sources */,
 				C567495E2BE893E800DA6A58 /* AppError.swift in Sources */,
 				C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */,
@@ -1507,6 +1570,7 @@
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
 				C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */,
 				B55016022C089882006CC44F /* LectureInfoView.swift in Sources */,
+				C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */,
 				B5A43A282BFB045500AE89C4 /* CourseModel.swift in Sources */,
 				C54DADAB2BE9D75900E968CE /* ProgressCourseView.swift in Sources */,
 				C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */,
@@ -1745,6 +1809,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -1788,6 +1860,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C52151EF2C0AF607002855B6 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
 		C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
