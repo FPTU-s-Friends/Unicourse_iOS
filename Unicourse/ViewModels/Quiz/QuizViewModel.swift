@@ -37,9 +37,9 @@ class QuizViewModel: ObservableObject {
 
     var filteredQuizzes: [AllQuizModel] {
         if searchString.isEmpty {
-            return listAllQuizzes
+            listAllQuizzes
         } else {
-            return listAllQuizzes.filter { $0.title.localizedCaseInsensitiveContains(searchString) }
+            listAllQuizzes.filter { $0.title.localizedCaseInsensitiveContains(searchString) }
         }
     }
 }

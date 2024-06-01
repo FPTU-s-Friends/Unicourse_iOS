@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+enum Type_Question {
+    case single
+    case multiple
+}
+
 struct AnswerComponent: View {
+    @State private var typeAnswer: Type_Question = .single
     @State private var selectedAnswerIndex: Int? = nil
     @State private var isExpandedAnswer: Bool = false
     var isShowAnswer: Bool

@@ -14,7 +14,7 @@ struct QuestionComponent: View {
     @State private var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundStyle(.white)
@@ -27,7 +27,7 @@ struct QuestionComponent: View {
                             .padding()
                     )
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 10)
 
                 if isChangeYAxisQuestion != true {
                     ZStack {
@@ -49,7 +49,7 @@ struct QuestionComponent: View {
                                 )
                             )
                             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 8)
 
                         Text("Câu hỏi 1")
                             .font(.system(size: 30, weight: .bold))

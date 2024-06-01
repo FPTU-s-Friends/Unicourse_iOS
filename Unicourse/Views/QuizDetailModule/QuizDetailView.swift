@@ -12,10 +12,11 @@ struct QuizDetailView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundStyle(Color.mainColor1)
-            VStack {
+                .foregroundStyle(Color.mainColor3)
+                .ignoresSafeArea()
+            VStack(spacing: 20) {
                 // Phần Progress
-                ProgressBarComponent()
+                ProgressBarComponent(value: 30.0, total: 100.0)
                 // End: Phần Progress
 
                 // Phần Câu hỏi & Các đáp án
@@ -26,18 +27,20 @@ struct QuizDetailView: View {
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .background(.white)
-                .cornerRadius(20)
-                .padding(.horizontal, 10)
+                .cornerRadius(35)
+
                 // End: Phần Câu hỏi & Các đáp án
 
                 // Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
                 NavigationQuizButtonComponents()
                 // End: Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
             }
+            .padding(.horizontal, 10)
         }
+
         .navigationBarBackButtonHidden()
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     dismiss()
                 }) {
@@ -48,10 +51,21 @@ struct QuizDetailView: View {
                         .padding(.horizontal, 15)
                 }
             }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Text("📚 MKT208c")
+                    .bold()
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
         }
     }
 }
 
 #Preview {
-    QuizDetailView()
+    NavigationStack {
+        QuizDetailView()
+    }
 }
