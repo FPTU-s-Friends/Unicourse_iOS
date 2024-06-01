@@ -23,9 +23,9 @@ struct GithubLoginButtonView: View {
     }
 
     private func handleSignInGit() async throws {
-        appData.isLoading = true
         Task {
             do {
+                appData.isLoading = true
                 let token = try await viewModel.signInGithub()
                 let jwtToken = String(token.split(separator: " ")[1])
                 appData.token = jwtToken
@@ -35,8 +35,8 @@ struct GithubLoginButtonView: View {
                 appData.isShowingAlert = true
                 print("Error during Github sign-in:", error)
             }
+            appData.isLoading = false
         }
-        appData.isLoading = false
     }
 }
 

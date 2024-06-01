@@ -24,9 +24,9 @@ struct GoogleLoginButtonView: View {
 
     // Function to handle sign in
     private func handleSignIn() async throws {
-        appData.isLoading = true
         Task {
             do {
+                appData.isLoading = true
                 let token = try await viewModel.signInGoogle()
                 let jwtToken = String(token.split(separator: " ")[1])
                 appData.token = jwtToken
@@ -36,9 +36,8 @@ struct GoogleLoginButtonView: View {
                 appData.isShowingAlert = true
                 print("Error during Google sign-in:", error)
             }
+            appData.isLoading = false
         }
-
-        appData.isLoading = false
     }
 }
 

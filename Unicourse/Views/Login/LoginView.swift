@@ -69,7 +69,7 @@ struct LoginView: View {
 
                 LoadingIndicatorView(isLoading: $appData.isLoading)
                     .opacity(1)
-                    .animation(.easeInOut(duration: 0.5), value: appData.isLoading)
+                    .animation(.spring, value: appData.isLoading)
             }
             .ignoresSafeArea(.all)
             .navigationDestination(isPresented: Binding<Bool>(

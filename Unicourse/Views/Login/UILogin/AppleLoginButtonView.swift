@@ -10,16 +10,17 @@ import Firebase
 import SwiftUI
 
 struct AppleLoginButtonView: View {
+    @EnvironmentObject var appData: AppData
     @ObservedObject var viewModel: LoginViewModel
-
     @State var error = ""
 
     var body: some View {
         VStack {
             SignInWithAppleButton(.signIn) { request in
+
                 // Set requestedScopes and nonce
                 viewModel.currentNonce = randomNonceString()
-                request.requestedScopes = [.email]
+                request.requestedScopes = [.email, .fullName]
                 request.nonce = sha256(viewModel.currentNonce)
 
             } onCompletion: { result in
@@ -48,12 +49,12 @@ struct AppleLoginButtonView: View {
         .frame(height: 55)
         .padding(.horizontal, 25)
         .clipShape(.capsule)
-//        .overlay {
-//            VStack {
-//                ButtonLoginView(action: {}, iconImage: "appleIcon", textDetail: "Đăng nhập với Apple")
-//            }
-//            .allowsHitTesting(false)
-//        }
+        .overlay {
+            VStack {
+                ButtonLoginView(action: {}, iconImage: "appleIcon", textDetail: "Đăng nhập với Apple")
+            }
+            .allowsHitTesting(false)
+        }
     }
 }
 
