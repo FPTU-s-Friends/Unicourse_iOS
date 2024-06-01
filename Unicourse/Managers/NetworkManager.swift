@@ -58,7 +58,7 @@ class NetworkManager {
 
         urlComponents.path = path
 
-        if let parameters {
+        if let parameters = parameters {
             urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
         }
 
@@ -104,7 +104,6 @@ class NetworkManager {
 
         // Headers mặc định
         var defaultHeaders = ["Content-Type": "application/json"]
-        // Hợp nhất headers mặc định với headers được truyền vào (nếu có)
         if let additionalHeaders = headers {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
         }

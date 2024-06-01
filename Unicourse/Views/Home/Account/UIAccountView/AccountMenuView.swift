@@ -98,6 +98,7 @@ struct AccountMenuView: View {
                                         do {
                                             try appData.signOutUser()
                                             isLoggedOut = true // Set isLoggedOut to true after sign out
+                                            appData.mainTabSelection = 0
                                         } catch {
                                             appData.error = "Lỗi khi đăng xuất"
                                             appData.isShowingAlert = true

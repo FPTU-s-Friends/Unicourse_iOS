@@ -18,7 +18,7 @@ struct CurrentLearningCourses: View {
                 // Title
                 PathTitle(title: "Đang học", isHaveButton: true,
                           actionButton: { showingCredits.toggle() })
-                    .padding(.trailing, 28)
+                    .padding(.trailing, 20)
                     .sheet(isPresented: $showingCredits) {
                         AllCourseView()
                             .presentationDetents([.medium])
