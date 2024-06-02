@@ -98,7 +98,7 @@ struct QuizItemView: View {
                                 .frame(width: 10)
                                 .foregroundStyle(Color.blue.gradient)
 
-                            Text("\(timeSinceCreated)")
+                            Text("\(timeSinceCreated(date: quizItem.created_at))")
                                 .font(.system(size: 10, weight: .semibold))
                                 .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .padding(5)
@@ -111,23 +111,6 @@ struct QuizItemView: View {
             }
         }
         .frame(height: 100)
-    }
-
-    private var timeSinceCreated: String {
-        guard let createdDate = quizItem.createdDate else { return "Ngày tạo không hợp lệ" }
-        let calendar = Calendar.current
-        let now = Date()
-        let components = calendar.dateComponents([.day, .hour, .minute], from: createdDate, to: now)
-
-        if let days = components.day, days > 0 {
-            return "\(days) ngày trước"
-        } else if let hours = components.hour, hours > 0 {
-            return "\(hours) giờ trước"
-        } else if let minutes = components.minute, minutes > 0 {
-            return "\(minutes) phút trước"
-        } else {
-            return "Vừa xong"
-        }
     }
 }
 

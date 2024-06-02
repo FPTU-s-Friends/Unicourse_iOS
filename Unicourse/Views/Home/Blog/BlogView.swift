@@ -11,6 +11,7 @@ import SwiftUI
 struct BlogView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @StateObject var viewModel = BlogViewModel()
+    @State private var isSearchBarVisible = false
 
     var body: some View {
         VStack {
@@ -29,7 +30,7 @@ struct BlogView: View {
                 }
             }
         }
-        .searchable(text: $viewModel.searchString, prompt: Text("Tìm kiếm"))
+        .searchable(text: $viewModel.searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
         .onAppear {
             Task {
                 try await viewModel.getListBlog()
@@ -46,6 +47,11 @@ struct BlogView: View {
         }
         .navigationTitle("Bài viết")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                ButtonSearchUIView(isSearchOpen: $isSearchBarVisible)
+            }
+        }
     }
 }
 
