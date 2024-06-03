@@ -36,31 +36,11 @@ struct FavoriteView: View {
         .listStyle(.insetGrouped)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    withAnimation(.spring()) {
-                        isSearchBarVisible.toggle()
-                    }
-                }, label: {
-                    if !isSearchBarVisible {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
-                            .frame(width: 10, height: 18)
-                            .padding(.horizontal, 15)
-                    }
-                })
+                ButtonSearchUIView(isSearchOpen: $isSearchBarVisible)
             }
         }
     }

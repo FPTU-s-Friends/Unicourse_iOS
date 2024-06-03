@@ -61,19 +61,8 @@ struct QuizView: View {
                             .font(.system(size: 16))
                             .foregroundStyle(Color.mainColor1.gradient)
                             .frame(width: 10, height: 18)
-                            .padding(.trailing, 15)
                     }
-                    Button(action: {
-                        withAnimation {
-                            viewModel.isSearchBarVisible = true
-                        }
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 16))
-                            .foregroundStyle(Color.mainColor1.gradient)
-                            .frame(width: 10, height: 18)
-                            .padding(.trailing, 15)
-                    }
+                    ButtonSearchUIView(isSearchOpen: $viewModel.isSearchBarVisible)
                 }
             }
         }
