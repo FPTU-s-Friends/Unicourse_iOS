@@ -8,36 +8,71 @@
 import SwiftUI
 
 struct NavigationQuizButtonComponents: View {
+    var totalQuestion: Int
+    @Binding var selectedTab: Int
+
+    var canClickPrev: Bool {
+        if selectedTab > 0 {
+            return true
+        }
+        return false
+    }
+
+    var canClickNext: Bool {
+        if selectedTab < totalQuestion - 1 {
+            return true
+        }
+        return false
+    }
+
     var body: some View {
         HStack(spacing: 20) {
-            Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
-                Text("Câu trước")
+            Button(action: {
+                if selectedTab > 0 {
+                    selectedTab -= 1
+                }
+            }, label: {
+                HStack {
+                    Image(systemName: "arrowtriangle.left.fill")
+                    Text("Câu trước")
+                }
             })
             .padding(.vertical, 10)
             .padding(.horizontal, 15)
-            .background()
+            .foregroundStyle(canClickPrev ? .white : .gray.opacity(0.5))
+            .background(canClickPrev ? Color.activeColor : .white)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.blue, lineWidth: 2)
+                    .stroke(canClickPrev ? Color.activeColor : .white, lineWidth: 2)
             )
             .cornerRadius(8)
+            .animation(.spring(), value: canClickPrev)
 
-            Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
-                Text("Câu sau")
+            Button(action: {
+                if selectedTab < totalQuestion - 1 {
+                    selectedTab += 1
+                }
+            }, label: {
+                HStack {
+                    Text("Câu sau")
+                    Image(systemName: "arrowtriangle.right.fill")
+                }
             })
             .padding(.vertical, 10)
             .padding(.horizontal, 15)
-            .background()
+            .foregroundStyle(canClickNext ? .white : .gray.opacity(0.5))
+            .background(canClickNext ? Color.activeColor : .white)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.blue, lineWidth: 2)
+                    .stroke(canClickNext ? Color.activeColor : .white, lineWidth: 2)
             )
             .cornerRadius(8)
+            .animation(.spring(), value: canClickNext)
         }
         .padding(.vertical, 10)
     }
 }
 
 #Preview {
-    NavigationQuizButtonComponents()
+    NavigationQuizButtonComponents(totalQuestion: 20, selectedTab: .constant(2))
 }

@@ -23,7 +23,7 @@ struct QuizView: View {
             }
             List {
                 ForEach(viewModel.filteredQuizzes, id: \._id) { quiz in
-                    NavigationLink(destination: QuizDetailView()) {
+                    NavigationLink(destination: QuizDetailView(quizId: quiz._id)) {
                         QuizItemView(quizItem: quiz)
                     }
                 }
