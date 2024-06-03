@@ -9,6 +9,7 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct LatestBlogItemView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var listBlog: [BlogModel]
 
     var body: some View {
@@ -27,6 +28,8 @@ struct LatestBlogItemView: View {
                 Text(listBlog[0].title)
                     .font(.system(size: 16, weight: .semibold))
                     .multilineTextAlignment(.leading)
+                    .foregroundStyle(.primary)
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
                     .lineLimit(2)
                     .padding(.horizontal, 5)
 
@@ -86,8 +89,9 @@ struct LatestBlogItemView: View {
                             }
 
                             Text(blog.title)
-                                .font(.system(size: 12, weight: .semibold))
+                                .font(.system(size: 10, weight: .semibold))
                                 .multilineTextAlignment(.leading)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .lineLimit(2)
                                 .padding(.horizontal, 5)
 
@@ -97,8 +101,8 @@ struct LatestBlogItemView: View {
                                         image
                                             .resizable()
                                             .aspectRatio(contentMode: .fill)
-                                            .frame(width: 20)
-                                            .cornerRadius(20)
+                                            .frame(width: 20, height: 20)
+                                            .cornerRadius(16)
                                     } placeholder: {
                                         ProgressView()
                                     }
@@ -107,6 +111,8 @@ struct LatestBlogItemView: View {
                                         .foregroundStyle(Color.gray)
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(1)
+
+                                    Spacer()
                                 }
                                 HStack(spacing: 5) {
                                     ForEach(blog.tags, id: \.code) { tag in
