@@ -11,6 +11,7 @@ struct QuestionComponent: View {
     @Binding var isOpenQuestion: Bool
     @Binding var isChangeYAxisQuestion: Bool
     var questionTitle: String
+    var questionIndex: Int
 
     var body: some View {
         VStack(spacing: 0) {
@@ -50,7 +51,7 @@ struct QuestionComponent: View {
                             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                             .padding(.horizontal, 8)
 
-                        Text("Câu hỏi 1")
+                        Text("Câu hỏi \(questionIndex)")
                             .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                     }
