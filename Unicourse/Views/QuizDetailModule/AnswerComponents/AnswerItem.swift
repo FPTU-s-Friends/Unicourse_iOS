@@ -10,22 +10,24 @@ import SwiftUI
 struct AnswerItem: View {
     var isSelected: Bool = false
     var index: Int
+    var answerType: Type_Question
+    var answerTitle: String
 
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Text(". . . to not become involved in poli in polit involv.")
+                Text(answerTitle)
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 14, weight: .regular))
                 Spacer()
 
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
+                    Image(systemName: answerType == .single ? "checkmark.circle.fill" : "checkmark.square.fill")
                         .font(.system(size: 19, weight: .semibold))
                         .foregroundStyle(Color.green)
                         .padding(.leading, 2)
                 } else {
-                    Image(systemName: "circle")
+                    Image(systemName: answerType == .single ? "circle" : "square")
                         .font(.system(size: 20, weight: .ultraLight))
                         .foregroundStyle(Color.neutralTextColor)
                         .padding(.leading, 2)
@@ -46,5 +48,5 @@ struct AnswerItem: View {
 }
 
 #Preview {
-    AnswerItem(isSelected: true, index: 0)
+    AnswerItem(isSelected: true, index: 0, answerType: .multiple, answerTitle: "")
 }

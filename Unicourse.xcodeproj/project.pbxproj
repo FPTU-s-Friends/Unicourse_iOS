@@ -13,6 +13,8 @@
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
 		B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725F2BFE05F400D3B549 /* TrackModel.swift */; };
+		B50C4AD92C0D76D40099B228 /* DetailQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */; };
+		B50C4ADB2C0DA1370099B228 /* DetailQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4ADA2C0DA1370099B228 /* DetailQuizViewModel.swift */; };
 		B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */; };
 		B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */; };
 		B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */; };
@@ -218,6 +220,8 @@
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		B50A725F2BFE05F400D3B549 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizModel.swift; sourceTree = "<group>"; };
+		B50C4ADA2C0DA1370099B228 /* DetailQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizViewModel.swift; sourceTree = "<group>"; };
 		B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureDetail.swift; sourceTree = "<group>"; };
 		B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseLectureItem.swift; sourceTree = "<group>"; };
@@ -809,6 +813,7 @@
 			isa = PBXGroup;
 			children = (
 				C539C4CF2C09BC7B008F14B6 /* QuizViewModel.swift */,
+				B50C4ADA2C0DA1370099B228 /* DetailQuizViewModel.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -817,6 +822,7 @@
 			isa = PBXGroup;
 			children = (
 				C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */,
+				B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1508,6 +1514,7 @@
 				C567496E2BE8C5B400DA6A58 /* HomeView.swift in Sources */,
 				C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */,
 				C541DA132BE35E020022079E /* ButtonLoginView.swift in Sources */,
+				B50C4ADB2C0DA1370099B228 /* DetailQuizViewModel.swift in Sources */,
 				C567494B2BE8756200DA6A58 /* AuthenticationManager.swift in Sources */,
 				C541D9F62BE341C90022079E /* OnboardModel.swift in Sources */,
 				C53E803E2BF0BC58003DFC4B /* FavoriteView.swift in Sources */,
@@ -1662,6 +1669,7 @@
 				C52151F82C0B28D8002855B6 /* LatestBlogItemView.swift in Sources */,
 				C53E80512BF0BF38003DFC4B /* HeaderAccountView.swift in Sources */,
 				C567495E2BE893E800DA6A58 /* AppError.swift in Sources */,
+				B50C4AD92C0D76D40099B228 /* DetailQuizModel.swift in Sources */,
 				C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */,
 				B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */,
 				C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */,
