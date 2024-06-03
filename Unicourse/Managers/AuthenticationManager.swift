@@ -11,7 +11,7 @@ import Foundation
 
 enum AuthenticationError: Error {
     case userNotFound
-    //  Other authentication-related   errors
+    //  Other authentication-related     errors
 }
 
 final class AuthenticationManager {

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct CombineQnA: View {
+    var question: Question
     @State private var isStartAnswerQuestion: Bool = false
     @State private var isChangeYAxisQuestion: Bool = false
 
     var body: some View {
         ScrollView {
             VStack {
-                QuestionComponent(isOpenQuestion: $isStartAnswerQuestion, isChangeYAxisQuestion: $isChangeYAxisQuestion)
+                QuestionComponent(isOpenQuestion: $isStartAnswerQuestion, isChangeYAxisQuestion: $isChangeYAxisQuestion, questionTitle: question.title)
                     .zIndex(1)
                     .offset(y: isChangeYAxisQuestion ? 0 : 180)
                     .animation(.smooth, value: isChangeYAxisQuestion)
@@ -24,7 +25,7 @@ struct CombineQnA: View {
                         }
                     }
 
-                AnswerComponent(isShowAnswer: isChangeYAxisQuestion)
+                AnswerComponent(typeAnswer: question.type, listAnswer: question.answer, isShowAnswer: isChangeYAxisQuestion)
                     .padding(.bottom, 20)
             }
         }
@@ -32,5 +33,5 @@ struct CombineQnA: View {
 }
 
 #Preview {
-    CombineQnA()
+    CombineQnA(question: DetailQuizModel.mockData[0].questions[0])
 }
