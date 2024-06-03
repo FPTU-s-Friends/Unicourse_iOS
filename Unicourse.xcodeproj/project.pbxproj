@@ -16,6 +16,9 @@
 		B50C4AD92C0D76D40099B228 /* DetailQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */; };
 		B50C4ADB2C0DA1370099B228 /* DetailQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4ADA2C0DA1370099B228 /* DetailQuizViewModel.swift */; };
 		B50C4ADD2C0DD1D10099B228 /* APIQuizPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4ADC2C0DD1D10099B228 /* APIQuizPath.swift */; };
+		B50C4AE02C0DE0C40099B228 /* DailyRewardIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */; };
+		B50C4AE22C0DE5F00099B228 /* DailyRewardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */; };
+		B50C4AE42C0DEACE0099B228 /* DailyRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */; };
 		B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */; };
 		B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */; };
 		B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */; };
@@ -227,6 +230,9 @@
 		B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizModel.swift; sourceTree = "<group>"; };
 		B50C4ADA2C0DA1370099B228 /* DetailQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizViewModel.swift; sourceTree = "<group>"; };
 		B50C4ADC2C0DD1D10099B228 /* APIQuizPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuizPath.swift; sourceTree = "<group>"; };
+		B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardIcon.swift; sourceTree = "<group>"; };
+		B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardButton.swift; sourceTree = "<group>"; };
+		B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardView.swift; sourceTree = "<group>"; };
 		B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureDetail.swift; sourceTree = "<group>"; };
 		B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseLectureItem.swift; sourceTree = "<group>"; };
@@ -466,6 +472,16 @@
 				B50A725F2BFE05F400D3B549 /* TrackModel.swift */,
 			);
 			path = TrackModels;
+			sourceTree = "<group>";
+		};
+		B50C4ADE2C0DE0AB0099B228 /* DailyRewards */ = {
+			isa = PBXGroup;
+			children = (
+				B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */,
+				B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */,
+				B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */,
+			);
+			path = DailyRewards;
 			sourceTree = "<group>";
 		};
 		B5328F7C2C09BCC600ECC191 /* ShimmerViews */ = {
@@ -1178,6 +1194,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B50C4ADE2C0DE0AB0099B228 /* DailyRewards */,
 				B549E4D02C0AFB8F003347A3 /* QuizDetailModule */,
 				C539C4CC2C09AF4F008F14B6 /* Quiz */,
 				B55016002C089855006CC44F /* Lectures */,
@@ -1620,6 +1637,7 @@
 				C53E804A2BF0BD32003DFC4B /* AccountViewModel.swift in Sources */,
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
 				C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */,
+				B50C4AE22C0DE5F00099B228 /* DailyRewardButton.swift in Sources */,
 				B5898FA12BEE094A00C315B8 /* LectureInfo.swift in Sources */,
 				C5F038332C089B1E00EB1F97 /* TopFreeCourseView.swift in Sources */,
 				C56749792BE8DAA900DA6A58 /* CustomPageControlHomeView.swift in Sources */,
@@ -1691,6 +1709,7 @@
 				C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
+				B50C4AE02C0DE0C40099B228 /* DailyRewardIcon.swift in Sources */,
 				B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */,
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				C5688C5D2C042A34003669C0 /* RelatedResultTabView.swift in Sources */,
@@ -1708,6 +1727,7 @@
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
 				C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */,
+				B50C4AE42C0DEACE0099B228 /* DailyRewardView.swift in Sources */,
 				B55016022C089882006CC44F /* LectureInfoView.swift in Sources */,
 				C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */,
 				B5A43A282BFB045500AE89C4 /* CourseModel.swift in Sources */,
