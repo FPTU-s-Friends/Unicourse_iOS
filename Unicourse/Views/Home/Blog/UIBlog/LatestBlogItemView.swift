@@ -9,6 +9,7 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct LatestBlogItemView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var listBlog: [BlogModel]
 
     var body: some View {
@@ -27,6 +28,8 @@ struct LatestBlogItemView: View {
                 Text(listBlog[0].title)
                     .font(.system(size: 16, weight: .semibold))
                     .multilineTextAlignment(.leading)
+                    .foregroundStyle(.primary)
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
                     .lineLimit(2)
                     .padding(.horizontal, 5)
 
@@ -88,6 +91,7 @@ struct LatestBlogItemView: View {
                             Text(blog.title)
                                 .font(.system(size: 12, weight: .semibold))
                                 .multilineTextAlignment(.leading)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .lineLimit(2)
                                 .padding(.horizontal, 5)
 

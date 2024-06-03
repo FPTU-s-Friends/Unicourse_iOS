@@ -10,16 +10,16 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     var htmlContent: String
-    @Binding var webViewHeight: CGFloat // Thêm binding để cập nhật chiều cao
+    @Binding var webViewHeight: CGFloat
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
         webView.scrollView.isScrollEnabled = false // Tắt tính năng scroll của WebView
+        webView.navigationDelegate = context.coordinator // Đặt coordinator làm navigation delegate
         return webView
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
-        // Tạo HTML với nội dung và font chữ mặc định của trình duyệt
         let html = """
         <!DOCTYPE html>
         <html>
@@ -51,18 +51,28 @@ struct WebView: UIViewRepresentable {
         </html>
         """
         webView.loadHTMLString(html, baseURL: nil)
+    }
 
-        // Cập nhật chiều cao của WebView
-        DispatchQueue.main.async {
-            webView.evaluateJavaScript("document.readyState", completionHandler: { readyState, _ in
-                if readyState != nil {
-                    webView.evaluateJavaScript("document.body.scrollHeight", completionHandler: { contentHeight, _ in
-                        if let contentHeight = contentHeight as? CGFloat {
-                            self.webViewHeight = contentHeight
-                        }
-                    })
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: WebView
+
+        init(_ parent: WebView) {
+            self.parent = parent
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            // Cập nhật chiều cao của WebView sau khi tải xong nội dung
+            webView.evaluateJavaScript("document.body.scrollHeight") { height, _ in
+                if let height = height as? CGFloat {
+                    DispatchQueue.main.async {
+                        self.parent.webViewHeight = height
+                    }
                 }
-            })
+            }
         }
     }
 }

@@ -10,8 +10,7 @@ import SwiftUI
 struct DetailBlogView: View {
     var blogId: String
     @StateObject var viewModel = DetailBlogViewModel()
-    @State private var isShowingDescription = true
-    @State private var webViewHeight: CGFloat = 0
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     var body: some View {
         ScrollView {
@@ -84,10 +83,10 @@ struct DetailBlogView: View {
 
                                     Button {
                                         withAnimation {
-                                            self.isShowingDescription.toggle()
+                                            viewModel.isShowingDescription.toggle()
                                         }
                                     } label: {
-                                        Image(systemName: self.isShowingDescription ? "chevron.down" : "chevron.up")
+                                        Image(systemName: viewModel.isShowingDescription ? "chevron.down" : "chevron.up")
                                             .resizable()
                                             .foregroundStyle(Color.mainColor1)
                                             .aspectRatio(contentMode: .fit)
@@ -96,7 +95,7 @@ struct DetailBlogView: View {
                                     }
                                 }
 
-                                if self.isShowingDescription {
+                                if viewModel.isShowingDescription {
                                     Text(self.viewModel.blogDetail?.description ?? "")
                                         .font(.system(size: 14, weight: .light))
                                 }
@@ -110,12 +109,12 @@ struct DetailBlogView: View {
                         .padding(.horizontal, 10)
 
                         VStack {
-                            WebView(htmlContent: self.viewModel.blogDetail?.content ?? "", webViewHeight: self.$webViewHeight)
-                                .frame(height: self.webViewHeight)
+                            WebView(htmlContent: viewModel.blogDetail?.content ?? "", webViewHeight: $viewModel.webViewHeight)
+                                .frame(height: viewModel.webViewHeight)
                         }
                         .padding(.horizontal, 5)
 
-                        RelatedBlogsUIView()
+                        RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                     }
                 } else {
                     Text("Not Found")
@@ -124,6 +123,7 @@ struct DetailBlogView: View {
             .onAppear {
                 Task {
                     try await self.viewModel.getBlogById(blogId: self.blogId)
+                    try await self.viewModel.getRelatedBlog()
                 }
             }
             .toolbar {
@@ -132,34 +132,35 @@ struct DetailBlogView: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 10) {
-                        Button(action: {}, label: {
-                            Image(systemName: "bookmark")
-                                .font(.system(size: 16))
-                                .foregroundColor(.black)
-                                .frame(width: 10, height: 18)
-                                .padding(.horizontal, 10)
-                        })
+                    TopTabBarButtomUIView()
+                }
 
-                        Button(action: {}, label: {
-                            Image(systemName: "globe")
-                                .font(.system(size: 16))
-                                .foregroundColor(.black)
-                                .frame(width: 10, height: 18)
-                                .padding(.horizontal, 10)
-                        })
-
-                        Button(action: {}, label: {
-                            Image(systemName: "square.and.arrow.up")
-                                .font(.system(size: 16))
-                                .foregroundColor(.black)
-                                .frame(width: 10, height: 18)
-                                .padding(.horizontal, 10)
-                        })
-                    }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    BottomTabButtonUIView(actionFavorite: {},
+                                          actionShowComment: {
+                                              viewModel.isShowingSheetComment = true
+                                          })
                 }
             }
             .navigationBarBackButtonHidden(true)
+        }
+        .sheet(isPresented: $viewModel.isShowingSheetComment, content: {
+            ZStack {
+                Color.mainColor3
+                    .ignoresSafeArea()
+                VStack(alignment: .leading) {
+                    Text("Hiện comment ở đây")
+                }
+            }
+            .presentationDetents([.medium, .large])
+
+        })
+        .alert(isPresented: $viewModel.isShowingError) {
+            Alert(title: Text("Lỗi khi lấy blog"),
+                  message: Text(viewModel.error),
+                  dismissButton: .default(Text("OK")) {
+                      viewModel.isShowingError = false
+                  })
         }
         .background {
             Color.mainBackgroundColor.ignoresSafeArea()

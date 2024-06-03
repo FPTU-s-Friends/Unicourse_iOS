@@ -8,39 +8,56 @@
 import SwiftUI
 
 struct RelatedBlogsUIView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    var listRelatedBlog: [BlogModel]
+
     var body: some View {
         VStack(alignment: .leading) {
+            Rectangle()
+                .fill(Color.activeColor)
+                .frame(height: 4)
+
             Text("Liên quan")
                 .font(.system(size: 16, weight: .bold))
                 .padding(.leading, 10)
 
-            ForEach(0 ..< 5) { _ in
+            ForEach(listRelatedBlog, id: \._id) { blog in
                 HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        Text("Tên tác giả")
-                            .font(.system(size: 10, weight: .light))
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
+                    NavigationLink(destination: DetailBlogView(blogId: blog._id)) {
+                        VStack(alignment: .leading) {
+                            Text(blog.userId.fullName)
+                                .font(.system(size: 10, weight: .light))
+                                .foregroundStyle(Color.gray)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
+                                .padding(.bottom, 1)
 
-                        Text("Deploy Spring Boot cùng SQL Server lên Azure, Deploy Spring Boot cùng SQL Server lên Azure, Deploy Spring Boot cùng SQL Server lên Azure")
-                            .font(.system(size: 12, weight: .semibold))
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(3)
-                    }
-                    Spacer()
+                            Text(blog.title)
+                                .font(.system(size: 12, weight: .semibold))
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                .lineLimit(3)
+                        }
+                        Spacer()
 
-                    AsyncImage(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/unicourse-f4020.appspot.com/o/Blog%2Fblog9.png?alt=media&token=f184fcc4-48e8-4ecd-9d79-7f03a7a329f9")) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 60, height: 60)
-                            .cornerRadius(10)
+                        AsyncImage(url: URL(string: blog.thumbnail_url)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 60, height: 60)
+                                .cornerRadius(10)
 
-                    } placeholder: {
-                        ProgressView()
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
                 }
                 .listRowBackground(Color.mainBackgroundColor)
+
+                Rectangle()
+                    .fill(Color.mainColor3)
+                    .frame(width: 300, height: 2)
+                    .cornerRadius(10)
             }
             .padding(.horizontal, 10)
         }
@@ -48,5 +65,5 @@ struct RelatedBlogsUIView: View {
 }
 
 #Preview {
-    RelatedBlogsUIView()
+    RelatedBlogsUIView(listRelatedBlog: [BlogModel.sampleBlogModel])
 }
