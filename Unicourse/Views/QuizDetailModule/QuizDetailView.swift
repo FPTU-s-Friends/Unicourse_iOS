@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct QuizDetailView: View {
+    @StateObject var vm = DetailQuizViewModel()
     @Environment(\.dismiss) var dismiss: DismissAction
 
     var body: some View {
@@ -21,14 +22,13 @@ struct QuizDetailView: View {
 
                 // Phần Câu hỏi & Các đáp án
                 TabView {
-                    ForEach(0 ..< 3) { _ in
-                        CombineQnA()
+                    ForEach(vm.data[0].questions, id: \._id) { question in
+                        CombineQnA(question: question)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .background(.white)
                 .cornerRadius(35)
-
                 // End: Phần Câu hỏi & Các đáp án
 
                 // Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
@@ -37,7 +37,6 @@ struct QuizDetailView: View {
             }
             .padding(.horizontal, 10)
         }
-
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

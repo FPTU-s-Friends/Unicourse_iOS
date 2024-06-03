@@ -10,8 +10,7 @@ import SwiftUI
 struct QuestionComponent: View {
     @Binding var isOpenQuestion: Bool
     @Binding var isChangeYAxisQuestion: Bool
-
-    @State private var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
+    var questionTitle: String
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,7 +20,7 @@ struct QuestionComponent: View {
                     .frame(height: 250)
                     .offset(y: 10)
                     .overlay(
-                        Text(ques)
+                        Text(questionTitle)
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.black)
                             .padding()
@@ -77,6 +76,7 @@ struct QuestionComponent: View {
     }
 }
 
-#Preview {
-    QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false))
-}
+// #Preview {
+//    var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
+//    QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false), questionTitle: ques)
+// }
