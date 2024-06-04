@@ -16,6 +16,7 @@ class DetailBlogViewModel: ObservableObject {
     @Published var isShowingDescription = true
     @Published var isShowingSheetComment = false
     @Published var isShowingError = false
+    @Published var isLoadingLike = false
 
     func getBlogById(blogId: String) async throws {
         let path = APIPath.getBlogs.stringValue
@@ -47,5 +48,41 @@ class DetailBlogViewModel: ObservableObject {
             isShowingError = true
         }
         isLoadingGetBlog = false
+    }
+
+    func likeBlog(blogId: String, token: String) async throws {
+        let path = APIPath.likeBlog.stringValue
+        let method = HTTPMethod.post
+        let headers = ["Authorization": "Bearer \(token)"]
+        let requestBody = RequestBody(blogId: blogId)
+
+        guard let bodyData = try? JSONEncoder().encode(requestBody) else {
+            throw NetworkError.encodingError
+        }
+
+        isLoadingLike = true
+        let _: CommonResponse<String> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+    }
+
+    func unLikeBlog(blogId: String, token: String) async throws {
+        let path = APIPath.unlikeBlog.stringValue
+        let method = HTTPMethod.post
+        let headers = ["Authorization": "Bearer \(token)"]
+        let requestBody = RequestBody(blogId: blogId)
+
+        do {
+            guard let bodyData = try? JSONEncoder().encode(requestBody) else {
+                throw NetworkError.encodingError
+            }
+
+            isLoadingLike = true
+            let _: CommonResponse<String> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+
+        } catch {
+            print("Error at Like Blog:", error)
+            self.error = "unLike blog không thành công, hãy thử lại"
+            isShowingError = true
+        }
+        isLoadingLike = false
     }
 }

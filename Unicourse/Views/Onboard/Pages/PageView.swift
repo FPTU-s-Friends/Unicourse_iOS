@@ -12,11 +12,22 @@ struct PageView: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            Image("\(page.imageUrl)")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: UIScreen.main.bounds.width, height: 550)
-                .cornerRadius(20)
+            if page.tag == 2 {
+                Image("\(page.imageUrl)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: UIScreen.main.bounds.width, height: 750)
+                    .cornerRadius(10)
+                    .padding(.bottom, -220)
+                    .padding(.top, 30)
+                    .padding(.leading, 2)
+            } else {
+                Image("\(page.imageUrl)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: UIScreen.main.bounds.width, height: 550)
+                    .cornerRadius(10)
+            }
 
             Text(page.name)
                 .font(.system(size: 32, weight: .bold, design: .default))
@@ -25,7 +36,8 @@ struct PageView: View {
             Text(page.description)
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
-                .frame(width: 300)
+                .lineLimit(2)
+                .frame(width: 300, height: 60)
                 .foregroundColor(.gray)
                 .padding(.bottom, 10)
 
