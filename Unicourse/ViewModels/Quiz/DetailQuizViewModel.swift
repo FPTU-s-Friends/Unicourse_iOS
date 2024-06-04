@@ -84,6 +84,7 @@ class DetailQuizViewModel: ObservableObject {
         printJSONData(data: newRequest)
     }
 
+
     func createQuestionListResult(questionList: [Question]) -> [QuestionRequest] {
         questionList.map { ques in
             QuestionRequest(_id: ques._id, title: ques.title, type: ques.type, is_answered: false, answer: ques.answer.map { answer in
