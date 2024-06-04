@@ -8,7 +8,6 @@
 import Foundation
 
 struct Answer: Codable {
-//    var _id = UUID()
     var answer_text: String
     var is_correct: Bool
 }
