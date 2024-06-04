@@ -5,13 +5,16 @@
 //  Created by Trung Kiên Nguyễn on 2/6/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct DetailBlogView: View {
     var blogId: String
     @StateObject var viewModel = DetailBlogViewModel()
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-
+    @EnvironmentObject var appData: AppData
+    @State private var isLikeBlog: Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -32,32 +35,42 @@ struct DetailBlogView: View {
                                     .fill(Color.gray.opacity(0.3))
                                     .frame(width: geometry.size.width, height: 180)
                                     .shimmerWithWave()
+                                Rectangle()
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: geometry.size.width, height: 180)
+                                    .shimmerWithWave()
                             }
                             
                             VStack(alignment: .leading) {
-                                HStack(spacing: 18) {
-                                    Image(systemName: "heart")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 12)
-                                    
+                                HStack(spacing: 24) {
+                                    Button {
+                                        handleLike()
+                                    } label: {
+                                        Image(systemName: isLikeBlog ? "heart.fill" : "heart")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundStyle(Color.red.gradient)
+                                            .frame(width: 14)
+                                    }
+
                                     Button(action: {
                                         viewModel.isShowingSheetComment = true
                                     }) {
                                         Image(systemName: "bubble")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(width: 12)
+                                            .frame(width: 14)
                                     }
                          
                                     HStack(spacing: 5) {
                                         Image(systemName: "clock")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(width: 12)
+                                            .foregroundStyle(Color.green.gradient)
+                                            .frame(width: 14)
                                         
                                         Text("\(timeSinceCreated(date: self.viewModel.blogDetail?.created_at))")
-                                            .font(.system(size: 12, weight: .light))
+                                            .font(.system(size: 13, weight: .light))
                                     }
                                 }
                                 .padding(.top, 10)
@@ -124,42 +137,45 @@ struct DetailBlogView: View {
                            
                             RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                         }
-                    } else {
-                        VStack {
-                            Image(._404)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width * 0.7, height: geometry.size.height, alignment: .center)
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                ButtonBackUIView()
+                            }
+                            
+                            ToolbarItem(placement: .topBarTrailing) {
+                                TopTabBarButtomUIView()
+                            }
+                            
+                            ToolbarItemGroup(placement: .bottomBar) {
+                                BottomTabButtonUIView(isLikeBlog: isLikeBlog,
+                                                      actionFavorite: {
+                                                          handleLike()
+                                                      },
+                                                      actionShowComment: {
+                                                          viewModel.isShowingSheetComment = true
+                                                      })
+                            }
                         }
+                        .navigationBarBackButtonHidden(true)
+                    } else {
+                        NotFoundImageView(width: geometry.size.width * 0.7, height: geometry.size.height)
                     }
                 }
                 .onAppear {
                     Task {
                         try await self.viewModel.getBlogById(blogId: self.blogId)
+                        // Explicitly handle nil cases and assign a default value
+                        isLikeBlog = viewModel.blogDetail?.like.contains(appData.userInfo?._id ?? "") ?? false
+
                         try await self.viewModel.getRelatedBlog()
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        ButtonBackUIView()
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        TopTabBarButtomUIView()
-                    }
-                    
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        BottomTabButtonUIView(actionFavorite: {},
-                                              actionShowComment: {
-                                                  viewModel.isShowingSheetComment = true
-                                              })
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
             }
             .frame(width: geometry.size.width)
         }
-
+        .onDisappear {
+            SDImageCache.shared.clearMemory()
+        }
         .sheet(isPresented: $viewModel.isShowingSheetComment, content: {
             SheetCommentView(listComment: viewModel.blogDetail?.comment_obj ?? [])
                 .presentationDetents([.medium, .large])
@@ -167,7 +183,7 @@ struct DetailBlogView: View {
         })
 
         .alert(isPresented: $viewModel.isShowingError) {
-            Alert(title: Text("Lỗi khi lấy blog"),
+            Alert(title: Text("Error"),
                   message: Text(viewModel.error),
                   dismissButton: .default(Text("OK")) {
                       viewModel.isShowingError = false
@@ -175,6 +191,38 @@ struct DetailBlogView: View {
         }
         .background {
             Color.mainBackgroundColor.ignoresSafeArea()
+        }
+    }
+    
+    func handleLike() {
+        if isLikeBlog {
+            Task {
+                do {
+                    viewModel.isLoadingLike = true
+                    isLikeBlog = false
+                    try await viewModel.unLikeBlog(blogId: blogId, token: appData.token)
+                } catch {
+                    print("Error at UnLike Blog:", error)
+                    viewModel.error = "UnLike blog không thành công, hãy thử lại"
+                    viewModel.isShowingError = true
+                    isLikeBlog = true
+                }
+                viewModel.isLoadingLike = false
+            }
+        } else {
+            Task {
+                do {
+                    viewModel.isLoadingLike = true
+                    isLikeBlog = true
+                    try await viewModel.likeBlog(blogId: blogId, token: appData.token)
+                } catch {
+                    print("Error at UnLike Blog:", error)
+                    viewModel.error = "UnLike blog không thành công, hãy thử lại"
+                    viewModel.isShowingError = true
+                    isLikeBlog = false
+                }
+                viewModel.isLoadingLike = false
+            }
         }
     }
 }

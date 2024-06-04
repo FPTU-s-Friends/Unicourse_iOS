@@ -13,6 +13,7 @@ enum NetworkError: Error {
     case invalidResponse(URLResponse?)
     case decodingError(Error)
     case encodingError
+    case invalidHTTPStatusCode(Int)
 }
 
 class NetworkManager {
@@ -66,21 +67,30 @@ class NetworkManager {
             throw NetworkError.invalidURL
         }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        request.allHTTPHeaderFields = headers
-        request.httpBody = body
-
-        let (data, response) = try await URLSession.shared.data(for: request)
-
-        guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
-            throw NetworkError.invalidResponse(response)
+        var defaultHeaders = ["Content-Type": "application/json"]
+        if let additionalHeaders = headers {
+            defaultHeaders.merge(additionalHeaders) { _, new in new }
         }
 
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.allHTTPHeaderFields = defaultHeaders
+        request.httpBody = body
+
         do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw NetworkError.invalidResponse(response)
+            }
+
+            if !(200 ... 299).contains(httpResponse.statusCode) {
+                throw NetworkError.invalidHTTPStatusCode(httpResponse.statusCode)
+            }
+
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
-            throw NetworkError.decodingError(error)
+            throw error
         }
     }
 

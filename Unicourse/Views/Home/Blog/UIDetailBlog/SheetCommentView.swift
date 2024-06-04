@@ -24,10 +24,14 @@ struct SheetCommentView: View {
                         ForEach(listComment, id: \._id) { comment in
                             CommentItemView(comment: comment)
 
-//                            ForEach(0 ..< 2) { _ in
-//                                CommentItemView()
-//                                    .padding(.leading, 30)
-//                            }
+                            if comment.replies.isEmpty {
+                                EmptyView()
+                            } else {
+                                ForEach(comment.replies, id: \._id) { reply in
+                                    RepliesCommentItem(comment: reply)
+                                        .padding(.leading, 30)
+                                }
+                            }
                         }
                     }
                     .scrollDismissesKeyboard(.immediately)
@@ -40,6 +44,7 @@ struct SheetCommentView: View {
                 HStack {
                     TextField("Thêm bình luận", text: $commentText)
                         .textFieldStyle(CustomTextFieldStyle())
+                        .frame(height: 50)
 
                     Button(action: {
                         // Action for the send button
