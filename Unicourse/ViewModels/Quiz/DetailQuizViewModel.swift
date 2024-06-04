@@ -68,19 +68,21 @@ class DetailQuizViewModel: ObservableObject {
         }
     }
 
-//    func combineInformationToGetResult() {
-//        var newRequest = QuizRequestModel(
-//            _id: quizData?._id ?? "",
-//            title: quizData?.title ?? "",
-//            description: quizData?.description ?? "",
-//            picture: quizData?.picture ?? "",
-//            questions: answeredQuesList,
-//            status: quizData?.status ?? "",
-//            category: quizData?.category ?? "",
-//            creator_id: quizData?.creator_id ?? <#default value#>,
-//            viewer: quizData?.viewer,
-//            creator_role: quizData?.creator_role)
-//    }
+    func combineInformationToGetResult() {
+        var newRequest = QuizRequestModel(
+            _id: quizData?._id ?? "",
+            title: quizData?.title ?? "",
+            description: quizData?.description ?? "",
+            picture: quizData?.picture ?? "",
+            questions: answeredQuesList,
+            status: quizData?.status ?? "",
+            category: quizData?.category ?? "",
+            creator_id: quizData?.creator_id ?? data.creator_id,
+            viewer: quizData?.viewer ?? 0,
+            creator_role: quizData?.creator_role ?? "")
+
+        printJSONData(data: newRequest)
+    }
 
     func createQuestionListResult(questionList: [Question]) -> [QuestionRequest] {
         questionList.map { ques in
