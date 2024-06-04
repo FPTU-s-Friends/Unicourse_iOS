@@ -25,7 +25,7 @@ struct PageView: View {
                 Image("\(page.imageUrl)")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.width, height: 550)
+                    .frame(width: UIScreen.main.bounds.width, height: 570)
                     .cornerRadius(10)
             }
 
@@ -47,5 +47,5 @@ struct PageView: View {
 }
 
 #Preview {
-    PageView(page: OnboardModel.pageBanners[2])
+    PageView(page: OnboardModel.pageBanners[0])
 }
