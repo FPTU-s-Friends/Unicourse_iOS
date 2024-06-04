@@ -10,12 +10,16 @@ import SwiftUI
 
 struct CommentItemView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var appData: AppData
     var comment: Comment_objModel
+    var actionsLikeBlog: () -> Void
+    @Binding var isLoadingLike: Bool
+    @State private var isLikeComment = false
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                WebImage(url: URL(string: comment.commentator.profile_image ?? DefaultURL.defaultUserURL)) { image in
+                WebImage(url: URL(string: comment.commentator.profile_image)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -39,9 +43,15 @@ struct CommentItemView: View {
                 Spacer()
 
                 Menu { // Remove the "Options" label here
-                    Button("Chỉnh sửa", action: {})
-                    Button("Xoá", action: {})
-                    Button("Cancel", action: {})
+                    Button("Chỉnh sửa", action: {
+                        print("Chỉnh sửa")
+                    })
+                    Button("Xoá", action: {
+                        print("Xoá")
+                    })
+                    Button("Cancel", action: {
+                        print("Cancel")
+                    })
                 } label: {
                     Image(systemName: "ellipsis")
                         .resizable()
@@ -57,20 +67,28 @@ struct CommentItemView: View {
             }
 
             HStack(spacing: 0) {
-                Button {} label: {
-                    Image(systemName: "heart")
+                Button {
+                    if isLoadingLike == false {
+                        withAnimation {
+                            isLikeComment.toggle()
+                            actionsLikeBlog()
+                        }
+                    }
+
+                } label: {
+                    Image(systemName: isLikeComment ? "heart.fill" : "heart")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
+                        .foregroundStyle(isLikeComment ? Color.red.gradient : Color.gray.gradient)
                         .frame(width: 16)
                 }
 
-                Text("(\(comment.interactions.count))")
-                    .font(.system(size: 13))
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(1)
-                    .foregroundStyle(Color.red.gradient)
-                    .padding(.horizontal, 1)
+//                Text("(\(comment.interactions.count))")
+//                    .font(.system(size: 13))
+//                    .multilineTextAlignment(.leading)
+//                    .lineLimit(1)
+//                    .foregroundStyle(Color.red.gradient)
+//                    .padding(.horizontal, 1)
 
                 Button {} label: {
                     Text("Trả lời")
@@ -81,6 +99,14 @@ struct CommentItemView: View {
             }
             .padding(.horizontal, 5)
         }
+        .onAppear {
+            guard let userId = appData.userInfo?._id else { return }
+            isLikeComment = comment.interactions.contains(where: { $0 == userId })
+        }
+        .onChange(of: comment.interactions) {
+            guard let userId = appData.userInfo?._id else { return }
+            isLikeComment = comment.interactions.contains(where: { $0 == userId })
+        }
         .padding(.horizontal, 10)
         .padding(.vertical, 5)
         .background {
@@ -90,5 +116,5 @@ struct CommentItemView: View {
 }
 
 #Preview {
-    CommentItemView(comment: Comment_objModel.sampleCommentData)
+    CommentItemView(comment: Comment_objModel.sampleCommentData, actionsLikeBlog: {}, isLoadingLike: .constant(true))
 }

@@ -9,20 +9,27 @@ import SwiftUI
 
 struct SheetCommentView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State private var commentText = ""
-    var listComment: [Comment_objModel]
+    @EnvironmentObject var appData: AppData
+    @ObservedObject var viewModel: DetailBlogViewModel
 
     var body: some View {
         NavigationView {
             VStack {
-                if listComment.isEmpty {
+                if viewModel.blogDetail?.comment_obj == nil || ((viewModel.blogDetail?.comment_obj.isEmpty) == nil) {
                     VStack {
                         Text("Hiện chưa có bình luận.")
                     }
                 } else {
                     ScrollView {
-                        ForEach(listComment, id: \._id) { comment in
-                            CommentItemView(comment: comment)
+                        ForEach(viewModel.blogDetail?.comment_obj ?? [], id: \._id) { comment in
+                            CommentItemView(comment: comment, actionsLikeBlog: {
+                                Task {
+                                    guard let userId = appData.userInfo?._id else { return }
+                                    try await viewModel.likeUnLikeComment(commentId: comment._id,
+                                                                          token: appData.token,
+                                                                          userId: userId)
+                                }
+                            }, isLoadingLike: $viewModel.isLoadingLikeComment)
 
                             if comment.replies.isEmpty {
                                 EmptyView()
@@ -39,12 +46,18 @@ struct SheetCommentView: View {
                 Spacer()
 
                 HStack {
-                    TextField("Thêm bình luận", text: $commentText)
+                    TextField("Thêm bình luận", text: $viewModel.commentText)
                         .textFieldStyle(CustomTextFieldStyle())
                         .frame(height: 50)
 
                     Button(action: {
-                        // Action for the send button
+                        Task {
+                            guard let userInfo = appData.userInfo else { return }
+                            try await viewModel.commentBlog(blogId: viewModel.blogDetail?._id ?? "",
+                                                            token: appData.token,
+                                                            comment: viewModel.commentText,
+                                                            userInfo: userInfo)
+                        }
                     }) {
                         Image(systemName: "paperplane.fill")
                             .resizable()
@@ -52,7 +65,7 @@ struct SheetCommentView: View {
                             .frame(width: 22)
                             .padding(.trailing)
                     }
-                    .disabled(commentText.isEmpty)
+                    .disabled(viewModel.commentText.isEmpty)
                 }
                 .padding([.horizontal, .bottom], 5)
                 .padding(.top, -15)
@@ -65,7 +78,7 @@ struct SheetCommentView: View {
 }
 
 #Preview {
-    SheetCommentView(listComment: [Comment_objModel.sampleCommentData])
+    SheetCommentView(viewModel: DetailBlogViewModel())
 }
 
 struct CustomTextFieldStyle: TextFieldStyle {

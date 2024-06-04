@@ -15,7 +15,7 @@ struct DetailBlogModel: Codable {
     let images: [String]
     let date_modified: String?
     let thumbnail_url: String
-    let comment_obj: [Comment_objModel]
+    var comment_obj: [Comment_objModel]
     let content: String
     let tags: [BlogTag]
     let status: String
@@ -32,7 +32,7 @@ struct Comment_objModel: Codable {
     let comment: String
     let commentator: BlogCommentatorModel
     let replies: [RepliesBlogModel]
-    let interactions: [String]
+    var interactions: [String]
     let created_at: String
 
     static let sampleCommentData: Comment_objModel = .init(
