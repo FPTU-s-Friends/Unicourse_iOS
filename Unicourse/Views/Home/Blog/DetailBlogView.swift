@@ -17,168 +17,173 @@ struct DetailBlogView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading) {
-                    if viewModel.isLoadingGetBlog {
-                        SkeletonBlogDetailView()
-                    } else if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
-                        VStack {
-                            AsyncImage(url: URL(string: self.viewModel.blogDetail?.thumbnail_url ?? "")) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: geometry.size.width, height: 180)
-                                    .clipped()
-                                
-                            } placeholder: {
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.3))
-                                    .frame(width: geometry.size.width, height: 180)
-                                    .shimmerWithWave()
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.3))
-                                    .frame(width: geometry.size.width, height: 180)
-                                    .shimmerWithWave()
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                HStack(spacing: 24) {
-                                    Button {
-                                        handleLike()
-                                    } label: {
-                                        Image(systemName: isLikeBlog ? "heart.fill" : "heart")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .foregroundStyle(Color.red.gradient)
-                                            .frame(width: 14)
-                                    }
-
-                                    Button(action: {
-                                        viewModel.isShowingSheetComment = true
-                                    }) {
-                                        Image(systemName: "bubble")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 14)
-                                    }
-                         
-                                    HStack(spacing: 5) {
-                                        Image(systemName: "clock")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .foregroundStyle(Color.green.gradient)
-                                            .frame(width: 14)
-                                        
-                                        Text("\(timeSinceCreated(date: self.viewModel.blogDetail?.created_at))")
-                                            .font(.system(size: 13, weight: .light))
-                                    }
-                                }
-                                .padding(.top, 10)
-                                .padding(.leading, 2)
-                                
-                                HStack(spacing: 10) {
-                                    ForEach(self.viewModel.blogDetail?.tags ?? [], id: \.code) { tag in
-                                        Text(tag.name)
-                                            .font(.system(size: 8, weight: .bold))
-                                            .foregroundStyle(Color.white)
-                                            .multilineTextAlignment(.leading)
-                                            .lineLimit(1)
-                                            .padding(.vertical, 4)
-                                            .padding(.horizontal, 6)
-                                            .background(Color(hex: tag.color))
-                                            .cornerRadius(5)
-                                    }
+            
+            VStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        if viewModel.isLoadingGetBlog {
+                            SkeletonBlogDetailView()
+                        } else if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
+                            VStack {
+                                AsyncImage(url: URL(string: self.viewModel.blogDetail?.thumbnail_url ?? "")) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: geometry.size.width, height: 180)
+                                        .clipped()
+                                    
+                                } placeholder: {
+                                    Rectangle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: geometry.size.width, height: 180)
+                                        .shimmerWithWave()
                                 }
                                 
-                                Text(self.viewModel.blogDetail?.title ?? "")
-                                    .font(.system(size: 18, weight: .bold))
-                                    .multilineTextAlignment(.leading)
-                                   
-                                // Description
-                                VStack {
-                                    HStack(spacing: 0) {
-                                        Text("Miêu tả")
-                                            .font(.system(size: 16, weight: .semibold))
-                                        
-                                        Spacer()
-                                        
+                                VStack(alignment: .leading) {
+                                    HStack(spacing: 24) {
                                         Button {
-                                            withAnimation {
-                                                viewModel.isShowingDescription.toggle()
-                                            }
+                                            handleLike()
                                         } label: {
-                                            Image(systemName: viewModel.isShowingDescription ? "chevron.down" : "chevron.up")
+                                            Image(systemName: isLikeBlog ? "heart.fill" : "heart")
                                                 .resizable()
-                                                .foregroundStyle(Color.mainColor1)
+                                                .aspectRatio(contentMode: .fit)
+                                                .foregroundStyle(Color.red.gradient)
+                                                .frame(width: 14)
+                                        }
+
+                                        Button(action: {
+                                            viewModel.isShowingSheetComment = true
+                                        }) {
+                                            Image(systemName: "bubble")
+                                                .resizable()
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 14)
-                                                .fontWeight(.bold)
+                                        }
+                             
+                                        HStack(spacing: 5) {
+                                            Image(systemName: "clock")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .foregroundStyle(Color.green.gradient)
+                                                .frame(width: 14)
+                                            
+                                            Text("\(timeSinceCreated(date: self.viewModel.blogDetail?.created_at))")
+                                                .font(.system(size: 13, weight: .light))
+                                        }
+                                    }
+                                    .padding(.top, 10)
+                                    .padding(.leading, 2)
+                                    
+                                    HStack(spacing: 10) {
+                                        ForEach(self.viewModel.blogDetail?.tags ?? [], id: \.code) { tag in
+                                            Text(tag.name)
+                                                .font(.system(size: 8, weight: .bold))
+                                                .foregroundStyle(Color.white)
+                                                .multilineTextAlignment(.leading)
+                                                .lineLimit(1)
+                                                .padding(.vertical, 4)
+                                                .padding(.horizontal, 6)
+                                                .background(Color(hex: tag.color))
+                                                .cornerRadius(5)
                                         }
                                     }
                                     
-                                    if viewModel.isShowingDescription {
-                                        Text(self.viewModel.blogDetail?.description ?? "")
-                                            .font(.system(size: 14, weight: .light))
+                                    Text(self.viewModel.blogDetail?.title ?? "")
+                                        .font(.system(size: 18, weight: .bold))
+                                        .multilineTextAlignment(.leading)
+                                       
+                                    // Description
+                                    VStack {
+                                        HStack(spacing: 0) {
+                                            Text("Miêu tả")
+                                                .font(.system(size: 16, weight: .semibold))
+                                            
+                                            Spacer()
+                                            
+                                            Button {
+                                                withAnimation {
+                                                    viewModel.isShowingDescription.toggle()
+                                                }
+                                            } label: {
+                                                Image(systemName: viewModel.isShowingDescription ? "chevron.down" : "chevron.up")
+                                                    .resizable()
+                                                    .foregroundStyle(Color.mainColor1)
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 14)
+                                                    .fontWeight(.bold)
+                                            }
+                                        }
+                                        
+                                        if viewModel.isShowingDescription {
+                                            Text(self.viewModel.blogDetail?.description ?? "")
+                                                .font(.system(size: 14, weight: .light))
+                                        }
+                                    }
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 10)
+                                    .background {
+                                        Color.mainColor3.cornerRadius(10)
                                     }
                                 }
                                 .padding(.horizontal, 10)
-                                .padding(.vertical, 10)
-                                .background {
-                                    Color.mainColor3.cornerRadius(10)
+                                
+                                VStack {
+                                    WebView(htmlContent: viewModel.blogDetail?.content ?? "", webViewHeight: $viewModel.webViewHeight)
+                                        .frame(height: viewModel.webViewHeight)
+                                        .frame(width: geometry.size.width * 0.95)
                                 }
+                               
+                                RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                             }
-                            .padding(.horizontal, 10)
-                            
-                            VStack {
-                                WebView(htmlContent: viewModel.blogDetail?.content ?? "", webViewHeight: $viewModel.webViewHeight)
-                                    .frame(height: viewModel.webViewHeight)
-                                    .frame(width: geometry.size.width * 0.95)
-                            }
-                           
-                            RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
+                        
+                        } else {
+                            NotFoundImageView(width: geometry.size.width * 0.7, height: geometry.size.height)
                         }
-                        .toolbar {
-                            ToolbarItemGroup(placement: .bottomBar) {
-                                BottomTabButtonUIView(isLikeBlog: isLikeBlog,
-                                                      actionFavorite: {
-                                                          handleLike()
-                                                      },
-                                                      actionShowComment: {
-                                                          viewModel.isShowingSheetComment = true
-                                                      })
-                            }
+                    }
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            ButtonBackUIView()
                         }
                         
-                    } else {
-                        NotFoundImageView(width: geometry.size.width * 0.7, height: geometry.size.height)
+                        ToolbarItem(placement: .topBarTrailing) {
+                            TopTabBarButtomUIView()
+                        }
                     }
-                }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        ButtonBackUIView()
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        TopTabBarButtomUIView()
-                    }
-                }
-                .onAppear {
-                    Task {
-                        try await self.viewModel.getBlogById(blogId: self.blogId)
-                        isLikeBlog = viewModel.blogDetail?.like.contains(appData.userInfo?._id ?? "") ?? false
+                    .onAppear {
+                        Task {
+                            try await self.viewModel.getBlogById(blogId: self.blogId)
+                            isLikeBlog = viewModel.blogDetail?.like.contains(appData.userInfo?._id ?? "") ?? false
 
-                        try await self.viewModel.getRelatedBlog()
+                            try await self.viewModel.getRelatedBlog()
+                        }
+                    }
+                }
+                .frame(width: geometry.size.width)
+                
+                if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
+                    Spacer()
+                    VStack {
+                        BottomTabButtonUIView(isLikeBlog: isLikeBlog,
+                                              actionFavorite: {
+                                                  handleLike()
+                                              },
+                                              actionShowComment: {
+                                                  viewModel.isShowingSheetComment = true
+                                              })
+                    }
+                    .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.05)
+                    .background {
+                        Color.mainBackgroundColor
                     }
                 }
             }
-            .frame(width: geometry.size.width)
         }
         .onDisappear {
             SDImageCache.shared.clearMemory()
         }
         .sheet(isPresented: $viewModel.isShowingSheetComment, content: {
-            SheetCommentView(listComment: viewModel.blogDetail?.comment_obj ?? [])
+            SheetCommentView(viewModel: viewModel)
                 .presentationDetents([.medium, .large])
                 
         })

@@ -8,6 +8,7 @@
 import SwiftUI
 
 class DetailBlogViewModel: ObservableObject {
+    @Published var commentText = ""
     @Published var webViewHeight: CGFloat = 0
     @Published var blogDetail: DetailBlogModel?
     @Published var listRelatedBlog: [BlogModel] = []
@@ -17,6 +18,8 @@ class DetailBlogViewModel: ObservableObject {
     @Published var isShowingSheetComment = false
     @Published var isShowingError = false
     @Published var isLoadingLike = false
+    @Published var isLoadingCommentBlog = false
+    @Published var isLoadingLikeComment = false
 
     func getBlogById(blogId: String) async throws {
         let path = APIPath.getBlogs.stringValue
@@ -84,5 +87,65 @@ class DetailBlogViewModel: ObservableObject {
             isShowingError = true
         }
         isLoadingLike = false
+    }
+
+    func commentBlog(blogId: String, token: String, comment: String, userInfo: UserInfoModel) async throws {
+        let path = APIPath.comment.stringValue
+        let method = HTTPMethod.post
+        let headers = ["Authorization": "Bearer \(token)"]
+        let requestBody = CommentBlogRequestModel(blogId: blogId, comment: comment)
+
+        do {
+            guard let bodyData = try? JSONEncoder().encode(requestBody) else {
+                throw NetworkError.encodingError
+            }
+            isLoadingCommentBlog = true
+            let response: CommonResponse<CommentBlogResponseModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+            blogDetail?.comment_obj.append(Comment_objModel(_id: response.data._id,
+                                                            comment: response.data.comment,
+                                                            commentator: BlogCommentatorModel(_id: response.data._id,
+                                                                                              email: userInfo.email,
+                                                                                              fullName: userInfo.fullName,
+                                                                                              profileName: userInfo.profileName ?? "",
+                                                                                              profile_image: userInfo.profileImage),
+                                                            replies: [],
+                                                            interactions: [],
+                                                            created_at: response.data.created_at))
+
+            commentText = ""
+        } catch {
+            print("Error at Comment Blog:", error)
+            self.error = "Bình luận chưa được, hãy thử lại"
+            isShowingError = true
+        }
+    }
+
+    func likeUnLikeComment(commentId: String, token: String, userId: String) async throws {
+        let path = APIPath.likeAndUnlikeComment.stringValue
+        let method = HTTPMethod.post
+        let headers = ["Authorization": "Bearer \(token)"]
+        let requestBody = LikeUnLikeCommentBlogRequestModel(commentId: commentId)
+
+        do {
+            guard let bodyData = try? JSONEncoder().encode(requestBody) else {
+                throw NetworkError.encodingError
+            }
+            isLoadingLikeComment = true
+            let response: CommonResponse<CommentBlogResponseModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+
+            if let commentIndex = blogDetail?.comment_obj.firstIndex(where: { $0._id == commentId }) {
+                var updatedComment = blogDetail?.comment_obj[commentIndex]
+
+                // Update the comment_obj array (if blogDetail is not nil)
+                if var blogDetail = blogDetail {
+                    blogDetail.comment_obj[commentIndex].interactions.append(userId)
+                }
+            }
+        } catch {
+            print("Error at Like Comment Blog:", error)
+            self.error = "Like Bình luận không thành công, hãy thử lại"
+            isShowingError = true
+        }
+        isLoadingLikeComment = false
     }
 }
