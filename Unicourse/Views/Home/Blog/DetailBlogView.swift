@@ -35,6 +35,10 @@ struct DetailBlogView: View {
                                     .fill(Color.gray.opacity(0.3))
                                     .frame(width: geometry.size.width, height: 180)
                                     .shimmerWithWave()
+                                Rectangle()
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: geometry.size.width, height: 180)
+                                    .shimmerWithWave()
                             }
                             
                             VStack(alignment: .leading) {

@@ -41,6 +41,7 @@ struct SheetCommentView: View {
                 HStack {
                     TextField("Thêm bình luận", text: $commentText)
                         .textFieldStyle(CustomTextFieldStyle())
+                        .frame(height: 50)
 
                     Button(action: {
                         // Action for the send button

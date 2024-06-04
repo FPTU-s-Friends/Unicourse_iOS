@@ -23,8 +23,8 @@ struct QuizDetailView: View {
 
                 // Phần Câu hỏi & Các đáp án
                 TabView(selection: $vm.selectedTab) {
-                    ForEach(Array((vm.quizData?.questions ?? []).enumerated()), id: \.element._id) { index, question in
-                        CombineQnA(question: question, questionIndex: index + 1)
+                    ForEach(Array((vm.answeredQuesList).enumerated()), id: \.element._id) { index, question in
+                        CombineQnA(question: question, questionIndex: index + 1, vm: vm)
                             .tag(index)
                     }
                 }
@@ -40,7 +40,7 @@ struct QuizDetailView: View {
                 // End: Phần Câu hỏi & Các đáp án
 
                 // Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
-                NavigationQuizButtonComponents(totalQuestion: vm.quizData?.questions.count ?? 1, selectedTab: $vm.selectedTab)
+                NavigationQuizButtonComponents(totalQuestion: vm.quizData?.questions.count ?? 1, vm: vm, selectedTab: $vm.selectedTab)
 
                 // End: Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
             }

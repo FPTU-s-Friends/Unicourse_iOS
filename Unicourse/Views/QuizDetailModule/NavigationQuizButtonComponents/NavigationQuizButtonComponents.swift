@@ -9,8 +9,9 @@ import SwiftUI
 
 struct NavigationQuizButtonComponents: View {
     var totalQuestion: Int
+    var vm: DetailQuizViewModel
     @Binding var selectedTab: Int
-
+    @State private var isShowConfirmResult: Bool = false
     var canClickPrev: Bool {
         if selectedTab > 0 {
             return true
@@ -51,17 +52,33 @@ struct NavigationQuizButtonComponents: View {
             Button(action: {
                 if selectedTab < totalQuestion - 1 {
                     selectedTab += 1
+                } else {
+                    isShowConfirmResult.toggle()
+                    print("!3")
                 }
             }, label: {
-                HStack {
-                    Text("Câu sau")
-                    Image(systemName: "arrowtriangle.right.fill")
+                if canClickNext {
+                    HStack {
+                        Text("Câu sau")
+                        Image(systemName: "arrowtriangle.right.fill")
+                    }
+                } else {
+                    HStack {
+                        Text("Kết quả")
+                        Image(systemName: "arrowtriangle.right.fill")
+                    }
                 }
+
             })
+            .alert(isPresented: $isShowConfirmResult) {
+                Alert(title: Text("Bạn có chắc chắn nộp bài?"), primaryButton: .default(Text("Xem ngay")) {
+                    vm.combineInformationToGetResult()
+                }, secondaryButton: .destructive(Text("Kiểm tra lại")))
+            }
             .padding(.vertical, 10)
             .padding(.horizontal, 15)
-            .foregroundStyle(canClickNext ? .white : .gray.opacity(0.5))
-            .background(canClickNext ? Color.activeColor : .white)
+            .foregroundStyle(canClickNext ? .white : .white)
+            .background(canClickNext ? Color.activeColor : .green)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(canClickNext ? Color.activeColor : .white, lineWidth: 2)
@@ -74,5 +91,5 @@ struct NavigationQuizButtonComponents: View {
 }
 
 #Preview {
-    NavigationQuizButtonComponents(totalQuestion: 20, selectedTab: .constant(2))
+    NavigationQuizButtonComponents(totalQuestion: 20, vm: DetailQuizViewModel(), selectedTab: .constant(2))
 }
