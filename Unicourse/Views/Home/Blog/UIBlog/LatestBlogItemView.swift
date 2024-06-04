@@ -22,7 +22,13 @@ struct LatestBlogItemView: View {
                         .cornerRadius(10)
                         .frame(height: 210)
                 } placeholder: {
-                    ProgressView()
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(height: 200)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                        .padding(.bottom, 5)
+                        .shimmerWithWave()
                 }
 
                 Text(listBlog[0].title)
@@ -83,7 +89,7 @@ struct LatestBlogItemView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .cornerRadius(10)
-                                    .frame(width: 170, height: 100)
+                                    .frame(width: 165, height: 95)
                             } placeholder: {
                                 ProgressView()
                             }
@@ -95,7 +101,7 @@ struct LatestBlogItemView: View {
                                 .lineLimit(2)
                                 .padding(.horizontal, 5)
 
-                            VStack {
+                            VStack(alignment: .leading) {
                                 HStack(spacing: 5) {
                                     WebImage(url: URL(string: blog.userId.profile_image)) { image in
                                         image

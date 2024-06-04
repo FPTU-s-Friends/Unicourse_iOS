@@ -16,7 +16,7 @@ struct DetailBlogView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(alignment: .leading) {
-                    if self.viewModel.isLoadingGetBlog {
+                    if viewModel.isLoadingGetBlog {
                         SkeletonBlogDetailView()
                     } else if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
                         VStack {
