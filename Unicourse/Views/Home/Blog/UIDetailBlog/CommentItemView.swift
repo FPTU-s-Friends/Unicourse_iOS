@@ -17,47 +17,50 @@ struct CommentItemView: View {
     @State private var isLikeComment = false
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                WebImage(url: URL(string: comment.commentator.profile_image)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .cornerRadius(20)
-                } placeholder: {
-                    ProgressView()
-                }
-                Text(comment.commentator.fullName)
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(1)
-
-                Text("\(timeSinceCreated(date: comment.created_at))")
-                    .font(.system(size: 10, weight: .regular))
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(1)
-
-                Spacer()
-
-                Menu { // Remove the "Options" label here
-                    Button("Chỉnh sửa", action: {
-                        print("Chỉnh sửa")
-                    })
-                    Button("Xoá", action: {
-                        print("Xoá")
-                    })
-                    Button("Cancel", action: {
-                        print("Cancel")
-                    })
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16)
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    WebImage(url: URL(string: comment.commentator.profile_image)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .cornerRadius(20)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    Text(comment.commentator.fullName)
+                        .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(1)
+
+                    Text("\(timeSinceCreated(date: comment.created_at))")
+                        .font(.system(size: 10, weight: .regular))
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(1)
+
+                    Spacer()
+
+                    Menu { // Remove the "Options" label here
+                        Button("Chỉnh sửa", action: {
+                            print("Chỉnh sửa")
+                        })
+                        Button("Xoá", action: {
+                            print("Xoá")
+                        })
+                        Button("Cancel", action: {
+                            print("Cancel")
+                        })
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16)
+                            .frame(width: 16)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
+                    }
                 }
             }
 
@@ -83,19 +86,14 @@ struct CommentItemView: View {
                         .frame(width: 16)
                 }
 
-//                Text("(\(comment.interactions.count))")
-//                    .font(.system(size: 13))
-//                    .multilineTextAlignment(.leading)
-//                    .lineLimit(1)
-//                    .foregroundStyle(Color.red.gradient)
-//                    .padding(.horizontal, 1)
-
                 Button {} label: {
                     Text("Trả lời")
                         .font(.system(size: 12, weight: .regular))
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
                 }
                 .padding(.leading, 10)
+
+                Spacer()
             }
             .padding(.horizontal, 5)
         }

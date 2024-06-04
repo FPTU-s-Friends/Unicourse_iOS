@@ -63,6 +63,7 @@ struct SheetCommentView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 22)
+                            .frame(width: 22)
                             .padding(.trailing)
                     }
                     .disabled(viewModel.commentText.isEmpty)
@@ -72,6 +73,7 @@ struct SheetCommentView: View {
                 .ignoresSafeArea()
             }
 
+            .navigationBarTitle("Bình luận", displayMode: .inline)
             .navigationBarTitle("Bình luận", displayMode: .inline)
         }
     }
@@ -86,13 +88,17 @@ struct CustomTextFieldStyle: TextFieldStyle {
         configuration
             .foregroundStyle(.gray)
             .textInputAutocapitalization(.sentences)
+            .foregroundStyle(.gray)
+            .textInputAutocapitalization(.sentences)
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.mainColor3.gradient)
+                    .fill(Color.mainColor3.gradient)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
                     .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
             )
     }

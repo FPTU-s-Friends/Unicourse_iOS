@@ -69,6 +69,7 @@
 		B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */; };
 		B5F06B152C007747001316BC /* NotfoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundView.swift */; };
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
+		C50041802C0F864D005A61B9 /* CommentBlogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C52151ED2C0AD7CC002855B6 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151EC2C0AD7CC002855B6 /* BannerModel.swift */; };
 		C52151F02C0AF607002855B6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C52151EF2C0AF607002855B6 /* SocketIO */; };
@@ -193,7 +194,6 @@
 		C5B287642C0D6D7300906F10 /* TopTabBarButtomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B287632C0D6D7300906F10 /* TopTabBarButtomUIView.swift */; };
 		C5B287662C0D6D9300906F10 /* BottomTabButtonUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B287652C0D6D9300906F10 /* BottomTabButtonUIView.swift */; };
 		C5B287682C0D6FEE00906F10 /* SheetCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B287672C0D6FEE00906F10 /* SheetCommentView.swift */; };
-		C5BA86BF2C0F6A7B00DC1CB1 /* CommentBlogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA86BE2C0F6A7B00DC1CB1 /* CommentBlogRequest.swift */; };
 		C5BA86C22C0F6B4000DC1CB1 /* CommentBlogResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA86C12C0F6B4000DC1CB1 /* CommentBlogResponseModel.swift */; };
 		C5BCE2BB2C05A0450018CF11 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BCE2BA2C05A0450018CF11 /* UserInfoModel.swift */; };
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
@@ -295,6 +295,7 @@
 		B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledNewCourseModel.swift; sourceTree = "<group>"; };
 		B5F06B142C007747001316BC /* NotfoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundView.swift; sourceTree = "<group>"; };
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
+		C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBlogRequest.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C52151EC2C0AD7CC002855B6 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
@@ -786,6 +787,14 @@
 			path = StreamingVideos;
 			sourceTree = "<group>";
 		};
+		C500417E2C0F85F7005A61B9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA86BE2C0F6A7B00DC1CB1 /* CommentBlogRequest.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		C52151EB2C0AD7BE002855B6 /* BannerModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,7 +1024,7 @@
 			isa = PBXGroup;
 			children = (
 				C564E97E2C0EDD8A0039A4F7 /* BlogLikeModel.swift */,
-				C5BA86BE2C0F6A7B00DC1CB1 /* CommentBlogRequest.swift */,
+				C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */,
 			);
 			path = RequestModels;
 			sourceTree = "<group>";
@@ -1179,6 +1188,7 @@
 				C56F69362BE2026A0093E51B /* Unicourse */,
 				C56F69352BE2026A0093E51B /* Products */,
 				C541DA082BE359060022079E /* Frameworks */,
+				C500417E2C0F85F7005A61B9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1684,6 +1694,7 @@
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5DEAA532C0741E700955E1C /* RecentItemView.swift in Sources */,
 				C564E97F2C0EDD8A0039A4F7 /* BlogLikeModel.swift in Sources */,
+				C50041802C0F864D005A61B9 /* CommentBlogRequest.swift in Sources */,
 				C564E97F2C0EDD8A0039A4F7 /* BlogLikeModel.swift in Sources */,
 				C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
