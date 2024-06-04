@@ -171,6 +171,9 @@
 		C57ED1BE2BEF4CC900641532 /* SuggestCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1BD2BEF4CC900641532 /* SuggestCourseView.swift */; };
 		C57ED1C12BEF4D1000641532 /* ResultUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1C02BEF4D1000641532 /* ResultUserView.swift */; };
 		C57ED1C32BEF4D1500641532 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ED1C22BEF4D1500641532 /* SearchResultView.swift */; };
+		C57F274C2C0DBD4600F771DC /* SkeletonBlogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F274B2C0DBD4600F771DC /* SkeletonBlogDetailView.swift */; };
+		C57F274E2C0DC55400F771DC /* CommentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F274D2C0DC55400F771DC /* CommentItemView.swift */; };
+		C57F27502C0DCAC300F771DC /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F274F2C0DCAC300F771DC /* UIViewController+Extensions.swift */; };
 		C58EC8FE2C0A33DA00C20151 /* GoogleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC8FD2C0A33DA00C20151 /* GoogleLoginButtonView.swift */; };
 		C58EC9002C0A345A00C20151 /* GithubLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC8FF2C0A345A00C20151 /* GithubLoginButtonView.swift */; };
 		C58EC9022C0A34A800C20151 /* AppleLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58EC9012C0A34A800C20151 /* AppleLoginButtonView.swift */; };
@@ -374,6 +377,9 @@
 		C57ED1BD2BEF4CC900641532 /* SuggestCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestCourseView.swift; sourceTree = "<group>"; };
 		C57ED1C02BEF4D1000641532 /* ResultUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUserView.swift; sourceTree = "<group>"; };
 		C57ED1C22BEF4D1500641532 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		C57F274B2C0DBD4600F771DC /* SkeletonBlogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBlogDetailView.swift; sourceTree = "<group>"; };
+		C57F274D2C0DC55400F771DC /* CommentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemView.swift; sourceTree = "<group>"; };
+		C57F274F2C0DCAC300F771DC /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C58EC8FC2C0A316C00C20151 /* Unicourse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unicourse.entitlements; sourceTree = "<group>"; };
 		C58EC8FD2C0A33DA00C20151 /* GoogleLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButtonView.swift; sourceTree = "<group>"; };
 		C58EC8FF2C0A345A00C20151 /* GithubLoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginButtonView.swift; sourceTree = "<group>"; };
@@ -700,6 +706,7 @@
 				C5DEAA4F2C0722E400955E1C /* SkeletonCourseRecentView.swift */,
 				C5F038362C0981B400EB1F97 /* SkeletonTopCourseItem.swift */,
 				B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */,
+				C57F274B2C0DBD4600F771DC /* SkeletonBlogDetailView.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -1149,6 +1156,7 @@
 				C56F694A2BE208AA0093E51B /* Color+Extension.swift */,
 				C5E4165A2BEBB097003A350A /* CGFloat+Extension.swift */,
 				C5B2875E2C0C6F3900906F10 /* String+Extension.swift */,
+				C57F274F2C0DCAC300F771DC /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1267,6 +1275,7 @@
 				C5B287632C0D6D7300906F10 /* TopTabBarButtomUIView.swift */,
 				C5B287652C0D6D9300906F10 /* BottomTabButtonUIView.swift */,
 				C5B287672C0D6FEE00906F10 /* SheetCommentView.swift */,
+				C57F274D2C0DC55400F771DC /* CommentItemView.swift */,
 			);
 			path = UIDetailBlog;
 			sourceTree = "<group>";
@@ -1590,6 +1599,7 @@
 				C5DEAA532C0741E700955E1C /* RecentItemView.swift in Sources */,
 				C52F5C412C04871B00A2FB8A /* HeaderUserView.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
+				C57F27502C0DCAC300F771DC /* UIViewController+Extensions.swift in Sources */,
 				C5DEAA502C0722E400955E1C /* SkeletonCourseRecentView.swift in Sources */,
 				C5E98B0A2BFF1A8C00630823 /* TrackingCourseCard.swift in Sources */,
 				C579AF722C002DE0004BB9A6 /* SemesterModel.swift in Sources */,
@@ -1661,6 +1671,7 @@
 				B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
 				C52151FA2C0B2BAB002855B6 /* TopicBlogView.swift in Sources */,
+				C57F274E2C0DC55400F771DC /* CommentItemView.swift in Sources */,
 				B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */,
 				C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
@@ -1703,6 +1714,7 @@
 				C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
+				C57F274C2C0DBD4600F771DC /* SkeletonBlogDetailView.swift in Sources */,
 				C53E80402BF0BC78003DFC4B /* DiscountView.swift in Sources */,
 				B55016022C089882006CC44F /* LectureInfoView.swift in Sources */,
 				C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */,
