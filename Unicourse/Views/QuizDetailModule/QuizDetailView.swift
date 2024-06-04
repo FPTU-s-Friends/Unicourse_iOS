@@ -40,7 +40,7 @@ struct QuizDetailView: View {
                 // End: Phần Câu hỏi & Các đáp án
 
                 // Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
-                NavigationQuizButtonComponents(totalQuestion: vm.quizData?.questions.count ?? 1, selectedTab: $vm.selectedTab)
+                NavigationQuizButtonComponents(totalQuestion: vm.quizData?.questions.count ?? 1, vm: vm, selectedTab: $vm.selectedTab)
 
                 // End: Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
             }
