@@ -16,7 +16,6 @@ struct SkeletonBlogDetailView: View {
                     .fill(Color.gray.opacity(0.3))
                     .frame(height: 200)
                     .cornerRadius(10)
-                    .padding(.horizontal, 10)
                     .shimmerWithWave()
                    
                 VStack(alignment: .leading) {

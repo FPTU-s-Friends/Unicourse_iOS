@@ -16,12 +16,14 @@ struct CourseSemesterView: View {
     var body: some View {
         VStack {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
-                    if viewModel.listCourseSemester.isEmpty {
+                if viewModel.isLoading {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
                         ForEach(0 ..< 6) { _ in
                             SkeletonGridCourseView()
                         }
-                    } else {
+                    }
+                } else if viewModel.isLoading == false && !viewModel.listCourseSemester.isEmpty {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
                         ForEach(viewModel.listCourseSemester, id: \._id) { course in
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                                 SearchResultItemView(title: course.title,
@@ -34,6 +36,8 @@ struct CourseSemesterView: View {
                             }
                         }
                     }
+                } else {
+                    NotfoundView(systemName: "shippingbox.fill", message: "Chưa có khoá học cho kì \(semester)")
                 }
             }
         }

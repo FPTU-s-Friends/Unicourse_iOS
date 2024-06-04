@@ -31,6 +31,6 @@ struct NotfoundView: View {
     }
 }
 
-// #Preview {
-//    NotfoundMyCourseView()
-// }
+ #Preview {
+    NotfoundView(systemName: "heart", message: "test")
+ }

@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct BottomTabButtonUIView: View {
+    var isLikeBlog: Bool
     var actionFavorite: () -> Void
     var actionShowComment: () -> Void
 
     var body: some View {
         HStack {
-            Button(action: {}, label: {
-                Image(systemName: "heart")
+            Button(action: {
+                actionFavorite()
+            }, label: {
+                Image(systemName: isLikeBlog ? "heart.fill" : "heart")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(Color.black)
+                    .frame(width: 28)
+                    .foregroundStyle(Color.red.gradient)
                     .padding(6)
-//                    .background(Color.mainColor3.cornerRadius(20))
             })
 
             Spacer()
@@ -30,14 +33,13 @@ struct BottomTabButtonUIView: View {
                 Image(systemName: "bubble.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(Color.black)
-                    .padding(6)
-//                    .background(Color.mainColor3.cornerRadius(20))
+                    .frame(width: 28)
+                    .foregroundStyle(Color.blue.gradient)
             })
         }
     }
 }
 
 #Preview {
-    BottomTabButtonUIView(actionFavorite: {}, actionShowComment: {})
+    BottomTabButtonUIView(isLikeBlog: true, actionFavorite: {}, actionShowComment: {})
 }
