@@ -103,6 +103,7 @@ struct HomeView: View {
             }
             if viewModel.isLoadingListEnrolled {
                 LoadingIndicatorView(isLoading: .constant(true))
+                    .animation(.spring, value: viewModel.isLoadingListEnrolled)
             }
         }
 

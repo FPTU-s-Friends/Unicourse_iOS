@@ -19,6 +19,7 @@ enum APIPath {
     case getBanners
     case getBlogs
     case getHighlightBlog
+    case likeBlog
 
     var stringValue: String {
         switch self {
@@ -44,6 +45,8 @@ enum APIPath {
             "/api/blog"
         case .getHighlightBlog:
             "/api/blog/highlight"
+        case .likeBlog:
+            "/api/blog/like-blog"
         }
     }
 }

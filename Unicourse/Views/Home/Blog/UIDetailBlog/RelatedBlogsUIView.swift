@@ -30,7 +30,6 @@ struct RelatedBlogsUIView: View {
                                 .foregroundStyle(Color.gray)
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(1)
-                                .padding(.bottom, 1)
 
                             Text(blog.title)
                                 .font(.system(size: 12, weight: .semibold))
