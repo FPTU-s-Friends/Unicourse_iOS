@@ -15,17 +15,49 @@ struct BlogView: View {
 
     var body: some View {
         VStack {
-            ScrollView {
-                TopicBlogView()
-                VStack(alignment: .leading) {
-                    TopicTextView(title: "Bài viết mới nhất")
-                    if !viewModel.highLightBlogs.isEmpty {
-                        LatestBlogItemView(listBlog: viewModel.highLightBlogs)
-                    }
+            if viewModel.isLoadingFetchBlog {
+                VStack {
+                    HStack(spacing: 10) {
+                        ForEach(0 ..< 3) { _ in
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.3))
+                                .frame(width: 50, height: 20)
+                                .cornerRadius(5)
+                                .shimmerWithWave()
+                        }
 
-                    TopicTextView(title: "Chủ đề nổi bật")
-                    if !viewModel.listBlogs.isEmpty {
-                        LatestBlogItemView(listBlog: viewModel.listBlogs)
+                        Spacer()
+                    }
+                    .padding(10)
+                    .padding(.horizontal, 10)
+
+                    HStack(spacing: 10) {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 200, height: 40)
+                            .cornerRadius(5)
+                            .shimmerWithWave()
+
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+
+                    SkeletonBlogView()
+                }
+                .padding(.top, 120)
+            } else {
+                ScrollView {
+                    TopicBlogView()
+                    VStack(alignment: .leading) {
+                        TopicTextView(title: "Bài viết mới nhất")
+                        if !viewModel.highLightBlogs.isEmpty {
+                            LatestBlogItemView(listBlog: viewModel.highLightBlogs)
+                        }
+
+                        TopicTextView(title: "Chủ đề nổi bật")
+                        if !viewModel.listBlogs.isEmpty {
+                            LatestBlogItemView(listBlog: viewModel.listBlogs)
+                        }
                     }
                 }
             }

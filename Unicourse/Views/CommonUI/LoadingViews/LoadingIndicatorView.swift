@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoadingIndicatorView: View {
-    //comment
+    // comment
     @State private var isAnimation = false
     @Binding var isLoading: Bool
     private let animationBackgroundColor = Color.mainColor1.opacity(0.3)
@@ -20,8 +20,8 @@ struct LoadingIndicatorView: View {
                 animationBackgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Circle()
-                        .trim(from: 0, to: 0.8)
-                        .stroke(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom), lineWidth: 6.5)
+                        .trim(from: 0, to: 0.9)
+                        .stroke(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .leading, endPoint: .bottom), lineWidth: 4)
                         .frame(width: 45, height: 45)
                         .rotationEffect(Angle(degrees: isAnimation ? 360 : 0))
                         .onAppear {

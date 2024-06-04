@@ -16,8 +16,8 @@ struct DetailBlogView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(alignment: .leading) {
-                    if self.viewModel.isLoadingGetBlog {
-                        ProgressView()
+                    if viewModel.isLoadingGetBlog {
+                        SkeletonBlogDetailView()
                     } else if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
                         VStack {
                             AsyncImage(url: URL(string: self.viewModel.blogDetail?.thumbnail_url ?? "")) { image in
@@ -28,7 +28,10 @@ struct DetailBlogView: View {
                                     .clipped()
                                 
                             } placeholder: {
-                                ProgressView()
+                                Rectangle()
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: geometry.size.width, height: 180)
+                                    .shimmerWithWave()
                             }
                             
                             VStack(alignment: .leading) {
@@ -38,11 +41,15 @@ struct DetailBlogView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 12)
                                     
-                                    Image(systemName: "bubble")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 12)
-                                    
+                                    Button(action: {
+                                        viewModel.isShowingSheetComment = true
+                                    }) {
+                                        Image(systemName: "bubble")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 12)
+                                    }
+                         
                                     HStack(spacing: 5) {
                                         Image(systemName: "clock")
                                             .resizable()
@@ -118,7 +125,12 @@ struct DetailBlogView: View {
                             RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                         }
                     } else {
-                        Text("Not Found")
+                        VStack {
+                            Image(._404)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: geometry.size.width * 0.7, height: geometry.size.height, alignment: .center)
+                        }
                     }
                 }
                 .onAppear {
@@ -149,16 +161,11 @@ struct DetailBlogView: View {
         }
 
         .sheet(isPresented: $viewModel.isShowingSheetComment, content: {
-            ZStack {
-                Color.mainColor3
-                    .ignoresSafeArea()
-                VStack(alignment: .leading) {
-                    Text("Hiện comment ở đây")
-                }
-            }
-            .presentationDetents([.medium, .large])
-
+            SheetCommentView(listComment: viewModel.blogDetail?.comment_obj ?? [])
+                .presentationDetents([.medium, .large])
+                
         })
+
         .alert(isPresented: $viewModel.isShowingError) {
             Alert(title: Text("Lỗi khi lấy blog"),
                   message: Text(viewModel.error),
