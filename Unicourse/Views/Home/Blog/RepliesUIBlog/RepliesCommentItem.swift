@@ -1,16 +1,16 @@
 //
-//  CommentItemView.swift
+//  RepliesCommentItem.swift
 //  Unicourse
 //
-//  Created by Trung Kiên Nguyễn on 3/6/24.
+//  Created by Trung Kiên Nguyễn on 4/6/24.
 //
 
 import SDWebImageSwiftUI
 import SwiftUI
 
-struct CommentItemView: View {
+struct RepliesCommentItem: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    var comment: Comment_objModel
+    var comment: RepliesBlogModel
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,7 +19,7 @@ struct CommentItemView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
+                        .frame(width: 35)
                         .cornerRadius(20)
                 } placeholder: {
                     ProgressView()
@@ -29,34 +29,30 @@ struct CommentItemView: View {
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(1)
-
+                
                 Text("\(timeSinceCreated(date: comment.created_at))")
                     .font(.system(size: 10, weight: .regular))
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(1)
-
+                
                 Spacer()
-
-                Menu { // Remove the "Options" label here
-                    Button("Chỉnh sửa", action: {})
-                    Button("Xoá", action: {})
-                    Button("Cancel", action: {})
-                } label: {
+                
+                Button(action: {}, label: {
                     Image(systemName: "ellipsis")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 16)
+                        .frame(width: 20)
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-                }
+                })
             }
-
+            
             VStack {
                 TextCommentItem(text: comment.comment)
                     .padding(.vertical, -8)
             }
-
-            HStack(spacing: 0) {
+            
+            HStack {
                 Button {} label: {
                     Image(systemName: "heart")
                         .resizable()
@@ -64,14 +60,13 @@ struct CommentItemView: View {
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
                         .frame(width: 16)
                 }
-
+                
                 Text("(\(comment.interactions.count))")
-                    .font(.system(size: 13))
+                    .font(.system(size: 12))
                     .multilineTextAlignment(.leading)
                     .lineLimit(1)
                     .foregroundStyle(Color.red.gradient)
-                    .padding(.horizontal, 1)
-
+                
                 Button {} label: {
                     Text("Trả lời")
                         .font(.system(size: 12, weight: .regular))
@@ -90,5 +85,5 @@ struct CommentItemView: View {
 }
 
 #Preview {
-    CommentItemView(comment: Comment_objModel.sampleCommentData)
+    RepliesCommentItem(comment: RepliesBlogModel.sampleReplyData)
 }

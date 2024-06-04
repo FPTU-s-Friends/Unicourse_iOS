@@ -20,7 +20,7 @@ struct BottomTabButtonUIView: View {
                 Image(systemName: isLikeBlog ? "heart.fill" : "heart")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 28)
+                    .frame(width: 24)
                     .foregroundStyle(Color.red.gradient)
                     .padding(6)
             })
@@ -33,8 +33,8 @@ struct BottomTabButtonUIView: View {
                 Image(systemName: "bubble.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 28)
-                    .foregroundStyle(Color.blue.gradient)
+                    .frame(width: 24)
+                    .foregroundStyle(Color.mainColor1.gradient)
             })
         }
     }
