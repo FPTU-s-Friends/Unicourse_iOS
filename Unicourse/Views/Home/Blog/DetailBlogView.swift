@@ -35,10 +35,6 @@ struct DetailBlogView: View {
                                     .fill(Color.gray.opacity(0.3))
                                     .frame(width: geometry.size.width, height: 180)
                                     .shimmerWithWave()
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.3))
-                                    .frame(width: geometry.size.width, height: 180)
-                                    .shimmerWithWave()
                             }
                             
                             VStack(alignment: .leading) {
@@ -138,14 +134,6 @@ struct DetailBlogView: View {
                             RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                         }
                         .toolbar {
-                            ToolbarItem(placement: .topBarLeading) {
-                                ButtonBackUIView()
-                            }
-                            
-                            ToolbarItem(placement: .topBarTrailing) {
-                                TopTabBarButtomUIView()
-                            }
-                            
                             ToolbarItemGroup(placement: .bottomBar) {
                                 BottomTabButtonUIView(isLikeBlog: isLikeBlog,
                                                       actionFavorite: {
@@ -156,15 +144,24 @@ struct DetailBlogView: View {
                                                       })
                             }
                         }
-                        .navigationBarBackButtonHidden(true)
+                        
                     } else {
                         NotFoundImageView(width: geometry.size.width * 0.7, height: geometry.size.height)
+                    }
+                }
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        ButtonBackUIView()
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        TopTabBarButtomUIView()
                     }
                 }
                 .onAppear {
                     Task {
                         try await self.viewModel.getBlogById(blogId: self.blogId)
-                        // Explicitly handle nil cases and assign a default value
                         isLikeBlog = viewModel.blogDetail?.like.contains(appData.userInfo?._id ?? "") ?? false
 
                         try await self.viewModel.getRelatedBlog()

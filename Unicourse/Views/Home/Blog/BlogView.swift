@@ -63,6 +63,12 @@ struct BlogView: View {
                 }
             }
         }
+        .refreshable {
+            Task {
+                try await viewModel.getListBlog()
+                try await viewModel.getHighlightBlog()
+            }
+        }
         .searchable(text: $viewModel.searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
         .onAppear {
             if isLoadingFirstTime {

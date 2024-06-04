@@ -38,13 +38,17 @@ struct CommentItemView: View {
 
                 Spacer()
 
-                Button(action: {}, label: {
+                Menu { // Remove the "Options" label here
+                    Button("Chỉnh sửa", action: {})
+                    Button("Xoá", action: {})
+                    Button("Cancel", action: {})
+                } label: {
                     Image(systemName: "ellipsis")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 20)
+                        .frame(width: 16)
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-                })
+                }
             }
 
             VStack {
@@ -62,10 +66,11 @@ struct CommentItemView: View {
                 }
 
                 Text("(\(comment.interactions.count))")
-                    .font(.system(size: 12))
+                    .font(.system(size: 13))
                     .multilineTextAlignment(.leading)
                     .lineLimit(1)
                     .foregroundStyle(Color.red.gradient)
+                    .padding(.horizontal, 1)
 
                 Button {} label: {
                     Text("Trả lời")

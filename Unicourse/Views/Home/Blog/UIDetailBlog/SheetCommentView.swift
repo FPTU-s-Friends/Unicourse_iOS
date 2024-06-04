@@ -27,10 +27,7 @@ struct SheetCommentView: View {
                             if comment.replies.isEmpty {
                                 EmptyView()
                             } else {
-                                ForEach(comment.replies, id: \._id) { reply in
-                                    RepliesCommentItem(comment: reply)
-                                        .padding(.leading, 30)
-                                }
+                                RepliesFieldView(listReplies: comment.replies)
                             }
                         }
                     }
@@ -44,7 +41,6 @@ struct SheetCommentView: View {
                 HStack {
                     TextField("Thêm bình luận", text: $commentText)
                         .textFieldStyle(CustomTextFieldStyle())
-                        .frame(height: 50)
 
                     Button(action: {
                         // Action for the send button
@@ -52,16 +48,17 @@ struct SheetCommentView: View {
                         Image(systemName: "paperplane.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 20)
+                            .frame(width: 22)
                             .padding(.trailing)
                     }
+                    .disabled(commentText.isEmpty)
                 }
                 .padding([.horizontal, .bottom], 5)
                 .padding(.top, -15)
                 .ignoresSafeArea()
             }
 
-            .navigationBarTitle("Comments", displayMode: .inline)
+            .navigationBarTitle("Bình luận", displayMode: .inline)
         }
     }
 }
@@ -73,14 +70,16 @@ struct SheetCommentView: View {
 struct CustomTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
+            .foregroundStyle(.gray)
+            .textInputAutocapitalization(.sentences)
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(.systemGray6))
+                    .fill(Color.mainColor3.gradient)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                    .stroke(Color.gray.opacity(0.5), lineWidth: 0.5)
             )
     }
 }
