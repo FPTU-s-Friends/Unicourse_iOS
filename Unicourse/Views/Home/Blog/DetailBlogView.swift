@@ -35,6 +35,10 @@ struct DetailBlogView: View {
                                     .fill(Color.gray.opacity(0.3))
                                     .frame(width: geometry.size.width, height: 180)
                                     .shimmerWithWave()
+                                Rectangle()
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: geometry.size.width, height: 180)
+                                    .shimmerWithWave()
                             }
                             
                             VStack(alignment: .leading) {
@@ -62,7 +66,7 @@ struct DetailBlogView: View {
                                         Image(systemName: "clock")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
-                                            .foregroundStyle(Color.mainColor3)
+                                            .foregroundStyle(Color.green.gradient)
                                             .frame(width: 14)
                                         
                                         Text("\(timeSinceCreated(date: self.viewModel.blogDetail?.created_at))")
@@ -133,6 +137,26 @@ struct DetailBlogView: View {
                            
                             RelatedBlogsUIView(listRelatedBlog: viewModel.listRelatedBlog)
                         }
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                ButtonBackUIView()
+                            }
+                            
+                            ToolbarItem(placement: .topBarTrailing) {
+                                TopTabBarButtomUIView()
+                            }
+                            
+                            ToolbarItemGroup(placement: .bottomBar) {
+                                BottomTabButtonUIView(isLikeBlog: isLikeBlog,
+                                                      actionFavorite: {
+                                                          handleLike()
+                                                      },
+                                                      actionShowComment: {
+                                                          viewModel.isShowingSheetComment = true
+                                                      })
+                            }
+                        }
+                        .navigationBarBackButtonHidden(true)
                     } else {
                         NotFoundImageView(width: geometry.size.width * 0.7, height: geometry.size.height)
                     }
@@ -146,26 +170,6 @@ struct DetailBlogView: View {
                         try await self.viewModel.getRelatedBlog()
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        ButtonBackUIView()
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        TopTabBarButtomUIView()
-                    }
-                    
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        BottomTabButtonUIView(isLikeBlog: isLikeBlog,
-                                              actionFavorite: {
-                                                  handleLike()
-                                              },
-                                              actionShowComment: {
-                                                  viewModel.isShowingSheetComment = true
-                                              })
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
             }
             .frame(width: geometry.size.width)
         }
