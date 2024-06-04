@@ -17,8 +17,10 @@ struct AnswerComponent: View {
     @State private var selectedAnswerIndex: Int? = nil
     @State private var isExpandedAnswer: Bool = false
 
+    var question: QuestionRequest
+    var vm: DetailQuizViewModel
     var typeAnswer: Type_Question
-    var listAnswer: [Answer]
+    var listAnswer: [AnswerRequest]
     var isShowAnswer: Bool
 
     var body: some View {
@@ -32,6 +34,7 @@ struct AnswerComponent: View {
                         .onTapGesture {
                             withAnimation {
                                 selectedAnswerIndex = index
+                                vm.setCheckedForIndexAnswer(questionId: question._id, indexAnswered: index)
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in
@@ -49,6 +52,7 @@ struct AnswerComponent: View {
                         .onTapGesture {
                             withAnimation {
                                 handleSelectAnswerTypeMultiple(listMultiple: &listMultipleAnswer, item: index)
+                                vm.setCheckedForMultipleAnswer(questionId: question._id, indexAnswered: index)
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in
@@ -71,6 +75,6 @@ struct AnswerComponent: View {
     }
 }
 
-#Preview {
-    AnswerComponent(typeAnswer: .multiple, listAnswer: [], isShowAnswer: true)
-}
+// #Preview {
+//    AnswerComponent(typeAnswer: .multiple, listAnswer: [], isShowAnswer: true)
+// }

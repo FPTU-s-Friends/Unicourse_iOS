@@ -23,8 +23,8 @@ struct QuizDetailView: View {
 
                 // Phần Câu hỏi & Các đáp án
                 TabView(selection: $vm.selectedTab) {
-                    ForEach(Array((vm.quizData?.questions ?? []).enumerated()), id: \.element._id) { index, question in
-                        CombineQnA(question: question, questionIndex: index + 1)
+                    ForEach(Array((vm.answeredQuesList).enumerated()), id: \.element._id) { index, question in
+                        CombineQnA(question: question, questionIndex: index + 1, vm: vm)
                             .tag(index)
                     }
                 }

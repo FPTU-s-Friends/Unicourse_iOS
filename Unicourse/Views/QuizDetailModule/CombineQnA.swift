@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CombineQnA: View {
-    var question: Question
+    var question: QuestionRequest
     var questionIndex: Int
+    var vm: DetailQuizViewModel
     @State private var isStartAnswerQuestion: Bool = false
     @State private var isChangeYAxisQuestion: Bool = false
 
@@ -26,7 +27,7 @@ struct CombineQnA: View {
                         }
                     }
 
-                AnswerComponent(typeAnswer: question.type, listAnswer: question.answer, isShowAnswer: isChangeYAxisQuestion)
+                AnswerComponent(question: question, vm: vm, typeAnswer: question.type, listAnswer: question.answer, isShowAnswer: isChangeYAxisQuestion)
                     .padding(.bottom, 20)
             }
         }

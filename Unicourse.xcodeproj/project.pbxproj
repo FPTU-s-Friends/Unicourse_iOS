@@ -19,6 +19,7 @@
 		B50C4AE02C0DE0C40099B228 /* DailyRewardIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */; };
 		B50C4AE22C0DE5F00099B228 /* DailyRewardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */; };
 		B50C4AE42C0DEACE0099B228 /* DailyRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */; };
+		B50C8C702C0ED5F700D204BD /* QuizRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C8C6F2C0ED5F700D204BD /* QuizRequestModel.swift */; };
 		B5328F7E2C09BCD600ECC191 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */; };
 		B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */; };
 		B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */; };
@@ -245,6 +246,7 @@
 		B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardIcon.swift; sourceTree = "<group>"; };
 		B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardButton.swift; sourceTree = "<group>"; };
 		B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardView.swift; sourceTree = "<group>"; };
+		B50C8C6F2C0ED5F700D204BD /* QuizRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRequestModel.swift; sourceTree = "<group>"; };
 		B5328F7D2C09BCD600ECC191 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		B5328F7F2C09BD7F00ECC191 /* SkeletonLectureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureDetail.swift; sourceTree = "<group>"; };
 		B5328F812C09C43A00ECC191 /* MyCourseLectureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseLectureItem.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 		B50A725A2BFE03BE00D3B549 /* QuizModels */ = {
 			isa = PBXGroup;
 			children = (
+				B50C8C6E2C0ED5DA00D204BD /* Request */,
 				C539C4D12C09BD5A008F14B6 /* Response */,
 				B50A725B2BFE03C800D3B549 /* QuizModel.swift */,
 			);
@@ -506,6 +509,14 @@
 				B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */,
 			);
 			path = DailyRewards;
+			sourceTree = "<group>";
+		};
+		B50C8C6E2C0ED5DA00D204BD /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				B50C8C6F2C0ED5F700D204BD /* QuizRequestModel.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		B5328F7C2C09BCC600ECC191 /* ShimmerViews */ = {
@@ -1671,6 +1682,7 @@
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				B55015FF2C0892E6006CC44F /* APILecturePath.swift in Sources */,
+				B50C8C702C0ED5F700D204BD /* QuizRequestModel.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C5D7DD162BF71FBE00FC0DF7 /* CartProductItem.swift in Sources */,
 				C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */,
