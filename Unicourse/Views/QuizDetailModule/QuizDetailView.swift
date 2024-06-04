@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct QuizDetailView: View {
+    var quizId: String
     @StateObject var vm = DetailQuizViewModel()
     @Environment(\.dismiss) var dismiss: DismissAction
 
@@ -17,25 +18,42 @@ struct QuizDetailView: View {
                 .ignoresSafeArea()
             VStack(spacing: 20) {
                 // Phần Progress
-                ProgressBarComponent(value: 30.0, total: 100.0)
+                ProgressBarComponent(value: Double(vm.selectedTab + 1), total: Double(vm.quizData?.questions.count ?? 2))
                 // End: Phần Progress
 
                 // Phần Câu hỏi & Các đáp án
-                TabView {
-                    ForEach(vm.data[0].questions, id: \._id) { question in
-                        CombineQnA(question: question)
+                TabView(selection: $vm.selectedTab) {
+                    ForEach(Array((vm.quizData?.questions ?? []).enumerated()), id: \.element._id) { index, question in
+                        CombineQnA(question: question, questionIndex: index + 1)
+                            .tag(index)
                     }
                 }
-                .tabViewStyle(PageTabViewStyle())
+                .animation(.easeInOut, value: vm.selectedTab)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .background(.white)
                 .cornerRadius(35)
+                .onAppear {
+                    // Ngăn ng dùng swipe
+                    UIScrollView.appearance().isScrollEnabled = false
+                }
+
                 // End: Phần Câu hỏi & Các đáp án
 
                 // Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
-                NavigationQuizButtonComponents()
+                NavigationQuizButtonComponents(totalQuestion: vm.quizData?.questions.count ?? 1, selectedTab: $vm.selectedTab)
+
                 // End: Phần [Next] & [Prev] button -> Dùng để navigate giữa các câu hỏi
             }
             .padding(.horizontal, 10)
+
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                vm.getQuizById(quizId: quizId)
+            }
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -52,7 +70,7 @@ struct QuizDetailView: View {
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                Text("📚 MKT208c")
+                Text("📚 \(vm.quizData?.title ?? "")")
                     .bold()
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
@@ -65,6 +83,6 @@ struct QuizDetailView: View {
 
 #Preview {
     NavigationStack {
-        QuizDetailView()
+        QuizDetailView(quizId: "663692241945fbdc90782da5")
     }
 }

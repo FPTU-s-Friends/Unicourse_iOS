@@ -89,7 +89,7 @@ struct LatestBlogItemView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .cornerRadius(10)
-                                    .frame(width: 165, height: 95)
+                                    .frame(height: 80, alignment: .center)
                             } placeholder: {
                                 ProgressView()
                             }
@@ -100,6 +100,7 @@ struct LatestBlogItemView: View {
                                 .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .lineLimit(2)
                                 .padding(.horizontal, 5)
+                                .padding(.top, 10)
 
                             VStack(alignment: .leading) {
                                 HStack(spacing: 5) {
@@ -148,5 +149,5 @@ struct LatestBlogItemView: View {
 }
 
 #Preview {
-    LatestBlogItemView(listBlog: [BlogModel.sampleBlogModel])
+    LatestBlogItemView(listBlog: [BlogModel.sampleBlogModel, BlogModel.sampleBlogModel])
 }

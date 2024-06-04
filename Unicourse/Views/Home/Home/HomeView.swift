@@ -17,6 +17,12 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
+            DailyRewardButton()
+                .zIndex(1)
+                .onTapGesture {
+                    print("Navigate")
+                }
+
             VStack {
                 HStack {
                     HeaderUserView()

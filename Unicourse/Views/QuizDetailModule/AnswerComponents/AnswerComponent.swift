@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Type_Question: Codable {
+enum Type_Question: String, Codable {
     case single
     case multiple
 }
@@ -24,8 +24,8 @@ struct AnswerComponent: View {
     var body: some View {
         VStack(spacing: 15) {
             if typeAnswer == .single {
-                ForEach(Array(listAnswer.enumerated()), id: \.element._id) { index, answer in
-                    AnswerItem(isSelected: selectedAnswerIndex == index, index: index, answerType: .single, answerTitle: answer.answerText)
+                ForEach(Array(listAnswer.enumerated()), id: \.element.answer_text) { index, answer in
+                    AnswerItem(isSelected: selectedAnswerIndex == index, index: index, answerType: .single, answerTitle: answer.answer_text)
                         .animation(.spring, value: isShowAnswer)
                         .offset(y: isShowAnswer ? 0 : CGFloat(-65 * index))
                         .opacity(isShowAnswer ? 1 : 0)
@@ -41,8 +41,8 @@ struct AnswerComponent: View {
                         }
                 }
             } else {
-                ForEach(Array(listAnswer.enumerated()), id: \.element._id) { index, answer in
-                    AnswerItem(isSelected: listMultipleAnswer.contains(index), index: index, answerType: .multiple, answerTitle: answer.answerText)
+                ForEach(Array(listAnswer.enumerated()), id: \.element.answer_text) { index, answer in
+                    AnswerItem(isSelected: listMultipleAnswer.contains(index), index: index, answerType: .multiple, answerTitle: answer.answer_text)
                         .animation(.spring, value: isShowAnswer)
                         .offset(y: isShowAnswer ? 0 : CGFloat(-65 * index))
                         .opacity(isShowAnswer ? 1 : 0)
