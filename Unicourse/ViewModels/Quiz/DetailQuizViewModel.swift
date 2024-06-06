@@ -8,7 +8,7 @@
 import Foundation
 
 class DetailQuizViewModel: ObservableObject {
-    // MockData
+    // MockD ata
     @Published var data = DetailQuizModel.mockData
     @Published var selectedTab: Int = 0
     @Published var quizData: DetailQuizModel? = nil

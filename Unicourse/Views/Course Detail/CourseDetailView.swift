@@ -45,13 +45,14 @@ struct CourseDetailView: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(height: 200)
-                                    .cornerRadius(24)
+                                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                                    .cornerRadius(20)
 
                             } placeholder: {
                                 RoundedRectangle(cornerRadius: 24.0)
-                                    .frame(height: 200)
+                                    .frame(width: UIScreen.main.bounds.width * 0.90, height: 200)
                                     .foregroundStyle(Color.gray.opacity(0.5))
+                                    .shimmerWithWave()
                             }
                         } else {
                             RoundedRectangle(cornerRadius: 24)

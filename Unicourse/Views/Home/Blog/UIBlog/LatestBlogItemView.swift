@@ -15,12 +15,13 @@ struct LatestBlogItemView: View {
     var body: some View {
         NavigationLink(destination: DetailBlogView(blogId: listBlog[0]._id)) {
             VStack(alignment: .leading) {
-                AsyncImage(url: URL(string: listBlog[0].thumbnail_url)) { image in
+                WebImage(url: URL(string: listBlog[0].thumbnail_url)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
-                        .frame(height: 210)
+                        .frame(width: UIScreen.main.bounds.width * 0.95)
+
                 } placeholder: {
                     Rectangle()
                         .fill(Color.gray.opacity(0.3))
@@ -89,7 +90,7 @@ struct LatestBlogItemView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .cornerRadius(10)
-                                    .frame(height: 80, alignment: .center)
+                                    .frame(width: UIScreen.main.bounds.width * 0.45)
                             } placeholder: {
                                 ProgressView()
                             }
