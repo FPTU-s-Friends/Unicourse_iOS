@@ -15,15 +15,17 @@ struct CourseSemesterView: View {
 
     var body: some View {
         VStack {
-            ScrollView {
-                if viewModel.isLoading {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
+            if viewModel.isLoading {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width * 0.45), spacing: 5)]) {
                         ForEach(0 ..< 6) { _ in
                             SkeletonGridCourseView()
                         }
                     }
-                } else if viewModel.isLoading == false && !viewModel.listCourseSemester.isEmpty {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 165), spacing: 5)], spacing: 10) {
+                }
+            } else if viewModel.isLoading == false && !viewModel.filteredCourseSemester.isEmpty {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width * 0.45), spacing: 5)]) {
                         ForEach(viewModel.listCourseSemester, id: \._id) { course in
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                                 SearchResultItemView(title: course.title,
@@ -36,12 +38,18 @@ struct CourseSemesterView: View {
                             }
                         }
                     }
-                } else {
-                    NotfoundView(systemName: "shippingbox.fill", message: "Chưa có khoá học cho kì \(semester)")
                 }
+                .searchable(text: $viewModel.searchString, prompt: Text("Tìm kiếm"))
+
+            } else {
+                NotfoundView(systemName: "shippingbox.fill", message: "Chưa có khoá học cho kì \(semester)")
+                Spacer()
             }
         }
         .onAppear {
+            viewModel.getCourseSemester(semester: semester, token: appData.token)
+        }
+        .refreshable {
             viewModel.getCourseSemester(semester: semester, token: appData.token)
         }
         .background(Color.mainBackgroundColor)
@@ -75,7 +83,6 @@ struct CourseSemesterView: View {
         .popover(isPresented: $viewModel.isSheetPresented) {
             Text("Chọn lọc cho phần chuyên ngành ở đây")
         }
-        .searchable(text: $viewModel.searchString, prompt: Text("Tìm kiếm"))
     }
 }
 

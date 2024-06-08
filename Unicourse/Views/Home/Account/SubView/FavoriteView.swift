@@ -15,25 +15,33 @@ struct FavoriteView: View {
     @State private var isSearchBarVisible: Bool = false
 
     var body: some View {
-        List {
-            ForEach(appData.userInfo?.wishList ?? [], id: \._id) { wistItem in
-                //
-                FavoriteItemView(wishItem: wistItem)
-                    .background(Color.white.cornerRadius(10))
-                    .swipeActions {
-                        Button(role: .destructive) {
-                            withAnimation {}
-                        } label: {
-                            Image(systemName: "trash")
-                        }
+        VStack {
+            if let wishList = appData.userInfo?.wishList, !wishList.isEmpty {
+                List {
+                    ForEach(appData.userInfo?.wishList ?? [], id: \._id) { wistItem in
+                        //
+                        FavoriteItemView(wishItem: wistItem)
+                            .background(Color.white.cornerRadius(10))
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    withAnimation {}
+                                } label: {
+                                    Image(systemName: "trash")
+                                }
+                            }
+                            .tint(.red)
                     }
-                    .tint(.red)
+                }
+                .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
+                .padding(.horizontal, -5)
+                .background(Color.mainBackgroundColor)
+                .listStyle(.insetGrouped)
+            } else {
+                NotfoundView(systemName: "shippingbox.fill", message: "Bạn chưa có yêu thích khoá học nào")
+                Spacer()
             }
         }
-        .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
-        .padding(.horizontal, -5)
-        .background(Color.mainBackgroundColor)
-        .listStyle(.insetGrouped)
+
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
