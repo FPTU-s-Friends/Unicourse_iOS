@@ -18,7 +18,7 @@ struct ButtonCheckBox: View {
             Image(systemName: isChecked ? "checkmark.square.fill" : "square")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(isChecked ? .blue : .gray)
+                .foregroundColor(isChecked ? .mainColor1 : .gray)
                 .frame(width: 16)
                 .padding(.trailing, 10)
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct CircleButtonUI: View {
     var isActive: Bool
     var systemName: String
-    var symbolRenderingMode: SymbolRenderingMode? = .none
+    var symbolRenderingMode: SymbolRenderingMode? = .multicolor
 
     var systemNameString: String {
         if isActive {
@@ -22,11 +22,11 @@ struct CircleButtonUI: View {
 
     var body: some View {
         Image(systemName: "\(systemNameString)")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
             .symbolRenderingMode(symbolRenderingMode)
-            .frame(width: 24, height: 24)
-            .padding(6)
-//            .background(.white.opacity(0.5))
-//            .clipShape(Circle())
+            .frame(width: 30)
+            .padding(4)
     }
 }
 

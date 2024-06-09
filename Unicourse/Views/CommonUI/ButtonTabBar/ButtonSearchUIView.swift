@@ -16,11 +16,16 @@ struct ButtonSearchUIView: View {
                 isSearchOpen.toggle()
             }
         }) {
-            Image(systemName: "magnifyingglass")
-                .font(.system(size: 16))
-                .foregroundColor(.black)
-                .frame(width: 10, height: 18)
-                .padding(.horizontal, 10)
+            Image(systemName: "magnifyingglass.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 34)
+                .foregroundColor(.mainColor1)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.gray, lineWidth: 0.1)
+                )
         }
     }
 }

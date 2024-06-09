@@ -92,7 +92,8 @@ struct BlogView: View {
                 .ignoresSafeArea()
         }
         .navigationTitle("Bài viết")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
+        .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 ButtonSearchUIView(isSearchOpen: $isSearchBarVisible)

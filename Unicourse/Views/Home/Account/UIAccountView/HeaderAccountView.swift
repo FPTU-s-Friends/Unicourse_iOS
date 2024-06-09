@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HeaderAccountView: View {
     @EnvironmentObject var appData: AppData
+    @Binding var isPresentedEditSheet: Bool
+    @Binding var isPresentedSettingSheet: Bool
 
     var body: some View {
         VStack {
@@ -46,7 +48,11 @@ struct HeaderAccountView: View {
                             }
                         }
                     }
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation {
+                            isPresentedEditSheet = true
+                        }
+                    }, label: {
                         Image(systemName: "square.and.pencil")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -61,7 +67,11 @@ struct HeaderAccountView: View {
                             )
                     })
 
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation {
+                            isPresentedSettingSheet = true
+                        }
+                    }, label: {
                         Image(systemName: "gearshape")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -82,6 +92,7 @@ struct HeaderAccountView: View {
 }
 
 #Preview {
-    HeaderAccountView()
+    HeaderAccountView(isPresentedEditSheet: .constant(false),
+                      isPresentedSettingSheet: .constant(false))
         .environmentObject(AppData())
 }

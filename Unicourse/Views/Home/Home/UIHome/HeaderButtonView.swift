@@ -14,50 +14,50 @@ struct HeaderButtonView: View {
                 SearchEntryView(),
 
                 label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "magnifyingglass.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 18)
-                        .padding(10)
+                        .frame(width: 34)
+                        .padding(3)
                         .foregroundColor(.white)
-                        .background(Color.activeButtonColor.gradient)
+//                        .background(Color.activeButtonColor.gradient)
                         .clipShape(Circle())
-                        .overlay(
-                            Circle()
-                                .stroke(Color.gray, lineWidth: 0.1)
-                        )
+//                        .overlay(
+//                            Circle()
+//                                .stroke(Color.gray, lineWidth: 0.1)
+//                        )
                 })
 
             NavigationLink(destination:
                 CommunityView(),
 
                 label: {
-                    Image(systemName: "message")
+                    Image(systemName: "message.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 18)
-                        .padding(10)
+                        .frame(width: 34)
+                        .padding(3)
                         .foregroundColor(.white)
-                        .background(Color.activeButtonColor.gradient)
+//                        .background(Color.activeButtonColor.gradient)
                         .clipShape(Circle())
-                        .overlay(
-                            Circle()
-                                .stroke(Color.gray, lineWidth: 0.1)
-                        )
+//                        .overlay(
+//                            Circle()
+//                                .stroke(Color.gray, lineWidth: 0.1)
+//                        )
                 })
             NavigationLink(destination: NotificationView()) {
-                Image(systemName: "bell")
+                Image(systemName: "bell.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 18)
-                    .padding(10)
+                    .frame(width: 34)
+                    .padding(3)
                     .foregroundColor(.white)
-                    .background(Color.activeButtonColor.gradient)
+//                    .background(Color.activeButtonColor.gradient)
                     .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(Color.gray, lineWidth: 0.1)
-                    )
+//                    .overlay(
+//                        Circle()
+//                            .stroke(Color.gray, lineWidth: 0.1)
+//                    )
             }
         }
         .navigationBarBackButtonHidden(true)

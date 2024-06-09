@@ -22,7 +22,10 @@ struct HeaderUserView: View {
                             .frame(width: 50)
                             .cornerRadius(30)
                     } placeholder: {
-                        ProgressView()
+                        Rectangle()
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(30)
+                            .shimmerWithWave()
                     }
                 } else {
                     Image(.user)
@@ -34,7 +37,8 @@ struct HeaderUserView: View {
             }
             VStack(alignment: .leading, spacing: 7) {
                 Text("\(appData.user?.fullName ?? "Loading...")")
-                    .font(.system(size: 13, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(Color.white)
                     .lineLimit(1)
                     .multilineTextAlignment(.leading)
 
@@ -56,11 +60,15 @@ struct HeaderUserView: View {
 
     func roleText(_ text: String) -> some View {
         Text(text)
-            .font(.system(size: 10, weight: .bold, design: .default))
-            .foregroundStyle(Color.white)
-            .padding(5)
-            .background(Color.activeColor.gradient)
-            .cornerRadius(10)
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(.white)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(
+                Capsule()
+                    .fill(Color.green)
+            )
+            .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 2)
     }
 }
 

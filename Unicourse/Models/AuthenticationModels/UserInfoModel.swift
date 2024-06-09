@@ -84,6 +84,7 @@ struct UserInfoModel: Codable {
     let quizProcess: [String]? // chỉnh sửa sau
     let lectureInfo: LectureModel?
     let wishList: [WisListUserInfo]?
+    let createdAt: String
 
     enum CodingKeys: String, CodingKey, Codable {
         case _id
@@ -104,6 +105,7 @@ struct UserInfoModel: Codable {
         case quizProcess = "quiz_process"
         case lectureInfo = "lecture_info"
         case wishList = "wish_list"
+        case createdAt = "created_at"
     }
 }
 
