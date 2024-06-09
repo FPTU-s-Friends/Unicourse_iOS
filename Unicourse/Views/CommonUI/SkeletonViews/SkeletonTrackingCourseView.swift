@@ -14,18 +14,21 @@ struct SkeletonTrackingCourseView: View {
                 // Thumbnail Placeholder
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .fill(Color.gray.opacity(0.5))
-                    .frame(width: 46, height: 46)
+                    .frame(width: UIScreen.main.bounds.width * 0.2, height: 65)
+                    .shimmerWithWave()
 
                 VStack(alignment: .leading, spacing: 5) {
                     // Week Placeholder
                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .fill(Color.gray.opacity(0.5))
                         .frame(width: 50, height: 12)
+                        .shimmerWithWave()
 
                     // Description Placeholder
                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .fill(Color.gray.opacity(0.5))
                         .frame(width: 212, height: 40)
+                        .shimmerWithWave()
                 }
                 Spacer()
             }
@@ -35,11 +38,13 @@ struct SkeletonTrackingCourseView: View {
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .fill(Color.gray.opacity(0.5))
                     .frame(width: 24, height: 24)
+                    .shimmerWithWave()
 
                 // Username Placeholder
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .fill(Color.gray.opacity(0.5))
                     .frame(width: 100, height: 12)
+                    .shimmerWithWave()
 
                 Spacer()
 
@@ -47,13 +52,13 @@ struct SkeletonTrackingCourseView: View {
                 RoundedRectangle(cornerRadius: 7, style: .continuous)
                     .fill(Color.gray.opacity(0.5))
                     .frame(width: 100, height: 30)
+                    .shimmerWithWave()
             }
         }
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: 133)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .shimmerWithWave()
     }
 }
 

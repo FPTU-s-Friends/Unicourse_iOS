@@ -14,6 +14,7 @@ class QuizViewModel: ObservableObject {
     @Published var isShowingAlert = false
     @Published var isLoadingFetch = false
     @Published var listAllQuizzes: [AllQuizModel] = []
+
     @Published var error = ""
 
     func getAllQuizzes() async {

@@ -32,6 +32,7 @@ struct GoogleLoginButtonView: View {
                     let jwtToken = String(token.split(separator: " ")[1])
                     appData.token = jwtToken
                     try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
+                    try await appData.getUserCart(token: jwtToken)
                 } catch {
                     appData.error = error.localizedDescription
                     appData.isShowingAlert = true

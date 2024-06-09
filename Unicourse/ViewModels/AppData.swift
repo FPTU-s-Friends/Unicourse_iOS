@@ -20,6 +20,7 @@ class AppData: ObservableObject {
     @Published var mainTabSelection = 0
     @Published var isLoggedIn: Bool = false
     @Published var listCurrentEnrolled: [String] = []
+    @Published var cart: CartModel?
 
     init(user: UserProfile? = nil, token: String = "") {
         self.user = user
@@ -65,26 +66,6 @@ class AppData: ObservableObject {
         }
     }
 
-    // Kiểm tra trạng thái đăng nhập của người dùng
-//    func checkUserAuthentication() async throws {
-//        if let email = Auth.auth().currentUser?.email {
-//            isLoggedIn = true
-//            NetworkManager.shared.signIn(email: email) { result in
-//                switch result {
-//                case let .success(data):
-//                    printJSONData(data: data)
-//                    let accessToken = data.data.accessToken.split(separator: " ")[1]
-//                    self.token = String(accessToken)
-//                    self.decodeJWTTokenAndSetUserProfile(token: String(accessToken))
-//
-//                case let .failure(error):
-//                    self.isShowingAlert = true
-//                    self.error = error.localizedDescription
-//                }
-//            }
-//        }
-//    }
-
     func checkUserAuthentication() async throws {
         guard let email = Auth.auth().currentUser?.email else {
             return // No user logged in, handle as needed (e.g., show login)
@@ -122,6 +103,22 @@ class AppData: ObservableObject {
             print("Get User Info Error")
             self.error = error.localizedDescription
             isShowingAlert = true
+            print(error)
+        }
+    }
+
+    func getUserCart(token: String) async throws {
+        let path = APIPath.getUserCart.stringValue
+        let method = HTTPMethod.get
+        let headers = ["Authorization": "Bearer \(token)"]
+
+        do {
+            let response: CommonResponse<CartModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: nil)
+            cart = response.data
+        } catch {
+            print("Get User Cart Error")
+//            self.error = error.localizedDescription
+//            isShowingAlert = true
             print(error)
         }
     }

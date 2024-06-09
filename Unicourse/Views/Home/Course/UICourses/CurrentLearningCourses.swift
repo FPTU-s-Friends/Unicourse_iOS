@@ -75,9 +75,9 @@ struct CurrentLearningCourses: View {
                     Spacer()
                 }
 
-                LazyVStack {
+                VStack {
                     if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
-                        ForEach(0 ..< 2) { _ in
+                        ForEach(0 ..< 5) { _ in
                             SkeletonCourseListView()
                         }
                     } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
@@ -91,8 +91,8 @@ struct CurrentLearningCourses: View {
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
-
-                }.padding(.bottom, 100)
+                }
+                .safeAreaPadding(.bottom, 150)
 
             }.padding(.leading, 12)
         }

@@ -13,13 +13,15 @@ class DetailBlogViewModel: ObservableObject {
     @Published var blogDetail: DetailBlogModel?
     @Published var listRelatedBlog: [BlogModel] = []
     @Published var error = ""
-    @Published var isLoadingGetBlog = false
+    @Published var isLoadingGetRelatedBlogisLoadingGetBlog = false
     @Published var isShowingDescription = true
     @Published var isShowingSheetComment = false
     @Published var isShowingError = false
     @Published var isLoadingLike = false
     @Published var isLoadingCommentBlog = false
     @Published var isLoadingLikeComment = false
+    @Published var isLoadingGetRelatedBlog = false
+    @Published var isLoadingGetBlog = false
 
     func getBlogById(blogId: String) async throws {
         let path = APIPath.getBlogs.stringValue
@@ -42,7 +44,7 @@ class DetailBlogViewModel: ObservableObject {
         let params: [String: Any] = ["page": 1]
 
         do {
-            isLoadingGetBlog = true
+            isLoadingGetRelatedBlog = true
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, parameters: params, body: nil)
             listRelatedBlog = response.data
         } catch {
@@ -50,7 +52,7 @@ class DetailBlogViewModel: ObservableObject {
             self.error = "Không lấy được thông tin của blog, hãy thử lại"
             isShowingError = true
         }
-        isLoadingGetBlog = false
+        isLoadingGetRelatedBlog = false
     }
 
     func likeBlog(blogId: String, token: String) async throws {

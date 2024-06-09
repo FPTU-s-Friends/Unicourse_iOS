@@ -23,7 +23,7 @@ struct DetailBlogView: View {
                     VStack(alignment: .leading) {
                         if viewModel.isLoadingGetBlog {
                             SkeletonBlogDetailView()
-                        } else if self.viewModel.isLoadingGetBlog == false && self.viewModel.blogDetail != nil {
+                        } else if self.viewModel.blogDetail != nil {
                             VStack {
                                 AsyncImage(url: URL(string: self.viewModel.blogDetail?.thumbnail_url ?? "")) { image in
                                     image
