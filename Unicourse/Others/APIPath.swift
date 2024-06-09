@@ -24,6 +24,7 @@ enum APIPath {
     case comment
     case likeAndUnlikeComment
     case replyComment
+    case getUserCart
 
     var stringValue: String {
         switch self {
@@ -59,6 +60,8 @@ enum APIPath {
             "/api/comment/like_or_unlike"
         case .replyComment:
             "/api/comment/reply"
+        case .getUserCart:
+            "/api/cart/retrieve-user-cart"
         }
     }
 }

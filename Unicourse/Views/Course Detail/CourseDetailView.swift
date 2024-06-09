@@ -181,13 +181,18 @@ struct CourseDetailView: View {
                         ZStack {
                             CircleButtonUI(isActive: true, systemName: "cart", symbolRenderingMode: .multicolor)
                                 .tint(.black)
-                            Text("12")
-                                .font(.system(size: 10))
-                                .foregroundStyle(.white)
-                                .padding(2)
-                                .background(Color.activeColor.cornerRadius(20))
-                                .padding(.leading, 20)
-                                .padding(.bottom, 20)
+                            if let cart = appData.cart, !cart.items.isEmpty {
+                                Text("\(cart.items.count)")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 3)
+                                    .background(Color.activeColor.cornerRadius(10))
+                                    .padding(.leading, 20)
+                                    .padding(.bottom, 20)
+                                    .lineLimit(1)
+                                    .multilineTextAlignment(.leading)
+                            }
                         }
                     }
 

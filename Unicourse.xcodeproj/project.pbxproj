@@ -166,6 +166,7 @@
 		C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69392BE2026A0093E51B /* ContentView.swift */; };
 		C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56F693B2BE2026C0093E51B /* Assets.xcassets */; };
 		C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F694A2BE208AA0093E51B /* Color+Extension.swift */; };
+		C575C6192C1564370067D984 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C575C6182C1564370067D984 /* CartModel.swift */; };
 		C57902A12C088892004E3D29 /* TopCourseViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57902A02C088892004E3D29 /* TopCourseViewItem.swift */; };
 		C579AF6C2C002950004BB9A6 /* DefaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6B2C002950004BB9A6 /* DefaultURL.swift */; };
 		C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C579AF6D2C002A15004BB9A6 /* DefaultTextUser.swift */; };
@@ -386,6 +387,7 @@
 		C56F69392BE2026A0093E51B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C56F693B2BE2026C0093E51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56F694A2BE208AA0093E51B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C575C6182C1564370067D984 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		C57902A02C088892004E3D29 /* TopCourseViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCourseViewItem.swift; sourceTree = "<group>"; };
 		C579AF6B2C002950004BB9A6 /* DefaultURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURL.swift; sourceTree = "<group>"; };
 		C579AF6D2C002A15004BB9A6 /* DefaultTextUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextUser.swift; sourceTree = "<group>"; };
@@ -1234,6 +1236,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C575C6172C1564250067D984 /* CartModels */,
 				C52151FD2C0B3101002855B6 /* BlogModels */,
 				C52151EB2C0AD7BE002855B6 /* BannerModels */,
 				C5688C652C04548B003669C0 /* UIModel */,
@@ -1296,6 +1299,14 @@
 				C53437EE2C0C47330039CA41 /* WebView.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C575C6172C1564250067D984 /* CartModels */ = {
+			isa = PBXGroup;
+			children = (
+				C575C6182C1564370067D984 /* CartModel.swift */,
+			);
+			path = CartModels;
 			sourceTree = "<group>";
 		};
 		C57ED1B72BEF4CA400641532 /* Search */ = {
@@ -1804,6 +1815,7 @@
 				C567495E2BE893E800DA6A58 /* AppError.swift in Sources */,
 				B50C4AD92C0D76D40099B228 /* DetailQuizModel.swift in Sources */,
 				C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */,
+				C575C6192C1564370067D984 /* CartModel.swift in Sources */,
 				B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */,
 				C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
@@ -2004,7 +2016,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse;
+				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicoursev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

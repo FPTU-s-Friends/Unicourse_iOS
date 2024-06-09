@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HeaderAccountView: View {
+    @EnvironmentObject var appData: AppData
+
     var body: some View {
         VStack {
             HStack {
@@ -28,13 +30,19 @@ struct HeaderAccountView: View {
                                         Circle()
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
-                                Text("12")
-                                    .font(.system(size: 10))
-                                    .foregroundStyle(.white)
-                                    .padding(2)
-                                    .background(Color.red.cornerRadius(20))
-                                    .padding(.leading, 20)
-                                    .padding(.bottom, 20)
+
+                                if let cart = appData.cart, !cart.items.isEmpty {
+                                    Text("\(cart.items.count)")
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 3)
+                                        .background(Color.red.cornerRadius(20))
+                                        .padding(.leading, 20)
+                                        .padding(.bottom, 20)
+                                        .lineLimit(1)
+                                        .multilineTextAlignment(.leading)
+                                }
                             }
                         }
                     }
@@ -75,4 +83,5 @@ struct HeaderAccountView: View {
 
 #Preview {
     HeaderAccountView()
+        .environmentObject(AppData())
 }

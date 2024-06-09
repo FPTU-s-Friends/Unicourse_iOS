@@ -19,6 +19,7 @@ struct AccountView: View {
             VStack {
                 HeaderAccountView()
                     .padding(.trailing, 10)
+                
                 ScrollView {
                     VStack {
                         UserStatisticView()

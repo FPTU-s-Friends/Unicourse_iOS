@@ -8,43 +8,40 @@
 import SwiftUI
 
 struct CartView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
-    
-    
-    // Biến cục bộ để checkAll toàn bộ sản phẩm
-    @State private var isCheckedAll: Bool = false
+    @EnvironmentObject var appData: AppData
 
     var body: some View {
         VStack {
-            // Course added Item
             ScrollView {
-                CartItemView(isCheckedAll: $isCheckedAll, name: .constant("Nguyễn Trung Kiên"))
-                CartItemView(isCheckedAll: $isCheckedAll, name: .constant("Trần Quang Minh"))
+                // Course added Item
+                if let cart = appData.cart, !cart.items.isEmpty {
+                    ForEach(cart.items, id: \._id) { item in
+                        CartItemView(item: item)
+                    }
+
+                } else {
+                    NotfoundView(systemName: "shippingbox.fill", message: "Chưa có khoá học nào được thêm vào giỏ")
+                }
+                Spacer()
             }
-            Spacer()
+            .refreshable {
+                Task {
+                    try await appData.getUserCart(token: appData.token)
+                }
+            }
 
             // Bottom
-          
-                CartBottomView()
-            
+
+            CartBottomView()
         }
         .background(Color.mainBackgroundColor)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
-
-            ToolbarItem(placement: .topBarTrailing) {
-                ButtonCheckBox(isChecked: $isCheckedAll)
-            }
+//            ToolbarItem(placement: .topBarTrailing) {
+//                ButtonCheckBox(isChecked: $isCheckedAll)
+//            }
         }
         .navigationBarTitle("Giỏ hàng", displayMode: .large)
         .navigationBarBackButtonHidden(true)
@@ -54,5 +51,6 @@ struct CartView: View {
 #Preview {
     NavigationStack {
         CartView()
+            .environmentObject(AppData())
     }
 }

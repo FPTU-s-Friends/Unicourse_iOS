@@ -5,6 +5,7 @@
 //  Created by Minh Trần Quang on 8/5/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct CourseCard: View {
@@ -22,8 +23,7 @@ struct CourseCard: View {
         VStack(spacing: 13) {
             HStack(alignment: .top, spacing: 10) {
                 VStack {
-                    // chỗ này để mốt sửa thành lecture image vào
-                    AsyncImage(url: URL(string: courseItem.course?.lecture?.profile_image ?? "")!) { image in
+                    WebImage(url: URL(string: courseItem.course?.lecture?.profile_image ?? "")!) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)

@@ -26,7 +26,7 @@ struct CourseSemesterView: View {
             } else if viewModel.isLoading == false && !viewModel.filteredCourseSemester.isEmpty {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width * 0.45), spacing: 5)]) {
-                        ForEach(viewModel.listCourseSemester, id: \._id) { course in
+                        ForEach(viewModel.filteredCourseSemester, id: \._id) { course in
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                                 SearchResultItemView(title: course.title,
                                                      description: course.titleDescription,

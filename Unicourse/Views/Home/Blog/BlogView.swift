@@ -65,16 +65,20 @@ struct BlogView: View {
         }
         .refreshable {
             Task {
+                viewModel.isLoadingFetchBlog = true
                 try await viewModel.getListBlog()
                 try await viewModel.getHighlightBlog()
+                viewModel.isLoadingFetchBlog = false
             }
         }
         .searchable(text: $viewModel.searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
         .onAppear {
             if isLoadingFirstTime {
                 Task {
+                    viewModel.isLoadingFetchBlog = true
                     try await viewModel.getListBlog()
                     try await viewModel.getHighlightBlog()
+                    viewModel.isLoadingFetchBlog = false
                     isLoadingFirstTime = false
                 }
             }
