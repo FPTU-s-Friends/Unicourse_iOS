@@ -9,7 +9,6 @@ import SwiftUI
 struct QuizDetailView: View {
     var quizId: String
     @ObservedObject var vm = DetailQuizViewModel()
-    @Environment(\.dismiss) var dismiss: DismissAction
 
     var body: some View {
         ZStack {
@@ -58,15 +57,7 @@ struct QuizDetailView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                }
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {

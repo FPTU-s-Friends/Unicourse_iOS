@@ -12,7 +12,7 @@ struct SkeletonCourseProgressCard: View {
         VStack(spacing: 13) {
             HStack(alignment: .top, spacing: 10) {
                 Circle()
-                    .fill(Color.gray.opacity(0.2))
+                    .fill(Color.gray.opacity(0.5))
                     .frame(width: 32, height: 32)
                     .padding(.bottom, 20)
                     .padding(.leading, 10)

@@ -32,6 +32,12 @@ struct RecentView: View {
                 }
             }
         }
+        .refreshable {
+            Task {
+                guard let userId = appData.user?.userId else { return }
+                try await appData.getUserInfo(userId: userId, token: appData.token)
+            }
+        }
         .padding(.horizontal, -5)
         .searchable(text: $searchString, isPresented: $isSearchBarVisible, placement: .navigationBarDrawer, prompt: Text("Tìm kiếm"))
         .background(Color.mainBackgroundColor)

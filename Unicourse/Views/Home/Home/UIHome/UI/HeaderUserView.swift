@@ -66,7 +66,7 @@ struct HeaderUserView: View {
             .padding(.vertical, 4)
             .background(
                 Capsule()
-                    .fill(Color.green)
+                    .fill(Color.UIButtonGreen)
             )
             .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 2)
     }

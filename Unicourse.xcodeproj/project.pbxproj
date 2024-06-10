@@ -132,6 +132,7 @@
 		C54DADAF2BE9DE9F00E968CE /* TopCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DADAE2BE9DE9F00E968CE /* TopCoursesView.swift */; };
 		C54DADB12BE9E47800E968CE /* TopLecturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DADB02BE9E47800E968CE /* TopLecturesView.swift */; };
 		C54DADB42BE9E51300E968CE /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54DADB32BE9E51300E968CE /* AccountView.swift */; };
+		C55B6A182C16EA0600507E8C /* FilterQuizItemUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B6A172C16EA0600507E8C /* FilterQuizItemUI.swift */; };
 		C564E97C2C0ED5300039A4F7 /* NotFoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564E97B2C0ED5300039A4F7 /* NotFoundImageView.swift */; };
 		C564E97F2C0EDD8A0039A4F7 /* BlogLikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564E97E2C0EDD8A0039A4F7 /* BlogLikeModel.swift */; };
 		C564E9812C0EFBD70039A4F7 /* RepliesCommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564E9802C0EFBD70039A4F7 /* RepliesCommentItem.swift */; };
@@ -363,6 +364,7 @@
 		C54DADAE2BE9DE9F00E968CE /* TopCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoursesView.swift; sourceTree = "<group>"; };
 		C54DADB02BE9E47800E968CE /* TopLecturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLecturesView.swift; sourceTree = "<group>"; };
 		C54DADB32BE9E51300E968CE /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		C55B6A172C16EA0600507E8C /* FilterQuizItemUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterQuizItemUI.swift; sourceTree = "<group>"; };
 		C564E97B2C0ED5300039A4F7 /* NotFoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundImageView.swift; sourceTree = "<group>"; };
 		C564E97E2C0EDD8A0039A4F7 /* BlogLikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogLikeModel.swift; sourceTree = "<group>"; };
 		C564E9802C0EFBD70039A4F7 /* RepliesCommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesCommentItem.swift; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				C539C4D42C09BF0F008F14B6 /* QuizItemView.swift */,
+				C55B6A172C16EA0600507E8C /* FilterQuizItemUI.swift */,
 			);
 			path = QuizUI;
 			sourceTree = "<group>";
@@ -1942,6 +1945,7 @@
 				C548DDA32C0463B900764E13 /* TabPosition.swift in Sources */,
 				C567494D2BE8764200DA6A58 /* UserProfile.swift in Sources */,
 				C5DEAA592C075E7A00955E1C /* AllTopCourseViewModel.swift in Sources */,
+				C55B6A182C16EA0600507E8C /* FilterQuizItemUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2077,7 +2081,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
-				DEVELOPMENT_TEAM = 4A2RR2WYK5;
+				DEVELOPMENT_TEAM = Y3U2455K6G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Unicourse/Info.plist;
@@ -2092,7 +2096,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse;
+				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicoursev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

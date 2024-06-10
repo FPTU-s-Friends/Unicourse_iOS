@@ -46,6 +46,9 @@ struct DiscountView: View {
                 }
             }
         }
+        .refreshable {
+            print("Refresh Discount")
+        }
         .background(Color.mainBackgroundColor)
         .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
     }

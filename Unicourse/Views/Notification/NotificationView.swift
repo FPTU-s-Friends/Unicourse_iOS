@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct NotificationView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
-
     var body: some View {
         VStack {
             HStack {
@@ -88,15 +86,7 @@ struct NotificationView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                }
+                ButtonBackUIView()
             }
         }
         .navigationTitle("Thông báo")

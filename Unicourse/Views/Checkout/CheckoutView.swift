@@ -13,7 +13,6 @@ enum PaymentMethod {
 }
 
 struct CheckoutView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
     @State var selectedPaymentMethod: PaymentMethod?
 
     var body: some View {
@@ -63,15 +62,7 @@ struct CheckoutView: View {
         .background(Color.mainBackgroundColor)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {
