@@ -9,6 +9,7 @@ import Foundation
 
 struct AnswerRequest: Codable
 {
+    var id: String { answer_text }
     var answer_text: String
     var is_correct: Bool
     var is_checked: Bool
