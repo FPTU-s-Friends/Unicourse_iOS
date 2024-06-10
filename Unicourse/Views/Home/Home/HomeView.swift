@@ -121,7 +121,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $openDailyReward, content: {
             DailyRewardView(openToggle: $openDailyReward)
-                .presentationDetents([.height(650)])
+                .presentationDetents([.height(600)])
                 .presentationCornerRadius(30)
                 .interactiveDismissDisabled()
         })
