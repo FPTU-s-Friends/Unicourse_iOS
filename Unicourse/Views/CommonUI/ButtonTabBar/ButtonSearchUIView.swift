@@ -20,13 +20,14 @@ struct ButtonSearchUIView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 34)
-                .foregroundColor(.mainColor1)
+                .foregroundColor(.UIButtonGreen)
                 .clipShape(Circle())
                 .overlay(
                     Circle()
                         .stroke(Color.gray, lineWidth: 0.1)
                 )
         }
+        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
     }
 }
 

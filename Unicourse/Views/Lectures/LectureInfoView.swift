@@ -10,7 +10,6 @@ import SwiftUI
 
 struct LectureInfoView: View {
     @EnvironmentObject var appData: AppData
-    @Environment(\.dismiss) var dismiss: DismissAction
     @StateObject private var vm = LectureViewModel()
     var lecture_id: String
 
@@ -153,15 +152,7 @@ struct LectureInfoView: View {
         .navigationTitle("Giảng viên")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                }
+                ButtonBackUIView()
             }
         }
         .onAppear {

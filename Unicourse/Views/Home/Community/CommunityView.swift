@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
     @State var searchString: String = ""
     @State private var gradientHeight: CGFloat = 0
     @State var isPresentedCreateGroup = false
@@ -36,15 +35,7 @@ struct CommunityView: View {
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                }
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .destructiveAction) {

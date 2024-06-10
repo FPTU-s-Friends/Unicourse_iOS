@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CourseSemesterView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = CourseSemesterViewModel()
     var semester: Int
@@ -57,15 +56,7 @@ struct CourseSemesterView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {

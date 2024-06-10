@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CourseVideoPlayerView: View {
-    @Environment(\.dismiss) var dismiss: DismissAction
     let listTrack: [Track]
     let title: String
     @StateObject var vm = StreamingVideoViewModel()
@@ -93,15 +92,7 @@ struct CourseVideoPlayerView: View {
             .frame(maxHeight: .infinity)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
-                            .frame(width: 10, height: 18)
-                            .padding(.horizontal, 15)
-                    }
+                    ButtonBackUIView()
                 }
             }
             .onAppear {

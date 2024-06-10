@@ -10,7 +10,6 @@ import SwiftUI
 struct SearchEntryView: View {
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isLoadingFirstTime = false
-    @Environment(\.dismiss) var dismiss: DismissAction
 
     var body: some View {
         VStack(spacing: 5) {
@@ -35,15 +34,7 @@ struct SearchEntryView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {

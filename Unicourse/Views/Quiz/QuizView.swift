@@ -16,11 +16,8 @@ struct QuizView: View {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
             if viewModel.isLoadingFetch == false, viewModel.filteredQuizzes.isEmpty {
-                VStack {
-                    Text("Không tìm thấy chủ đề phù hợp")
-                        .font(.system(size: 24, weight: .bold))
-                        .foregroundStyle(Color.mainColor1)
-                }
+                NotfoundView(systemName: "shippingbox.fill", message: "Không tìm thấy câu hỏi phù hợp!")
+                Spacer()
             }
 
             if viewModel.isLoadingFetch {
@@ -48,8 +45,14 @@ struct QuizView: View {
                 .searchable(text: $viewModel.searchString, isPresented: $viewModel.isSearchBarVisible, prompt: Text("Nhập mã môn"))
                 .sheet(isPresented: $viewModel.isPresentedFilter, content: {
                     FilterQuizItemUI(filterSelected: $viewModel.filterSelected,
-                                     filterSelectedOption: $viewModel.filterSelectedOption)
-                        .presentationDetents([.large])
+                                     filterSelectedOption: $viewModel.filterSelectedOption,
+                                     action: {
+                                         viewModel.filterQuizzes()
+                                         print(viewModel.filteredQuizzes.count)
+                                         viewModel.isPresentedFilter = false
+                                     })
+                                     .presentationDetents([.large])
+
                 })
                 .refreshable {
                     Task {
@@ -88,13 +91,14 @@ struct QuizView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 34)
-                            .foregroundColor(.mainColor1)
+                            .foregroundColor(.UIButtonGreen)
                             .clipShape(Circle())
                             .overlay(
                                 Circle()
                                     .stroke(Color.gray, lineWidth: 0.1)
                             )
                     }
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
                     ButtonSearchUIView(isSearchOpen: $viewModel.isSearchBarVisible)
                 }

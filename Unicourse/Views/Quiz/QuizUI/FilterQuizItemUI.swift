@@ -10,6 +10,7 @@ import SwiftUI
 struct FilterQuizItemUI: View {
     @Binding var filterSelected: TypeFilter
     @Binding var filterSelectedOption: Int
+    var action: () -> Void
 
     var body: some View {
         NavigationView {
@@ -42,7 +43,17 @@ struct FilterQuizItemUI: View {
                         .frame(height: UIScreen.main.bounds.height * 0.05)
                 }
             }
-            .navigationTitle("Sắp xếp theo")
+            .navigationTitle("📚 Sắp xếp theo")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        action()
+                    }, label: {
+                        Text("Save")
+                            .font(.system(size: 18, weight: .semibold))
+                    })
+                }
+            }
         }
     }
 }
@@ -58,11 +69,11 @@ struct FilterButton: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(selected == type ? Color.mainColor1 : Color.clear)
+                    .fill(selected == type ? Color.UIButtonGreen : Color.clear)
                     .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(selected == type ? Color.mainColor1 : Color.gray.opacity(0.5), lineWidth: 1)
+                            .stroke(selected == type ? Color.UIButtonGreen : Color.gray.opacity(0.5), lineWidth: 1)
                     )
 
                 Text(text)
@@ -87,11 +98,11 @@ struct CustomPicker: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.mainColor1)
+                    .fill(Color.UIButtonGreen)
                     .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.mainColor1.opacity(0.5), lineWidth: 1)
+                            .stroke(Color.UIButtonGreen.opacity(0.5), lineWidth: 1)
                     )
 
                 Text(options[selectedOption])
@@ -103,5 +114,5 @@ struct CustomPicker: View {
 }
 
 #Preview {
-    FilterQuizItemUI(filterSelected: .constant(.filterDefault), filterSelectedOption: .constant(0))
+    FilterQuizItemUI(filterSelected: .constant(.filterDefault), filterSelectedOption: .constant(0), action: {})
 }

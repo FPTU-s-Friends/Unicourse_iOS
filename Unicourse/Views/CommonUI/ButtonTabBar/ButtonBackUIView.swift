@@ -14,11 +14,17 @@ struct ButtonBackUIView: View {
         Button(action: {
             dismiss()
         }, label: {
-            Image(systemName: "arrow.left")
-                .font(.system(size: 16))
-                .foregroundColor(.black)
-                .frame(width: 10, height: 18)
-                .padding(.horizontal, 15)
+            Image(systemName: "arrow.left.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 34)
+                .foregroundColor(.UIButtonGreen)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.gray, lineWidth: 0.1)
+                )
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
         })
     }
 }

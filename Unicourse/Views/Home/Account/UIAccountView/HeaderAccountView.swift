@@ -25,13 +25,14 @@ struct HeaderAccountView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20)
                                     .padding(8)
-                                    .foregroundColor(.black)
-                                    .background(Color.white)
+                                    .foregroundColor(.white)
+                                    .background(Color.UIButtonGreen)
                                     .clipShape(Circle())
                                     .overlay(
                                         Circle()
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
+                                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
                                 if let cart = appData.cart, !cart.items.isEmpty {
                                     Text("\(cart.items.count)")
@@ -58,13 +59,14 @@ struct HeaderAccountView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 18)
                             .padding(8)
-                            .foregroundColor(.black)
-                            .background(Color.white)
+                            .foregroundColor(.white)
+                            .background(Color.UIButtonGreen)
                             .clipShape(Circle())
                             .overlay(
                                 Circle()
                                     .stroke(Color.gray, lineWidth: 0.1)
                             )
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     })
 
                     Button(action: {
@@ -77,13 +79,14 @@ struct HeaderAccountView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 20)
                             .padding(8)
-                            .foregroundColor(.black)
-                            .background(Color.white)
+                            .foregroundColor(.white)
+                            .background(Color.UIButtonGreen)
                             .clipShape(Circle())
                             .overlay(
                                 Circle()
                                     .stroke(Color.gray, lineWidth: 0.1)
                             )
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     })
                 }
             }

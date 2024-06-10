@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AllFreeCoursesView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.dismiss) var dismiss: DismissAction
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isSearchBarVisible: Bool = false
 
@@ -48,31 +47,25 @@ struct AllFreeCoursesView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    withAnimation(.spring()) {
-                        isSearchBarVisible.toggle()
-                    }
-                }, label: {
-                    if !isSearchBarVisible {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
-                            .frame(width: 10, height: 18)
-                            .padding(.horizontal, 15)
-                    }
-                })
+//                Button(action: {
+//                    withAnimation(.spring()) {
+//                        isSearchBarVisible.toggle()
+//                    }
+//                }, label: {
+//                    if !isSearchBarVisible {
+//                        Image(systemName: "magnifyingglass")
+//                            .font(.system(size: 16))
+//                            .foregroundColor(.black)
+//                            .frame(width: 10, height: 18)
+//                            .padding(.horizontal, 15)
+//                    }
+//                })
+
+                ButtonSearchUIView(isSearchOpen: $isSearchBarVisible)
             }
         }
 

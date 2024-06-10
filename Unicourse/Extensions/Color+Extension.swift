@@ -17,6 +17,7 @@ extension Color {
     static var neutralTextColor = Color(hex: "#8D8A8A")
     static let grayItem = Color(hex: "#EDEDED")
     static let colorCartIcon = Color(hex: "#16AEF4")
+    static let UIButtonGreen = Color(hex: "#047857")
 
     static let accountIconColor = Color.blue
     static let notificationIconColor = Color.orange

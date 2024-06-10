@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SearchResultView: View {
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.dismissSearch) var dismissSearch: DismissSearchAction
     @ObservedObject var viewModel: SearchEntryViewModel
     @State var tabSelection: Int = 0
@@ -56,15 +55,7 @@ struct SearchResultView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AllTopCourseView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.dismiss) var dismiss: DismissAction
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isSearchBarVisible: Bool = false
 
@@ -57,15 +56,7 @@ struct AllTopCourseView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
-                })
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {
