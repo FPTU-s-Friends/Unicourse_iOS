@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum TypeFilter: String, CaseIterable {
+    case filterDefault = "Mặc định"
+    case filterNewest = "Mới nhất"
+    case filterMostView = "Học nhiều nhất"
+}
+
+let options = ["Kỳ 1", "Kỳ 2", "Kỳ 3", "Kỳ 4", "Kỳ 5", "Kỳ 6", "Kỳ 7", "Kỳ 8", "Kỳ 9"]
+
 class QuizViewModel: ObservableObject {
     @Published var searchString = ""
     @Published var isSearchBarVisible = false
@@ -14,6 +22,8 @@ class QuizViewModel: ObservableObject {
     @Published var isShowingAlert = false
     @Published var isLoadingFetch = false
     @Published var listAllQuizzes: [AllQuizModel] = []
+    @Published var filterSelected: TypeFilter = .filterDefault
+    @Published var filterSelectedOption = 0
 
     @Published var error = ""
 

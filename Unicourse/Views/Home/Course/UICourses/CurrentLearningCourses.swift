@@ -27,7 +27,7 @@ struct CurrentLearningCourses: View {
                 if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(0 ..< 2) { _ in
+                            ForEach(0 ..< 4) { _ in
                                 SkeletonCourseProgressCard()
                             }
                         }

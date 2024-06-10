@@ -54,6 +54,7 @@ class AppData: ObservableObject {
             isLoggedIn = false
             user = nil
             userInfo = nil
+            cart = nil
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }

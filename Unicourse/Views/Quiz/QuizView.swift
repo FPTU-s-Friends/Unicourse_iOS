@@ -47,8 +47,9 @@ struct QuizView: View {
                 .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
                 .searchable(text: $viewModel.searchString, isPresented: $viewModel.isSearchBarVisible, prompt: Text("Nhập mã môn"))
                 .sheet(isPresented: $viewModel.isPresentedFilter, content: {
-                    Text("Filter here")
-                        .presentationDetents([.medium, .large])
+                    FilterQuizItemUI(filterSelected: $viewModel.filterSelected,
+                                     filterSelectedOption: $viewModel.filterSelectedOption)
+                        .presentationDetents([.large])
                 })
                 .refreshable {
                     Task {

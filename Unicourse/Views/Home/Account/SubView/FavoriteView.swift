@@ -37,8 +37,16 @@ struct FavoriteView: View {
                 .background(Color.mainBackgroundColor)
                 .listStyle(.insetGrouped)
             } else {
-                NotfoundView(systemName: "shippingbox.fill", message: "Bạn chưa có yêu thích khoá học nào")
-                Spacer()
+                ScrollView {
+                    NotfoundView(systemName: "shippingbox.fill", message: "Bạn chưa có yêu thích khoá học nào")
+                    Spacer()
+                }
+                .refreshable {
+                    Task {
+                        guard let userId = appData.user?.userId else { return }
+                        try await appData.getUserInfo(userId: userId, token: appData.token)
+                    }
+                }
             }
         }
 
