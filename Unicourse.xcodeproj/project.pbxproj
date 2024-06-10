@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B50030C12BFF65C000508314 /* SkeletonLectureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */; };
 		B50030C32BFF67DA00508314 /* SkeletonBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */; };
+		B501BE602C16EC2800F4FCEC /* DailyRewardInsideCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501BE5F2C16EC2800F4FCEC /* DailyRewardInsideCard.swift */; };
+		B501BE622C16F3F000F4FCEC /* DailyRewardWeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501BE612C16F3F000F4FCEC /* DailyRewardWeekCard.swift */; };
 		B50906DC2C07476E005B334A /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50906DB2C07476E005B334A /* AddToCartButton.swift */; };
 		B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A72582BFDF9DC00D3B549 /* LectureModel.swift */; };
 		B50A725C2BFE03C800D3B549 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A725B2BFE03C800D3B549 /* QuizModel.swift */; };
@@ -240,6 +242,8 @@
 /* Begin PBXFileReference section */
 		B50030C02BFF65C000508314 /* SkeletonLectureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLectureInfo.swift; sourceTree = "<group>"; };
 		B50030C22BFF67DA00508314 /* SkeletonBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonBasicInfo.swift; sourceTree = "<group>"; };
+		B501BE5F2C16EC2800F4FCEC /* DailyRewardInsideCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardInsideCard.swift; sourceTree = "<group>"; };
+		B501BE612C16F3F000F4FCEC /* DailyRewardWeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardWeekCard.swift; sourceTree = "<group>"; };
 		B50906DB2C07476E005B334A /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
 		B50A72582BFDF9DC00D3B549 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
 		B50A725B2BFE03C800D3B549 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 				B50C4ADF2C0DE0C40099B228 /* DailyRewardIcon.swift */,
 				B50C4AE12C0DE5F00099B228 /* DailyRewardButton.swift */,
 				B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */,
+				B501BE5F2C16EC2800F4FCEC /* DailyRewardInsideCard.swift */,
+				B501BE612C16F3F000F4FCEC /* DailyRewardWeekCard.swift */,
 			);
 			path = DailyRewards;
 			sourceTree = "<group>";
@@ -1725,6 +1731,7 @@
 				B5A43A232BFAFE3B00AE89C4 /* HTTPStatusCode.swift in Sources */,
 				C56749652BE899D700DA6A58 /* SignInRequestModel.swift in Sources */,
 				B5946C452C089C5500314B7F /* LectureDetailModel.swift in Sources */,
+				B501BE602C16EC2800F4FCEC /* DailyRewardInsideCard.swift in Sources */,
 				C541D9FC2BE343D10022079E /* PageView.swift in Sources */,
 				C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */,
 				C5D7DD0C2BF70E7300FC0DF7 /* CartView.swift in Sources */,
@@ -1779,6 +1786,7 @@
 				C5F038392C099CD000EB1F97 /* QuizView.swift in Sources */,
 				C5B287682C0D6FEE00906F10 /* SheetCommentView.swift in Sources */,
 				C579AF782C009B89004BB9A6 /* SearchModel.swift in Sources */,
+				B501BE622C16F3F000F4FCEC /* DailyRewardWeekCard.swift in Sources */,
 				C5DEAA4C2C07032F00955E1C /* FavoriteItemView.swift in Sources */,
 				C541D9FE2BE355490022079E /* ButtonMain.swift in Sources */,
 				C57ED1C12BEF4D1000641532 /* ResultUserView.swift in Sources */,
