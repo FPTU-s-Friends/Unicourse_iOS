@@ -8,6 +8,9 @@
 import Foundation
 
 class AccountViewModel: ObservableObject {
+    @Published var isPresentedEditSheet = false
+    @Published var isPresentedSettingSheet = false
+
     var menuItems = [
         MenuItem(id: 1, systemName: "heart.fill", title: "Yêu thích", destination: FavoriteView(), colorIcon: .red),
         MenuItem(id: 2, systemName: "clock.fill", title: "Xem gần nhất", destination: RecentView(), colorIcon: .blue),

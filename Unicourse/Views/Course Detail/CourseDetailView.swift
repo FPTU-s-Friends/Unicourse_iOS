@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CourseDetailView: View {
     @EnvironmentObject var appData: AppData
-    @Environment(\.dismiss) var dismiss
     @StateObject private var vm = CourseDetailViewModel()
     @State private var isFav: Bool = false
     @State private var tabSelection = 0
@@ -45,12 +44,12 @@ struct CourseDetailView: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                                    .frame(width: UIScreen.main.bounds.width * 0.95)
                                     .cornerRadius(20)
 
                             } placeholder: {
                                 RoundedRectangle(cornerRadius: 24.0)
-                                    .frame(width: UIScreen.main.bounds.width * 0.90, height: 200)
+                                    .frame(width: UIScreen.main.bounds.width * 0.95, height: 200)
                                     .foregroundStyle(Color.gray.opacity(0.5))
                                     .shimmerWithWave()
                             }
@@ -60,7 +59,6 @@ struct CourseDetailView: View {
                                 .foregroundStyle(Color.gray.opacity(0.5))
                         }
                     }
-                    .cornerRadius(24)
                     // Go Back Button - Favorite Button - Share Button
 
                     // Basic info
@@ -93,7 +91,7 @@ struct CourseDetailView: View {
                 }
             }
             .scrollIndicators(.hidden)
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 10)
 
             // Check is enrolled
 
@@ -162,37 +160,38 @@ struct CourseDetailView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    CircleButtonUI(isActive: false, systemName: "arrow.left", symbolRenderingMode: .multicolor)
-                }).tint(.black)
+                ButtonBackUIView()
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                HStack {
+                HStack(spacing: 0) {
                     Button(action: {
                         isFav.toggle()
                     }, label: {
-                        CircleButtonUI(isActive: isFav, systemName: "heart", symbolRenderingMode: .multicolor)
-                    }).tint(.black)
+                        CircleButtonUI(isActive: isFav, systemName: "heart.circle", symbolRenderingMode: .multicolor)
+                    })
 
                     NavigationLink(destination: CartView()) {
                         ZStack {
-                            CircleButtonUI(isActive: true, systemName: "cart", symbolRenderingMode: .multicolor)
+                            CircleButtonUI(isActive: true, systemName: "cart.circle", symbolRenderingMode: .multicolor)
                                 .tint(.black)
-                            Text("12")
-                                .font(.system(size: 10))
-                                .foregroundStyle(.white)
-                                .padding(2)
-                                .background(Color.activeColor.cornerRadius(20))
-                                .padding(.leading, 20)
-                                .padding(.bottom, 20)
+                            if let cart = appData.cart, !cart.items.isEmpty {
+                                Text("\(cart.items.count)")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 3)
+                                    .background(Color.activeColor.cornerRadius(10))
+                                    .padding(.leading, 20)
+                                    .padding(.bottom, 20)
+                                    .lineLimit(1)
+                                    .multilineTextAlignment(.leading)
+                            }
                         }
                     }
 
                     Button(action: {}, label: {
-                        CircleButtonUI(isActive: true, systemName: "arrowshape.turn.up.right", symbolRenderingMode: .multicolor)
+                        CircleButtonUI(isActive: true, systemName: "arrowshape.turn.up.right.circle", symbolRenderingMode: .multicolor)
                     }).tint(.black)
                 }
             }

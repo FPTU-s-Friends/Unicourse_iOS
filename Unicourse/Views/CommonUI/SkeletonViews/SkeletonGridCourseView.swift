@@ -16,6 +16,7 @@ struct SkeletonGridCourseView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.gray.opacity(0.3))
                         .frame(height: 100)
+                        .shimmerWithWave()
                 }
                 .frame(width: 190)
                 .padding(.top, 10)
@@ -32,12 +33,14 @@ struct SkeletonGridCourseView: View {
                     }
                 }
                 .padding(.horizontal, 15)
+                .shimmerWithWave()
 
                 RoundedRectangle(cornerRadius: 8)
                     .fill(Color.gray.opacity(0.3))
                     .frame(width: 150, height: 10)
                     .padding(.horizontal, 15)
                     .padding(.top, 5)
+                    .shimmerWithWave()
 
                 Spacer()
 
@@ -45,12 +48,14 @@ struct SkeletonGridCourseView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.gray.opacity(0.3))
                         .frame(width: 50, height: 10)
+
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.gray.opacity(0.3))
                         .frame(width: 50, height: 10)
                 }
                 .padding(.horizontal, 15)
                 .padding(.bottom, 10)
+                .shimmerWithWave()
             }
 
             HStack(alignment: .top, spacing: 4) {
@@ -58,6 +63,7 @@ struct SkeletonGridCourseView: View {
                     RoundedRectangle(cornerRadius: 4)
                         .fill(Color.gray.opacity(0.3))
                         .frame(width: 8, height: 8)
+                  
                 }
             }
             .padding(2)
@@ -65,11 +71,11 @@ struct SkeletonGridCourseView: View {
             .cornerRadius(5)
             .padding(.horizontal, 5)
             .offset(x: -40, y: 100)
+            .shimmerWithWave()
         }
-        .frame(width: 180, height: 260)
+        .frame(width: UIScreen.main.bounds.width * 0.47, height: 260)
         .background(Color.gray.opacity(0.3))
         .cornerRadius(12)
-        .shimmerWithWave()
     }
 }
 

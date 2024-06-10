@@ -28,6 +28,7 @@ struct ContentView: View {
                     guard appData.isLoggedIn else { return }
                     guard let userId = appData.user?.userId else { return }
                     try await appData.getUserInfo(userId: userId, token: appData.token)
+                    try await appData.getUserCart(token: appData.token)
                 } catch {
                     print(error)
                 }

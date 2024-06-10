@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HeaderAccountView: View {
+    @EnvironmentObject var appData: AppData
+    @Binding var isPresentedEditSheet: Bool
+    @Binding var isPresentedSettingSheet: Bool
+
     var body: some View {
         VStack {
             HStack {
@@ -28,17 +32,27 @@ struct HeaderAccountView: View {
                                         Circle()
                                             .stroke(Color.gray, lineWidth: 0.1)
                                     )
-                                Text("12")
-                                    .font(.system(size: 10))
-                                    .foregroundStyle(.white)
-                                    .padding(2)
-                                    .background(Color.red.cornerRadius(20))
-                                    .padding(.leading, 20)
-                                    .padding(.bottom, 20)
+
+                                if let cart = appData.cart, !cart.items.isEmpty {
+                                    Text("\(cart.items.count)")
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 3)
+                                        .background(Color.red.cornerRadius(20))
+                                        .padding(.leading, 20)
+                                        .padding(.bottom, 20)
+                                        .lineLimit(1)
+                                        .multilineTextAlignment(.leading)
+                                }
                             }
                         }
                     }
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation {
+                            isPresentedEditSheet = true
+                        }
+                    }, label: {
                         Image(systemName: "square.and.pencil")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -53,7 +67,11 @@ struct HeaderAccountView: View {
                             )
                     })
 
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation {
+                            isPresentedSettingSheet = true
+                        }
+                    }, label: {
                         Image(systemName: "gearshape")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -74,5 +92,7 @@ struct HeaderAccountView: View {
 }
 
 #Preview {
-    HeaderAccountView()
+    HeaderAccountView(isPresentedEditSheet: .constant(false),
+                      isPresentedSettingSheet: .constant(false))
+        .environmentObject(AppData())
 }

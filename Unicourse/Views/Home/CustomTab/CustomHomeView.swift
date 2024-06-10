@@ -40,7 +40,7 @@ struct CustomHomeView: View {
     }
 
     @ViewBuilder
-    func CustomTabBar(_ tint: Color = Color.activeColor, _ inactiveTint: Color = .gray) -> some View {
+    func CustomTabBar(_ tint: Color = Color.mainColor1, _ inactiveTint: Color = .gray) -> some View {
         HStack(alignment: .bottom, spacing: 0) {
             ForEach(Tab.allCases, id: \.rawValue) { tab in
                 TabItemView(tint: tint,

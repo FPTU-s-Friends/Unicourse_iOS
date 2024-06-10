@@ -22,7 +22,6 @@ class BlogViewModel: ObservableObject {
         let params: [String: Any] = ["page": currentPage]
 
         do {
-            isLoadingFetchBlog = true
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, parameters: params, body: nil)
             listBlogs = response.data
         } catch {
@@ -30,8 +29,6 @@ class BlogViewModel: ObservableObject {
             isShowingError = true
             print(error)
         }
-
-        isLoadingFetchBlog = false
     }
 
     func getHighlightBlog() async throws {
@@ -39,7 +36,6 @@ class BlogViewModel: ObservableObject {
         let method = HTTPMethod.get
 
         do {
-            isLoadingFetchBlog = true
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, body: nil)
             highLightBlogs = response.data
         } catch {
@@ -47,7 +43,5 @@ class BlogViewModel: ObservableObject {
             isShowingError = true
             print(error)
         }
-
-        isLoadingFetchBlog = false
     }
 }

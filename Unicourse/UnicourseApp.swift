@@ -30,6 +30,7 @@ struct UnicourseApp: App {
                         }
                 }
             }
+            .preferredColorScheme(.light)
             .animation(.spring(), value: appData.isShowSlashScreen)
             .onAppear {
                 Task {

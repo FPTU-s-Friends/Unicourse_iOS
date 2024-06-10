@@ -46,7 +46,10 @@ struct SearchResultItemView: View {
                                 .cornerRadius(20)
                             
                         } placeholder: {
-                            ProgressView()
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.gray.opacity(0.3))
+                                .frame(width: 20, height: 20)
+                                .shimmerWithWave()
                         }
                         Text("\(lectureName)")
                             .font(.system(size: 10, weight: .medium))
@@ -95,7 +98,7 @@ struct SearchResultItemView: View {
                 RatingStars(rating: 4)
                     .offset(x: -40, y: 140)
             }
-            .frame(width: 180, height: 260)
+            .frame(width: UIScreen.main.bounds.width * 0.47, height: 260)
             .background(.white)
             .cornerRadius(12)
         }

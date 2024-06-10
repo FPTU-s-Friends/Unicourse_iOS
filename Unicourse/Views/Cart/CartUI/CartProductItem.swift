@@ -10,6 +10,7 @@ import SwiftUI
 struct CartProductItem: View {
     @Binding var isChecked: Bool
     @Binding var isCheckedAllItemPerson: Bool
+    var item: CartItem
 
     var body: some View {
         HStack {
@@ -17,11 +18,19 @@ struct CartProductItem: View {
 
             NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
                 HStack {
-                    Image("3diconsiconcourse")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 60)
-                        .cornerRadius(10)
+                    AsyncImage(url: URL(string: item.thumbnail)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 60)
+                            .cornerRadius(10)
+                    } placeholder: {
+                        Rectangle()
+                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 60)
+                            .cornerRadius(10)
+                            .shimmerWithWave()
+                    }
+
                     VStack(alignment: .leading) {
                         Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
                             .multilineTextAlignment(.leading)
@@ -29,14 +38,18 @@ struct CartProductItem: View {
                             .foregroundStyle(.black)
                         // ---
                         HStack {
-                            Text("50.000 VND")
+                            Text("\(item.amount) VND")
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundColor(.activeColor)
+                                .lineLimit(1)
+                                .multilineTextAlignment(.leading)
                             // ---
-                            Text("70.000 VND")
+                            Text("\(item.amount + 20000) VND")
                                 .font(.system(size: 12, weight: .bold))
                                 .strikethrough()
                                 .foregroundColor(.gray)
+                                .lineLimit(1)
+                                .multilineTextAlignment(.leading)
                         }
                     }
                 }
@@ -58,5 +71,5 @@ struct CartProductItem: View {
 }
 
 #Preview {
-    CartProductItem(isChecked: .constant(true), isCheckedAllItemPerson: .constant(false))
+    CartProductItem(isChecked: .constant(true), isCheckedAllItemPerson: .constant(false), item: .sampleData)
 }

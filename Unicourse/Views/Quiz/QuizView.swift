@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     @StateObject var viewModel = QuizViewModel()
+    @State private var isFetchingInitial = true
 
     var body: some View {
         ZStack {
@@ -21,31 +22,56 @@ struct QuizView: View {
                         .foregroundStyle(Color.mainColor1)
                 }
             }
-            List {
-                ForEach(viewModel.filteredQuizzes, id: \._id) { quiz in
-                    NavigationLink(destination: QuizDetailView(quizId: quiz._id)) {
-                        QuizItemView(quizItem: quiz)
+
+            if viewModel.isLoadingFetch {
+                List {
+                    ForEach(0 ..< 10) { _ in
+                        SkeletonQuizItemListUI()
+                    }
+                }
+                .listRowSeparator(.hidden, edges: .all)
+                .listStyle(.inset)
+                .navigationTitle("Ôn tập 📚")
+                .navigationBarTitleDisplayMode(.large)
+            } else {
+                List {
+                    ForEach(viewModel.filteredQuizzes, id: \._id) { quiz in
+                        NavigationLink(destination: QuizDetailView(quizId: quiz._id)) {
+                            QuizItemView(quizItem: quiz)
+                        }
+                    }
+                }
+                .listRowSeparator(.hidden, edges: .all)
+                .listStyle(.inset)
+                .navigationTitle("Ôn tập 📚")
+                .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
+                .searchable(text: $viewModel.searchString, isPresented: $viewModel.isSearchBarVisible, prompt: Text("Nhập mã môn"))
+                .sheet(isPresented: $viewModel.isPresentedFilter, content: {
+                    Text("Filter here")
+                        .presentationDetents([.medium, .large])
+                })
+                .refreshable {
+                    Task {
+                        viewModel.isLoadingFetch = true
+                        await viewModel.getAllQuizzes()
+                        viewModel.isLoadingFetch = false
                     }
                 }
             }
-            .listRowSeparator(.hidden, edges: .all)
-            .listStyle(.inset)
         }
-        .navigationTitle("Ôn tập 📚")
-        .navigationBarTitleDisplayMode(.large)
-        .searchable(text: $viewModel.searchString, isPresented: $viewModel.isSearchBarVisible, prompt: Text("Nhập mã môn"))
-        .sheet(isPresented: $viewModel.isPresentedFilter, content: {
-            Text("Filter here")
-                .presentationDetents([.medium, .large])
-        })
+
         .alert(isPresented: $viewModel.isShowingAlert) {
             Alert(title: Text("Error"), message: Text(viewModel.error), dismissButton: .default(Text("OK")))
         }
+
         .onAppear {
-            Task {
-                viewModel.isLoadingFetch = true
-                await viewModel.getAllQuizzes()
-                viewModel.isLoadingFetch = false
+            if isFetchingInitial {
+                Task {
+                    viewModel.isLoadingFetch = true
+                    await viewModel.getAllQuizzes()
+                    viewModel.isLoadingFetch = false
+                    isFetchingInitial = false
+                }
             }
         }
         .onDisappear {
@@ -57,11 +83,18 @@ struct QuizView: View {
                     Button(action: {
                         viewModel.isPresentedFilter = true
                     }) {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .font(.system(size: 16))
-                            .foregroundStyle(Color.mainColor1.gradient)
-                            .frame(width: 10, height: 18)
+                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 34)
+                            .foregroundColor(.mainColor1)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.gray, lineWidth: 0.1)
+                            )
                     }
+
                     ButtonSearchUIView(isSearchOpen: $viewModel.isSearchBarVisible)
                 }
             }

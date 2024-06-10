@@ -5,6 +5,7 @@
 //  Created by Trung Kiên Nguyễn on 23/5/24.
 //
 
+import Combine
 import Foundation
 
 class CourseSemesterViewModel: ObservableObject {
@@ -13,6 +14,29 @@ class CourseSemesterViewModel: ObservableObject {
     @Published var listCourseSemester: [CourseModel] = []
     @Published var isLoading = false
     @Published var error = ""
+
+    private var cancellables = Set<AnyCancellable>()
+
+    init() {
+        // Debounce search string
+        $searchString
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.filterCourses()
+            }
+            .store(in: &cancellables)
+    }
+
+    var filteredCourseSemester: [CourseModel] = []
+
+    func filterCourses() {
+        if searchString.isEmpty {
+            filteredCourseSemester = listCourseSemester
+        } else {
+            filteredCourseSemester = listCourseSemester.filter { $0.title.lowercased().contains(searchString.lowercased()) }
+        }
+    }
 
     func getCourseSemester(semester: Int, token: String) {
         isLoading = true
@@ -23,6 +47,7 @@ class CourseSemesterViewModel: ObservableObject {
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
                         self.listCourseSemester = response.data
+                        self.filterCourses()
                     default:
                         self.error = "Unexpected status code: \(response.status)"
                     }

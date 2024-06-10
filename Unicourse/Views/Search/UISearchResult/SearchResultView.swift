@@ -20,7 +20,7 @@ struct SearchResultView: View {
                 .ignoresSafeArea(.all)
 
             VStack {
-                ResultUserView()
+//                ResultUserView()
 
                 TabSelectionSearchView(tabSelection: $tabSelection, selectionButtons: ["Liên quan", "Mới nhất", "Giảm giá"])
                 TabView(selection: $tabSelection) {

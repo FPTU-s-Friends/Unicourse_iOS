@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TopLecturesView: View {
-    var listLectures: [LectureModel]
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
+    var listLectures: [LectureModel]
     var body: some View {
         HeaderCategoryView(textCategory: HeaderCategoryText.topLecturesText,
                            textButton: TextButton.viewMore,
@@ -29,12 +30,16 @@ struct TopLecturesView: View {
                                     .clipShape(Circle())
 
                             } placeholder: {
-                                ProgressView()
+                                Rectangle()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .shimmerWithWave()
                             }
 
                             Text(lecture.fullName)
                                 .font(.system(size: 10, weight: .semibold))
                                 .multilineTextAlignment(.center)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .lineLimit(1)
                                 .frame(width: 100)
                         }

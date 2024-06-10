@@ -17,8 +17,11 @@ struct AccountView: View {
                 .ignoresSafeArea()
 
             VStack {
-                HeaderAccountView()
+                HeaderAccountView(isPresentedEditSheet: $viewModel.isPresentedEditSheet,
+                                  isPresentedSettingSheet: $viewModel.isPresentedSettingSheet)
                     .padding(.trailing, 10)
+                    .padding(.top, 20)
+
                 ScrollView {
                     VStack {
                         UserStatisticView()
@@ -34,6 +37,58 @@ struct AccountView: View {
                     .padding(.horizontal, 30)
                 }
             }
+            .sheet(isPresented: $viewModel.isPresentedEditSheet, content: {
+                NavigationView {
+                    EditSheetView()
+                        .navigationTitle("Thông tin")
+                        .navigationBarTitleDisplayMode(.large)
+                        .toolbar {
+                            ToolbarItem(placement: .topBarTrailing) {
+                                Button(action: {
+                                    withAnimation {
+                                        viewModel.isPresentedEditSheet = false
+                                    }
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20)
+                                            .foregroundStyle(Color.gray)
+                                    }
+                                })
+                            }
+                        }
+                }
+                .presentationDetents([.large])
+
+            })
+            .sheet(isPresented: $viewModel.isPresentedSettingSheet, content: {
+                NavigationView {
+                    SettingSheetView()
+                        .navigationTitle("Cài đặt")
+                        .navigationBarTitleDisplayMode(.large)
+                        .toolbar {
+                            ToolbarItem(placement: .topBarTrailing) {
+                                Button(action: {
+                                    withAnimation {
+                                        viewModel.isPresentedSettingSheet = false
+                                    }
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20)
+                                            .foregroundStyle(Color.gray)
+                                    }
+                                })
+                            }
+                        }
+                }
+                .presentationDetents([.large])
+
+            })
 
             if appData.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))

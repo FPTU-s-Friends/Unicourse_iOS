@@ -20,15 +20,16 @@ struct TrackingCourseCard: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 65, height: 65)
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: 65)
                             } placeholder: {
-                                Image("3Dicons")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
+                                Rectangle()
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: 65)
+                                    .shimmerWithWave()
                             }
                         } else {
                             Image("3Dicons")
                                 .resizable()
+                                .frame(width: UIScreen.main.bounds.width * 0.2, height: 65)
                                 .aspectRatio(contentMode: .fill)
                         }
                     }
@@ -71,10 +72,16 @@ struct TrackingCourseCard: View {
                                 .frame(width: 24, height: 24)
                                 .cornerRadius(20)
                         } placeholder: {
-                            ProgressView()
+                            Rectangle()
+                                .frame(width: 24, height: 24)
+                                .cornerRadius(20)
+                                .shimmerWithWave()
                         }
                     } else {
-                        ProgressView()
+                        Rectangle()
+                            .frame(width: 24, height: 24)
+                            .cornerRadius(20)
+                            .shimmerWithWave()
                     }
 
                     Text(enrollCourse.user.fullName)

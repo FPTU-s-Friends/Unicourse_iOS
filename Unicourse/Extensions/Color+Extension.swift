@@ -18,6 +18,13 @@ extension Color {
     static let grayItem = Color(hex: "#EDEDED")
     static let colorCartIcon = Color(hex: "#16AEF4")
 
+    static let accountIconColor = Color.blue
+    static let notificationIconColor = Color.orange
+    static let privacyIconColor = Color.green
+    static let helpIconColor = Color.purple
+    static let aboutIconColor = Color.gray
+    static let closeAccountIconColor = Color.red
+
     init(hex: String) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         if hexString.hasPrefix("#") {
