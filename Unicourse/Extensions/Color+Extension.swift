@@ -17,7 +17,10 @@ extension Color {
     static var neutralTextColor = Color(hex: "#8D8A8A")
     static let grayItem = Color(hex: "#EDEDED")
     static let colorCartIcon = Color(hex: "#16AEF4")
-
+    static let colorTextDailyCoin = Color(hex: "#713f12")
+    static let colorBackgroundTextDailyCoin = Color(hex: "#fde68a")
+    static let colorBackgroundCardCoin = Color(hex: "#e7e5e4")
+    static let colorAlreadyGetCoin = Color(hex: "#fef3c7")
     static let accountIconColor = Color.blue
     static let notificationIconColor = Color.orange
     static let privacyIconColor = Color.green

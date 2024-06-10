@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct DailyRewardWeekCard: View {
+    var listDaily: [DailyRewardModel]
+    var todayDateString: String
+    var user_id: String
+
     var body: some View {
         VStack {
             HStack {
@@ -28,35 +32,32 @@ struct DailyRewardWeekCard: View {
             }
             .padding(20)
 
-//            ScrollView {
-//                HStack {
-//
-//                }
-//            }
-
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(0 ..< 7) { _ in
+                    ForEach(listDaily, id: \._id) { date in
+                        let isTodayCoin = areDatesEqualIgnoringTime(date.day, todayDateString)
+                        let isEnrolledCoinToday = date.list_users.contains(user_id)
+
                         VStack(alignment: .center, spacing: 0) {
                             Text("+ 100")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(Color(hex: "#713f12"))
+                                .foregroundColor(Color.colorTextDailyCoin)
                                 .padding(.horizontal, 23)
-                            Image(.enableDollar)
+                            Image(isEnrolledCoinToday ? .disableDollar : .enableDollar)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50, height: 50)
                                 .padding(.horizontal, 23)
                                 .padding(.vertical, 10)
-                            Text("Hôm nay")
+                            Text(isEnrolledCoinToday ? "Đã nhận" : (isTodayCoin ? "Hôm nay" : getVietnameseDayOfWeek(for: date.day)) ?? "")
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(Color(hex: "#713f12"))
+                                .foregroundColor(Color.colorTextDailyCoin)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 5)
-                                .background(Color(hex: "#fde68a"))
+                                .background(Color.colorBackgroundTextDailyCoin)
                         }
                         .padding(.top, 10)
-                        .background(Color(hex: "#fef3c7"))
+                        .background(isEnrolledCoinToday ? Color.colorBackgroundCardCoin : Color.colorAlreadyGetCoin)
                         .cornerRadius(10)
                     }
                 }
@@ -65,9 +66,12 @@ struct DailyRewardWeekCard: View {
 
             Spacer()
         }
+        .onAppear {
+            print(user_id)
+        }
     }
 }
 
 #Preview {
-    DailyRewardWeekCard()
+    DailyRewardWeekCard(listDaily: DailyRewardModel.mockData, todayDateString: "2024-06-10T10:27:00.021Z", user_id: "6646f84216457d365c09d6d6")
 }

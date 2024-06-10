@@ -8,6 +8,9 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct DailyRewardView: View {
+    @EnvironmentObject var appData: AppData
+    @StateObject var vm = DailyRewardViewModel()
+    @State private var todayDateString = getCurrentDateAsISOString()
     @Binding var openToggle: Bool
     var body: some View {
         ZStack {
@@ -64,11 +67,16 @@ struct DailyRewardView: View {
                     .foregroundStyle(.white)
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     .overlay(content: {
-                        DailyRewardWeekCard()
+                        DailyRewardWeekCard(listDaily: vm.dailyRewardList, todayDateString: todayDateString, user_id: appData.userInfo?._id ?? "")
                     })
                     .ignoresSafeArea(.all, edges: .bottom)
 
                 Spacer()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                vm.getListCheckingDaily()
             }
         }
         .ignoresSafeArea()
