@@ -39,7 +39,7 @@ struct CartView: View {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
             }
-//            ToolbarItem(placement: .topBarTrailing) {
+//             ToolbarItem(placement: .topBarTrailing) {
 //                ButtonCheckBox(isChecked: $isCheckedAll)
 //            }
         }

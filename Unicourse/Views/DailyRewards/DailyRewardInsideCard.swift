@@ -30,7 +30,9 @@ struct DailyRewardInsideCard: View {
                         .offset(y: 5)
                 }
                 Spacer()
-                Button(action: {}, label: {
+                Button(action: {
+                    print(getCurrentDateAsISOString())
+                }, label: {
                     VStack {
                         Text("Nhận point ngay")
                             .fontWeight(.semibold)
