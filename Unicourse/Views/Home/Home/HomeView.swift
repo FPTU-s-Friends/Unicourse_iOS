@@ -11,17 +11,13 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
+    @State private var openDailyReward = false
 
     // chỉ cho load data lúc đầu
     @State private var hasLoadedDataInitially = false
 
     var body: some View {
         ZStack {
-            DailyRewardButton()
-                .zIndex(1)
-                .onTapGesture {
-                    print("Navigate")
-                }
             VStack {
                 LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .topLeading, endPoint: .trailing)
                     .ignoresSafeArea(.all)
@@ -111,11 +107,24 @@ struct HomeView: View {
                 }
             }
 
+            DailyRewardButton()
+                .onTapGesture {
+                    withAnimation(.spring) {
+                        openDailyReward.toggle()
+                    }
+                }
+
             if viewModel.isLoadingListEnrolled {
                 LoadingIndicatorView(isLoading: .constant(true))
                     .animation(.spring, value: viewModel.isLoadingListEnrolled)
             }
         }
+        .sheet(isPresented: $openDailyReward, content: {
+            DailyRewardView(openToggle: $openDailyReward)
+                .presentationDetents([.height(650)])
+                .presentationCornerRadius(30)
+                .interactiveDismissDisabled()
+        })
 
         .onAppear {
             if !hasLoadedDataInitially {

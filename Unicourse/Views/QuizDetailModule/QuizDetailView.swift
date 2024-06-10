@@ -8,7 +8,7 @@ import SwiftUI
 
 struct QuizDetailView: View {
     var quizId: String
-    @StateObject var vm = DetailQuizViewModel()
+    @ObservedObject var vm = DetailQuizViewModel()
     @Environment(\.dismiss) var dismiss: DismissAction
 
     var body: some View {

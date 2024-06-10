@@ -18,7 +18,7 @@ struct AnswerComponent: View {
     @State private var isExpandedAnswer: Bool = false
 
     var question: QuestionRequest
-    var vm: DetailQuizViewModel
+    @ObservedObject var vm: DetailQuizViewModel
     var typeAnswer: Type_Question
     var listAnswer: [AnswerRequest]
     var isShowAnswer: Bool
@@ -26,7 +26,7 @@ struct AnswerComponent: View {
     var body: some View {
         VStack(spacing: 15) {
             if typeAnswer == .single {
-                ForEach(Array(listAnswer.enumerated()), id: \.element.answer_text) { index, answer in
+                ForEach(Array(listAnswer.enumerated()), id: \.element.id) { index, answer in
                     AnswerItem(isSelected: selectedAnswerIndex == index, index: index, answerType: .single, answerTitle: answer.answer_text)
                         .animation(.spring, value: isShowAnswer)
                         .offset(y: isShowAnswer ? 0 : CGFloat(-65 * index))
@@ -34,7 +34,9 @@ struct AnswerComponent: View {
                         .onTapGesture {
                             withAnimation {
                                 selectedAnswerIndex = index
+
                                 vm.setCheckedForIndexAnswer(questionId: question._id, indexAnswered: index)
+                                print(answer)
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in
