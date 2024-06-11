@@ -60,6 +60,8 @@ struct BlogView: View {
                             LatestBlogItemView(listBlog: viewModel.listBlogs)
                         }
                     }
+                    .padding(.bottom, 20)
+                    
                 }
             }
         }

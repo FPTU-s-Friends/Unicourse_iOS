@@ -19,8 +19,11 @@ struct TrackItemViews: View {
                     .foregroundStyle(Color.neutralTextColor)
                 Spacer()
                 Image(systemName: "book.pages")
-                    .font(.system(size: 18))
-                    .foregroundStyle(Color.neutralTextColor)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16)
+                    .foregroundStyle(Color.UIButtonGreen)
+              
             }
             .padding(.horizontal, 15)
             .padding(.vertical, 15)
@@ -48,11 +51,15 @@ struct TrackItemViews: View {
                         }
                         Spacer()
                         Image(systemName: "play.circle")
-                            .foregroundStyle(Color.neutralTextColor)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16)
+                            .foregroundStyle(Color.red)
+
                     }
                     .padding(.horizontal, 15)
-                    .padding(.vertical, 5)
-                    .background(isSelected ? Color(hex: "#eef0ff") : .white)
+                    .padding(.vertical, 10)
+                    .background(isSelected ? Color.mainColor1.opacity(0.5) : .white)
                 }
 
                 .onTapGesture {

@@ -40,7 +40,7 @@ struct AccountView: View {
             .sheet(isPresented: $viewModel.isPresentedEditSheet, content: {
                 NavigationView {
                     EditSheetView()
-                        .navigationTitle("Thông tin")
+                        .navigationTitle("Thông tin ")
                         .navigationBarTitleDisplayMode(.large)
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {
@@ -66,7 +66,7 @@ struct AccountView: View {
             .sheet(isPresented: $viewModel.isPresentedSettingSheet, content: {
                 NavigationView {
                     SettingSheetView()
-                        .navigationTitle("Cài đặt")
+                        .navigationTitle("Cài đặt ⚙️")
                         .navigationBarTitleDisplayMode(.large)
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {

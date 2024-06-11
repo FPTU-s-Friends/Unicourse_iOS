@@ -161,7 +161,6 @@ struct CourseDetailView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
-                    .padding(2)
             }
 
             ToolbarItem(placement: .topBarTrailing) {

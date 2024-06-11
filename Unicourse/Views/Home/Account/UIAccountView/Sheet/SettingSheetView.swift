@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingSheetView: View {
     var body: some View {
         List {
-            Section(header: Text("Tài Khoản")) {
+            Section(header: Text("Tài Khoản ")) {
                 Button(action: {
                     print("Account Settings tapped")
                 }) {
