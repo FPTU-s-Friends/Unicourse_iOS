@@ -15,7 +15,7 @@ struct BlogModel: Codable {
     let images: [String]
     let date_modified: String?
     let thumbnail_url: String
-    let comment_obj: [String]
+    let comment_obj: [String]?
     let content: String
     let tags: [BlogTag]
     let status: String

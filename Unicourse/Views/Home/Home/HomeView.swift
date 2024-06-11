@@ -19,7 +19,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .topLeading, endPoint: .trailing)
+                LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .top, endPoint: .center)
                     .ignoresSafeArea(.all)
             }
 
@@ -32,7 +32,7 @@ struct HomeView: View {
                     HeaderButtonView()
                 }
                 .padding(.horizontal, 15)
-                .padding(.top, 20)
+                .padding(.top, 10)
 
                 VStack {
                     ScrollView {
