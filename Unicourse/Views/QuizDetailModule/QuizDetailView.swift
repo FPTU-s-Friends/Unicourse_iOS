@@ -8,7 +8,7 @@ import SwiftUI
 
 struct QuizDetailView: View {
     var quizId: String
-    @ObservedObject var vm = DetailQuizViewModel()
+    @StateObject var vm = DetailQuizViewModel()
 
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct QuizDetailView: View {
                 .cornerRadius(35)
                 .onAppear {
                     // Ngăn ng dùng swipe
-                    UIScrollView.appearance().isScrollEnabled = false
+//                    UIScrollView.appearance().isScrollEnabled = false
                 }
 
                 // End: Phần Câu hỏi & Các đáp án
@@ -50,9 +50,7 @@ struct QuizDetailView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.async {
-                vm.getQuizById(quizId: quizId)
-            }
+            vm.getQuizById(quizId: quizId)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
