@@ -78,10 +78,10 @@ struct UserInfoModel: Codable {
     let isChatBlocked: Bool
     let profileImage: String
     let publishedAt: String?
-    let userClass: Int
-    let coins: [coinsUserInfoModel]? // chỉnh sửa sau
+    let userClass: Int?
+    let coins: [CoinsUserInfoModel]? // chỉnh sửa sau
     let quizInterest: [String]? // chỉnh sửa sau
-    let quizProcess: [String]? // chỉnh sửa sau
+    let quizProcess: [QuizProcessUserInfoModel]?
     let lectureInfo: LectureModel?
     let wishList: [WisListUserInfo]?
     let createdAt: String
@@ -109,7 +109,7 @@ struct UserInfoModel: Codable {
     }
 }
 
-struct coinsUserInfoModel: Codable {
+struct CoinsUserInfoModel: Codable {
     let _id: String
     let title: String
     let description: String
@@ -117,4 +117,41 @@ struct coinsUserInfoModel: Codable {
     let type: String
     let date_used: String?
     let status: String // Chỉnh sửa sau
+}
+
+struct QuizProcessUserInfoModel: Codable {
+    let _id: String
+    let title: String
+    let description: String
+    let questions: [QuizProcessQuestionUserInfoModel]
+    let max_attemps: Int
+    let viewer: Int
+    let passing_score: Int
+    let status: String?
+    let picture: String
+    let course_id: String?
+    let category: QuizCategory
+    let creator_id: CreatorQuizProcessUserInfoModel
+    let creator_role: String
+}
+
+struct QuizProcessQuestionUserInfoModel: Codable {
+    let _id: String
+    let title: String
+    let type: String
+    let answer: [QuizProcessAnswerUserInfoModel]
+}
+
+struct QuizProcessAnswerUserInfoModel: Codable {
+    let answer_text: String
+    let is_correct: Bool
+    let is_checked: Bool
+}
+
+struct CreatorQuizProcessUserInfoModel: Codable {
+    let _id: String
+    let fullName: String
+    let profileName: String
+    let profile_image: String
+    let email: String
 }

@@ -78,6 +78,8 @@
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
 		C50041802C0F864D005A61B9 /* CommentBlogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
+		C510B5272C1AA668002CDD7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */; };
+		C51F918A2C1ACBF90032A922 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C51F91892C1ACBF90032A922 /* FirebaseMessaging */; };
 		C52151ED2C0AD7CC002855B6 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151EC2C0AD7CC002855B6 /* BannerModel.swift */; };
 		C52151F02C0AF607002855B6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C52151EF2C0AF607002855B6 /* SocketIO */; };
 		C52151F22C0AF8EF002855B6 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */; };
@@ -138,7 +140,6 @@
 		C564E9812C0EFBD70039A4F7 /* RepliesCommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564E9802C0EFBD70039A4F7 /* RepliesCommentItem.swift */; };
 		C564E9832C0EFE6C0039A4F7 /* TextCommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564E9822C0EFE6C0039A4F7 /* TextCommentItem.swift */; };
 		C567493F2BE86D0100DA6A58 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567493E2BE86D0100DA6A58 /* MainHomeView.swift */; };
-		C56749422BE86E6000DA6A58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56749412BE86E6000DA6A58 /* GoogleService-Info.plist */; };
 		C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56749452BE870B500DA6A58 /* AppDelegate.swift */; };
 		C56749482BE8736900DA6A58 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56749472BE8736900DA6A58 /* Utilities.swift */; };
 		C567494B2BE8756200DA6A58 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567494A2BE8756200DA6A58 /* AuthenticationManager.swift */; };
@@ -317,6 +318,7 @@
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
 		C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBlogRequest.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
+		C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C52151EC2C0AD7CC002855B6 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		C52151F42C0B0D56002855B6 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
@@ -370,7 +372,6 @@
 		C564E9802C0EFBD70039A4F7 /* RepliesCommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepliesCommentItem.swift; sourceTree = "<group>"; };
 		C564E9822C0EFE6C0039A4F7 /* TextCommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCommentItem.swift; sourceTree = "<group>"; };
 		C567493E2BE86D0100DA6A58 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
-		C56749412BE86E6000DA6A58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C56749432BE86E9B00DA6A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C56749452BE870B500DA6A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56749472BE8736900DA6A58 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -486,6 +487,7 @@
 			files = (
 				C541DA052BE358D30022079E /* GoogleSignIn in Frameworks */,
 				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
+				C51F918A2C1ACBF90032A922 /* FirebaseMessaging in Frameworks */,
 				C541DA0C2BE359060022079E /* FirebaseFirestore in Frameworks */,
 				C56749612BE896F200DA6A58 /* JWTDecode in Frameworks */,
 				C52F5C452C04B0E900A2FB8A /* SDWebImageSwiftUI in Frameworks */,
@@ -1107,8 +1109,8 @@
 		C56749442BE8709D00DA6A58 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */,
 				C56749452BE870B500DA6A58 /* AppDelegate.swift */,
+				B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */,
 				B578A8942BFCD081003CBFFA /* ISOStringConvertHelper.swift */,
 				C579AF7C2C00A5BC004BB9A6 /* PrintDataJSON.swift */,
 				B501BE6B2C17247E00F4FCEC /* GetISOString.swift */,
@@ -1496,7 +1498,7 @@
 			isa = PBXGroup;
 			children = (
 				C56F693B2BE2026C0093E51B /* Assets.xcassets */,
-				C56749412BE86E6000DA6A58 /* GoogleService-Info.plist */,
+				C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1618,6 +1620,7 @@
 				C579AF7A2C00A307004BB9A6 /* SwiftyJSON */,
 				C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */,
 				C52151EF2C0AF607002855B6 /* SocketIO */,
+				C51F91892C1ACBF90032A922 /* FirebaseMessaging */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1670,7 +1673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56F693C2BE2026C0093E51B /* Assets.xcassets in Resources */,
-				C56749422BE86E6000DA6A58 /* GoogleService-Info.plist in Resources */,
+				C510B5272C1AA668002CDD7E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2081,10 +2084,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
-				DEVELOPMENT_TEAM = Y3U2455K6G;
+				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Unicourse/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Unicourse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2096,7 +2101,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse;
+				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2116,9 +2121,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
 				DEVELOPMENT_TEAM = M4PAJUN5RL;
+				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Unicourse/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Unicourse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2130,7 +2138,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse;
+				PRODUCT_BUNDLE_IDENTIFIER = infigen.Unicourse.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2214,6 +2222,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C51F91892C1ACBF90032A922 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C541DA022BE358BB0022079E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		C52151EF2C0AF607002855B6 /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;

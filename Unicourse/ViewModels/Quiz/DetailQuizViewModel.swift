@@ -22,12 +22,24 @@ class DetailQuizViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.quizData = response.data
-                    // Set new
-                    self.answeredQuesList = response.data.questions.map { ques in
-                        QuestionRequest(_id: ques._id, title: ques.title, type: ques.type, is_answered: false, answer: ques.answer.map { answer in
-                            AnswerRequest(answer_text: answer.answer_text, is_correct: answer.is_correct, is_checked: false, is_answered: false)
-                        })
+                    if let data = response.data {
+                        self.quizData = data
+                        // Set new
+
+                        self.answeredQuesList = data.questions.map { ques in
+                            QuestionRequest(_id: ques._id,
+                                            title: ques.title,
+                                            type: ques.type,
+                                            is_answered: false,
+                                            answer: ques.answer.map { answer in
+                                                AnswerRequest(answer_text: answer.answer_text,
+                                                              is_correct: answer.is_correct,
+                                                              is_checked: false,
+                                                              is_answered: false)
+                                            })
+                        }
+                    } else {
+                        print("Get quiz by id data is nil!")
                     }
                 }
             case .failure(let err):

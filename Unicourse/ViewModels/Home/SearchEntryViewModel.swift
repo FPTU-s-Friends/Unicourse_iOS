@@ -51,12 +51,16 @@ class SearchEntryViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                 case .success(let response):
-                    self.listSearch = response.data
-                    self.listSuggestCourse = response.data.course.map { course in
-                        SearchSuggestModel(searchString: course.title.localizedLowercase, urlImage: course.thumbnail)
+                    if let data = response.data {
+                        self.listSearch = data
+                        self.listSuggestCourse = data.course.map { course in
+                            SearchSuggestModel(searchString: course.title.localizedLowercase, urlImage: course.thumbnail)
+                        }
+                        self.filterFreeCourses()
+                        self.currentPage = pageToUse // Cập nhật currentPage
+                    } else {
+                        print("List search is nil")
                     }
-                    self.filterFreeCourses()
-                    self.currentPage = pageToUse // Cập nhật currentPage
 
                 case .failure(let error):
                     self.error = error.localizedDescription
@@ -81,11 +85,16 @@ class SearchEntryViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                 case .success(let response):
-                    self.listSearch.course.append(contentsOf: response.data.course)
-                    self.listSearch.quiz.append(contentsOf: response.data.quiz)
-                    self.listSearch.blog.append(contentsOf: response.data.blog)
-                    self.filterFreeCourses()
-                    self.currentPage = nextPage
+                    if let data = response.data {
+                        self.listSearch.course.append(contentsOf: data.course)
+                        self.listSearch.quiz.append(contentsOf: data.quiz)
+                        self.listSearch.blog.append(contentsOf: data.blog)
+                        self.filterFreeCourses()
+                        self.currentPage = nextPage
+                    } else {
+                        print("Load more data is nil")
+                    }
+
                 case .failure(let error):
                     self.error = error.localizedDescription
                     self.isShowingAlert = true
