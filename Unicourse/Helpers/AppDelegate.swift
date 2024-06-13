@@ -62,6 +62,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         completionHandler()
     }
 
+    // Token ở đây sẽ dùng để mà send notification cho cái app dó
     @objc func messaging(_ messaging: Messaging,
                          didReceiveRegistrationToken fcmToken: String?)
     {
