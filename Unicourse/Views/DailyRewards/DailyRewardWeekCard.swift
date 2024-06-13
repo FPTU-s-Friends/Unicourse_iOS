@@ -7,8 +7,23 @@
 
 import SwiftUI
 
+enum StatusDate {
+    case past
+    case today
+    case future
+}
+
+struct StatusCoinByDate {
+    let title: String
+    let statusDate: StatusDate
+    let urlIcon: String
+    let colorText: Color
+    let colorBackgroundCoin: Color
+    let colorBackgrounText: Color
+}
+
 struct DailyRewardWeekCard: View {
-    var listDaily: [DailyRewardModel]
+    var listDailyReward: [DailyRewardModel]
     var todayDateString: String
     var user_id: String
 
@@ -34,42 +49,79 @@ struct DailyRewardWeekCard: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(listDaily, id: \._id) { date in
-                        let isTodayCoin = areDatesEqualIgnoringTime(date.day, todayDateString)
-                        let isEnrolledCoinToday = date.list_users.contains(user_id)
+                    ForEach(listDailyReward) { date in
+                        let comparisonResult = compareDates(date.day, todayDate: todayDateString)
+                        let isClaimedCoin = date.list_users.contains(user_id)
+
+                        let displayStatusDate = switch comparisonResult {
+                        case 0: // Hôm nay
+                            StatusCoinByDate(
+                                title: isClaimedCoin ? "Đã nhận" : "Hôm nay",
+                                statusDate: .today,
+                                urlIcon: "enableDollar",
+                                colorText: isClaimedCoin ? Color.colorTextDailyCoinClaimed : Color.colorTextDailyCoinNormal,
+                                colorBackgroundCoin: isClaimedCoin ? Color.colorBackgroundCardCoinClaimed : Color.colorBackgroundCardCoinNormal,
+                                colorBackgrounText: isClaimedCoin ? Color.colorBackgroundTextCoinClaimed : Color.colorBackgroundTextCoinNormal)
+                        case 1: // Quá khứ
+                            StatusCoinByDate(
+                                title: isClaimedCoin ? "Đã nhận" : "Hết hạn",
+                                statusDate: .past,
+                                urlIcon: isClaimedCoin ? "enableDollar" : "disableDollar",
+                                colorText: isClaimedCoin ? Color.colorTextDailyCoinClaimed : Color.colorTextDailyCoinMissed,
+                                colorBackgroundCoin: isClaimedCoin ? Color.colorBackgroundCardCoinClaimed : Color.colorBackgroundCardCoinMissed,
+                                colorBackgrounText: isClaimedCoin ? Color.colorBackgroundTextCoinClaimed : Color.colorBackgroundTextCoinMissed)
+                        case 2: // Tương lai
+                            StatusCoinByDate(
+                                title: getVietnameseDayOfWeek(for: date.day) ?? "",
+                                statusDate: .past,
+                                urlIcon: "enableDollar",
+                                colorText: Color.colorTextDailyCoinNormal,
+                                colorBackgroundCoin: Color.colorBackgroundCardCoinNormal,
+                                colorBackgrounText: Color.colorBackgroundTextCoinNormal)
+                        default:
+                            StatusCoinByDate(
+                                title: isClaimedCoin ? "Đã nhận" : "Hết hạn",
+                                statusDate: .past,
+                                urlIcon: isClaimedCoin ? "enableDollar" : "disableDollar",
+                                colorText: Color.colorTextDailyCoinNormal,
+                                colorBackgroundCoin: Color.colorBackgroundCardCoinNormal,
+                                colorBackgrounText: Color.colorBackgroundTextCoinNormal)
+                        }
 
                         VStack(alignment: .center, spacing: 0) {
                             Text("+ 100")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(Color.colorTextDailyCoin)
+                                .foregroundColor(displayStatusDate.colorText)
                                 .padding(.horizontal, 23)
-                            Image(isEnrolledCoinToday ? .disableDollar : .enableDollar)
+                            Image(displayStatusDate.urlIcon)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50, height: 50)
                                 .padding(.horizontal, 23)
                                 .padding(.vertical, 10)
-                            Text(isEnrolledCoinToday ? "Đã nhận" : (isTodayCoin ? "Hôm nay" : getVietnameseDayOfWeek(for: date.day)) ?? "")
+                            Text(displayStatusDate.title)
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(Color.colorTextDailyCoin)
+                                .foregroundColor(displayStatusDate.colorText)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 5)
-                                .background(Color.colorBackgroundTextDailyCoin)
+                                .background(displayStatusDate.colorBackgrounText)
                         }
                         .padding(.top, 10)
-                        .background(isEnrolledCoinToday ? Color.colorBackgroundCardCoin : Color.colorAlreadyGetCoin)
+                        .background(displayStatusDate.colorBackgroundCoin)
                         .cornerRadius(10)
                     }
                 }
+                .padding(.trailing, 15)
             }
             .padding(.leading, 15)
 
             Spacer()
         }
-    
     }
 }
 
-#Preview {
-    DailyRewardWeekCard(listDaily: DailyRewardModel.mockData, todayDateString: "2024-06-10T10:27:00.021Z", user_id: "6646f84216457d365c09d6d6")
+struct DailyRewardWeekCardPreview: PreviewProvider {
+    static var previews: some View {
+        DailyRewardWeekCard(listDailyReward: DailyRewardModel.mockData, todayDateString: "2024-06-13T10:27:00.021Z", user_id: "6646f84216457d365c09d6d6")
+    }
 }

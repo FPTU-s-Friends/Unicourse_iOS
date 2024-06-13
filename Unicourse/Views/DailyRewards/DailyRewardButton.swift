@@ -67,9 +67,8 @@ struct DailyRewardButton: View {
     func startShaking() {
         // Start the shaking sequence
         withAnimation {
-            shake = true
+            shake = false
         }
-
     }
 }
 

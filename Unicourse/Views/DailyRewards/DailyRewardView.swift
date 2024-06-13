@@ -59,7 +59,17 @@ struct DailyRewardView: View {
                     .foregroundStyle(.white)
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     .overlay(content: {
-                        DailyRewardInsideCard()
+                        DailyRewardInsideCard(
+                            totalCoin: vm.totalCoinByUser,
+                            user_id: appData.user?.userId ?? "",
+                            daily_id: vm.todayDaily_Id, token: appData.token,
+                            todayDateString: todayDateString,
+                            isCoinClaimed: { date, userId in
+                                vm.isCoinClaimed(for: date, userId: userId)
+                            }
+                        ) { daily_id, token in
+                            vm.claimCoinToday(daily_id: daily_id, token: token)
+                        }
                     })
                     .padding(.horizontal, 15)
 
@@ -67,16 +77,21 @@ struct DailyRewardView: View {
                     .foregroundStyle(.white)
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     .overlay(content: {
-                        DailyRewardWeekCard(listDaily: vm.dailyRewardList, todayDateString: todayDateString, user_id: appData.userInfo?._id ?? "")
+                        DailyRewardWeekCard(listDailyReward: vm.dailyRewardList, todayDateString: todayDateString, user_id: appData.userInfo?._id ?? "")
                     })
                     .ignoresSafeArea(.all, edges: .bottom)
 
                 Spacer()
             }
+
+            if vm.isLoading {
+                LoadingIndicatorView(isLoading: .constant(true))
+            }
         }
         .onAppear {
             DispatchQueue.main.async {
                 vm.getListCheckingDaily()
+                vm.getTotalCoin(token: appData.token)
             }
         }
         .ignoresSafeArea()

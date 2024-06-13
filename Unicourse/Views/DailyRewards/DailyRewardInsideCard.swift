@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct DailyRewardInsideCard: View {
+    let totalCoin: Int
+    let user_id: String
+    let daily_id: String
+    let token: String
+    let todayDateString: String
+    let isCoinClaimed: (_ date: String, _ userId: String) -> Bool
+    let claimCoinToday: (_ daily_id: String, _ token: String) -> Void
+
     var body: some View {
         VStack(spacing: 10) {
             HStack {
@@ -20,7 +28,7 @@ struct DailyRewardInsideCard: View {
 
             HStack(alignment: .center) {
                 HStack {
-                    Text("123")
+                    Text("\(totalCoin)")
                         .font(.system(size: 45, weight: .semibold))
                         .foregroundStyle(Color(hex: "#064e3b"))
                     Image(.enableDollar)
@@ -30,19 +38,35 @@ struct DailyRewardInsideCard: View {
                         .offset(y: 5)
                 }
                 Spacer()
-                Button(action: {
-                    print(getCurrentDateAsISOString())
-                }, label: {
-                    VStack {
-                        Text("Nhận point ngay")
-                            .fontWeight(.semibold)
-                    }
-                    .padding(.vertical, 7)
-                    .padding(.horizontal, 15)
-                    .foregroundStyle(.white)
-                    .background(Color(hex: "#047857"))
-                    .cornerRadius(16)
-                })
+                if isCoinClaimed(todayDateString, user_id) == true {
+                    Button(action: {
+                        print(getCurrentDateAsISOString())
+                    }, label: {
+                        VStack {
+                            Text("Đã nhận rồi")
+                                .fontWeight(.semibold)
+                        }
+                        .padding(.vertical, 7)
+                        .padding(.horizontal, 15)
+                        .foregroundStyle(.white)
+                        .background(Color(hex: "#d6d3d1"))
+                        .cornerRadius(16)
+                    }).disabled(true)
+                } else {
+                    Button(action: {
+                        claimCoinToday(daily_id, token)
+                    }, label: {
+                        VStack {
+                            Text("Nhận point ngay")
+                                .fontWeight(.semibold)
+                        }
+                        .padding(.vertical, 7)
+                        .padding(.horizontal, 15)
+                        .foregroundStyle(.white)
+                        .background(Color(hex: "#047857"))
+                        .cornerRadius(16)
+                    })
+                }
             }
             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
@@ -60,6 +84,8 @@ struct DailyRewardInsideCard: View {
     }
 }
 
-#Preview {
-    DailyRewardInsideCard()
-}
+// #Preview {
+//    DailyRewardInsideCard(totalCoin: 222, user_id: "", todayDateString: "") { _, _ in
+//        printJSONData(data: "")
+//    }
+// }
