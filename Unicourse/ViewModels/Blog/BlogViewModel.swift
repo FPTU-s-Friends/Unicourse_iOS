@@ -23,7 +23,11 @@ class BlogViewModel: ObservableObject {
 
         do {
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, parameters: params, body: nil)
-            listBlogs = response.data
+            if let data = response.data {
+                listBlogs = data
+            } else {
+                print("getListBlog data is nil")
+            }
         } catch {
             self.error = "Không lấy được danh sách blog"
             isShowingError = true
@@ -37,7 +41,12 @@ class BlogViewModel: ObservableObject {
 
         do {
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, body: nil)
-            highLightBlogs = response.data
+            if let data = response.data {
+                highLightBlogs = data
+            } else {
+                print("getHighLightBlog data is nil")
+            }
+
         } catch {
             self.error = "Không lấy được danh sách blog"
             isShowingError = true

@@ -33,8 +33,14 @@ class QuizViewModel: ObservableObject {
     func getAllQuizzes() async {
         do {
             let response = try await fetchQuizzes()
-            listAllQuizzes = response.data
-            listFilterQuizzes = listAllQuizzes
+            if let data = response.data {
+                listAllQuizzes = data
+                listFilterQuizzes = listAllQuizzes
+            } else {
+                print("get All Quizzes data is nil!")
+                listAllQuizzes = []
+            }
+
         } catch {
             print("Error at fetch quizzes", error)
             self.error = error.localizedDescription

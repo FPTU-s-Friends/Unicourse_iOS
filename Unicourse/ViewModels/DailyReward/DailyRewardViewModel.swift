@@ -16,7 +16,11 @@ class DailyRewardViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.dailyRewardList = response.data
+                    if let data = response.data {
+                        self.dailyRewardList = data
+                    } else {
+                        self.dailyRewardList = []
+                    }
                 }
             case .failure(let err):
                 print(err)

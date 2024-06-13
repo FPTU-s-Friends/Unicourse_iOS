@@ -46,7 +46,12 @@ class DetailBlogViewModel: ObservableObject {
         do {
             isLoadingGetRelatedBlog = true
             let response: CommonResponse<[BlogModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, parameters: params, body: nil)
-            listRelatedBlog = response.data
+            if let data = response.data {
+                listRelatedBlog = data
+            } else {
+                print("Get Related Blog data is nil!")
+            }
+
         } catch {
             print("Error at getBlogById:", error)
             self.error = "Không lấy được thông tin của blog, hãy thử lại"
@@ -103,16 +108,19 @@ class DetailBlogViewModel: ObservableObject {
             }
             isLoadingCommentBlog = true
             let response: CommonResponse<CommentBlogResponseModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
-            blogDetail?.comment_obj.append(Comment_objModel(_id: response.data._id,
-                                                            comment: response.data.comment,
-                                                            commentator: BlogCommentatorModel(_id: response.data._id,
+            guard let data = response.data else {
+                return
+            }
+            blogDetail?.comment_obj.append(Comment_objModel(_id: data._id,
+                                                            comment: data.comment,
+                                                            commentator: BlogCommentatorModel(_id: data._id,
                                                                                               email: userInfo.email,
                                                                                               fullName: userInfo.fullName,
                                                                                               profileName: userInfo.profileName ?? "",
                                                                                               profile_image: userInfo.profileImage),
                                                             replies: [],
                                                             interactions: [],
-                                                            created_at: response.data.created_at))
+                                                            created_at: data.created_at))
 
             commentText = ""
         } catch {

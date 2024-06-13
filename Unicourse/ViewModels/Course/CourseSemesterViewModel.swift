@@ -46,7 +46,12 @@ class CourseSemesterViewModel: ObservableObject {
                 case .success(let response):
                     switch response.status {
                     case HTTPStatusCodes.OK.rawValue:
-                        self.listCourseSemester = response.data
+                        if let data = response.data {
+                            self.listCourseSemester = data
+                        } else {
+                            self.listCourseSemester = []
+                        }
+
                         self.filterCourses()
                     default:
                         self.error = "Unexpected status code: \(response.status)"

@@ -22,7 +22,12 @@ class CourseViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.listEnrolledCourses = response.data
+                    if let data = response.data {
+                        self.listEnrolledCourses = data
+                    } else {
+                        print("List Enroll Course is nil")
+                        self.listEnrolledCourses = []
+                    }
                 }
                 self.hasFetched = true
             case .failure(let error):

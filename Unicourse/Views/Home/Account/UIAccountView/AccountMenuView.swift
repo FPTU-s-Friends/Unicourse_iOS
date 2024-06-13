@@ -42,8 +42,9 @@ struct AccountMenuView: View {
                         }
                         .padding(.top, 15)
 
-                        if appData.userInfo?.enrollCourses == nil {
+                        if let enrollCourses = appData.userInfo?.enrollCourses, enrollCourses.isEmpty {
                             VStack {}
+                                .padding(.top, 5)
                         } else {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 10) {

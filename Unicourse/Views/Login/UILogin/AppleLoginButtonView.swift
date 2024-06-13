@@ -16,7 +16,7 @@ struct AppleLoginButtonView: View {
 
     var body: some View {
         VStack {
-            SignInWithAppleButton(.signIn) { request in
+            SignInWithAppleButton(.continue) { request in
 
                 // Set requestedScopes and nonce
                 viewModel.currentNonce = randomNonceString()
@@ -34,15 +34,23 @@ struct AppleLoginButtonView: View {
 
                     Task {
                         do {
-                            try await viewModel.signInWithApple(credential: credential)
+                            appData.isLoading = true
+                            let token = try await viewModel.signInWithApple(credential: credential)
+                            let jwtToken = String(token.split(separator: " ")[1])
+                            appData.token = jwtToken
+                            try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
+                            try await appData.getUserCart(token: jwtToken)
                         } catch {
                             print("Apple sign-in error: \(error.localizedDescription)")
-                            self.error = error.localizedDescription
+                            self.error = "Apple sign-in error: \(error.localizedDescription)"
+                            appData.isShowingAlert = true
                         }
+                        appData.isLoading = false
                     }
                 case .failure(let error):
                     print("Apple sign-in error: \(error.localizedDescription)")
-                    self.error = error.localizedDescription
+                    self.error = "Apple sign-in error: \(error.localizedDescription)"
+                    appData.isShowingAlert = true
                 }
             }
         }
