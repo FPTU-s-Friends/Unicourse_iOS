@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DailyRewardButton: View {
     @State private var dragAmount: CGPoint?
+    @State private var shake = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -49,10 +50,25 @@ struct DailyRewardButton: View {
                                     }
                                 }
                         )
+                        .rotationEffect(shake ? Angle(degrees: -0.5) : Angle(degrees: 0.5))
+                        .animation(
+                            Animation.easeInOut(duration: 0.1).repeatForever(autoreverses: true),
+                            value: shake
+                        )
+                        .onAppear {
+                            startShaking()
+                        }
                 }
             }
         }
         .padding(0)
+    }
+
+    func startShaking() {
+        // Start the shaking sequence
+        withAnimation {
+            shake = false
+        }
     }
 }
 

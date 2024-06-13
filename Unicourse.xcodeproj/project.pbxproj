@@ -71,11 +71,13 @@
 		B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */; };
 		B5C54C402BEB92CF008A6A45 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */; };
 		B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C54C422BEB95EC008A6A45 /* PathTitle.swift */; };
+		B5CB1FD22C1B176400AF51B4 /* ClaimCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB1FD12C1B176000AF51B4 /* ClaimCoin.swift */; };
 		B5D0DA282C03434500773956 /* StreamingVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */; };
 		B5D0DA2B2C034A5500773956 /* TrackItemViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */; };
 		B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */; };
 		B5F06B152C007747001316BC /* NotfoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B142C007747001316BC /* NotfoundView.swift */; };
 		B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */; };
+		B5F760362C1899AF00041D14 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F760352C1899AF00041D14 /* DailyTest.swift */; };
 		C50041802C0F864D005A61B9 /* CommentBlogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */; };
 		C5061E332BEE057100C73A52 /* SearchEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */; };
 		C510B5272C1AA668002CDD7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */; };
@@ -311,11 +313,13 @@
 		B5C54C3C2BEB9204008A6A45 /* ButtonGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGradient.swift; sourceTree = "<group>"; };
 		B5C54C3F2BEB92CF008A6A45 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		B5C54C422BEB95EC008A6A45 /* PathTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTitle.swift; sourceTree = "<group>"; };
+		B5CB1FD12C1B176000AF51B4 /* ClaimCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimCoin.swift; sourceTree = "<group>"; };
 		B5D0DA272C03434500773956 /* StreamingVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingVideoViewModel.swift; sourceTree = "<group>"; };
 		B5D0DA2A2C034A5500773956 /* TrackItemViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItemViews.swift; sourceTree = "<group>"; };
 		B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledNewCourseModel.swift; sourceTree = "<group>"; };
 		B5F06B142C007747001316BC /* NotfoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfoundView.swift; sourceTree = "<group>"; };
 		B5F06B162C009C85001316BC /* SkeletonDetailInformationCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDetailInformationCourse.swift; sourceTree = "<group>"; };
+		B5F760352C1899AF00041D14 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
 		C500417F2C0F864D005A61B9 /* CommentBlogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBlogRequest.swift; sourceTree = "<group>"; };
 		C5061E322BEE057100C73A52 /* SearchEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntryViewModel.swift; sourceTree = "<group>"; };
 		C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 		B501BE662C171E5500F4FCEC /* DailyReward */ = {
 			isa = PBXGroup;
 			children = (
+				B5CB1FD02C1B175900AF51B4 /* Response */,
 				B501BE672C171E6100F4FCEC /* DailyRewardModel.swift */,
 			);
 			path = DailyReward;
@@ -552,6 +557,7 @@
 				B50C4AE32C0DEACE0099B228 /* DailyRewardView.swift */,
 				B501BE5F2C16EC2800F4FCEC /* DailyRewardInsideCard.swift */,
 				B501BE612C16F3F000F4FCEC /* DailyRewardWeekCard.swift */,
+				B5F760352C1899AF00041D14 /* DailyTest.swift */,
 			);
 			path = DailyRewards;
 			sourceTree = "<group>";
@@ -772,6 +778,14 @@
 				B5C54C422BEB95EC008A6A45 /* PathTitle.swift */,
 			);
 			path = "Path Title";
+			sourceTree = "<group>";
+		};
+		B5CB1FD02C1B175900AF51B4 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B5CB1FD12C1B176000AF51B4 /* ClaimCoin.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		B5D0DA292C034A3700773956 /* TabViewStreamingVideos */ = {
@@ -1881,6 +1895,7 @@
 				B5898F9F2BEE003F00C315B8 /* CourseDetailTabView.swift in Sources */,
 				B5BE39F22BF7322C00F6BD3A /* VideoStreamingView.swift in Sources */,
 				B541998E2BF3857A0034BC08 /* ExpandableView.swift in Sources */,
+				B5CB1FD22C1B176400AF51B4 /* ClaimCoin.swift in Sources */,
 				C567495A2BE88FD200DA6A58 /* SignInResponseModel.swift in Sources */,
 				B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */,
 				C5D8D5F72BFEFA6C00DE7EBA /* SkeletonCourseCard.swift in Sources */,
@@ -1911,6 +1926,7 @@
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
+				B5F760362C1899AF00041D14 /* DailyTest.swift in Sources */,
 				B549E4E22C0B2EAD003347A3 /* NavigationQuizButtonComponents.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
@@ -2120,7 +2136,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
-				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
