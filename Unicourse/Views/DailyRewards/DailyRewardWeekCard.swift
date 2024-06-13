@@ -66,9 +66,7 @@ struct DailyRewardWeekCard: View {
 
             Spacer()
         }
-        .onAppear {
-            print(user_id)
-        }
+    
     }
 }
 
