@@ -1,5 +1,5 @@
 {
-  "originHash" : "b74a04da2bc04c69052e8e56117d1c55f52c7049fb8b11e2b1a9327fc74ae2b6",
+  "originHash" : "26cdaa788d6a2260c235e020c86ce45142831f7a2b971a445e7aca2566a1eb5c",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "8bcaf973b1d84e119b7c7c119abad72ed460979f",
         "version" : "10.27.0"
+      }
+    },
+    {
+      "identity" : "generative-ai-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google-gemini/generative-ai-swift.git",
+      "state" : {
+        "revision" : "54784005b57c2235a7669e0c12e8dafa68f0ca5f",
+        "version" : "0.5.4"
       }
     },
     {

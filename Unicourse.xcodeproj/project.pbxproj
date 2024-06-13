@@ -91,6 +91,7 @@
 		C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52152012C0B3328002855B6 /* BlogViewModel.swift */; };
 		C524E1B22C1AE92C00F98E2B /* GeminiPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524E1B12C1AE92C00F98E2B /* GeminiPromptView.swift */; };
 		C524E1B42C1AECC000F98E2B /* ButtonDragUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524E1B32C1AECC000F98E2B /* ButtonDragUIView.swift */; };
+		C524E1B72C1AFEB400F98E2B /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = C524E1B62C1AFEB400F98E2B /* GoogleGenerativeAI */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
@@ -491,6 +492,7 @@
 			files = (
 				C541DA052BE358D30022079E /* GoogleSignIn in Frameworks */,
 				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
+				C524E1B72C1AFEB400F98E2B /* GoogleGenerativeAI in Frameworks */,
 				C51F918A2C1ACBF90032A922 /* FirebaseMessaging in Frameworks */,
 				C541DA0C2BE359060022079E /* FirebaseFirestore in Frameworks */,
 				C56749612BE896F200DA6A58 /* JWTDecode in Frameworks */,
@@ -1635,6 +1637,7 @@
 				C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */,
 				C52151EF2C0AF607002855B6 /* SocketIO */,
 				C51F91892C1ACBF90032A922 /* FirebaseMessaging */,
+				C524E1B62C1AFEB400F98E2B /* GoogleGenerativeAI */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1671,6 +1674,7 @@
 				C579AF792C00A307004BB9A6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				C524E1B52C1AFEB400F98E2B /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -2194,6 +2198,14 @@
 				kind = branch;
 			};
 		};
+		C524E1B52C1AFEB400F98E2B /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google-gemini/generative-ai-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
 		C52F5C432C04B0E900A2FB8A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -2246,6 +2258,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		C524E1B62C1AFEB400F98E2B /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C524E1B52C1AFEB400F98E2B /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
 		};
 		C52F5C442C04B0E900A2FB8A /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
