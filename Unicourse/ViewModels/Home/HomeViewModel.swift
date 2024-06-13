@@ -39,8 +39,12 @@ class HomeViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                     case .success(let response):
-                        self.searchCourse = response.data.course
-                        self.currentPage = pageToUse
+                        if let data = response.data {
+                            self.searchCourse = data.course
+                            self.currentPage = pageToUse
+                        } else {
+                            print("Search home view data is nil")
+                        }
                         
                     case .failure(let error):
                         self.error = error.localizedDescription
@@ -64,7 +68,10 @@ class HomeViewModel: ObservableObject {
                     case .success(let response):
                         switch response.status {
                             case HTTPStatusCodes.OK.rawValue:
-                                self.listEnrolledCourses = response.data
+                                if let data = response.data {
+                                    self.listEnrolledCourses = data
+                                }
+                               
                                 self.hasFetched = true
                             default:
                                 self.error = "Unexpected status code: \(response.status)"
@@ -78,7 +85,10 @@ class HomeViewModel: ObservableObject {
                         case .success(let response):
                             switch response.status {
                                 case HTTPStatusCodes.OK.rawValue:
-                                    self.listEnrolledCourses = response.data
+                                    if let data = response.data {
+                                        self.listEnrolledCourses = data
+                                    }
+                                    
                                     self.hasFetched = true
                                 default:
                                     self.error = "Unexpected status code: \(response.status)"
@@ -119,7 +129,10 @@ class HomeViewModel: ObservableObject {
                         case .success(let response):
                             switch response.status {
                                 case HTTPStatusCodes.OK.rawValue:
-                                    self.listLectures = response.data.data
+                                    if let data = response.data {
+                                        self.listLectures = data.data
+                                    }
+                                   
                                 default:
                                     self.error = "Unexpected status code: \(response.status)"
                             }
@@ -145,7 +158,10 @@ class HomeViewModel: ObservableObject {
         do {
             isLoadingBanner = true
             let response: CommonResponse<[BannerModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, body: nil)
-            banners = response.data
+            if let data = response.data {
+                banners = data
+            }
+            
         } catch {
             self.error = "Không lấy được dữ liệu banner"
             isShowingAlert = true

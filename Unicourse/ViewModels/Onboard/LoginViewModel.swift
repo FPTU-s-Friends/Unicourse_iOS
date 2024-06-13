@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseCore
 import Foundation
 import GoogleSignIn
+import JWTDecode
 
 @MainActor
 final class LoginViewModel: NSObject, ObservableObject {
@@ -73,7 +74,7 @@ final class LoginViewModel: NSObject, ObservableObject {
         }
     }
 
-    func signInWithApple(credential: ASAuthorizationAppleIDCredential) async throws {
+    func signInWithApple(credential: ASAuthorizationAppleIDCredential) async throws -> String {
         guard let token = credential.identityToken else {
             throw URLError(.badServerResponse) // Throw an error for better error handling
         }
@@ -84,8 +85,40 @@ final class LoginViewModel: NSObject, ObservableObject {
         let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com",
                                                           idToken: tokenString,
                                                           rawNonce: currentNonce)
+
         try await Auth.auth().signIn(with: firebaseCredential) // Use `try await` here
-        print("Logged In Success")
+
+        let jwt = try JWTDecode.decode(jwt: tokenString)
+        // Extracting user information from the JWT claims
+        let email = jwt.claim(name: "email").string ?? ""
+
+        let fullName = [
+            credential.fullName?.givenName,
+            credential.fullName?.familyName
+        ].compactMap { $0 }.joined(separator: " ")
+
+        // Set default name if fullName is empty
+        let displayName = fullName.isEmpty ? "Người dùng Unicourse" : fullName
+
+        // Get profile image URL if user is a real user
+
+        print("tokenString", tokenString)
+        print("displayName", displayName)
+
+        do {
+            let signInResponse = try await NetworkManager.shared.signIn(email: email)
+            print("Logged In Success")
+            return signInResponse.data.accessToken
+        } catch {
+            // If user not found, try signing up
+            let signUpResponse = try await NetworkManager.shared.signUp(
+                email: email,
+                fullName: displayName,
+                profileImage: ""
+            )
+            print("Signed Up Success")
+            return signUpResponse.data.accessToken
+        }
     }
 }
 

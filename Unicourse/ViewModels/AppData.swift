@@ -69,10 +69,11 @@ class AppData: ObservableObject {
 
     func checkUserAuthentication() async throws {
         guard let email = Auth.auth().currentUser?.email else {
-            return // No user logged in, handle as needed (e.g., show login)
+            return
         }
 
         do {
+            print(email)
             let data = try await NetworkManager.shared.signIn(email: email)
 
             let accessToken = data.data.accessToken
@@ -99,7 +100,9 @@ class AppData: ObservableObject {
     func getUserInfo(userId: String, token: String) async throws {
         do {
             let data = try await fetchUserInfo(userId: userId, token: token)
-            userInfo = data.data
+            if data.data != nil {
+                userInfo = data.data
+            }
         } catch {
             print("Get User Info Error")
             self.error = error.localizedDescription
@@ -115,11 +118,14 @@ class AppData: ObservableObject {
 
         do {
             let response: CommonResponse<CartModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: nil)
-            cart = response.data
+            if let data: CartModel = response.data {
+                cart = data
+            } else {
+                print("User cart data is nil")
+            }
+
         } catch {
             print("Get User Cart Error")
-//            self.error = error.localizedDescription
-//            isShowingAlert = true
             print(error)
         }
     }

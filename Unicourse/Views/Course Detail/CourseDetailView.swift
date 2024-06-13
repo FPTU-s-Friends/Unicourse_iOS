@@ -37,7 +37,7 @@ struct CourseDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    // Go Back Button -     Favorite Button - Share Button
+                    // Go Back Button -      Favorite Button - Share Button
                     VStack {
                         if let url = URL(string: vm.courseDetail?.thumbnail ?? "default") {
                             AsyncImage(url: url) { image in
@@ -161,7 +161,6 @@ struct CourseDetailView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
-                    .padding(2)
             }
 
             ToolbarItem(placement: .topBarTrailing) {

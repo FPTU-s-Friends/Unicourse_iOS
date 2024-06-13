@@ -26,8 +26,7 @@ struct BasicInfo: View {
                     Text(courseName)
                         .font(.system(size: 18, weight: .bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Spacer(minLength: 36)
+                        .padding(.vertical, 5)
                     HStack {
                         RatingStars(rating: courseAvgRating)
 
@@ -64,6 +63,7 @@ struct BasicInfo: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(.horizontal, 3)
             }
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 struct CommonResponse<T: Codable>: Codable {
     let message: String
     let status: Int
-    let data: T
+    let data: T?
 }
 
 struct PaginationResponse<T: Codable>: Codable {

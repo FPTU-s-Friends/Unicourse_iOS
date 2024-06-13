@@ -11,6 +11,7 @@ import SwiftUI
 struct UnicourseApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var appData = AppData()
+    @State private var isNavigateToLoginView = false
 
     var body: some Scene {
         WindowGroup {
@@ -30,6 +31,7 @@ struct UnicourseApp: App {
                         }
                 }
             }
+
             .preferredColorScheme(.light)
             .animation(.spring(), value: appData.isShowSlashScreen)
             .onAppear {
@@ -40,6 +42,7 @@ struct UnicourseApp: App {
                         appData.isShowSlashScreen = false
                     } catch {
                         print("Authentication error: \(error)")
+                        appData.isShowSlashScreen = false
                     }
                 }
             }

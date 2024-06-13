@@ -37,7 +37,7 @@ class CourseDetailViewModel: ObservableObject {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.newCourseEnrolled = response.data
-                    appData.listCurrentEnrolled.append(response.data.course._id)
+                    appData.listCurrentEnrolled.append((response.data?.course._id)!)
                 }
             case .failure(let err):
                 print(err)

@@ -38,6 +38,10 @@ struct CourseVideoPlayerView: View {
                         // Video Title
                         HStack {
                             Image(systemName: "play.rectangle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 16)
+                                .foregroundStyle(Color.red)
                             Text(vm.selectedTrack?.title ?? "")
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(1)
@@ -46,6 +50,10 @@ struct CourseVideoPlayerView: View {
 
                         HStack {
                             Image(systemName: "person.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 14)
+                                .foregroundStyle(Color.UIButtonGreen)
                             Text("Giảng viên:")
                             Text("Giảng viên Unicourse")
                         }
