@@ -61,9 +61,10 @@ struct BlogView: View {
                         }
                     }
                     .padding(.bottom, 20)
-                    
                 }
             }
+
+            Spacer()
         }
         .refreshable {
             Task {

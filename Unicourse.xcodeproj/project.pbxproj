@@ -89,6 +89,8 @@
 		C52151FC2C0B3068002855B6 /* TopicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151FB2C0B3068002855B6 /* TopicTextView.swift */; };
 		C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151FE2C0B3129002855B6 /* BlogModel.swift */; };
 		C52152022C0B3328002855B6 /* BlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52152012C0B3328002855B6 /* BlogViewModel.swift */; };
+		C524E1B22C1AE92C00F98E2B /* GeminiPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524E1B12C1AE92C00F98E2B /* GeminiPromptView.swift */; };
+		C524E1B42C1AECC000F98E2B /* ButtonDragUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C524E1B32C1AECC000F98E2B /* ButtonDragUIView.swift */; };
 		C5286E162BFF400400551EB3 /* SkeletonGridCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */; };
 		C52EBCA82BFE235300427FD9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */; };
 		C52F5C3F2C047AE200A2FB8A /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */; };
@@ -327,6 +329,8 @@
 		C52151FB2C0B3068002855B6 /* TopicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTextView.swift; sourceTree = "<group>"; };
 		C52151FE2C0B3129002855B6 /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
 		C52152012C0B3328002855B6 /* BlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewModel.swift; sourceTree = "<group>"; };
+		C524E1B12C1AE92C00F98E2B /* GeminiPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiPromptView.swift; sourceTree = "<group>"; };
+		C524E1B32C1AECC000F98E2B /* ButtonDragUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDragUIView.swift; sourceTree = "<group>"; };
 		C5286E152BFF400400551EB3 /* SkeletonGridCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonGridCourseView.swift; sourceTree = "<group>"; };
 		C52EBCA72BFE235300427FD9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C52F5C3E2C047AE200A2FB8A /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
@@ -892,6 +896,14 @@
 			path = Blog;
 			sourceTree = "<group>";
 		};
+		C524E1B02C1AE90F00F98E2B /* ChatWithAI */ = {
+			isa = PBXGroup;
+			children = (
+				C524E1B12C1AE92C00F98E2B /* GeminiPromptView.swift */,
+			);
+			path = ChatWithAI;
+			sourceTree = "<group>";
+		};
 		C52F5C422C0488B800A2FB8A /* CustomTabUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1307,6 +1319,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C524E1B02C1AE90F00F98E2B /* ChatWithAI */,
 				B50C4ADE2C0DE0AB0099B228 /* DailyRewards */,
 				B549E4D02C0AFB8F003347A3 /* QuizDetailModule */,
 				C539C4CC2C09AF4F008F14B6 /* Quiz */,
@@ -1523,6 +1536,7 @@
 				B5F06B132C00772F001316BC /* NotfoundViews */,
 				B5F06B122C007727001316BC /* LoadingViews */,
 				B5F06B112C0076FB001316BC /* SkeletonViews */,
+				C524E1B32C1AECC000F98E2B /* ButtonDragUIView.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -1684,6 +1698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C524E1B42C1AECC000F98E2B /* ButtonDragUIView.swift in Sources */,
 				C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */,
 				C5D7DD182BF7202000FC0DF7 /* HeaderCartItemView.swift in Sources */,
 				B5A43A212BFAFAC000AE89C4 /* APICoursePath.swift in Sources */,
@@ -1877,6 +1892,7 @@
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
 				C58EC9002C0A345A00C20151 /* GithubLoginButtonView.swift in Sources */,
 				C541DA012BE3570D0022079E /* LoginView.swift in Sources */,
+				C524E1B22C1AE92C00F98E2B /* GeminiPromptView.swift in Sources */,
 				C56749702BE8C5BD00DA6A58 /* CourseView.swift in Sources */,
 				B5898F9F2BEE003F00C315B8 /* CourseDetailTabView.swift in Sources */,
 				B5BE39F22BF7322C00F6BD3A /* VideoStreamingView.swift in Sources */,
@@ -2120,7 +2136,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Unicourse/Preview Content\"";
-				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				DEVELOPMENT_TEAM = M4PAJUN5RL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -30,7 +30,7 @@ struct SearchResultItemView: View {
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.gray.opacity(0.3))
-                            .frame(width: .infinity, height: 165)
+                            .frame(height: 165)
                             .padding(10)
                             .shimmerWithWave()
                     }
