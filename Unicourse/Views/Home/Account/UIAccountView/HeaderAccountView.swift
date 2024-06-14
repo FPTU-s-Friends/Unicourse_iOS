@@ -31,14 +31,13 @@ struct HeaderAccountView: View {
                     .aspectRatio(contentMode: .fit)
                     .symbolRenderingMode(.multicolor)
                     .frame(width: 32)
-                    .padding(4)
                     .foregroundStyle(Color.blue.gradient) // Màu sắc cho biểu tượng giỏ hàng
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
                 if let cart = appData.cart, !cart.items.isEmpty {
                     Text("\(cart.items.count)")
                         .font(.system(size: 10))
-                        .foregroundColor(.white) // Màu sắc cho số lượng hàng trong giỏ
+                        .foregroundColor(.mainColor3)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 3)
                         .background(Color.red.cornerRadius(20))
@@ -62,8 +61,10 @@ struct HeaderAccountView: View {
                 .aspectRatio(contentMode: .fit)
                 .symbolRenderingMode(.multicolor)
                 .frame(width: 32)
-                .padding(4)
-                .foregroundStyle(Color.mainColor1.gradient) // Màu sắc cho biểu tượng chỉnh sửa
+                .foregroundStyle(
+                    Color.mainColor1.gradient,
+                    Color.mainColor3.gradient
+                )
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
         }
     }
@@ -79,8 +80,10 @@ struct HeaderAccountView: View {
                 .aspectRatio(contentMode: .fit)
                 .symbolRenderingMode(.multicolor)
                 .frame(width: 32)
-                .padding(4)
-                .foregroundStyle(Color.mainColor1.gradient) // Màu sắc cho biểu tượng cài đặt
+                .foregroundStyle(
+                    Color.mainColor1.gradient,
+                    Color.mainColor3.gradient
+                ) // Màu sắc cho biểu tượng cài đặt
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
         }
     }

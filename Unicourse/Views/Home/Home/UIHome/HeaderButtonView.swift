@@ -15,39 +15,51 @@ struct HeaderButtonView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
-                    .padding(4)
                     .foregroundStyle(
-                        Color.white,
-                        Color.mainColor1
+                        Color.mainColor3.gradient,
+                        Color.mainColor1.gradient
                     )
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(Color.gray, lineWidth: 0.1)
+                    )
             }
+            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
             NavigationLink(destination: CommunityView()) {
                 Image(systemName: "message.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
-                    .padding(4)
                     .foregroundStyle(
-                        Color.white,
-                        Color.mainColor1
+                        Color.mainColor3.gradient,
+                        Color.mainColor1.gradient
                     )
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(Color.gray, lineWidth: 0.1)
+                    )
             }
+            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
             NavigationLink(destination: NotificationView()) {
                 Image(systemName: "bell.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
-                    .padding(4)
                     .foregroundStyle(
-                        Color.white,
-                        Color.mainColor1
+                        Color.mainColor3.gradient,
+                        Color.mainColor1.gradient
                     )
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(Color.gray, lineWidth: 0.1)
+                    )
             }
+            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
         }
         .navigationBarBackButtonHidden(true)
     }
