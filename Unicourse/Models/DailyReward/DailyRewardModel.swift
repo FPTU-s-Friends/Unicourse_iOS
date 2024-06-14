@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct DailyRewardModel: Codable {
+struct DailyRewardModel: Codable, Identifiable {
+    var id: String { _id }
     let _id: String
     let title: String
     let description: String
