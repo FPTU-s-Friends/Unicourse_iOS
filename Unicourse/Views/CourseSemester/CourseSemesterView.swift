@@ -10,6 +10,7 @@ import SwiftUI
 struct CourseSemesterView: View {
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = CourseSemesterViewModel()
+    @State private var filterCategoryMajor = 0
     var semester: Int
 
     var body: some View {
@@ -63,19 +64,57 @@ struct CourseSemesterView: View {
                 Button(action: {
                     viewModel.isSheetPresented = true
                 }, label: {
-                    Image(systemName: "ellipsis.circle")
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .frame(width: 10, height: 18)
-                        .padding(.horizontal, 15)
+                    Image(systemName: "ellipsis.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 34)
+                        .foregroundColor(.UIButtonGreen)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color.gray, lineWidth: 0.1)
+                        )
+                        .padding(3)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                 })
             }
         }
-        .popover(isPresented: $viewModel.isSheetPresented) {
-            Text("Chọn lọc cho phần chuyên ngành ở đây")
+        .sheet(isPresented: $viewModel.isSheetPresented) {
+            NavigationView {
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Text("CHUYÊN NGÀNH")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundStyle(Color.gray)
+
+                            Spacer()
+                        }
+                        .padding(.horizontal, 30)
+                        CustomPicker(selectedOption: $filterCategoryMajor, options: optionsCategories)
+                            .frame(height: UIScreen.main.bounds.height * 0.05)
+
+                        Spacer()
+                    }
+                }
+                .navigationTitle("📚 Sắp xếp theo")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            viewModel.isSheetPresented = false
+                        }, label: {
+                            Text("Save")
+                                .font(.system(size: 18, weight: .semibold))
+                        })
+                    }
+                }
+            }
+            .presentationDetents([.medium, .large])
         }
     }
 }
+
+let optionsCategories = ["Chọn Chuyên Ngành", "SE"]
 
 #Preview {
     NavigationStack {

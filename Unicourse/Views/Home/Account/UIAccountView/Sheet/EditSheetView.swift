@@ -101,6 +101,7 @@ struct EditSheetView: View {
                     }
                 }
             }
+            Spacer()
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 50)

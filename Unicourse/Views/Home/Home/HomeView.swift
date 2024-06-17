@@ -12,6 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
     @State private var openDailyReward = false
+    @State private var isOpenAI = false
 
     // chỉ cho load data lúc đầu
     @State private var hasLoadedDataInitially = false
@@ -30,6 +31,7 @@ struct HomeView: View {
                     Spacer()
 
                     HeaderButtonView()
+                        .padding(.top, -5)
                 }
                 .padding(.horizontal, 15)
                 .padding(.top, 10)
@@ -125,6 +127,11 @@ struct HomeView: View {
                 .presentationCornerRadius(30)
                 .interactiveDismissDisabled()
         })
+        .sheet(isPresented: $isOpenAI) {
+            GPTChatView()
+                .presentationDetents([.large])
+                .presentationCornerRadius(30)
+        }
 
         .onAppear {
             if !hasLoadedDataInitially {

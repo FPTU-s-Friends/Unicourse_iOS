@@ -15,6 +15,7 @@ struct CourseDetailView: View {
     @State private var isAddToCart = false
     @State private var isShowSuccess: Bool = false
     @State private var confirmEnrollFreeCourse: Bool = false
+    @State private var isOpenGemini = false
     private var isFree: Bool {
         vm.courseDetail?.type == .free
     }
@@ -143,9 +144,22 @@ struct CourseDetailView: View {
             }
             // End Check is enrolled
 
+            ButtonDragUIView()
+                .onTapGesture {
+                    withAnimation(.spring) {
+                        isOpenGemini = true
+                    }
+                }
+
             if vm.isLoading || vm.isLoadingEnroll {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
+        }
+        .sheet(isPresented: $isOpenGemini) {
+            GeminiPromptView(isOpenGemini: $isOpenGemini)
+                .presentationDetents([.large])
+                .presentationCornerRadius(30)
+                .interactiveDismissDisabled()
         }
         .sheet(isPresented: $vm.isShowSuccess) {
             if vm.newCourseEnrolled != nil {
@@ -161,6 +175,7 @@ struct CourseDetailView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             }
 
             ToolbarItem(placement: .topBarTrailing) {
@@ -168,13 +183,15 @@ struct CourseDetailView: View {
                     Button(action: {
                         isFav.toggle()
                     }, label: {
-                        CircleButtonUI(isActive: isFav, systemName: "heart.circle", symbolRenderingMode: .multicolor)
+                        CircleButtonUI(isActive: isFav, systemName: "heart.circle",
+                                       symbolRenderingMode: .multicolor)
                     })
 
                     NavigationLink(destination: CartView()) {
                         ZStack {
-                            CircleButtonUI(isActive: true, systemName: "cart.circle", symbolRenderingMode: .multicolor)
-                                .tint(.black)
+                            CircleButtonUI(isActive: true, systemName: "cart.circle",
+                                           symbolRenderingMode: .multicolor)
+                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                             if let cart = appData.cart, !cart.items.isEmpty {
                                 Text("\(cart.items.count)")
                                     .font(.system(size: 10))
@@ -192,7 +209,8 @@ struct CourseDetailView: View {
 
                     Button(action: {}, label: {
                         CircleButtonUI(isActive: true, systemName: "arrowshape.turn.up.right.circle", symbolRenderingMode: .multicolor)
-                    }).tint(.black)
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    })
                 }
             }
         }
