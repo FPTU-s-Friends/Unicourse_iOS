@@ -83,7 +83,7 @@ struct QuizView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 10) {
+                HStack(spacing: 0) {
                     Button(action: {
                         viewModel.isPresentedFilter = true
                     }) {
@@ -92,7 +92,7 @@ struct QuizView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 32)
                             .foregroundStyle(
-                                Color.mainColor3,
+                                Color.white,
                                 Color.mainColor1.gradient
                             )
                             .clipShape(Circle())

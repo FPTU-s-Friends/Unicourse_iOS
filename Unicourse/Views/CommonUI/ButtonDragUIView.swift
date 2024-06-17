@@ -21,11 +21,10 @@ struct ButtonDragUIView: View {
                     Image(.aiIcon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
-                        .padding(0)
-                        .position(dragAmount ?? CGPoint(x: geometry.size.width - 54, y: geometry.size.height - 100))
+                        .frame(width: 100)
+                        .position(dragAmount ?? CGPoint(x: geometry.size.width - 50, y: geometry.size.height - 100))
                         .scaleEffect(isAnimating ? 1.02 : 1.0)
-                        .opacity(isAnimating ? 1.0 : 0.6)
+                        .opacity(isAnimating ? 1.0 : 0.8)
                         .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
                         .onAppear { isAnimating = true }
                         .gesture(

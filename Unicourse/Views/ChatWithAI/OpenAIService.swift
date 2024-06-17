@@ -9,21 +9,29 @@ import Alamofire
 import Foundation
 
 class OpenAIService {
-    private let baseURL = "https://api.openai.com/v1/completions"
-    private let apiKey = APIKey.OPENAI
+    private let baseURL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
+    private let apiKey = "YOUR_API_KEY" // Replace with your actual OpenAI API key
 
-    typealias CompletionHandler = (Result<OpenAIResponse, Error>) -> Void
+    typealias CompletionHandler = (Result<String, Error>) -> Void
 
     func sendMessage(_ message: String, completionHandler: @escaping CompletionHandler) {
-        let body = OpenAICompletionsBody(model: "text-davinci-003", prompt: message, temperature: 0.7)
+        let body = OpenAICompletionsBody(model: "text-davinci-003", prompt: message, temperature: 0.7, max_tokens: 150)
 
         AF.request(baseURL, method: .post, parameters: body, encoder: JSONParameterEncoder.default, headers: headers)
-            .validate()
+            .validate(statusCode: 200 ..< 300) // Ensure response status is in the success range
             .responseDecodable(of: OpenAIResponse.self) { response in
                 switch response.result {
                 case .success(let openAIResponse):
-                    completionHandler(.success(openAIResponse))
+                    if let responseText = openAIResponse.choices.first?.text {
+                        completionHandler(.success(responseText))
+                    } else {
+                        completionHandler(.failure(NSError(domain: "Response parsing error", code: 0, userInfo: nil)))
+                    }
                 case .failure(let error):
+                    if let statusCode = response.response?.statusCode {
+                        print("HTTP status code: \(statusCode)")
+                    }
+                    print("Error sending request to OpenAI API: \(error.localizedDescription)")
                     completionHandler(.failure(error))
                 }
             }

@@ -13,6 +13,8 @@ struct CourseVideoPlayerView: View {
     @StateObject var vm = StreamingVideoViewModel()
     @State private var tabSelection = 0
     @State private var videoIndex: Int = 1
+    @State private var isAnimating = false
+    @State private var isOpenGemini = false
     private var listTrackSorted: [Track] {
         listTrack.sorted(by: { ($0.position ?? 0) < ($1.position ?? 0) })
     }
@@ -98,9 +100,30 @@ struct CourseVideoPlayerView: View {
                 }
             }
             .frame(maxHeight: .infinity)
+            .sheet(isPresented: $isOpenGemini) {
+                GeminiPromptView(isOpenGemini: $isOpenGemini)
+                    .presentationDetents([.large])
+                    .presentationCornerRadius(30)
+                    .interactiveDismissDisabled()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ButtonBackUIView()
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isOpenGemini = true
+                    } label: {
+                        Image(.aiIcon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60)
+                            .scaleEffect(isAnimating ? 1.1 : 1.0)
+                            .opacity(isAnimating ? 1.0 : 0.8)
+                            .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
+                            .onAppear { isAnimating = true }
+                    }
                 }
             }
             .onAppear {

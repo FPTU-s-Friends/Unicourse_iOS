@@ -223,6 +223,7 @@
 		C5BE44C62C20171500E5FB7C /* ChatAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BE44C52C20170F00E5FB7C /* ChatAIModel.swift */; };
 		C5BE44CC2C20254700E5FB7C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44CB2C20254700E5FB7C /* Alamofire */; };
 		C5BE44D02C20256A00E5FB7C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BE44CF2C20256500E5FB7C /* OpenAIService.swift */; };
+		C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44D42C20310600E5FB7C /* OpenAI */; };
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
 		C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */; };
 		C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */; };
@@ -524,6 +525,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */,
 				C541DA052BE358D30022079E /* GoogleSignIn in Frameworks */,
 				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
 				C524E1B72C1AFEB400F98E2B /* GoogleGenerativeAI in Frameworks */,
@@ -1717,6 +1719,7 @@
 				C51F91892C1ACBF90032A922 /* FirebaseMessaging */,
 				C524E1B62C1AFEB400F98E2B /* GoogleGenerativeAI */,
 				C5BE44CB2C20254700E5FB7C /* Alamofire */,
+				C5BE44D42C20310600E5FB7C /* OpenAI */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1755,6 +1758,7 @@
 				C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 				C524E1B52C1AFEB400F98E2B /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				C5BE44CA2C20254700E5FB7C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -2346,6 +2350,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2408,6 +2420,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5BE44CA2C20254700E5FB7C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C5BE44D42C20310600E5FB7C /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

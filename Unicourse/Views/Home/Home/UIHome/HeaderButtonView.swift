@@ -16,7 +16,7 @@ struct HeaderButtonView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
                     .foregroundStyle(
-                        Color.mainColor3.gradient,
+                        Color.white,
                         Color.mainColor1.gradient
                     )
                     .clipShape(Circle())
@@ -25,7 +25,7 @@ struct HeaderButtonView: View {
                             .stroke(Color.gray, lineWidth: 0.1)
                     )
             }
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
 
             NavigationLink(destination: CommunityView()) {
                 Image(systemName: "message.circle.fill")
@@ -33,7 +33,7 @@ struct HeaderButtonView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
                     .foregroundStyle(
-                        Color.mainColor3.gradient,
+                        Color.white,
                         Color.mainColor1.gradient
                     )
                     .clipShape(Circle())
@@ -42,7 +42,7 @@ struct HeaderButtonView: View {
                             .stroke(Color.gray, lineWidth: 0.1)
                     )
             }
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
 
             NavigationLink(destination: NotificationView()) {
                 Image(systemName: "bell.circle.fill")
@@ -50,7 +50,7 @@ struct HeaderButtonView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
                     .foregroundStyle(
-                        Color.mainColor3.gradient,
+                        Color.white,
                         Color.mainColor1.gradient
                     )
                     .clipShape(Circle())
@@ -59,7 +59,7 @@ struct HeaderButtonView: View {
                             .stroke(Color.gray, lineWidth: 0.1)
                     )
             }
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         }
         .navigationBarBackButtonHidden(true)
     }
