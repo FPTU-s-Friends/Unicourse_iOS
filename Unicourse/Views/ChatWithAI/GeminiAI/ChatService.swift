@@ -13,7 +13,6 @@ import SwiftUI
 class ChatService {
     private var chat: Chat?
     private(set) var messages = [ChatMessage]()
-    private(set) var messagesOpenAI = [ChatMessage]()
     private(set) var loadingResponse = false
 
     let suggestionQuestions = [

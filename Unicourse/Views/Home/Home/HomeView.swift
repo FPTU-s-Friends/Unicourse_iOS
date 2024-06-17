@@ -12,7 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
     @State private var openDailyReward = false
-    @State private var isOpenGemini = false
+    @State private var isOpenAI = false
 
     // chỉ cho load data lúc đầu
     @State private var hasLoadedDataInitially = false
@@ -116,14 +116,6 @@ struct HomeView: View {
                     }
                 }
 
-            ButtonDragUIView(systemImageName: "circle.dotted.circle.fill")
-                .symbolRenderingMode(.multicolor)
-                .onTapGesture {
-                    withAnimation(.spring) {
-                        isOpenGemini = true
-                    }
-                }
-
             if viewModel.isLoadingListEnrolled {
                 LoadingIndicatorView(isLoading: .constant(true))
                     .animation(.spring, value: viewModel.isLoadingListEnrolled)
@@ -135,11 +127,12 @@ struct HomeView: View {
                 .presentationCornerRadius(30)
                 .interactiveDismissDisabled()
         })
-        .sheet(isPresented: $isOpenGemini) {
-            GeminiPromptView()
+        .sheet(isPresented: $isOpenAI) {
+            GPTChatView()
                 .presentationDetents([.large])
                 .presentationCornerRadius(30)
         }
+
         .onAppear {
             if !hasLoadedDataInitially {
                 Task {

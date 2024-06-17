@@ -18,4 +18,15 @@ enum APIKey {
         }
         return value
     }()
+    
+    static let `OPENAI`: String = {
+        guard let filePath = Bundle.main.path(forResource: "GenerativeAI-info", ofType: "plist"),
+              let plist = NSDictionary(contentsOfFile: filePath),
+              let value = plist["OPENAI_API_KEY"] as? String
+        else {
+            fatalError("Không tìm thấy API Key trong file GenerativeAI-info.plist")
+        }
+        return value
+    }()
+    
 }

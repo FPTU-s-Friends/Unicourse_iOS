@@ -15,6 +15,7 @@ struct CourseDetailView: View {
     @State private var isAddToCart = false
     @State private var isShowSuccess: Bool = false
     @State private var confirmEnrollFreeCourse: Bool = false
+    @State private var isOpenGemini = false
     private var isFree: Bool {
         vm.courseDetail?.type == .free
     }
@@ -143,9 +144,22 @@ struct CourseDetailView: View {
             }
             // End Check is enrolled
 
+            ButtonDragUIView()
+                .onTapGesture {
+                    withAnimation(.spring) {
+                        isOpenGemini = true
+                    }
+                }
+
             if vm.isLoading || vm.isLoadingEnroll {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
+        }
+        .sheet(isPresented: $isOpenGemini) {
+            GeminiPromptView(isOpenGemini: $isOpenGemini)
+                .presentationDetents([.large])
+                .presentationCornerRadius(30)
+                .interactiveDismissDisabled()
         }
         .sheet(isPresented: $vm.isShowSuccess) {
             if vm.newCourseEnrolled != nil {

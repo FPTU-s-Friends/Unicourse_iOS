@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ButtonDragUIView: View {
     @State private var dragAmount: CGPoint?
-    var systemImageName: String
+    @State private var isAnimating = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -18,12 +18,16 @@ struct ButtonDragUIView: View {
                 VStack {
                     Spacer()
 
-                    Image(systemName: systemImageName)
+                    Image(.aiIcon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 36)
+                        .frame(width: 50)
                         .padding(0)
-                        .position(dragAmount ?? CGPoint(x: geometry.size.width - 54, y: geometry.size.height - 400))
+                        .position(dragAmount ?? CGPoint(x: geometry.size.width - 54, y: geometry.size.height - 100))
+                        .scaleEffect(isAnimating ? 1.02 : 1.0)
+                        .opacity(isAnimating ? 1.0 : 0.6)
+                        .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
+                        .onAppear { isAnimating = true }
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
@@ -60,5 +64,5 @@ struct ButtonDragUIView: View {
 }
 
 #Preview {
-    ButtonDragUIView(systemImageName: "circle.dotted.circle.fill")
+    ButtonDragUIView()
 }
