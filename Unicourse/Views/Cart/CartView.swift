@@ -39,11 +39,8 @@ struct CartView: View {
             ToolbarItem(placement: .topBarLeading) {
                 ButtonBackUIView()
             }
-//             ToolbarItem(placement: .topBarTrailing) {
-//                ButtonCheckBox(isChecked: $isCheckedAll)
-//            }
         }
-        .navigationBarTitle("Giỏ hàng", displayMode: .large)
+        .navigationBarTitle("Giỏ hàng 🛒", displayMode: .large)
         .navigationBarBackButtonHidden(true)
     }
 }

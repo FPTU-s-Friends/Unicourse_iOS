@@ -26,7 +26,6 @@ struct CircleButtonUI: View {
             .aspectRatio(contentMode: .fit)
             .symbolRenderingMode(symbolRenderingMode)
             .frame(width: 30)
-            .padding(4)
     }
 }
 

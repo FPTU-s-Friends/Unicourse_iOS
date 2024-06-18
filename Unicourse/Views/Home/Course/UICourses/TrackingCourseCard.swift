@@ -20,24 +20,23 @@ struct TrackingCourseCard: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.width * 0.2)
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: 75)
                             } placeholder: {
                                 Rectangle()
                                     .foregroundStyle(.white)
                                     .background(Color.white)
-                                    .frame(width: UIScreen.main.bounds.width * 0.2)
+                                    .frame(width: UIScreen.main.bounds.width * 0.2, height: 75)
                                     .shimmerWithWave()
                             }
                         } else {
                             Image("3Dicons")
                                 .resizable()
-                                
                                 .frame(width: UIScreen.main.bounds.width * 0.2, height: 65)
                                 .aspectRatio(contentMode: .fill)
                         }
                     }
                 }
-            
+
                 .background(Color(hex: "#FBCCCE"))
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 

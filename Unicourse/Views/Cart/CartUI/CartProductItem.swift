@@ -9,32 +9,31 @@ import SwiftUI
 
 struct CartProductItem: View {
     @Binding var isChecked: Bool
-    @Binding var isCheckedAllItemPerson: Bool
     var item: CartItem
 
     var body: some View {
         HStack {
             ButtonCheckBox(isChecked: $isChecked)
 
-            NavigationLink(destination: CourseDetailView(courseId: "65a8790ba30979a347d026c9")) {
+            NavigationLink(destination: CourseDetailView(courseId: item._id)) {
                 HStack {
                     AsyncImage(url: URL(string: item.thumbnail)) { image in
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 60)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
                             .cornerRadius(10)
                     } placeholder: {
                         Rectangle()
-                            .frame(width: UIScreen.main.bounds.width * 0.2, height: 60)
+                            .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
                             .cornerRadius(10)
                             .shimmerWithWave()
                     }
 
-                    VStack(alignment: .leading) {
-                        Text("Thiết kế và tạo mẫu với Figma: Từ người mới bắt đầu đến chuyên nghiệp")
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(item.title)
                             .multilineTextAlignment(.leading)
-                            .font(.system(size: 12, weight: .light))
+                            .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.black)
                         // ---
                         HStack {
@@ -55,21 +54,9 @@ struct CartProductItem: View {
                 }
             }
         }
-        .onChange(of: isCheckedAllItemPerson) {
-            withAnimation {
-                isChecked = isCheckedAllItemPerson
-            }
-        }
-        .onChange(of: isChecked) {
-            withAnimation {
-                if isChecked == false {
-                    isCheckedAllItemPerson = false
-                }
-            }
-        }
     }
 }
 
 #Preview {
-    CartProductItem(isChecked: .constant(true), isCheckedAllItemPerson: .constant(false), item: .sampleData)
+    CartProductItem(isChecked: .constant(true), item: .sampleData)
 }

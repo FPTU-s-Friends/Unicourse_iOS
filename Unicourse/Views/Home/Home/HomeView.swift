@@ -30,6 +30,7 @@ struct HomeView: View {
                     Spacer()
 
                     HeaderButtonView()
+                        .padding(.top, -5)
                 }
                 .padding(.horizontal, 15)
                 .padding(.top, 10)

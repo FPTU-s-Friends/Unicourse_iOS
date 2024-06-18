@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderCartItemView: View {
     @EnvironmentObject var appData: AppData
-    @Binding var isCheckedAllItemPerson: Bool
+    @Binding var isShowMore: Bool
 
     var body: some View {
         HStack {
@@ -24,19 +24,23 @@ struct HeaderCartItemView: View {
 
             Spacer()
 
-            Button(action: {}, label: {
-                Image(systemName: "pencil.line")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 14)
-                    .foregroundStyle(Color.accentColor)
-                    .padding(8)
-                    .background(Color.grayItem.cornerRadius(10))
+            Button(action: {
+                withAnimation {
+                    isShowMore.toggle()
+                }
+            }, label: {
+                Text(isShowMore ? "Thu gọn" : "Xem thêm")
+                    .font(.system(size: .mainTitleButtonPath))
+                    .foregroundStyle(.white)
+                    .padding(6)
+                    .padding(.horizontal, 10)
+                    .background(LinearGradient(colors: [.mainColor1, .mainColor2], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .cornerRadius(20)
             })
         }
     }
 }
 
 #Preview {
-    HeaderCartItemView(isCheckedAllItemPerson: .constant(false))
+    HeaderCartItemView(isShowMore: .constant(false))
 }

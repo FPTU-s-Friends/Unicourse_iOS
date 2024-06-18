@@ -53,6 +53,7 @@ class NetworkManager {
     // MARK: - Call API Method
 
     func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, body: Data?) async throws -> T {
+        print(path)
         guard var urlComponents = URLComponents(string: baseURL) else {
             throw NetworkError.invalidBaseURL
         }

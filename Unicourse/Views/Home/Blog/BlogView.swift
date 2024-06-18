@@ -61,9 +61,10 @@ struct BlogView: View {
                         }
                     }
                     .padding(.bottom, 20)
-                    
                 }
             }
+
+            Spacer()
         }
         .refreshable {
             Task {
@@ -93,7 +94,7 @@ struct BlogView: View {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
         }
-        .navigationTitle("Bài viết")
+        .navigationTitle("Bài viết 📰")
         .navigationBarTitleDisplayMode(.large)
         .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
         .toolbar {
