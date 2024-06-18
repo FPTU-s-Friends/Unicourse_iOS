@@ -38,8 +38,12 @@ struct CourseView: View {
                         // Tracking course card
                         if vm.listEnrolledCourses.isEmpty {
                             SkeletonTrackingCourseView()
+                                .transition(.opacity.combined(with: .opacity))
+                                .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
                         } else {
                             TrackingCourseCard(enrollCourse: vm.listEnrolledCourses[0])
+                                .transition(.opacity.combined(with: .opacity))
+                                .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
                         }
 
                         // End tracking course card
@@ -61,6 +65,8 @@ struct CourseView: View {
 
                     // Current  learning  course
                     CurrentLearningCourses(showingCredits: $showingCredits, listEnrolledCourses: vm.listEnrolledCourses.reversed(), isLoadSkeleton: vm.isLoading)
+                        .transition(.opacity.combined(with: .opacity))
+                        .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
                         .refreshable {
                             vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: true)
                         }

@@ -105,36 +105,38 @@ class DetailQuizViewModel: ObservableObject {
         printJSONData(data: newRequest)
     }
 
-    func createCalculateResultOfQuiz(userId: String) -> Int {
-        let completedQuiz = QuizRequestModel(
-            _id: quizData?._id ?? "",
-            title: quizData?.title ?? "",
-            description: quizData?.description ?? "",
-            picture: quizData?.picture ?? "",
-            questions: answeredQuesList,
-            status: quizData?.status ?? "",
-            category: quizData?.category ?? "",
-            creator_id: quizData?.creator_id ?? data.creator_id,
-            viewer: quizData?.viewer ?? 0,
-            creator_role: quizData?.creator_role ?? ""
-        )
-
-        do {
-            let encoder = JSONEncoder()
-            let bodyData = try encoder.encode(completedQuiz)
-            NetworkManager.shared.callAPI2(path: APIQuizPath.calculateQuizResult(userId: userId).endPointValue, method: .post, body: bodyData) {
-                (result: Result<CommonResponse<ResultQuizCalculate>, Error>) in
-                switch result {
-                case .success(let response):
-                    printJSONData(data: response.data)
-                    return response.data?.number_right_answer
-                case .failure(let err):
-                    print(err)
-                }
-            }
-        } catch {
-            print("Error encoding QuizRequestModel: \(error)")
-        }
+    func createCalculateResultOfQuiz(userId: String) {
+//        let completedQuiz = QuizRequestModel(
+//            _id: quizData?._id ?? "",
+//            title: quizData?.title ?? "",
+//            description: quizData?.description ?? "",
+//            picture: quizData?.picture ?? "",
+//            questions: answeredQuesList,
+//            status: quizData?.status ?? "",
+//            category: quizData?.category ?? "",
+//            creator_id: quizData?.creator_id ?? data.creator_id,
+//            viewer: quizData?.viewer ?? 0,
+//            creator_role: quizData?.creator_role ?? ""
+//        )
+//
+//        do {
+//            let encoder = JSONEncoder()
+//            let bodyData = try encoder.encode(completedQuiz)
+//            NetworkManager.shared.callAPI2(path: APIQuizPath.calculateQuizResult(userId: userId).endPointValue, method: .post, body: bodyData) {
+//                (result: Result<CommonResponse<ResultQuizCalculate>, Error>) in
+//                switch result {
+//                case .success(let response):
+//                    printJSONData(data: response.data)
+        ////                    return response.data?.number_right_answer
+//                    return 1
+//                case .failure(let err):
+//                    print(err)
+//                }
+//            }
+//        } catch {
+//            print("Error encoding QuizRequestModel: \(error)")
+//        }
+//        return 0
     }
 
     func createQuestionListResult(questionList: [Question]) -> [QuestionRequest] {

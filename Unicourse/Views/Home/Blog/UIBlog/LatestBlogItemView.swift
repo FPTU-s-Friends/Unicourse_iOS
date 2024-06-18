@@ -79,8 +79,8 @@ struct LatestBlogItemView: View {
             .cornerRadius(10)
             .padding(.horizontal, 10)
         }
-        .transition(.opacity.combined(with: .blurReplace))
-        .animation(.easeInOut(duration: 0.6))
+        .transition(.opacity.combined(with: .opacity))
+        .animation(.easeInOut(duration: 0.8))
 
         VStack {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 180), spacing: 10)], spacing: 10) {
@@ -147,8 +147,8 @@ struct LatestBlogItemView: View {
                 }
             }
         }
-        .transition(.opacity.combined(with: .blurReplace))
-        .animation(.easeInOut(duration: 0.6))
+        .transition(.opacity.combined(with: .opacity))
+        .animation(.easeInOut(duration: 0.8))
         .padding(.horizontal, 10)
     }
 }
