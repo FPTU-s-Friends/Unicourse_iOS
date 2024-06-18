@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct TransactionHistoryView: View {
+    @EnvironmentObject var appData: AppData
     @Environment(\.dismiss) var dismiss: DismissAction
     @State private var isSearchBarVisible: Bool = false
+    @StateObject var viewModel = TransactionHistoryViewModel()
 
     var body: some View {
         ScrollView {
             VStack {
-                HistoryTransactionItem(name: "Nguyễn Trung Kiên")
-
-                HistoryTransactionItem(name: "Trần Quang Minh")
+                ForEach(viewModel.transactionHistoryList, id: \._id) { transactionItem in
+                    HistoryTransactionItem(transactionHistory: transactionItem)
+                }
+            }
+            .onAppear {
+                Task {
+                    try await viewModel.getListTransactionHistory(token: appData.token)
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -35,5 +42,6 @@ struct TransactionHistoryView: View {
 #Preview {
     NavigationStack {
         TransactionHistoryView()
+            .environmentObject(AppData())
     }
 }

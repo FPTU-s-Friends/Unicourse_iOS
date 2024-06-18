@@ -13,7 +13,7 @@ class SocketIOManager: ObservableObject {
     static let shared = SocketIOManager()
 
     private let baseURL = "https://unicourse-server-test.up.railway.app"
-    // private let baseURL = "https://unicourse-api-production.up.railway.app"
+//     private let baseURL = "https://unicourse-api-production.up.railway.app"
 
     private lazy var manager = SocketManager(socketURL: URL(string: baseURL)!, config: [.log(true), .compress])
     private var socket: SocketIOClient!

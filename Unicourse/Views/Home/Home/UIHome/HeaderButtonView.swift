@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HeaderButtonView: View {
     var body: some View {
-        HStack {
+        HStack(spacing: 5) {
             NavigationLink(destination: SearchEntryView()) {
                 Image(systemName: "magnifyingglass.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 32)
+                    .frame(width: 34)
                     .foregroundStyle(
                         Color.white,
                         Color.mainColor1.gradient
@@ -31,7 +31,7 @@ struct HeaderButtonView: View {
                 Image(systemName: "message.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 32)
+                    .frame(width: 34)
                     .foregroundStyle(
                         Color.white,
                         Color.mainColor1.gradient
@@ -48,7 +48,7 @@ struct HeaderButtonView: View {
                 Image(systemName: "bell.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 32)
+                    .frame(width: 34)
                     .foregroundStyle(
                         Color.white,
                         Color.mainColor1.gradient

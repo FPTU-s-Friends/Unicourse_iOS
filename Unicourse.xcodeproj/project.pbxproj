@@ -227,6 +227,8 @@
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
 		C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */; };
 		C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */; };
+		C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */; };
+		C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */; };
 		C5D3C87C2C1593E50048C29A /* SkeletonQuizItemListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */; };
 		C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */; };
 		C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */; };
@@ -486,6 +488,8 @@
 		C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLearningCourses.swift; sourceTree = "<group>"; };
 		C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCourseListView.swift; sourceTree = "<group>"; };
 		C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterViewModel.swift; sourceTree = "<group>"; };
+		C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewModel.swift; sourceTree = "<group>"; };
+		C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryModel.swift; sourceTree = "<group>"; };
 		C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonQuizItemListUI.swift; sourceTree = "<group>"; };
 		C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemView.swift; sourceTree = "<group>"; };
 		C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionItem.swift; sourceTree = "<group>"; };
@@ -1353,6 +1357,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9762C213BC40093611E /* Transaction */,
 				B501BE662C171E5500F4FCEC /* DailyReward */,
 				C575C6172C1564250067D984 /* CartModels */,
 				C52151FD2C0B3101002855B6 /* BlogModels */,
@@ -1399,6 +1404,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9732C213A760093611E /* Account */,
 				B501BE632C171E2900F4FCEC /* DailyReward */,
 				C52152002C0B331C002855B6 /* Blog */,
 				C539C4CE2C09BC6D008F14B6 /* Quiz */,
@@ -1560,6 +1566,22 @@
 				B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		C5CDF9732C213A760093611E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C5CDF9762C213BC40093611E /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		C5D7DD042BF5CD4900FC0DF7 /* DiscountUI */ = {
@@ -1902,6 +1924,7 @@
 				C5F038312C089AAD00EB1F97 /* AllFreeCoursesView.swift in Sources */,
 				B501BE682C171E6100F4FCEC /* DailyRewardModel.swift in Sources */,
 				B501BE6A2C1720A100F4FCEC /* APIDailyRewardPath.swift in Sources */,
+				C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */,
 				C5BE44B92C1FF14800E5FB7C /* UITextField+Extension.swift in Sources */,
 				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
@@ -2019,6 +2042,7 @@
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
+				C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
 				B5F760362C1899AF00041D14 /* DailyTest.swift in Sources */,
