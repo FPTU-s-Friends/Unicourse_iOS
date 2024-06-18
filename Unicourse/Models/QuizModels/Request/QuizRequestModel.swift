@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct AnswerRequest: Codable
+struct AnswerRequest: Codable, Equatable
 {
     var id: String { answer_text }
     var answer_text: String
     var is_correct: Bool
     var is_checked: Bool
     var is_answered: Bool
+
+    static var mockData = AnswerRequest(answer_text: "", is_correct: false, is_checked: false, is_answered: false)
 }
 
 struct QuestionRequest: Codable
