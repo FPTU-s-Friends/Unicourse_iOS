@@ -36,22 +36,22 @@ class HomeViewModel: ObservableObject {
         NetworkManager.shared.callAPI2(path: APIPath.searchCourse.stringValue, method: .get, parameters: params, body: nil) {
             (result: Result<CommonResponse<SearchResponseModel>, Error>) in
             DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch result {
                     case .success(let response):
                         if let data = response.data {
-                            self.searchCourse = data.course
-                            self.currentPage = pageToUse
+                            searchCourse = data.course
+                            currentPage = pageToUse
                         } else {
                             print("Search home view data is nil")
                         }
                         
                     case .failure(let error):
                         self.error = error.localizedDescription
-                        self.isShowingAlert = true
+                        isShowingAlert = true
                         print(error)
                 }
-                self.isLoadingSearchCourse = false
+                isLoadingSearchCourse = false
             }
         }
     }

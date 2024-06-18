@@ -634,6 +634,13 @@
 			path = NavigationQuizButtonComponents;
 			sourceTree = "<group>";
 		};
+		B54DB6AF2C1C64520096685A /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		B55016002C089855006CC44F /* Lectures */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,6 +1352,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B54DB6AF2C1C64520096685A /* Cart */,
 				B501BE632C171E2900F4FCEC /* DailyReward */,
 				C52152002C0B331C002855B6 /* Blog */,
 				C539C4CE2C09BC6D008F14B6 /* Quiz */,

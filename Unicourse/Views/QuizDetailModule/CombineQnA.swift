@@ -10,9 +10,10 @@ import SwiftUI
 struct CombineQnA: View {
     var question: QuestionRequest
     var questionIndex: Int
-    @ObservedObject var vm: DetailQuizViewModel
     @State private var isStartAnswerQuestion: Bool = false
     @State private var isChangeYAxisQuestion: Bool = false
+
+    @ObservedObject var vm: DetailQuizViewModel
 
     var body: some View {
         ScrollView {
@@ -28,15 +29,14 @@ struct CombineQnA: View {
                     }
 
                 AnswerComponent(
-                    question: question,
-                    vm: vm,
                     typeAnswer: question.type,
-                    listAnswer: vm.answeredQuesList.first(where: { $0._id == question._id })?.answer ?? [],
-                    isShowAnswer: isChangeYAxisQuestion)
+                    listAnswer: question.answer,
+                    isShowAnswer: isChangeYAxisQuestion,
+                    question_id: question._id,
+                    vm: vm)
                     .padding(.bottom, 20)
             }
         }
-
         .scrollIndicators(.hidden)
     }
 }

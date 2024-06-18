@@ -31,10 +31,6 @@ struct QuizDetailView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .background(.white)
                 .cornerRadius(35)
-                .onAppear {
-                    // Ngăn ng dùng swipe
-//                    UIScrollView.appearance().isScrollEnabled = false
-                }
 
                 // End: Phần Câu hỏi & Các đáp án
 

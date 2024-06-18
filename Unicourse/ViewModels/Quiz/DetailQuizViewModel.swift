@@ -8,7 +8,6 @@
 import Foundation
 
 class DetailQuizViewModel: ObservableObject {
-    // MockD ata
     @Published var data = DetailQuizModel.mockData
     @Published var selectedTab: Int = 0
     @Published var quizData: DetailQuizModel? = nil
@@ -24,19 +23,19 @@ class DetailQuizViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     if let data = response.data {
                         self.quizData = data
-                        // Set new
-
                         self.answeredQuesList = data.questions.map { ques in
-                            QuestionRequest(_id: ques._id,
-                                            title: ques.title,
-                                            type: ques.type,
-                                            is_answered: false,
-                                            answer: ques.answer.map { answer in
-                                                AnswerRequest(answer_text: answer.answer_text,
-                                                              is_correct: answer.is_correct,
-                                                              is_checked: false,
-                                                              is_answered: false)
-                                            })
+                            var answers: [AnswerRequest] = []
+                            for answer in ques.answer {
+                                answers.append(AnswerRequest(answer_text: answer.answer_text,
+                                                             is_correct: answer.is_correct,
+                                                             is_checked: false,
+                                                             is_answered: false))
+                            }
+                            return QuestionRequest(_id: ques._id,
+                                                   title: ques.title,
+                                                   type: ques.type,
+                                                   is_answered: false,
+                                                   answer: answers)
                         }
                     } else {
                         print("Get quiz by id data is nil!")
@@ -50,20 +49,28 @@ class DetailQuizViewModel: ObservableObject {
     }
 
     func setCheckedForIndexAnswer(questionId: String, indexAnswered: Int) {
-        if let index = answeredQuesList.firstIndex(where: { $0._id == questionId }) {
-            // Đặt tất cả các câu trả lời khác thành is_checked = false
-            for i in 0 ..< answeredQuesList[index].answer.count {
-                if i != indexAnswered {
-                    answeredQuesList[index].answer[i].is_checked = false
+        if answeredQuesList.firstIndex(where: { $0._id == questionId }) != nil {
+            // Tạo một bản sao mới của mảng answeredQuesList
+            answeredQuesList = answeredQuesList.map { question in
+                // Tạo một bản sao của question
+                var newQuestion = question
+
+                // Kiểm tra nếu question hiện tại là question cần thay đổi
+                if newQuestion._id == questionId {
+                    // Đặt tất cả các câu trả lời khác thành is_checked = false
+                    newQuestion.answer = newQuestion.answer.map { answer in
+                        var newAnswer = answer
+                        newAnswer.is_checked = (answer.answer_text == newQuestion.answer[indexAnswered].answer_text)
+                        return newAnswer
+                    }
+
+                    // Đặt câu trả lời tại indexAnswered thành is_checked = true
+                    newQuestion.answer[indexAnswered].is_checked = true
+                    newQuestion.is_answered = true
                 }
+
+                return newQuestion
             }
-
-            // Đặt câu trả lời tại indexAnswered thành is_checked = true
-            answeredQuesList[index].answer[indexAnswered].is_checked = true
-            answeredQuesList[index].is_answered = true
-            printJSONData(data: answeredQuesList[index])
-
-            print("**************************")
         }
     }
 
@@ -76,12 +83,11 @@ class DetailQuizViewModel: ObservableObject {
             }
             answeredQuesList[index].is_answered = true
             printJSONData(data: answeredQuesList[index])
-            print("**************************")
         }
     }
 
     func combineInformationToGetResult() {
-        var newRequest = QuizRequestModel(
+        let newRequest = QuizRequestModel(
             _id: quizData?._id ?? "",
             title: quizData?.title ?? "",
             description: quizData?.description ?? "",
