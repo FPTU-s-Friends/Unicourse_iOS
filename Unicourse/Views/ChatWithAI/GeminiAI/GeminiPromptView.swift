@@ -117,7 +117,7 @@ struct GeminiPromptView: View {
                         }
                         .disabled(textInput.isEmpty)
                     }
-                    .padding(.bottom, -30)
+                    .padding(.bottom, -20)
                     .padding(.horizontal, -20)
                     .opacity(chatService.loadingResponse ? 0 : 1) // Ẩn khi loadingResponse là true
                     .animation(.easeInOut(duration: 0.3), value: chatService.loadingResponse) // Thêm animation
