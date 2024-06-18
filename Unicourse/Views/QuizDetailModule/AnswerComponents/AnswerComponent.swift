@@ -17,26 +17,35 @@ struct AnswerComponent: View {
     @State private var selectedAnswerIndex: Int? = nil
     @State private var isExpandedAnswer: Bool = false
 
-    var question: QuestionRequest
-    @ObservedObject var vm: DetailQuizViewModel
     var typeAnswer: Type_Question
     var listAnswer: [AnswerRequest]
     var isShowAnswer: Bool
+    var question_id: String
+    @ObservedObject var vm: DetailQuizViewModel
+
+    var newListAnswer: [AnswerRequest] {
+        vm.answeredQuesList.first { question in
+            question._id == question_id
+        }?.answer ?? []
+    }
 
     var body: some View {
         VStack(spacing: 15) {
             if typeAnswer == .single {
-                ForEach(Array(listAnswer.enumerated()), id: \.element.id) { index, answer in
-                    AnswerItem(isSelected: selectedAnswerIndex == index, index: index, answerType: .single, answerTitle: answer.answer_text)
+                ForEach(Array(newListAnswer.enumerated()), id: \.element.id) { index, answer in
+                    AnswerItem(isSelected: newListAnswer[index].is_checked, index: index, answerType: .single, answerTitle: answer.answer_text)
                         .animation(.spring, value: isShowAnswer)
                         .offset(y: isShowAnswer ? 0 : CGFloat(-65 * index))
                         .opacity(isShowAnswer ? 1 : 0)
                         .onTapGesture {
                             withAnimation {
                                 selectedAnswerIndex = index
-
-                                vm.setCheckedForIndexAnswer(questionId: question._id, indexAnswered: index)
-                                print(answer)
+                                vm.setCheckedForIndexAnswer(questionId: question_id, indexAnswered: index)
+//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
+//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
+//                                printJSONData(data: vm.answeredQuesList)
+//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
+//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in
@@ -45,16 +54,18 @@ struct AnswerComponent: View {
                             }
                         }
                 }
+
             } else {
                 ForEach(Array(listAnswer.enumerated()), id: \.element.answer_text) { index, answer in
-                    AnswerItem(isSelected: listMultipleAnswer.contains(index), index: index, answerType: .multiple, answerTitle: answer.answer_text)
+                    AnswerItem(isSelected: newListAnswer[index].is_checked, index: index, answerType: .multiple, answerTitle: answer.answer_text)
                         .animation(.spring, value: isShowAnswer)
                         .offset(y: isShowAnswer ? 0 : CGFloat(-65 * index))
                         .opacity(isShowAnswer ? 1 : 0)
                         .onTapGesture {
                             withAnimation {
                                 handleSelectAnswerTypeMultiple(listMultiple: &listMultipleAnswer, item: index)
-                                vm.setCheckedForMultipleAnswer(questionId: question._id, indexAnswered: index)
+                                vm.setCheckedForMultipleAnswer(questionId: question_id, indexAnswered: index)
+//                                printJSONData(data: newListAnswer)
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in

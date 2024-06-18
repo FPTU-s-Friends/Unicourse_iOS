@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NavigationQuizButtonComponents: View {
+    @EnvironmentObject var appData: AppData
     var totalQuestion: Int
     var vm: DetailQuizViewModel
     @Binding var selectedTab: Int
@@ -72,7 +73,7 @@ struct NavigationQuizButtonComponents: View {
             })
             .alert(isPresented: $isShowConfirmResult) {
                 Alert(title: Text("Bạn có chắc chắn nộp bài?"), primaryButton: .default(Text("Xem ngay")) {
-                    vm.combineInformationToGetResult()
+                    vm.createCalculateResultOfQuiz(userId: appData.user?.userId ?? "")
                 }, secondaryButton: .destructive(Text("Kiểm tra lại")))
             }
             .padding(.vertical, 10)
