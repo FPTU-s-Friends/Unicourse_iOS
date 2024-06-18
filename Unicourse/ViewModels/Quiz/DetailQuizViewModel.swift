@@ -55,16 +55,13 @@ class DetailQuizViewModel: ObservableObject {
                 // Tạo một bản sao của question
                 var newQuestion = question
 
-                // Kiểm tra nếu question hiện tại là question cần thay đổi
                 if newQuestion._id == questionId {
-                    // Đặt tất cả các câu trả lời khác thành is_checked = false
                     newQuestion.answer = newQuestion.answer.map { answer in
                         var newAnswer = answer
                         newAnswer.is_checked = (answer.answer_text == newQuestion.answer[indexAnswered].answer_text)
                         return newAnswer
                     }
 
-                    // Đặt câu trả lời tại indexAnswered thành is_checked = true
                     newQuestion.answer[indexAnswered].is_checked = true
                     newQuestion.is_answered = true
                 }
@@ -75,14 +72,19 @@ class DetailQuizViewModel: ObservableObject {
     }
 
     func setCheckedForMultipleAnswer(questionId: String, indexAnswered: Int) {
-        if let index = answeredQuesList.firstIndex(where: { $0._id == questionId }) {
-            if answeredQuesList[index].answer[indexAnswered].is_checked == true {
-                answeredQuesList[index].answer[indexAnswered].is_checked = false
-            } else {
-                answeredQuesList[index].answer[indexAnswered].is_checked = true
+        if answeredQuesList.firstIndex(where: { $0._id == questionId }) != nil {
+            // Tạo một bản sao mới của mảng answeredQuesList
+            answeredQuesList = answeredQuesList.map { question in
+                // Tạo một bản sao của question
+                var newQuestion = question
+
+                if newQuestion._id == questionId {
+                    newQuestion.answer[indexAnswered].is_checked.toggle()
+                    newQuestion.is_answered = newQuestion.answer.contains { $0.is_checked }
+                }
+
+                return newQuestion
             }
-            answeredQuesList[index].is_answered = true
-            printJSONData(data: answeredQuesList[index])
         }
     }
 
@@ -97,9 +99,42 @@ class DetailQuizViewModel: ObservableObject {
             category: quizData?.category ?? "",
             creator_id: quizData?.creator_id ?? data.creator_id,
             viewer: quizData?.viewer ?? 0,
-            creator_role: quizData?.creator_role ?? "")
+            creator_role: quizData?.creator_role ?? ""
+        )
 
         printJSONData(data: newRequest)
+    }
+
+    func createCalculateResultOfQuiz(userId: String) -> Int {
+        let completedQuiz = QuizRequestModel(
+            _id: quizData?._id ?? "",
+            title: quizData?.title ?? "",
+            description: quizData?.description ?? "",
+            picture: quizData?.picture ?? "",
+            questions: answeredQuesList,
+            status: quizData?.status ?? "",
+            category: quizData?.category ?? "",
+            creator_id: quizData?.creator_id ?? data.creator_id,
+            viewer: quizData?.viewer ?? 0,
+            creator_role: quizData?.creator_role ?? ""
+        )
+
+        do {
+            let encoder = JSONEncoder()
+            let bodyData = try encoder.encode(completedQuiz)
+            NetworkManager.shared.callAPI2(path: APIQuizPath.calculateQuizResult(userId: userId).endPointValue, method: .post, body: bodyData) {
+                (result: Result<CommonResponse<ResultQuizCalculate>, Error>) in
+                switch result {
+                case .success(let response):
+                    printJSONData(data: response.data)
+                    return response.data?.number_right_answer
+                case .failure(let err):
+                    print(err)
+                }
+            }
+        } catch {
+            print("Error encoding QuizRequestModel: \(error)")
+        }
     }
 
     func createQuestionListResult(questionList: [Question]) -> [QuestionRequest] {
