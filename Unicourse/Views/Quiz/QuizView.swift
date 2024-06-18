@@ -38,6 +38,8 @@ struct QuizView: View {
                         }
                     }
                 }
+                .transition(.opacity.combined(with: .blurReplace))
+                .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingFetch)
                 .listRowSeparator(.hidden, edges: .all)
                 .listStyle(.inset)
                 .navigationTitle("Ôn tập 📚")

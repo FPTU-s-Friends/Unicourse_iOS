@@ -45,7 +45,10 @@ struct BlogView: View {
 
                     SkeletonBlogView()
                 }
+
                 .padding(.top, 120)
+                .transition(.opacity.combined(with: .identity))
+                .animation(.easeInOut(duration: 0.6), value: viewModel.isLoadingFetchBlog)
             } else {
                 ScrollView {
                     TopicBlogView()
@@ -53,23 +56,22 @@ struct BlogView: View {
                         TopicTextView(title: "Bài viết mới nhất")
                         if !viewModel.highLightBlogs.isEmpty {
                             LatestBlogItemView(listBlog: viewModel.highLightBlogs)
-                                .transition(.opacity.combined(with: .opacity))
-                                .animation(.easeInOut(duration: 0.8))
                         }
 
                         TopicTextView(title: "Chủ đề nổi bật")
                         if !viewModel.listBlogs.isEmpty {
                             LatestBlogItemView(listBlog: viewModel.listBlogs)
-                                .transition(.opacity.combined(with: .opacity))
-                                .animation(.easeInOut(duration: 0.8))
                         }
                     }
                     .padding(.bottom, 20)
                 }
+                .transition(.opacity.combined(with: .identity))
+                .animation(.easeInOut(duration: 0.6), value: viewModel.isLoadingFetchBlog)
             }
 
             Spacer()
         }
+
         .refreshable {
             Task {
                 viewModel.isLoadingFetchBlog = true

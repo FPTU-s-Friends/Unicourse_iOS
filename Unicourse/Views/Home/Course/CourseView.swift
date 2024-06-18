@@ -38,12 +38,9 @@ struct CourseView: View {
                         // Tracking course card
                         if vm.listEnrolledCourses.isEmpty {
                             SkeletonTrackingCourseView()
-                                .transition(.opacity.combined(with: .opacity))
-                                .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
+
                         } else {
                             TrackingCourseCard(enrollCourse: vm.listEnrolledCourses[0])
-                                .transition(.opacity.combined(with: .opacity))
-                                .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
                         }
 
                         // End tracking course card
@@ -79,6 +76,8 @@ struct CourseView: View {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
         }
+        .transition(.opacity.combined(with: .blurReplace))
+        .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
         .onAppear {
             DispatchQueue.main.async {
                 vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: false)
