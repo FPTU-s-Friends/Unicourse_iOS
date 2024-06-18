@@ -13,101 +13,118 @@ struct CourseVideoPlayerView: View {
     @StateObject var vm = StreamingVideoViewModel()
     @State private var tabSelection = 0
     @State private var videoIndex: Int = 1
+    @State private var isAnimating = false
+    @State private var isOpenGemini = false
     private var listTrackSorted: [Track] {
         listTrack.sorted(by: { ($0.position ?? 0) < ($1.position ?? 0) })
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0) {
-                // Stream view
-                VStack {
-                    VideoStreamingView(videoID: vm.selectedTrack?.content_url ?? "")
-                }
-                .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
-                .background(.gray.opacity(0.2))
+        ZStack {
+            GeometryReader { geometry in
+                VStack(spacing: 0) {
+                    // Stream view
+                    VStack {
+                        VideoStreamingView(videoID: vm.selectedTrack?.content_url ?? "")
+                    }
+                    .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.3)
+                    .background(.gray.opacity(0.2))
 
-                // Head  title
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        // Chapter     Title
-                        Text(vm.selectedTrack?.chapterTitle ?? "")
-                            .font(.system(size: 16, weight: .semibold))
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(2)
-                        // Video Title
-                        HStack {
-                            Image(systemName: "play.rectangle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 16)
-                                .foregroundStyle(Color.red)
-                            Text(vm.selectedTrack?.title ?? "")
+                    // Head  title
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            // Chapter     Title
+                            Text(vm.selectedTrack?.chapterTitle ?? "")
+                                .font(.system(size: 16, weight: .semibold))
                                 .multilineTextAlignment(.leading)
-                                .lineLimit(1)
+                                .lineLimit(2)
+                            // Video Title
+                            HStack {
+                                Image(systemName: "play.rectangle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 16)
+                                    .foregroundStyle(Color.red)
+                                Text(vm.selectedTrack?.title ?? "")
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(1)
+                            }
+                            .font(.system(size: 14, weight: .regular))
+
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 14)
+                                    .foregroundStyle(Color.UIButtonGreen)
+                                Text("Giảng viên:")
+                                Text("Giảng viên Unicourse")
+                            }
+                            .font(.system(size: 14, weight: .regular))
                         }
-                        .font(.system(size: 14, weight: .regular))
-
-                        HStack {
-                            Image(systemName: "person.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 14)
-                                .foregroundStyle(Color.UIButtonGreen)
-                            Text("Giảng viên:")
-                            Text("Giảng viên Unicourse")
+                        Spacer()
+                        Button {} label: {
+                            Image(systemName: "bookmark.square.fill")
+                                .symbolRenderingMode(.hierarchical)
+                                .font(.system(size: 40))
+                                .foregroundStyle(.blue)
                         }
-                        .font(.system(size: 14, weight: .regular))
                     }
-                    Spacer()
-                    Button {} label: {
-                        Image(systemName: "bookmark.square.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 40))
-                            .foregroundStyle(.blue)
-                    }
-                }
-                .padding(.top, 20)
-                .padding(.horizontal, 20)
+                    .padding(.top, 20)
+                    .padding(.horizontal, 20)
 
-                Spacer(minLength: 30)
+                    Spacer(minLength: 30)
 
-                // Tab view: [Danh sách phát, Thảo luận]
-                VStack {
-                    TabSelectionView(tabSelection: $tabSelection, selectionButtons: ["Danh sách phát", "Thảo luận"])
-                    Divider()
+                    // Tab view: [Danh sách phát, Thảo luận]
+                    VStack {
+                        TabSelectionView(tabSelection: $tabSelection, selectionButtons: ["Danh sách phát", "Thảo luận"])
+                        Divider()
 
-                    TabView(selection: $tabSelection) {
-                        ScrollView {
-                            VStack {
-                                ForEach(listTrackSorted, id: \._id) { track_item in
-                                    TrackItemViews(vm: vm, track_item: track_item)
+                        TabView(selection: $tabSelection) {
+                            ScrollView {
+                                VStack {
+                                    ForEach(listTrackSorted, id: \._id) { track_item in
+                                        TrackItemViews(vm: vm, track_item: track_item)
+                                    }
                                 }
                             }
-                        }
-                        .padding(.bottom, 30)
-                        .tag(0)
+                            .padding(.bottom, 30)
+                            .tag(0)
 
-                        VStack {
-                            Text("Đang cập nhật...")
+                            VStack {
+                                Text("Đang cập nhật...")
+                            }
+                            .tag(1)
                         }
-                        .tag(1)
+                        .frame(height: geometry.size.height * 0.55)
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     }
-                    .frame(height: geometry.size.height * 0.55)
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                }
+                .frame(maxHeight: .infinity)
+                .sheet(isPresented: $isOpenGemini) {
+                    GeminiPromptView(isOpenGemini: $isOpenGemini)
+                        .presentationDetents([.large])
+                        .presentationCornerRadius(30)
+                        .interactiveDismissDisabled()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        ButtonBackUIView()
+                    }
+                }
+                .onAppear {
+                    if !listTrack.isEmpty {
+                        vm.selectedTrack = listTrack[0].track_steps![0]
+                    }
                 }
             }
-            .frame(maxHeight: .infinity)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ButtonBackUIView()
+
+            ButtonDragUIView()
+                .onTapGesture {
+                    withAnimation(.spring) {
+                        isOpenGemini = true
+                    }
                 }
-            }
-            .onAppear {
-                if !listTrack.isEmpty {
-                    vm.selectedTrack = listTrack[0].track_steps![0]
-                }
-            }
         }
     }
 }

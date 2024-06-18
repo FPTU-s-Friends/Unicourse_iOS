@@ -1,112 +1,112 @@
+////
+////  GPTChatView.swift
+////  Unicourse
+////
+////  Created by Trung Kiên Nguyễn on 17/6/24.
+////
 //
-//  GPTChatView.swift
-//  Unicourse
+//import OpenAI
+//import SwiftUI
 //
-//  Created by Trung Kiên Nguyễn on 17/6/24.
+//class ChatController: ObservableObject {
+//    @Published var messages: [Message] = []
 //
-
-import SwiftUI
-
-struct GPTChatView: View {
-    // Chat messages
-    @State private var chatMessages: [ChatMessageOpenAI] = []
-    // Text input
-    @State private var messageText: String = "Hello"
-
-    var body: some View {
-        VStack {
-            ScrollView {
-                LazyVStack(spacing: 8) {
-                    ForEach(chatMessages) { chatMessage in
-                        MessageView(chatMessage: chatMessage)
-                    }
-                }
-            }
-            .padding()
-
-            HStack {
-                TextField("Enter a message", text: $messageText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                Button(action: sendMessage) {
-                    Text("Send")
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            .padding()
-        }
-    }
-
-    private func sendMessage() {
-        // Check if message text is not empty
-        guard !messageText.isEmpty else {
-            return
-        }
-
-        // Create a new chat message
-        let newMessage = ChatMessageOpenAI(content: messageText, sender: .user, dateCreated: Date())
-
-        // Add the message to chat messages
-        chatMessages.append(newMessage)
-
-        // Clear the message text
-        messageText = ""
-
-        // TODO: Send message to OpenAI API and receive response
-    }
-}
-
-struct MessageView: View {
-    let chatMessage: ChatMessageOpenAI
-
-    var body: some View {
-        VStack {
-            Text(chatMessage.content)
-                .padding()
-                .foregroundColor(.white)
-                .background(chatMessage.sender == .user ? Color.blue : Color.gray.opacity(0.1))
-                .cornerRadius(10)
-                .padding(.horizontal)
-
-            HStack {
-                if chatMessage.sender == .user {
-                    Spacer()
-                }
-
-                Text(chatMessage.dateCreated.timeAgo())
-                    .font(.caption)
-            }
-            .padding(.horizontal)
-        }
-    }
-}
-
-extension Date {
-    func timeAgo() -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        return formatter.localizedString(for: self, relativeTo: Date())
-    }
-}
-
-#Preview {
-    GPTChatView()
-}
-
-struct ChatMessageOpenAI: Identifiable {
-    let id = UUID() // Unique identifier for each message
-    let content: String
-    let sender: Sender
-    let dateCreated: Date
-
-    enum Sender {
-        case user
-        case assistant
-    }
-
-    init(content: String, sender: Sender, dateCreated: Date = Date()) {
-        self.content = content
-        self.sender = sender
-        self.dateCreated = dateCreated
-    }
-}
+//    let openAI = OpenAI(apiToken: "sk-proj-2JeiDWAVsGNNHl893CClT3BlbkFJkkXde5bMmTbeRh20AbQ9")
+//
+//    func sendNewMessage(content: String) {
+//        let userMessage = Message(content: content, isUser: true)
+//        messages.append(userMessage)
+//        getBotReply()
+//    }
+//
+//    func getBotReply() {
+//        let query = ChatQuery(
+//            messages: messages.map {
+//                .init(role: .user, content: $0.content)!
+//            },
+//            model: .gpt3_5Turbo
+//        )
+//
+//        openAI.chats(query: query) { result in
+//            switch result {
+//            case .success(let success):
+//                guard let choice = success.choices.first else {
+//                    return
+//                }
+//                guard let message = choice.message.content?.string else { return }
+//                DispatchQueue.main.async {
+//                    self.messages.append(Message(content: message, isUser: false))
+//                }
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
+//    }
+//}
+//
+//struct Message: Identifiable {
+//    var id: UUID = .init()
+//    var content: String
+//    var isUser: Bool
+//}
+//
+//struct GPTChatView: View {
+//    @StateObject var chatController: ChatController = .init()
+//    @State var string: String = ""
+//    var body: some View {
+//        VStack {
+//            ScrollView {
+//                ForEach(chatController.messages) {
+//                    message in
+//                    MessageView(message: message)
+//                        .padding(5)
+//                }
+//            }
+//            Divider()
+//            HStack {
+//                TextField("Message...", text: self.$string, axis: .vertical)
+//                    .padding(5)
+//                    .background(Color.gray.opacity(0.1))
+//                    .cornerRadius(15)
+//                Button {
+//                    self.chatController.sendNewMessage(content: string)
+//                    string = ""
+//                } label: {
+//                    Image(systemName: "paperplane")
+//                }
+//            }
+//            .padding()
+//        }
+//    }
+//}
+//
+//struct MessageView: View {
+//    var message: Message
+//    var body: some View {
+//        Group {
+//            if message.isUser {
+//                HStack {
+//                    Spacer()
+//                    Text(message.content)
+//                        .padding()
+//                        .background(Color.blue)
+//                        .foregroundColor(Color.white)
+//                        .clipShape(Capsule())
+//                }
+//            } else {
+//                HStack {
+//                    Text(message.content)
+//                        .padding()
+//                        .background(Color.black)
+//                        .foregroundColor(Color.white)
+//                        .clipShape(Capsule())
+//                    Spacer()
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//#Preview {
+//    ContentView()
+//}

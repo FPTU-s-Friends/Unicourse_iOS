@@ -68,7 +68,10 @@ struct CourseSemesterView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 34)
-                        .foregroundColor(.UIButtonGreen)
+                        .foregroundStyle(
+                            Color.white,
+                            Color.mainColor1.gradient
+                        )
                         .clipShape(Circle())
                         .overlay(
                             Circle()

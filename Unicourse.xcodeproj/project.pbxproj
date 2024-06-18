@@ -223,9 +223,14 @@
 		C5BE44C62C20171500E5FB7C /* ChatAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BE44C52C20170F00E5FB7C /* ChatAIModel.swift */; };
 		C5BE44CC2C20254700E5FB7C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44CB2C20254700E5FB7C /* Alamofire */; };
 		C5BE44D02C20256A00E5FB7C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BE44CF2C20256500E5FB7C /* OpenAIService.swift */; };
+		C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44D42C20310600E5FB7C /* OpenAI */; };
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
 		C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */; };
 		C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */; };
+		C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */; };
+		C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */; };
+		C5CDF97A2C215B020093611E /* AddToCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9792C215AFE0093611E /* AddToCartModel.swift */; };
+		C5CDF97C2C216AC00093611E /* SkeletonHistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */; };
 		C5D3C87C2C1593E50048C29A /* SkeletonQuizItemListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */; };
 		C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */; };
 		C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */; };
@@ -485,6 +490,10 @@
 		C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLearningCourses.swift; sourceTree = "<group>"; };
 		C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCourseListView.swift; sourceTree = "<group>"; };
 		C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterViewModel.swift; sourceTree = "<group>"; };
+		C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewModel.swift; sourceTree = "<group>"; };
+		C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryModel.swift; sourceTree = "<group>"; };
+		C5CDF9792C215AFE0093611E /* AddToCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartModel.swift; sourceTree = "<group>"; };
+		C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHistoryTransactionItem.swift; sourceTree = "<group>"; };
 		C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonQuizItemListUI.swift; sourceTree = "<group>"; };
 		C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemView.swift; sourceTree = "<group>"; };
 		C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionItem.swift; sourceTree = "<group>"; };
@@ -524,6 +533,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */,
 				C541DA052BE358D30022079E /* GoogleSignIn in Frameworks */,
 				C579AF7B2C00A307004BB9A6 /* SwiftyJSON in Frameworks */,
 				C524E1B72C1AFEB400F98E2B /* GoogleGenerativeAI in Frameworks */,
@@ -852,6 +862,7 @@
 				C57F274B2C0DBD4600F771DC /* SkeletonBlogDetailView.swift */,
 				C57F27532C0E997600F771DC /* SkeletonBlogView.swift */,
 				C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */,
+				C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -1351,6 +1362,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9762C213BC40093611E /* Transaction */,
 				B501BE662C171E5500F4FCEC /* DailyReward */,
 				C575C6172C1564250067D984 /* CartModels */,
 				C52151FD2C0B3101002855B6 /* BlogModels */,
@@ -1397,6 +1409,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9732C213A760093611E /* Account */,
 				B501BE632C171E2900F4FCEC /* DailyReward */,
 				C52152002C0B331C002855B6 /* Blog */,
 				C539C4CE2C09BC6D008F14B6 /* Quiz */,
@@ -1440,6 +1453,7 @@
 		C575C6172C1564250067D984 /* CartModels */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9792C215AFE0093611E /* AddToCartModel.swift */,
 				C575C6182C1564370067D984 /* CartModel.swift */,
 			);
 			path = CartModels;
@@ -1558,6 +1572,22 @@
 				B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		C5CDF9732C213A760093611E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C5CDF9762C213BC40093611E /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		C5D7DD042BF5CD4900FC0DF7 /* DiscountUI */ = {
@@ -1717,6 +1747,7 @@
 				C51F91892C1ACBF90032A922 /* FirebaseMessaging */,
 				C524E1B62C1AFEB400F98E2B /* GoogleGenerativeAI */,
 				C5BE44CB2C20254700E5FB7C /* Alamofire */,
+				C5BE44D42C20310600E5FB7C /* OpenAI */,
 			);
 			productName = Unicourse;
 			productReference = C56F69342BE2026A0093E51B /* Unicourse.app */;
@@ -1755,6 +1786,7 @@
 				C52151EE2C0AF607002855B6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 				C524E1B52C1AFEB400F98E2B /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				C5BE44CA2C20254700E5FB7C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = C56F69352BE2026A0093E51B /* Products */;
 			projectDirPath = "";
@@ -1898,6 +1930,7 @@
 				C5F038312C089AAD00EB1F97 /* AllFreeCoursesView.swift in Sources */,
 				B501BE682C171E6100F4FCEC /* DailyRewardModel.swift in Sources */,
 				B501BE6A2C1720A100F4FCEC /* APIDailyRewardPath.swift in Sources */,
+				C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */,
 				C5BE44B92C1FF14800E5FB7C /* UITextField+Extension.swift in Sources */,
 				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
@@ -1909,6 +1942,7 @@
 				C56FCCAB2C157EE1008A3BD8 /* MyCourseItemUIView.swift in Sources */,
 				C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */,
 				C54DADAD2BE9D88300E968CE /* HeaderCategoryView.swift in Sources */,
+				C5CDF97A2C215B020093611E /* AddToCartModel.swift in Sources */,
 				C541D9F92BE342DA0022079E /* OnBoardView.swift in Sources */,
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
 				B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */,
@@ -1968,6 +2002,7 @@
 				C57F27542C0E997600F771DC /* SkeletonBlogView.swift in Sources */,
 				C57F27542C0E997600F771DC /* SkeletonBlogView.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
+				C5CDF97C2C216AC00093611E /* SkeletonHistoryTransactionItem.swift in Sources */,
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
 				B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,
@@ -2015,6 +2050,7 @@
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
+				C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
 				B5F760362C1899AF00041D14 /* DailyTest.swift in Sources */,
@@ -2346,6 +2382,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2408,6 +2452,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5BE44CA2C20254700E5FB7C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C5BE44D42C20310600E5FB7C /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

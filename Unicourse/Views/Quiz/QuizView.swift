@@ -82,29 +82,29 @@ struct QuizView: View {
             SDImageCache.shared.clearMemory()
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 10) {
-                    Button(action: {
-                        viewModel.isPresentedFilter = true
-                    }) {
-                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32)
-                            .foregroundStyle(
-                                Color.mainColor3,
-                                Color.mainColor1.gradient
-                            )
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                    }
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-
-                    ButtonSearchUIView(isSearchOpen: $viewModel.isSearchBarVisible)
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewModel.isPresentedFilter = true
+                }) {
+                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 32)
+                        .foregroundStyle(
+                            Color.white,
+                            Color.mainColor1.gradient
+                        )
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color.gray, lineWidth: 0.1)
+                        )
                 }
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                ButtonSearchUIView(isSearchOpen: $viewModel.isSearchBarVisible)
             }
         }
     }

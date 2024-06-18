@@ -21,7 +21,7 @@ struct ButtonSearchUIView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 32)
                 .foregroundStyle(
-                    Color.mainColor3.gradient,
+                    Color.white,
                     Color.mainColor1.gradient
                 )
                 .clipShape(Circle())

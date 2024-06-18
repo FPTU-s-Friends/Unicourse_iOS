@@ -11,8 +11,13 @@ class CourseDetailViewModel: ObservableObject {
     @Published var courseDetail: CourseModel? = nil
     @Published var isLoading: Bool = false
     @Published var isLoadingEnroll: Bool = false
-    @Published var newCourseEnrolled: EnrolledNewCourseModel? = nil
     @Published var isShowSuccess: Bool = false
+    @Published var isLoadingAddToCart = false
+    @Published var isAddTocartSuccess = false
+    @Published var isShowingError = false
+
+    @Published var error = ""
+    @Published var newCourseEnrolled: EnrolledNewCourseModel? = nil
 
     func fetchCourseDetailById(courseId: String) {
         isLoading = true
@@ -44,6 +49,27 @@ class CourseDetailViewModel: ObservableObject {
             }
             self.isLoadingEnroll = false
             self.isShowSuccess = true
+        }
+    }
+
+    func addToCart(token: String) async throws {
+        let path = APIPath.addToCart.stringValue
+        let method = HTTPMethod.post
+        let headers = ["Authorization": "Bearer \(token)"]
+
+        do {
+            let response: CommonResponse<AddToCartResponseModel> = try await NetworkManager.shared.callAPI(path: "\(path)/\(courseDetail?._id ?? "")", method: method, headers: headers, body: nil)
+            if let data = response.data {
+                isAddTocartSuccess = true
+            } else {
+                error = "Add to cart không thành công!, hãy thử lại"
+                isShowingError = true
+            }
+
+        } catch {
+            print("Error at addToCart:", error)
+            self.error = "Add to cart không thành công!, hãy thử lại"
+            isShowingError = true
         }
     }
 
