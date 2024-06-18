@@ -18,8 +18,8 @@ enum NetworkError: Error {
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let baseURL = "https://unicourse-server-test.up.railway.app"
-//    private let baseURL = "https://unicourse-api-production.up.railway.app"
+//    private let baseURL = "https://unicourse-server-test.up.railway.app"
+    private let baseURL = "https://unicourse-api-production.up.railway.app"
 
     // MARK: - Public Methods
 
@@ -53,6 +53,7 @@ class NetworkManager {
     // MARK: - Call API Method
 
     func callAPI<T: Codable>(path: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, body: Data?) async throws -> T {
+        print(path)
         guard var urlComponents = URLComponents(string: baseURL) else {
             throw NetworkError.invalidBaseURL
         }

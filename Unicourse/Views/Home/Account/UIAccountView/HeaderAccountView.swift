@@ -31,7 +31,10 @@ struct HeaderAccountView: View {
                     .aspectRatio(contentMode: .fit)
                     .symbolRenderingMode(.multicolor)
                     .frame(width: 32)
-                    .foregroundStyle(Color.blue.gradient) // Màu sắc cho biểu tượng giỏ hàng
+                    .foregroundStyle(
+                        Color.mainColor1.gradient,
+                        Color.mainColor3.gradient
+                    )
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
                 if let cart = appData.cart, !cart.items.isEmpty {

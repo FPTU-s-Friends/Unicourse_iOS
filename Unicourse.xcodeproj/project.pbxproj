@@ -229,6 +229,8 @@
 		C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */; };
 		C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */; };
 		C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */; };
+		C5CDF97A2C215B020093611E /* AddToCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9792C215AFE0093611E /* AddToCartModel.swift */; };
+		C5CDF97C2C216AC00093611E /* SkeletonHistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */; };
 		C5D3C87C2C1593E50048C29A /* SkeletonQuizItemListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */; };
 		C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */; };
 		C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */; };
@@ -490,6 +492,8 @@
 		C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterViewModel.swift; sourceTree = "<group>"; };
 		C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewModel.swift; sourceTree = "<group>"; };
 		C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryModel.swift; sourceTree = "<group>"; };
+		C5CDF9792C215AFE0093611E /* AddToCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartModel.swift; sourceTree = "<group>"; };
+		C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHistoryTransactionItem.swift; sourceTree = "<group>"; };
 		C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonQuizItemListUI.swift; sourceTree = "<group>"; };
 		C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemView.swift; sourceTree = "<group>"; };
 		C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionItem.swift; sourceTree = "<group>"; };
@@ -858,6 +862,7 @@
 				C57F274B2C0DBD4600F771DC /* SkeletonBlogDetailView.swift */,
 				C57F27532C0E997600F771DC /* SkeletonBlogView.swift */,
 				C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */,
+				C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -1448,6 +1453,7 @@
 		C575C6172C1564250067D984 /* CartModels */ = {
 			isa = PBXGroup;
 			children = (
+				C5CDF9792C215AFE0093611E /* AddToCartModel.swift */,
 				C575C6182C1564370067D984 /* CartModel.swift */,
 			);
 			path = CartModels;
@@ -1936,6 +1942,7 @@
 				C56FCCAB2C157EE1008A3BD8 /* MyCourseItemUIView.swift in Sources */,
 				C52151FF2C0B3129002855B6 /* BlogModel.swift in Sources */,
 				C54DADAD2BE9D88300E968CE /* HeaderCategoryView.swift in Sources */,
+				C5CDF97A2C215B020093611E /* AddToCartModel.swift in Sources */,
 				C541D9F92BE342DA0022079E /* OnBoardView.swift in Sources */,
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
 				B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */,
@@ -1995,6 +2002,7 @@
 				C57F27542C0E997600F771DC /* SkeletonBlogView.swift in Sources */,
 				C57F27542C0E997600F771DC /* SkeletonBlogView.swift in Sources */,
 				C5D7DD142BF71EEE00FC0DF7 /* ButtonCheckBox.swift in Sources */,
+				C5CDF97C2C216AC00093611E /* SkeletonHistoryTransactionItem.swift in Sources */,
 				C5E98B022BFEFC5700630823 /* ShimmerEffect.swift in Sources */,
 				B5328F842C09C71000ECC191 /* NotfoundMyCourseLecture.swift in Sources */,
 				C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */,

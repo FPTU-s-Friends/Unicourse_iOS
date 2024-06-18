@@ -9,16 +9,22 @@ import SwiftUI
 
 struct CartItemView: View {
     @State private var isChecked: Bool = false
-    @State private var isCheckedAllItemPerson = false
+    @State private var isShowMore = false
     var item: CartItem
 
     var body: some View {
         VStack {
             VStack {
                 VStack(alignment: .leading) {
-                    HeaderCartItemView(isCheckedAllItemPerson: $isCheckedAllItemPerson)
+                    HeaderCartItemView(isShowMore: $isShowMore)
 
-                    CartProductItem(isChecked: $isChecked, isCheckedAllItemPerson: $isCheckedAllItemPerson, item: item)
+                    CartProductItem(isChecked: $isChecked, item: item)
+
+                    if isShowMore {
+                        VStack {
+                            Text("More detail here")
+                        }
+                    }
                 }
                 .padding()
                 .background(Color.white.cornerRadius(10))

@@ -57,12 +57,12 @@ struct HistoryTransactionItem: View {
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 80, height: 60)
+                                .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
                                 .cornerRadius(10)
                         } placeholder: {
                             RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.gray.opacity(0.2))
-                                .frame(width: 80, height: 60)
+                                .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
+                                .cornerRadius(10)
                                 .shimmerWithWave()
                         }
 

@@ -11,7 +11,10 @@ class TransactionHistoryViewModel: ObservableObject {
     @Published var transactionHistoryList: [TransactionHistoryModel] = []
     @Published var isLoadingFetching = false
     @Published var isShowingError = false
+    @Published var isLoadingFirstime = true
+    @Published var isSearchBarVisible: Bool = false
     @Published var error = ""
+    @Published var searchText = ""
 
     func getListTransactionHistory(token: String) async throws {
         let path = APIPath.getTransactionHistory.stringValue
@@ -19,7 +22,6 @@ class TransactionHistoryViewModel: ObservableObject {
         let headers = ["Authorization": "Bearer \(token)"]
 
         do {
-            isLoadingFetching = true
             let response: CommonResponse<[TransactionHistoryModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: nil)
             if let data = response.data {
                 transactionHistoryList = data
@@ -33,6 +35,5 @@ class TransactionHistoryViewModel: ObservableObject {
             self.error = "Không lấy được danh sách lịch sử giao dịch, xin hãy thử lại!"
             isShowingError = true
         }
-        isLoadingFetching = false
     }
 }

@@ -40,19 +40,23 @@ struct SearchEntryView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {}, label: {
                     HStack(spacing: 8) {
-                        Image(systemName: "ellipsis")
+                        Image(systemName: "ellipsis.circle.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 16, height: 16)
+                            .frame(width: 34)
+                            .foregroundStyle(
+                                Color.white,
+                                Color.mainColor1.gradient
+                            )
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.gray, lineWidth: 0.1)
+                            )
+                            .padding(3)
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                     }
-                    .padding(8)
-                    .background(.white)
-                    .cornerRadius(16)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .inset(by: 0.25)
-                            .stroke(Color(red: 0.26, green: 0.52, blue: 0.96), lineWidth: 0.25)
-                    )
+
                 })
             }
         }

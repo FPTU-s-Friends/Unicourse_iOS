@@ -25,6 +25,7 @@ enum APIPath {
     case likeAndUnlikeComment
     case replyComment
     case getUserCart
+    case addToCart
     case getTransactionHistory
 
     var stringValue: String {
@@ -65,6 +66,8 @@ enum APIPath {
             "/api/cart/retrieve-user-cart"
         case .getTransactionHistory:
             "/api/transactions/user"
+        case .addToCart:
+            "/api/cart/add-to-cart"
         }
     }
 }

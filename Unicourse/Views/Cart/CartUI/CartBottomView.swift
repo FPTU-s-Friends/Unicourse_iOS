@@ -9,13 +9,18 @@ import SwiftUI
 
 struct CartBottomView: View {
     @EnvironmentObject var appData: AppData
+    @State private var isShowingListVoucher = false
 
     var body: some View {
         // Bottom Cart
         VStack {
             if let cart = appData.cart, !cart.items.isEmpty {
                 VStack {
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation {
+                            isShowingListVoucher = true
+                        }
+                    }, label: {
                         HStack {
                             Image("Voucher1")
                                 .resizable()
@@ -69,6 +74,38 @@ struct CartBottomView: View {
                 .padding(.horizontal, 20)
             }
         }
+        .sheet(isPresented: $isShowingListVoucher, content: {
+            NavigationView {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Section(header: Text("Phiếu đặc biệt")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundStyle(.gray)
+                        ) {
+                            SaleItemView()
+                            SaleItemView()
+                        }
+
+                        Section(header: Text("Phiếu đặc biệt")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundStyle(.gray)
+                        ) {
+                            SaleItemView()
+                            SaleItemView()
+                            SaleItemView()
+                            SaleItemView()
+                            SaleItemView()
+                            SaleItemView()
+                        }
+                    }
+                    .padding()
+                }
+                .navigationTitle("Mã giảm giá")
+                .navigationBarTitleDisplayMode(.large)
+                .presentationDetents([.large])
+            }
+
+        })
         .background(.white)
     }
 }
