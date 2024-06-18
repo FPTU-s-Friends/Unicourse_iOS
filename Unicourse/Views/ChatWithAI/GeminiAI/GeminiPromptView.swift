@@ -78,23 +78,22 @@ struct GeminiPromptView: View {
                         }
                         .padding(.horizontal) // Thêm padding cho HStack
                     }
+                    .padding(.horizontal, -20)
                 }
 
                 if chatService.loadingResponse == false {
                     ZStack(alignment: .trailing) {
                         TextField("", text: $textInput)
                             .placeholder(when: textInput.isEmpty) {
-                                Text("Hãy hỏi thêm thông tin...")
+                                Text("Send a message...")
                                     .foregroundStyle(Color.gray.gradient)
                             }
                             .textFieldStyle(.plain)
                             .padding(.vertical, 10)
-                            .padding(.horizontal, 12)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color(uiColor: .systemGray6))
-                            )
-                            .foregroundStyle(Color.gray)
+                            .padding(.horizontal, 14)
+                            .background(Color(.secondarySystemBackground))
+                            .cornerRadius(20)
+                            .padding(.horizontal)
 
                         Button {
                             Task {
@@ -108,11 +107,12 @@ struct GeminiPromptView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 30)
                                 .foregroundStyle(textInput.isEmpty ? Color.gray.gradient : Color.mainColor1.gradient)
-                                .padding(.trailing, 5)
+                                .padding(.trailing, 25)
                         }
                         .disabled(textInput.isEmpty)
                     }
-                    .padding(.bottom, -20)
+                    .padding(.bottom, -30)
+                    .padding(.horizontal, -20)
                     .opacity(chatService.loadingResponse ? 0 : 1) // Ẩn khi loadingResponse là true
                     .animation(.easeInOut(duration: 0.3), value: chatService.loadingResponse) // Thêm animation
                 }

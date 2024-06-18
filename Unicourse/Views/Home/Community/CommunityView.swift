@@ -15,17 +15,20 @@ struct CommunityView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(1 ..< 10) { _ in
-                    ChatGroupMiniView()
+                ForEach(1 ..< 3) { _ in
+                    NavigationLink(destination: ChatView()) {
+                        ChatGroupMiniView()
+                    }
                 }
             }
-            .listStyle(.plain)
+            .listStyle(.sidebar)
+            .padding(.horizontal, -5)
             .searchable(text: $searchString, prompt: Text("Tìm kiếm"))
         }
         .background {
             Color.mainBackgroundColor.ignoresSafeArea()
         }
-        .navigationTitle("Cộng đồng ")
+        .navigationTitle("Cộng đồng 🌏")
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
@@ -44,10 +47,21 @@ struct CommunityView: View {
                         isPresentedCreateGroup = true
                     }
                 } label: {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "square.and.pencil.circle.fill")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 20)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 34)
+                        .foregroundStyle(
+                            Color.white,
+                            Color.mainColor1.gradient
+                        )
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color.gray, lineWidth: 0.1)
+                        )
+                        .padding(3)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                 }
             }
         }

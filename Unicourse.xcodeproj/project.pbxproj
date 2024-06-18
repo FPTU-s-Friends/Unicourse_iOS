@@ -231,6 +231,7 @@
 		C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */; };
 		C5CDF97A2C215B020093611E /* AddToCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF9792C215AFE0093611E /* AddToCartModel.swift */; };
 		C5CDF97C2C216AC00093611E /* SkeletonHistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */; };
+		C5CDF97F2C2182390093611E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CDF97E2C2182390093611E /* ChatView.swift */; };
 		C5D3C87C2C1593E50048C29A /* SkeletonQuizItemListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */; };
 		C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */; };
 		C5D7DD072BF5D6F500FC0DF7 /* HistoryTransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */; };
@@ -494,6 +495,7 @@
 		C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryModel.swift; sourceTree = "<group>"; };
 		C5CDF9792C215AFE0093611E /* AddToCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartModel.swift; sourceTree = "<group>"; };
 		C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHistoryTransactionItem.swift; sourceTree = "<group>"; };
+		C5CDF97E2C2182390093611E /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonQuizItemListUI.swift; sourceTree = "<group>"; };
 		C5D7DD012BF5BF0A00FC0DF7 /* SaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemView.swift; sourceTree = "<group>"; };
 		C5D7DD062BF5D6F500FC0DF7 /* HistoryTransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionItem.swift; sourceTree = "<group>"; };
@@ -1255,6 +1257,7 @@
 			children = (
 				C568817F2BF8409E00B2C3F3 /* ChatGroupItem */,
 				C56749712BE8C5CB00DA6A58 /* CommunityView.swift */,
+				C5CDF97E2C2182390093611E /* ChatView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -1978,6 +1981,7 @@
 				C5D7DD022BF5BF0A00FC0DF7 /* SaleItemView.swift in Sources */,
 				C567497B2BE8DEB200DA6A58 /* CustomProgressView.swift in Sources */,
 				B5946C422C089AD900314B7F /* LectureViewModel.swift in Sources */,
+				C5CDF97F2C2182390093611E /* ChatView.swift in Sources */,
 				C5E4165B2BEBB097003A350A /* CGFloat+Extension.swift in Sources */,
 				C58EC8FE2C0A33DA00C20151 /* GoogleLoginButtonView.swift in Sources */,
 				C56F694B2BE208AA0093E51B /* Color+Extension.swift in Sources */,
