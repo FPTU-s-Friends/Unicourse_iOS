@@ -38,12 +38,16 @@ struct GeminiPromptView: View {
                     }
                 }
                 .padding(.top, 20)
+                .padding(.top, 20)
 
                 if chatService.loadingResponse {
                     Image("geminiIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
+                        .scaleEffect(isAnimating ? 1.3 : 1.0)
+                        .opacity(isAnimating ? 1.0 : 0.6)
+                        .animation(Animation.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
                         .scaleEffect(isAnimating ? 1.3 : 1.0)
                         .opacity(isAnimating ? 1.0 : 0.6)
                         .animation(Animation.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
@@ -65,6 +69,7 @@ struct GeminiPromptView: View {
                                     VStack {
                                         Text(question)
                                             .font(.system(size: 12, weight: .light))
+                                            .foregroundStyle(Color.mainColor1.gradient)
                                             .foregroundStyle(Color.mainColor1.gradient)
                                             .frame(width: 100, height: 60, alignment: .topLeading)
                                             .padding() // Thêm padding
@@ -99,6 +104,7 @@ struct GeminiPromptView: View {
                             Task {
                                 await chatService.sendMessage(message: textInput)
                                 showSuggestions = false
+                                showSuggestions = false
                                 textInput = ""
                             }
                         } label: {
@@ -131,7 +137,9 @@ struct GeminiPromptView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: UIScreen.main.bounds.width, height: 60)
+                            .frame(width: UIScreen.main.bounds.width, height: 60)
                             .padding(.leading, 30)
+                            .padding(.top, 20)
                             .padding(.top, 20)
                     }
                 }
@@ -141,6 +149,11 @@ struct GeminiPromptView: View {
                         isOpenGemini.toggle()
                     }, label: {
                         Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(
+                                Color.white,
+                                Color.mainColor1.gradient
+                            )
                             .font(.system(size: 20))
                             .foregroundStyle(
                                 Color.white,
