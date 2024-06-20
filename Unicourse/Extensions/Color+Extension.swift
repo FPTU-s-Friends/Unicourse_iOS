@@ -31,6 +31,7 @@ extension Color {
     static let colorBackgroundCardCoinNormal = Color(hex: "#fef3c7")
     static let colorBackgroundCardCoinClaimed = Color(hex: "#6ee7b7")
     static let colorBackgroundCardCoinMissed = Color(hex: "#e7e5e4")
+
     // Color of coin
     static let accountIconColor = Color.blue
     static let notificationIconColor = Color.orange
@@ -38,6 +39,11 @@ extension Color {
     static let helpIconColor = Color.purple
     static let aboutIconColor = Color.gray
     static let closeAccountIconColor = Color.red
+
+    // Color of Result Quiz
+    static let trueAnswer = Color(hex: "#34c759")
+    static let falseAnswer = Color(hex: "#ff3b3a")
+    static let undefinedAnswer = Color(hex: "#ffcc00")
 
     init(hex: String) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
