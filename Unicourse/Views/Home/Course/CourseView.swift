@@ -62,8 +62,6 @@ struct CourseView: View {
 
                     // Current  learning  course
                     CurrentLearningCourses(showingCredits: $showingCredits, listEnrolledCourses: vm.listEnrolledCourses.reversed(), isLoadSkeleton: vm.isLoading)
-                        .transition(.opacity.combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
                         .refreshable {
                             vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: true)
                         }
@@ -76,8 +74,6 @@ struct CourseView: View {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
         }
-        .transition(.opacity.combined(with: .blurReplace))
-        .animation(.easeInOut(duration: 0.8), value: vm.isLoading)
         .onAppear {
             DispatchQueue.main.async {
                 vm.fetchListEnrolledCourses(userId: appData.user?.userId ?? mockUserId, token: appData.token, isRefresh: false)

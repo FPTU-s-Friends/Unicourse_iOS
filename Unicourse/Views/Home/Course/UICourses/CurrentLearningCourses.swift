@@ -16,15 +16,8 @@ struct CurrentLearningCourses: View {
         ScrollView {
             VStack(spacing: 16) {
                 // Title
-                PathTitle(title: "Đang học", isHaveButton: true,
-                          actionButton: { showingCredits.toggle() })
-                    .padding(.trailing, 20)
-                    .sheet(isPresented: $showingCredits) {
-                        AllCourseView()
-                            .presentationDetents([.medium])
-                    }
 
-                if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
+                    if listEnrolledCourses.isEmpty, isLoadSkeleton == true {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(0 ..< 4) { _ in
@@ -32,9 +25,17 @@ struct CurrentLearningCourses: View {
                             }
                         }
                     }
+
                 } else if listEnrolledCourses.isEmpty, isLoadSkeleton == false {
                     NotfoundView(systemName: "basket", message: "Hiện tại bạn chưa tham gia khoá học nào")
                 } else {
+                    PathTitle(title: "Đang học", isHaveButton: true,
+                              actionButton: { showingCredits.toggle() })
+                        .padding(.trailing, 20)
+                        .sheet(isPresented: $showingCredits) {
+                            AllCourseView()
+                                .presentationDetents([.medium])
+                        }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(listEnrolledCourses, id: \._id) { courseItem in
@@ -93,7 +94,6 @@ struct CurrentLearningCourses: View {
                     }
                 }
                 .safeAreaPadding(.bottom, 150)
-
             }.padding(.leading, 12)
         }
     }

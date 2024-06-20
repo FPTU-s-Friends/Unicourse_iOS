@@ -17,6 +17,8 @@ struct QuizView: View {
                 .ignoresSafeArea()
             if viewModel.isLoadingFetch == false, viewModel.filteredQuizzes.isEmpty {
                 NotfoundView(systemName: "shippingbox.fill", message: "Không tìm thấy câu hỏi phù hợp!")
+                    .transition(.opacity.combined(with: .blurReplace))
+                    .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingFetch)
                 Spacer()
             }
 
@@ -30,6 +32,8 @@ struct QuizView: View {
                 .listStyle(.inset)
                 .navigationTitle("Ôn tập 📚")
                 .navigationBarTitleDisplayMode(.large)
+                .transition(.opacity.combined(with: .blurReplace))
+                .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingFetch)
             } else {
                 List {
                     ForEach(viewModel.filteredQuizzes, id: \._id) { quiz in
@@ -38,8 +42,7 @@ struct QuizView: View {
                         }
                     }
                 }
-                .transition(.opacity.combined(with: .blurReplace))
-                .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingFetch)
+
                 .listRowSeparator(.hidden, edges: .all)
                 .listStyle(.inset)
                 .navigationTitle("Ôn tập 📚")
@@ -63,6 +66,8 @@ struct QuizView: View {
                         viewModel.isLoadingFetch = false
                     }
                 }
+                .transition(.opacity.combined(with: .blurReplace))
+                .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingFetch)
             }
         }
 

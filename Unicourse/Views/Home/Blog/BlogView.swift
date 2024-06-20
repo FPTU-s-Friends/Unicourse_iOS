@@ -47,8 +47,7 @@ struct BlogView: View {
                 }
 
                 .padding(.top, 120)
-                .transition(.opacity.combined(with: .identity))
-                .animation(.easeInOut(duration: 0.6), value: viewModel.isLoadingFetchBlog)
+
             } else {
                 ScrollView {
                     TopicBlogView()
@@ -65,13 +64,10 @@ struct BlogView: View {
                     }
                     .padding(.bottom, 20)
                 }
-                .transition(.opacity.combined(with: .identity))
-                .animation(.easeInOut(duration: 0.6), value: viewModel.isLoadingFetchBlog)
             }
 
             Spacer()
         }
-
         .refreshable {
             Task {
                 viewModel.isLoadingFetchBlog = true
