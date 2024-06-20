@@ -1038,6 +1038,7 @@
 				C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */,
 				B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */,
 				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
+				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1871,6 +1872,7 @@
 				C567493F2BE86D0100DA6A58 /* MainHomeView.swift in Sources */,
 				B5328F822C09C43A00ECC191 /* MyCourseLectureItem.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
+				B5BCFBA22C219F2C00CA653D /* ResultQuizCalculate.swift in Sources */,
 				B5BCFBA22C219F2C00CA653D /* ResultQuizCalculate.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,
 				C5D7DD102BF71DDB00FC0DF7 /* CartBottomView.swift in Sources */,

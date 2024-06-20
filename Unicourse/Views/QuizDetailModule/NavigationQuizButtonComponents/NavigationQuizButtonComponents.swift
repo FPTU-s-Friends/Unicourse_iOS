@@ -78,7 +78,6 @@ struct NavigationQuizButtonComponents: View {
                     vm.createCalculateResultOfQuiz(userId: appData.user?.userId ?? "") {
                         shouldNavigate = true
                     }
-
                 }, secondaryButton: .destructive(Text("Kiểm tra lại")))
             }
             .padding(.vertical, 10)
