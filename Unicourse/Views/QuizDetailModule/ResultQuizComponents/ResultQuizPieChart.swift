@@ -96,9 +96,8 @@ struct ResultQuizPieChart: View {
                     Color.trueAnswer,
                 ]
             )
-
             // Position the Legend
-            .chartLegend(position: .bottom, alignment: .center)
+            .chartLegend(position: .trailing, alignment: .center)
 
             // Select a sector
             .chartAngleSelection(value: $selectedAmount)
@@ -108,24 +107,24 @@ struct ResultQuizPieChart: View {
                 GeometryReader { geometry in
                     let frame = geometry[chartProxy.plotFrame!]
                     VStack(spacing: 0) {
-                        Text(selectedCategory?.category ?? "")
+                        Text(selectedCategory?.category ?? "Điểm của bạn")
                             .multilineTextAlignment(.center)
                             .font(.body)
                             .foregroundStyle(.secondary)
-                            .frame(width: 120, height: 80)
-                        Text("\(formatValue(selectedCategory?.amount ?? 0))")
+
+                        selectedCategory?.amount != nil ? Text("\(formatValue(selectedCategory?.amount ?? 30))")
                             .font(.title.bold())
                             .foregroundColor((selectedCategory != nil) ? .primary : .clear)
+                            :
+                            Text("20%")
+                            .font(.title.bold())
+                            .foregroundColor(.primary)
                     }
                     .position(x: frame.midX, y: frame.midY)
                 }
             }
-
-            .frame(height: 400)
-
-            Spacer()
+            .frame(height: 300)
         }
-
         .padding()
     }
 

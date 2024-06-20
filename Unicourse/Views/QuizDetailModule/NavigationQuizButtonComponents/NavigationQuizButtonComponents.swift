@@ -13,6 +13,8 @@ struct NavigationQuizButtonComponents: View {
     var vm: DetailQuizViewModel
     @Binding var selectedTab: Int
     @State private var isShowConfirmResult: Bool = false
+    @State private var shouldNavigate = false
+
     var canClickPrev: Bool {
         if selectedTab > 0 {
             return true
@@ -73,7 +75,10 @@ struct NavigationQuizButtonComponents: View {
             })
             .alert(isPresented: $isShowConfirmResult) {
                 Alert(title: Text("Bạn có chắc chắn nộp bài?"), primaryButton: .default(Text("Xem ngay")) {
-                    vm.createCalculateResultOfQuiz(userId: appData.user?.userId ?? "")
+                    vm.createCalculateResultOfQuiz(userId: appData.user?.userId ?? "") {
+                        shouldNavigate = true
+                    }
+
                 }, secondaryButton: .destructive(Text("Kiểm tra lại")))
             }
             .padding(.vertical, 10)
@@ -86,6 +91,10 @@ struct NavigationQuizButtonComponents: View {
             )
             .cornerRadius(8)
             .animation(.spring(), value: canClickNext)
+            // Navigation link to the result view
+            NavigationLink(destination: ResultQuizView(), isActive: $shouldNavigate) {
+                EmptyView()
+            }
         }
         .padding(.vertical, 10)
     }

@@ -41,11 +41,6 @@ struct AnswerComponent: View {
                             withAnimation {
                                 selectedAnswerIndex = index
                                 vm.setCheckedForIndexAnswer(questionId: question_id, indexAnswered: index)
-//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
-//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
-//                                printJSONData(data: vm.answeredQuesList)
-//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
-//                                print("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=")
                             }
                         }
                         .onChange(of: isShowAnswer) { _, newValue in
