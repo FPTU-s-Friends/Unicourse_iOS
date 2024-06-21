@@ -22,26 +22,56 @@ struct HelpAndSupportView: View {
                 }
 
                 Section(header: Text("Support")) {
-                    NavigationLink(destination: ContactSupportView()) {
-                        Label("Contact Support", systemImage: "envelope")
+                    NavigationLink(destination: SupportContactView()) {
+                        Label {
+                            Text("Contact Support")
+                        } icon: {
+                            Image(systemName: "envelope.circle.fill")
+                                .foregroundColor(.blue)
+                        }
                     }
                     NavigationLink(destination: LiveChatView()) {
-                        Label("Live Chat", systemImage: "message")
+                        Label {
+                            Text("Live Chat")
+                        } icon: {
+                            Image(systemName: "message.circle.fill")
+                                .foregroundColor(.green)
+                        }
                     }
                 }
 
                 Section(header: Text("Resources")) {
                     NavigationLink(destination: HelpTopicsView()) {
-                        Label("Help Topics", systemImage: "book")
+                        Label {
+                            Text("Help Topics")
+                        } icon: {
+                            Image(systemName: "book.circle.fill")
+                                .foregroundColor(.orange)
+                        }
                     }
                     NavigationLink(destination: FeedbackFormView()) {
-                        Label("Send Feedback", systemImage: "pencil")
+                        Label {
+                            Text("Send Feedback")
+                        } icon: {
+                            Image(systemName: "pencil.circle.fill")
+                                .foregroundColor(.purple)
+                        }
                     }
-                    NavigationLink(destination: WebViewUI(url: "https://unicourse.vn/privacy")) {
-                        Label("Privacy Policy", systemImage: "lock.shield")
+                    NavigationLink(destination: WebViewUI(url: "https://unicourse.vn")) {
+                        Label {
+                            Text("Privacy Policy")
+                        } icon: {
+                            Image(systemName: "lock.circle.fill")
+                                .foregroundColor(.red)
+                        }
                     }
                     NavigationLink(destination: WebViewUI(url: "https://unicourse.vn/terms")) {
-                        Label("Terms of Service", systemImage: "doc.plaintext")
+                        Label {
+                            Text("Terms of Service")
+                        } icon: {
+                            Image(systemName: "doc.circle.fill")
+                                .foregroundColor(.cyan)
+                        }
                     }
                 }
             }
@@ -50,24 +80,8 @@ struct HelpAndSupportView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss() // Dismiss the view
-                    }) {
-                        Image(systemName: "arrow.left.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34)
-                            .foregroundStyle(
-                                Color.white,
-                                Color.mainColor1.gradient
-                            )
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                            .padding(3)
-                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    ButtonCircleUIView(systemName: "arrow.left.circle.fill") {
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
@@ -88,6 +102,7 @@ let faqs: [FAQ] = [
 ]
 
 struct FAQDetailView: View {
+    @Environment(\.presentationMode) var presentationMode // To control view dismissal
     let faq: FAQ
 
     var body: some View {
@@ -103,107 +118,15 @@ struct FAQDetailView: View {
         }
         .navigationTitle("FAQ")
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct ContactSupportView: View {
-    var body: some View {
-        Form {
-            Section(header: Text("Contact Us")) {
-                Text("For support, email us at support@unicourse.com or call us at +123456789.")
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                ButtonCircleUIView(systemName: "arrow.left.circle.fill") {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
-        .navigationTitle("Contact Support")
-        .navigationBarTitleDisplayMode(.inline)
     }
-}
-
-struct LiveChatView: View {
-    var body: some View {
-        Text("Live Chat feature coming soon!")
-            .font(.headline)
-            .padding()
-            .navigationTitle("Live Chat")
-            .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct HelpTopicsView: View {
-    var body: some View {
-        List {
-            // List of help topics
-            NavigationLink(destination: HelpTopicDetailView(topic: "Getting Started")) {
-                Text("Getting Started")
-            }
-            NavigationLink(destination: HelpTopicDetailView(topic: "Managing Your Account")) {
-                Text("Managing Your Account")
-            }
-            // Add more topics as needed
-        }
-        .navigationTitle("Help Topics")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct HelpTopicDetailView: View {
-    let topic: String
-
-    var body: some View {
-        ScrollView {
-            Text("Detailed information about \(topic).")
-                .padding()
-        }
-        .navigationTitle(topic)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct FeedbackFormView: View {
-    @State private var feedback: String = ""
-    @State private var showAlert: Bool = false
-
-    var body: some View {
-        Form {
-            Section(header: Text("Send Us Feedback")) {
-                TextEditor(text: $feedback)
-                    .frame(height: 150)
-            }
-            Button("Submit") {
-                showAlert = true
-            }
-            .alert("Thank you for your feedback!", isPresented: $showAlert) {
-                Button("OK", role: .cancel) {}
-            }
-        }
-        .navigationTitle("Feedback")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct WebViewUI: View {
-    let url: String
-
-    var body: some View {
-        if let url = URL(string: url) {
-            SafariView(url: url)
-                .edgesIgnoringSafeArea(.all)
-        } else {
-            Text("Invalid URL")
-        }
-    }
-}
-
-// Helper to display web content
-import SafariServices
-
-struct SafariView: UIViewControllerRepresentable {
-    let url: URL
-
-    func makeUIViewController(context: Context) -> SFSafariViewController {
-        return SFSafariViewController(url: url)
-    }
-
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
 }
 
 #Preview {

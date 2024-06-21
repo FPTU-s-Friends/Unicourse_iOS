@@ -113,51 +113,17 @@ struct EditSheetView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Spacer()
 
-                    Button(action: {
+                    ButtonCircleUIView(systemName: "pencil.circle.fill") {
                         isShowingFieldEdit = true
-                    }, label: {
-                        Image(systemName: "pencil.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34)
-                            .foregroundStyle(
-                                Color.white,
-                                Color.mainColor1.gradient
-                            )
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                            .padding(3)
-                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    })
+                    }
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
+                    ButtonCircleUIView(systemName: "xmark.circle.fill") {
                         withAnimation {
                             isPresentEditSheet = false
                         }
-                    }, label: {
-                        HStack {
-                            Image(systemName: "xmark.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 34)
-                                .foregroundStyle(
-                                    Color.white,
-                                    Color.mainColor1.gradient
-                                )
-                                .clipShape(Circle())
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.gray, lineWidth: 0.1)
-                                )
-                                .padding(3)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                        }
-                    })
+                    }
                 }
             }
             .padding(.horizontal, 20)

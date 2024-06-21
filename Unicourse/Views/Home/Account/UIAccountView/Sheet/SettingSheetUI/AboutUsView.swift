@@ -13,89 +13,125 @@ struct AboutUsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .center, spacing: 20) {
-                    // Use the app icon image from assets
-                    Image("appIcon") // Use string literal for image name
+                VStack(alignment: .leading, spacing: 10) {
+                    // Top Banner Image
+                    Image("MainBanner")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
-                        .clipShape(Circle())
-                        .padding(.top, 20)
-                    
-                    Text("Welcome to Unicourse, your number one source for all things related to online courses. We're dedicated to providing you the very best of education, with an emphasis on quality content, expert instructors, and exceptional support.")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                    
-                    Divider()
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Our Mission")
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                        .aspectRatio(contentMode: .fill)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 5)
+                
+                    // App Icon and Introduction
+                    HStack(alignment: .center, spacing: 15) {
+                        Image("appIcon") // Ensure this image exists in your assets
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
                         
-                        Text("Our mission is to make quality education accessible to everyone, everywhere. We aim to empower learners by providing them with the tools and knowledge they need to succeed in their personal and professional lives.")
+                        Text("Welcome to Unicourse, your number one source for all things related to online courses. We're dedicated to providing you the very best of education, with an emphasis on quality content, expert instructors, and exceptional support.")
                             .font(.body)
                             .foregroundColor(.secondary)
+                            .multilineTextAlignment(.leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
                     
-                    Divider()
+                    // Our Mission Section
+                    sectionView(
+                        title: "Our Mission",
+                        text: "Our mission is to make quality education accessible to everyone, everywhere. We aim to empower learners by providing them with the tools and knowledge they need to succeed in their personal and professional lives.",
+                        imageName: "home-banner2" // Add a relevant image in your assets
+                    )
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Our Vision")
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                    // Our Vision Section
+                    sectionView(
+                        title: "Our Vision",
+                        text: "We envision a world where anyone, regardless of location or background, can access the education they need to achieve their dreams. We strive to create a community of lifelong learners who are passionate about personal growth and development.",
+                        imageName: "home-banner3" // Add a relevant image in your assets
+                    )
+                    
+                    // Contact Us Section
+                    VStack(alignment: .leading, spacing: 15) {
+                        Image("contactUsImage") // Ensure this image exists in your assets
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity)
+                            .clipped()
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
                         
-                        Text("We envision a world where anyone, regardless of location or background, can access the education they need to achieve their dreams. We strive to create a community of lifelong learners who are passionate about personal growth and development.")
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Divider()
-                    
-                    VStack(alignment: .leading, spacing: 10) {
                         Text("Contact Us")
                             .font(.title2)
                             .fontWeight(.semibold)
                         
-                        Text("Have any questions or feedback? We'd love to hear from you! Reach out to us at contact@unicourse.com.")
+                        Text("Have any questions or feedback? We'd love to hear from you! Reach out to us at ")
                             .font(.body)
                             .foregroundColor(.secondary)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.blue)
+                            .underline()
+                        
+                        Text("[unicourse.learningplatform@gmail.com](mailto:unicourse.learningplatform@gmail.com)")
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 10)
+                    .padding(.top, 10)
+                    
+                    // Visit Us Section
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Visit Us")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        
+                        Text("For more information, visit our website at ")
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.blue)
+                            .underline()
+                        
+                        Text("[unicourse.vn](https://unicourse.vn)")
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.top, 10)
                     
                     Spacer()
                 }
-                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
             }
             .navigationTitle("About Us")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss() // Dismiss the view
-                    }) {
-                        Image(systemName: "arrow.left.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34)
-                            .foregroundStyle(
-                                Color.white,
-                                Color.mainColor1.gradient
-                            )
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.gray, lineWidth: 0.1)
-                            )
-                            .padding(3)
-                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    ButtonCircleUIView(systemName: "arrow.left.circle.fill") {
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
         }
+    }
+    
+    // Helper View to create sections with title, text, and image
+    private func sectionView(title: String, text: String, imageName: String) -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Image(imageName) // Ensure this image exists in your assets
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+                .clipped()
+                .cornerRadius(10)
+                .shadow(radius: 5)
+            
+            Text(title)
+                .font(.title2)
+                .fontWeight(.semibold)
+            
+            Text(text)
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 10)
+        .padding(.top, 10)
     }
 }
 

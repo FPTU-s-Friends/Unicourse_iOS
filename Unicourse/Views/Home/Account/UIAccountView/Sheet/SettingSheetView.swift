@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct SettingSheetView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("Tài Khoản ")) {
-                    Button(action: {
-                        print("Account Settings tapped")
-                    }) {
+                    NavigationLink {
+                        AccountSettingsView()
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
                         HStack {
                             Image(systemName: "person.circle")
                                 .resizable()
@@ -27,9 +30,10 @@ struct SettingSheetView: View {
                 }
 
                 Section(header: Text("Thông Báo")) {
-                    Button(action: {
-                        print("Notifications tapped")
-                    }) {
+                    NavigationLink {
+                        NotificationSettingView()
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
                         HStack {
                             Image(systemName: "bell.circle")
                                 .resizable()
@@ -42,9 +46,10 @@ struct SettingSheetView: View {
                 }
 
                 Section(header: Text("Điều Khoản")) {
-                    Button(action: {
-                        print("Privacy tapped")
-                    }) {
+                    NavigationLink {
+                        PrivacyView()
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
                         HStack {
                             Image(systemName: "lock.circle")
                                 .resizable()
@@ -52,6 +57,21 @@ struct SettingSheetView: View {
                                 .frame(width: 20)
                                 .foregroundColor(.privacyIconColor)
                             Text("Privacy")
+                        }
+                    }
+                }
+
+                Section(header: Text("Visit Us")) {
+                    NavigationLink {
+                        WebViewUI(url: "https://unicourse.vn")
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe.central.south.asia.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20)
+                                .foregroundColor(.blue)
+                            Text("Website")
                         }
                     }
                 }
@@ -105,7 +125,13 @@ struct SettingSheetView: View {
             .listStyle(InsetGroupedListStyle()) // Use a different list style for a better appearance
             .navigationTitle("Cài đặt ⚙️")
             .navigationBarTitleDisplayMode(.large)
-            .navigationBarItems(leading: ButtonBackUIView())
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    ButtonCircleUIView(systemName: "arrow.left.circle.fill") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
         }
     }
 }
@@ -113,3 +139,5 @@ struct SettingSheetView: View {
 #Preview {
     SettingSheetView()
 }
+
+import SwiftUI

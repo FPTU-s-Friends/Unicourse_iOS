@@ -11,12 +11,13 @@ struct ContentView: View {
     @EnvironmentObject var appData: AppData
     @EnvironmentObject var socketIOManager: SocketIOManager
     @StateObject var viewModel = ContentViewModel()
+    @State private var activeTab: Tab = .home
 
     var body: some View {
         ZStack {
             NavigationStack {
                 if appData.isLoggedIn {
-                    CustomHomeView()
+                    CustomHomeView(activeTab: $activeTab)
                 } else {
                     OnBoardView()
                 }
