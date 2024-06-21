@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct CustomHomeView: View {
-    @State private var activeTab: Tab = .home
+    @Binding var activeTab: Tab
     @State private var tabShapePosition: CGPoint = .zero
     @Namespace private var animation
 
@@ -65,7 +65,7 @@ struct CustomHomeView: View {
 
 #Preview {
     NavigationStack {
-        CustomHomeView()
+        CustomHomeView(activeTab: .constant(.home))
             .environmentObject(AppData())
     }
 }

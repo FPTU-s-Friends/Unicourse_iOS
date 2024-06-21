@@ -45,6 +45,12 @@ extension Color {
     static let falseAnswer = Color(hex: "#ff3b3a")
     static let undefinedAnswer = Color(hex: "#ffcc00")
 
+    // Color of Result Answer List
+    static let trueBackgroundAnswerText = Color(hex: "#ecfccb")
+    static let trueAnswerText = Color(hex: "#4d7c0f")
+    static let falseBackgroundAnswerText = Color(hex: "#fee2e2")
+    static let falseAnswerText = Color(hex: "#dc2626")
+
     init(hex: String) {
         var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         if hexString.hasPrefix("#") {

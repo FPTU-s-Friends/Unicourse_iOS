@@ -64,7 +64,7 @@ struct LoginView: View {
                     Spacer()
 
                     NavigationLink(
-                        destination: CustomHomeView()
+                        destination: CustomHomeView(activeTab: .constant(.home))
                             .navigationBarBackButtonHidden(true),
                         isActive: Binding<Bool>(
                             get: { appData.userInfo != nil },

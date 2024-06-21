@@ -78,6 +78,7 @@ struct NavigationQuizButtonComponents: View {
                     vm.createCalculateResultOfQuiz(userId: appData.user?.userId ?? "") {
                         shouldNavigate = true
                     }
+
                 }, secondaryButton: .destructive(Text("Kiểm tra lại")))
             }
             .padding(.vertical, 10)
@@ -90,11 +91,11 @@ struct NavigationQuizButtonComponents: View {
             )
             .cornerRadius(8)
             .animation(.spring(), value: canClickNext)
-            // Navigation link to the result view
-            NavigationLink(destination: ResultQuizView(), isActive: $shouldNavigate) {
-                EmptyView()
-            }
         }
+        .navigationDestination(isPresented: $shouldNavigate) {
+            ResultQuizView(resultAnswerd: vm.resultQuesList ?? ResultQuizCalculate.mockData)
+        }
+        .navigationBarBackButtonHidden()
         .padding(.vertical, 10)
     }
 }
