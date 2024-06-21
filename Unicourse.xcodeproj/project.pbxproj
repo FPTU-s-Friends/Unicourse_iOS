@@ -1047,6 +1047,7 @@
 				C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */,
 				B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */,
 				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
+				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
