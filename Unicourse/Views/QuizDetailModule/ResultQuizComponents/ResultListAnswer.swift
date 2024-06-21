@@ -8,15 +8,27 @@
 import SwiftUI
 
 struct ResultListAnswer: View {
+    var listAnswerd: [QuestionResponseResult]
+
     var body: some View {
         ScrollView {
-            VStack {
-                Text("Câu trả lời của bạn mai làm =)))")
+            LazyVStack {
+                ForEach(Array(listAnswerd.enumerated()), id: \.element._id) { index, ques in
+                    ExpandableView(thumbnail: ThumbnailView(content: {
+                        ResultListAnswerHeader(index: index + 1, questionTitle: ques.title)
+                    }), expanded: ExpandedView(content: {
+                        VStack(spacing: 0) {
+                            ResultListAnswerHeader(index: index + 1, questionTitle: ques.title)
+                            ResultListAnswerContent(typeAnswer: ques.type, listAnswer: ques.answer, isCorrectAnswer: ques.user_correct)
+                        }
+                        .frame(maxWidth: .infinity)
+                    }))
+                }
             }
         }
     }
 }
 
 #Preview {
-    ResultListAnswer()
+    ResultListAnswer(listAnswerd: ResultQuizCalculate.mockData.questions)
 }

@@ -44,6 +44,9 @@
 		B549E4E62C0B2F07003347A3 /* CombineQnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549E4E52C0B2F07003347A3 /* CombineQnA.swift */; };
 		B55015FF2C0892E6006CC44F /* APILecturePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55015FE2C0892E6006CC44F /* APILecturePath.swift */; };
 		B55016022C089882006CC44F /* LectureInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55016012C089882006CC44F /* LectureInfoView.swift */; };
+		B561A5242C25442E00506C00 /* ResultListAnswerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561A5232C25442E00506C00 /* ResultListAnswerHeader.swift */; };
+		B561A5262C25493900506C00 /* ResultListAnswerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561A5252C25493900506C00 /* ResultListAnswerContent.swift */; };
+		B561A5282C25555700506C00 /* ResultQuizAnswerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561A5272C25555700506C00 /* ResultQuizAnswerItem.swift */; };
 		B578A8902BFC9309003CBFFA /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578A88F2BFC9309003CBFFA /* CourseViewModel.swift */; };
 		B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578A8922BFCBFA7003CBFFA /* CourseListView.swift */; };
 		B578A8952BFCD081003CBFFA /* ISOStringConvertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578A8942BFCD081003CBFFA /* ISOStringConvertHelper.swift */; };
@@ -320,6 +323,9 @@
 		B549E4E52C0B2F07003347A3 /* CombineQnA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineQnA.swift; sourceTree = "<group>"; };
 		B55015FE2C0892E6006CC44F /* APILecturePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILecturePath.swift; sourceTree = "<group>"; };
 		B55016012C089882006CC44F /* LectureInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureInfoView.swift; sourceTree = "<group>"; };
+		B561A5232C25442E00506C00 /* ResultListAnswerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultListAnswerHeader.swift; sourceTree = "<group>"; };
+		B561A5252C25493900506C00 /* ResultListAnswerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultListAnswerContent.swift; sourceTree = "<group>"; };
+		B561A5272C25555700506C00 /* ResultQuizAnswerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultQuizAnswerItem.swift; sourceTree = "<group>"; };
 		B578A88F2BFC9309003CBFFA /* CourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel.swift; sourceTree = "<group>"; };
 		B578A8922BFCBFA7003CBFFA /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
 		B578A8942BFCD081003CBFFA /* ISOStringConvertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOStringConvertHelper.swift; sourceTree = "<group>"; };
@@ -797,6 +803,9 @@
 			children = (
 				B5BC20F12C2436EB00354C69 /* ResultQuizPieChart.swift */,
 				B5BC20F72C24627E00354C69 /* ResultListAnswer.swift */,
+				B561A5232C25442E00506C00 /* ResultListAnswerHeader.swift */,
+				B561A5252C25493900506C00 /* ResultListAnswerContent.swift */,
+				B561A5272C25555700506C00 /* ResultQuizAnswerItem.swift */,
 			);
 			path = ResultQuizComponents;
 			sourceTree = "<group>";
@@ -2013,6 +2022,7 @@
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C52151ED2C0AD7CC002855B6 /* BannerModel.swift in Sources */,
+				B561A5242C25442E00506C00 /* ResultListAnswerHeader.swift in Sources */,
 				C5D7DD122BF71E8E00FC0DF7 /* CartItemView.swift in Sources */,
 				C5B2875F2C0C6F3900906F10 /* String+Extension.swift in Sources */,
 				C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */,
@@ -2048,6 +2058,7 @@
 				B5CB1FD22C1B176400AF51B4 /* ClaimCoin.swift in Sources */,
 				C567495A2BE88FD200DA6A58 /* SignInResponseModel.swift in Sources */,
 				B5C54C3D2BEB9204008A6A45 /* ButtonGradient.swift in Sources */,
+				B561A5262C25493900506C00 /* ResultListAnswerContent.swift in Sources */,
 				C5D8D5F72BFEFA6C00DE7EBA /* SkeletonCourseCard.swift in Sources */,
 				B50030C12BFF65C000508314 /* SkeletonLectureInfo.swift in Sources */,
 				B501BE652C171E3B00F4FCEC /* DailyRewardViewModel.swift in Sources */,
@@ -2086,6 +2097,7 @@
 				C579AF7D2C00A5BC004BB9A6 /* PrintDataJSON.swift in Sources */,
 				C579AF762C0056CF004BB9A6 /* SearchSuggestTextView.swift in Sources */,
 				C596D7BD2BF73810004D02F9 /* CourseVideoPlayerView.swift in Sources */,
+				B561A5282C25555700506C00 /* ResultQuizAnswerItem.swift in Sources */,
 				B5BE39EA2BF71CCD00F6BD3A /* ConvertDateToString.swift in Sources */,
 				C57F274C2C0DBD4600F771DC /* SkeletonBlogDetailView.swift in Sources */,
 				C57F274C2C0DBD4600F771DC /* SkeletonBlogDetailView.swift in Sources */,
