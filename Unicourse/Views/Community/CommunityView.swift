@@ -13,22 +13,41 @@ struct CommunityView: View {
     @State var isPresentedCreateGroup = false
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(1 ..< 3) { _ in
-                    NavigationLink(destination: ChatView()) {
-                        ChatGroupMiniView()
-                    }
+        ScrollView {
+            ForEach(1 ..< 3) { _ in
+                NavigationLink {
+                    ChatView()
+                        .navigationTitle("Group Chat 1")
+                        .navigationBarBackButtonHidden(true)
+
+                } label: {
+                    ChatGroupMiniView()
                 }
             }
-            .listStyle(.sidebar)
-            .padding(.horizontal, -5)
+
+            .padding(.horizontal, 10)
             .searchable(text: $searchString, prompt: Text("Tìm kiếm"))
         }
+
         .background {
-            Color.mainBackgroundColor.ignoresSafeArea()
+            ZStack {
+                Color.mainBackgroundColor.ignoresSafeArea()
+                AsyncImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/FPT_logo_2010.svg/1200px-FPT_logo_2010.svg.png")) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: UIScreen.main.bounds.width * 0.3, height: 500)
+                        .opacity(0.2)
+                } placeholder: {
+                    RoundedRectangle(cornerRadius: 20)
+                        .frame(width: UIScreen.main.bounds.width * 0.3, height: 500)
+                        .foregroundStyle(.white)
+                        .shimmerWithWave()
+                }
+            }
         }
         .navigationTitle("Cộng đồng 🌏")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)

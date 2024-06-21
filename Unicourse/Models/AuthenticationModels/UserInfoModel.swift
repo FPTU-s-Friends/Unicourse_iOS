@@ -68,15 +68,15 @@ struct WisListUserInfo: Codable {
 struct UserInfoModel: Codable {
     let _id: String
     let email: String
-    let fullName: String
-    let profileName: String?
-    let dateOfBirth: String?
+    var fullName: String
+    var profileName: String?
+    var dateOfBirth: String?
     let enrollCourses: [EnrollCourseUserInfo]?
     let role: UserRole
     let isCommentBlocked: Bool
     let isBlocked: Bool
     let isChatBlocked: Bool
-    let profileImage: String
+    var profileImage: String
     let publishedAt: String?
     let userClass: Int?
     let coins: [CoinsUserInfoModel]? // chỉnh sửa sau

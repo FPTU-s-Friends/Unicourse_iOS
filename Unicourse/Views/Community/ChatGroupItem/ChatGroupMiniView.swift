@@ -25,6 +25,9 @@ struct ChatGroupMiniView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Phòng chat Kỳ 1")
                     .font(.system(size: 16, weight: .semibold))
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(1)
+                    .foregroundStyle(Color.black)
 
                 Text("Xin chào, tôi đã nhận được email về khoản phí mà tôi không xác định được. Bạn có thể giúp tôi điều tra bộ lông này không")
                     .font(.system(size: 14, weight: .light))
@@ -43,7 +46,11 @@ struct ChatGroupMiniView: View {
             .padding(.horizontal, 10)
         }
         .padding(.horizontal, 10)
-        .padding(.top, 16)
+        .padding(.vertical, 5)
+//        .background {
+//            Color.mainColor3
+//                .cornerRadius(20)
+//        }
     }
 }
 

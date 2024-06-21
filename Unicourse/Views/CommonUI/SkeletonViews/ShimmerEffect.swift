@@ -17,35 +17,30 @@ extension View {
 }
 
 struct WaveShimmer: View {
-    @State private var phase: CGFloat = 0
+    @State private var phase: CGFloat = -20
 
     var body: some View {
-        LinearGradient(
-            gradient: Gradient(colors: [.clear, Color.mainColor1, .clear]),
-            startPoint: .leading,
-            endPoint: .trailing
-        )
-        .frame(width: 600, height: 400)
-        .offset(x: self.phase)
-        .onAppear {
-            withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
-                self.phase = 400
+        GeometryReader { geometry in
+            LinearGradient(
+                gradient: Gradient(colors: [.clear, Color.mainColor1.opacity(0.7), .clear]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .offset(x: self.phase)
+            .onAppear {
+                withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                    self.phase = geometry.size.width
+                }
             }
+            .scaleEffect(x: 1.1, y: 1, anchor: .center)
         }
-        .mask(
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.clear, Color.mainColor1.opacity(2), .clear]),
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .scaleEffect(x: 1.5, y: 1, anchor: .center)
-        )
     }
 }
 
 #Preview {
-    WaveShimmer()
+    RoundedRectangle(cornerRadius: 10)
+        .frame(width: 200, height: 100)
+        .foregroundColor(.gray)
+        .shimmerWithWave()
 }

@@ -17,8 +17,7 @@ struct AccountView: View {
                 .ignoresSafeArea()
 
             VStack {
-                HeaderAccountView(isPresentedEditSheet: $viewModel.isPresentedEditSheet,
-                                  isPresentedSettingSheet: $viewModel.isPresentedSettingSheet)
+                HeaderAccountView(isPresentedEditSheet: $viewModel.isPresentedEditSheet, isNavigateToSettingView: $viewModel.isNavigateToSettingView)
                     .padding(.trailing, 10)
                     .padding(.top, 20)
 
@@ -37,56 +36,15 @@ struct AccountView: View {
                     .padding(.horizontal, 30)
                 }
             }
-            .sheet(isPresented: $viewModel.isPresentedEditSheet, content: {
-                NavigationView {
-                    EditSheetView()
-                        .navigationTitle("Thông tin")
-                        .navigationBarTitleDisplayMode(.large)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button(action: {
-                                    withAnimation {
-                                        viewModel.isPresentedEditSheet = false
-                                    }
-                                }, label: {
-                                    HStack {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20)
-                                            .foregroundStyle(Color.gray)
-                                    }
-                                })
-                            }
-                        }
-                }
-                .presentationDetents([.large])
+            .navigationDestination(isPresented: $viewModel.isNavigateToSettingView, destination: {
+                SettingSheetView()
+                    .navigationBarBackButtonHidden(true)
 
             })
-            .sheet(isPresented: $viewModel.isPresentedSettingSheet, content: {
-                NavigationView {
-                    SettingSheetView()
-                        .navigationTitle("Cài đặt ⚙️")
-                        .navigationBarTitleDisplayMode(.large)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button(action: {
-                                    withAnimation {
-                                        viewModel.isPresentedSettingSheet = false
-                                    }
-                                }, label: {
-                                    HStack {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20)
-                                            .foregroundStyle(Color.gray)
-                                    }
-                                })
-                            }
-                        }
-                }
-                .presentationDetents([.large])
+            .sheet(isPresented: $viewModel.isPresentedEditSheet, content: {
+                EditSheetView(isPresentEditSheet: $viewModel.isPresentedEditSheet)
+                    .presentationDetents([.large])
+                    .interactiveDismissDisabled()
 
             })
 

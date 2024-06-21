@@ -228,7 +228,10 @@
 		C5BE44CC2C20254700E5FB7C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44CB2C20254700E5FB7C /* Alamofire */; };
 		C5BE44D02C20256A00E5FB7C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BE44CF2C20256500E5FB7C /* OpenAIService.swift */; };
 		C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44D42C20310600E5FB7C /* OpenAI */; };
-		C5BE44D52C20310600E5FB7C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C5BE44D42C20310600E5FB7C /* OpenAI */; };
+		C5C0076E2C255FDB0098DF4D /* EditUserProfileFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C0076D2C255FDB0098DF4D /* EditUserProfileFieldView.swift */; };
+		C5C007712C256F7B0098DF4D /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C007702C256F740098DF4D /* UserResponseModel.swift */; };
+		C5C007742C2582240098DF4D /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C007732C2582240098DF4D /* AboutUsView.swift */; };
+		C5C007762C2583B40098DF4D /* HelpAndSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C007752C2583B40098DF4D /* HelpAndSupportView.swift */; };
 		C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */; };
 		C5C665A52BFF212A009A733B /* SkeletonCourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */; };
 		C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */; };
@@ -497,6 +500,10 @@
 		C5BE44BB2C2010CB00E5FB7C /* GPTChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTChatView.swift; sourceTree = "<group>"; };
 		C5BE44C52C20170F00E5FB7C /* ChatAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAIModel.swift; sourceTree = "<group>"; };
 		C5BE44CF2C20256500E5FB7C /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		C5C0076D2C255FDB0098DF4D /* EditUserProfileFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileFieldView.swift; sourceTree = "<group>"; };
+		C5C007702C256F740098DF4D /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
+		C5C007732C2582240098DF4D /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		C5C007752C2583B40098DF4D /* HelpAndSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpAndSupportView.swift; sourceTree = "<group>"; };
 		C5C665A22BFF1CEA009A733B /* CurrentLearningCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLearningCourses.swift; sourceTree = "<group>"; };
 		C5C665A42BFF212A009A733B /* SkeletonCourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCourseListView.swift; sourceTree = "<group>"; };
 		C5C665A62BFF2B9C009A733B /* CourseSemesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSemesterViewModel.swift; sourceTree = "<group>"; };
@@ -886,7 +893,6 @@
 				C57F27532C0E997600F771DC /* SkeletonBlogView.swift */,
 				C5D3C87B2C1593E50048C29A /* SkeletonQuizItemListUI.swift */,
 				C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */,
-				C5CDF97B2C216AC00093611E /* SkeletonHistoryTransactionItem.swift */,
 			);
 			path = SkeletonViews;
 			sourceTree = "<group>";
@@ -1043,7 +1049,6 @@
 				C539C4D22C09BD72008F14B6 /* AllQuizModel.swift */,
 				B50C4AD82C0D76D40099B228 /* DetailQuizModel.swift */,
 				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
-				B5BCFBA12C219F2C00CA653D /* ResultQuizCalculate.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1166,6 +1171,7 @@
 				C53E804B2BF0BDD8003DFC4B /* UIAccountView */,
 				C53E803A2BF0AE38003DFC4B /* SubView */,
 				C54DADB32BE9E51300E968CE /* AccountView.swift */,
+				C5C0076D2C255FDB0098DF4D /* EditUserProfileFieldView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1186,7 +1192,6 @@
 				C5DEAA542C075A4500955E1C /* SubHomeView */,
 				C52151F32C0B0D48002855B6 /* Blog */,
 				C54DADB22BE9E50000E968CE /* Account */,
-				C567496C2BE8C56A00DA6A58 /* Community */,
 				C567496B2BE8C56500DA6A58 /* Course */,
 				C567496A2BE8C55900DA6A58 /* Home */,
 				C567493E2BE86D0100DA6A58 /* MainHomeView.swift */,
@@ -1389,7 +1394,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C5CDF9762C213BC40093611E /* Transaction */,
+				C5C0076F2C256F6E0098DF4D /* User */,
 				C5CDF9762C213BC40093611E /* Transaction */,
 				B501BE662C171E5500F4FCEC /* DailyReward */,
 				C575C6172C1564250067D984 /* CartModels */,
@@ -1412,6 +1417,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C567496C2BE8C56A00DA6A58 /* Community */,
 				C524E1B02C1AE90F00F98E2B /* ChatWithAI */,
 				B50C4ADE2C0DE0AB0099B228 /* DailyRewards */,
 				B549E4D02C0AFB8F003347A3 /* QuizDetailModule */,
@@ -1438,7 +1444,6 @@
 			isa = PBXGroup;
 			children = (
 				C5CDF9732C213A760093611E /* Account */,
-				C5CDF9732C213A760093611E /* Account */,
 				B501BE632C171E2900F4FCEC /* DailyReward */,
 				C52152002C0B331C002855B6 /* Blog */,
 				C539C4CE2C09BC6D008F14B6 /* Quiz */,
@@ -1464,6 +1469,7 @@
 		C56FCCA42C1579D7008A3BD8 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
+				C5C007722C2582120098DF4D /* SettingSheetUI */,
 				C56FCCA92C157EC8008A3BD8 /* EditSheetUI */,
 				C56FCCA52C1579E9008A3BD8 /* EditSheetView.swift */,
 				C56FCCA72C157A4D008A3BD8 /* SettingSheetView.swift */,
@@ -1482,7 +1488,6 @@
 		C575C6172C1564250067D984 /* CartModels */ = {
 			isa = PBXGroup;
 			children = (
-				C5CDF9792C215AFE0093611E /* AddToCartModel.swift */,
 				C5CDF9792C215AFE0093611E /* AddToCartModel.swift */,
 				C575C6182C1564370067D984 /* CartModel.swift */,
 			);
@@ -1576,6 +1581,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C5C0076F2C256F6E0098DF4D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C5C007702C256F740098DF4D /* UserResponseModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C5C007722C2582120098DF4D /* SettingSheetUI */ = {
+			isa = PBXGroup;
+			children = (
+				C5C007732C2582240098DF4D /* AboutUsView.swift */,
+				C5C007752C2583B40098DF4D /* HelpAndSupportView.swift */,
+			);
+			path = SettingSheetUI;
+			sourceTree = "<group>";
+		};
 		C5C665A82BFF3214009A733B /* AuthenticationModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,22 +1624,6 @@
 				B5D2BB012C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift */,
 			);
 			path = ResponseModels;
-			sourceTree = "<group>";
-		};
-		C5CDF9732C213A760093611E /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				C5CDF9742C213A7E0093611E /* TransactionHistoryViewModel.swift */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
-		C5CDF9762C213BC40093611E /* Transaction */ = {
-			isa = PBXGroup;
-			children = (
-				C5CDF9772C213BD70093611E /* TransactionHistoryModel.swift */,
-			);
-			path = Transaction;
 			sourceTree = "<group>";
 		};
 		C5CDF9732C213A760093611E /* Account */ = {
@@ -1982,6 +1988,7 @@
 				B501BE6A2C1720A100F4FCEC /* APIDailyRewardPath.swift in Sources */,
 				C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */,
 				C5CDF9752C213A880093611E /* TransactionHistoryViewModel.swift in Sources */,
+				C5C007742C2582240098DF4D /* AboutUsView.swift in Sources */,
 				C5BE44B92C1FF14800E5FB7C /* UITextField+Extension.swift in Sources */,
 				C579AF702C002C7B004BB9A6 /* DefaultTextUI.swift in Sources */,
 				C56749462BE870B500DA6A58 /* AppDelegate.swift in Sources */,
@@ -2000,6 +2007,7 @@
 				C56749672BE89A7C00DA6A58 /* SignUpRequestModel.swift in Sources */,
 				B578A8932BFCBFA7003CBFFA /* CourseListView.swift in Sources */,
 				B5F06B152C007747001316BC /* NotfoundView.swift in Sources */,
+				C5C007712C256F7B0098DF4D /* UserResponseModel.swift in Sources */,
 				C567494F2BE87D5D00DA6A58 /* LoginViewModel.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
 				C5E98B062BFF112E00630823 /* CourseSemesterView.swift in Sources */,
@@ -2108,6 +2116,7 @@
 				B5BC20F42C244B6900354C69 /* ResultQuizView.swift in Sources */,
 				C541DA172BE37AFE0022079E /* OnboardViewModel.swift in Sources */,
 				C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */,
+				C5C007762C2583B40098DF4D /* HelpAndSupportView.swift in Sources */,
 				C5CDF9782C213BE10093611E /* TransactionHistoryModel.swift in Sources */,
 				B5C54C432BEB95EC008A6A45 /* PathTitle.swift in Sources */,
 				B5A43A302BFB5A3B00AE89C4 /* CommonResponse.swift in Sources */,
@@ -2141,6 +2150,7 @@
 				C5688C5B2C0427E8003669C0 /* TabSelectionSearchView.swift in Sources */,
 				C5379E1E2C1C00EF00816B92 /* APIKeyAI.swift in Sources */,
 				C5688C5B2C0427E8003669C0 /* TabSelectionSearchView.swift in Sources */,
+				C5C0076E2C255FDB0098DF4D /* EditUserProfileFieldView.swift in Sources */,
 				C5379E162C1BEE3400816B92 /* GeminiChatBubbleView.swift in Sources */,
 				C53E803C2BF0B357003DFC4B /* SlashScreenView.swift in Sources */,
 				B5328F802C09BD7F00ECC191 /* SkeletonLectureDetail.swift in Sources */,
@@ -2448,14 +2458,6 @@
 				minimumVersion = 0.2.9;
 			};
 		};
-		C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.9;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2518,11 +2520,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5BE44CA2C20254700E5FB7C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		C5BE44D42C20310600E5FB7C /* OpenAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C5BE44D32C20310600E5FB7C /* XCRemoteSwiftPackageReference "OpenAI" */;
-			productName = OpenAI;
 		};
 		C5BE44D42C20310600E5FB7C /* OpenAI */ = {
 			isa = XCSwiftPackageProductDependency;

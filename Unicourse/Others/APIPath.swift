@@ -27,6 +27,7 @@ enum APIPath {
     case getUserCart
     case addToCart
     case getTransactionHistory
+    case updateUser
 
     var stringValue: String {
         switch self {
@@ -68,6 +69,8 @@ enum APIPath {
             "/api/transactions/user"
         case .addToCart:
             "/api/cart/add-to-cart"
+        case .updateUser:
+            "/api/user/updateUserLevel"
         }
     }
 }
