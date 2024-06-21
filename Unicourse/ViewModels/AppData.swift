@@ -21,6 +21,7 @@ class AppData: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var listCurrentEnrolled: [String] = []
     @Published var cart: CartModel?
+    @Published var isShowingAlertUpdateUser = false
 
     init(user: UserProfile? = nil, token: String = "") {
         self.user = user
@@ -126,6 +127,30 @@ class AppData: ObservableObject {
 
         } catch {
             print("Get User Cart Error")
+            print(error)
+        }
+    }
+
+    func updateUserProfile(newInfor: requestUpdateUserProfile, token: String, userId: String) async throws {
+        let path = APIPath.updateUser.stringValue
+        let method = HTTPMethod.put
+        let headers = ["Authorization": "Bearer \(token)"]
+
+        do {
+            let encoder = JSONEncoder()
+            let bodyData = try encoder.encode(newInfor)
+            let response: CommonResponse<ResponseUpdateUserProfile> = try await NetworkManager.shared.callAPI(path: "\(path)/\(userId)", method: method, headers: headers, body: bodyData)
+            if let data = response.data {
+                userInfo?.fullName = data.fullName
+                userInfo?.profileImage = data.profileImage
+                userInfo?.profileName = data.profileName
+                userInfo?.dateOfBirth = data.dateOfBirth
+                user?.fullName = data.fullName
+            }
+        } catch {
+            print("UpdateUserProfile", error)
+            self.error = error.localizedDescription
+            isShowingAlert = true
             print(error)
         }
     }

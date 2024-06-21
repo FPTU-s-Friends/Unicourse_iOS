@@ -16,8 +16,8 @@ struct MyCourseItemUIView: View {
             WebImage(url: URL(string: course.courseId.thumbnail)) { image in
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.width * 0.4, height: 80)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width * 0.4, height: 90)
                     .padding(.trailing, 10)
                     .cornerRadius(10)
 

@@ -74,20 +74,28 @@ struct HomeView: View {
 
                         // Danh mục kỳ semester
                         SemesterChosenView()
+                            .transition(.opacity.combined(with: .opacity))
+                            .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingSearchCourse)
                             .padding(.bottom, 10)
                         // Khoá học nổi bật
                         TopCoursesView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse,
                                        searchCourses: viewModel.searchCourse,
                                        headerText: HeaderCategoryText.topCourseText)
+                            .transition(.opacity.combined(with: .opacity))
+                            .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingSearchCourse)
                             .padding(.bottom, 10)
 
                         TopFreeCourseView(isLoadingSearchCourse: $viewModel.isLoadingSearchCourse,
                                           freeCourse: viewModel.listFreeCourses,
                                           headerText: HeaderCategoryText.topFreeCourse)
+                            .transition(.opacity.combined(with: .opacity))
+                            .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingSearchCourse)
                             .padding(.bottom, 10)
 
                         // Tiến trình khoá học
                         ProgressCourseView(listEnrollCourses: viewModel.listEnrolledCourses, isLoading: $viewModel.isLoadingListEnrolled)
+                            .transition(.opacity.combined(with: .opacity))
+                            .animation(.easeInOut(duration: 0.8), value: viewModel.isLoadingSearchCourse)
                             .padding(.bottom, 10)
 
                         // Giảng viên nổi bật
