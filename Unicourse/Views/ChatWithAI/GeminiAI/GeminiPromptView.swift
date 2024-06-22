@@ -38,12 +38,16 @@ struct GeminiPromptView: View {
                     }
                 }
                 .padding(.top, 20)
+                .padding(.top, 20)
 
                 if chatService.loadingResponse {
                     Image("geminiIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
+                        .scaleEffect(isAnimating ? 1.3 : 1.0)
+                        .opacity(isAnimating ? 1.0 : 0.6)
+                        .animation(Animation.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
                         .scaleEffect(isAnimating ? 1.3 : 1.0)
                         .opacity(isAnimating ? 1.0 : 0.6)
                         .animation(Animation.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
@@ -66,6 +70,7 @@ struct GeminiPromptView: View {
                                         Text(question)
                                             .font(.system(size: 12, weight: .light))
                                             .foregroundStyle(Color.mainColor1.gradient)
+                                            .foregroundStyle(Color.mainColor1.gradient)
                                             .frame(width: 100, height: 60, alignment: .topLeading)
                                             .padding() // Thêm padding
                                             .background(
@@ -78,27 +83,27 @@ struct GeminiPromptView: View {
                         }
                         .padding(.horizontal) // Thêm padding cho HStack
                     }
+                    .padding(.horizontal, -20)
                 }
 
                 if chatService.loadingResponse == false {
                     ZStack(alignment: .trailing) {
                         TextField("", text: $textInput)
                             .placeholder(when: textInput.isEmpty) {
-                                Text("Hãy hỏi thêm thông tin...")
+                                Text("Send a message...")
                                     .foregroundStyle(Color.gray.gradient)
                             }
                             .textFieldStyle(.plain)
                             .padding(.vertical, 10)
-                            .padding(.horizontal, 12)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color(uiColor: .systemGray6))
-                            )
-                            .foregroundStyle(Color.gray)
+                            .padding(.horizontal, 14)
+                            .background(Color(.secondarySystemBackground))
+                            .cornerRadius(20)
+                            .padding(.horizontal)
 
                         Button {
                             Task {
                                 await chatService.sendMessage(message: textInput)
+                                showSuggestions = false
                                 showSuggestions = false
                                 textInput = ""
                             }
@@ -108,11 +113,12 @@ struct GeminiPromptView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 30)
                                 .foregroundStyle(textInput.isEmpty ? Color.gray.gradient : Color.mainColor1.gradient)
-                                .padding(.trailing, 5)
+                                .padding(.trailing, 25)
                         }
                         .disabled(textInput.isEmpty)
                     }
                     .padding(.bottom, -20)
+                    .padding(.horizontal, -20)
                     .opacity(chatService.loadingResponse ? 0 : 1) // Ẩn khi loadingResponse là true
                     .animation(.easeInOut(duration: 0.3), value: chatService.loadingResponse) // Thêm animation
                 }
@@ -131,7 +137,9 @@ struct GeminiPromptView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: UIScreen.main.bounds.width, height: 60)
+                            .frame(width: UIScreen.main.bounds.width, height: 60)
                             .padding(.leading, 30)
+                            .padding(.top, 20)
                             .padding(.top, 20)
                     }
                 }
@@ -141,6 +149,11 @@ struct GeminiPromptView: View {
                         isOpenGemini.toggle()
                     }, label: {
                         Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(
+                                Color.white,
+                                Color.mainColor1.gradient
+                            )
                             .font(.system(size: 20))
                             .foregroundStyle(
                                 Color.white,

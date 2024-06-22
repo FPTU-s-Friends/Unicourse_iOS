@@ -38,6 +38,7 @@ struct CourseView: View {
                         // Tracking course card
                         if vm.listEnrolledCourses.isEmpty {
                             SkeletonTrackingCourseView()
+
                         } else {
                             TrackingCourseCard(enrollCourse: vm.listEnrolledCourses[0])
                         }

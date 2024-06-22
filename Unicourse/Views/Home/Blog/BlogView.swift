@@ -45,7 +45,9 @@ struct BlogView: View {
 
                     SkeletonBlogView()
                 }
+
                 .padding(.top, 120)
+
             } else {
                 ScrollView {
                     TopicBlogView()

@@ -24,7 +24,7 @@ struct TransactionHistoryView: View {
                     }
                 } else if viewModel.isLoadingFetching == false && viewModel.transactionHistoryList.isEmpty {
                     NotfoundView(systemName: "shippingbox.circle", message: "Không tìm thấy lịch sử giao dịch")
-                        .transition(.opacity.combined(with: .slide))
+                        .transition(.opacity.combined(with: .blurReplace))
                         .animation(.easeInOut(duration: 0.6), value: viewModel.transactionHistoryList.isEmpty)
                 } else {
                     ForEach(viewModel.transactionHistoryList, id: \._id) { transactionItem in

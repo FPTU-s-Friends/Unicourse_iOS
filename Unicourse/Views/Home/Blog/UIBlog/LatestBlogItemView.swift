@@ -145,6 +145,7 @@ struct LatestBlogItemView: View {
                 }
             }
         }
+
         .padding(.horizontal, 10)
     }
 }

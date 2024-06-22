@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderAccountView: View {
     @EnvironmentObject var appData: AppData
     @Binding var isPresentedEditSheet: Bool
-    @Binding var isPresentedSettingSheet: Bool
+    @Binding var isNavigateToSettingView: Bool
 
     var body: some View {
         VStack {
@@ -73,11 +73,9 @@ struct HeaderAccountView: View {
     }
 
     private var settingButton: some View {
-        Button(action: {
-            withAnimation {
-                isPresentedSettingSheet = true
-            }
-        }) {
+        Button {
+            isNavigateToSettingView = true
+        } label: {
             Image(systemName: "gearshape.circle.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -93,7 +91,6 @@ struct HeaderAccountView: View {
 }
 
 #Preview {
-    HeaderAccountView(isPresentedEditSheet: .constant(false),
-                      isPresentedSettingSheet: .constant(false))
+    HeaderAccountView(isPresentedEditSheet: .constant(false), isNavigateToSettingView: .constant(false))
         .environmentObject(AppData())
 }

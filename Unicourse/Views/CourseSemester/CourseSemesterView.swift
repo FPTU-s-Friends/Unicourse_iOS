@@ -53,7 +53,7 @@ struct CourseSemesterView: View {
             viewModel.getCourseSemester(semester: semester, token: appData.token)
         }
         .background(Color.mainBackgroundColor)
-        .navigationBarTitle("Khoá học kì \(semester)", displayMode: .large)
+        .navigationBarTitle("Khoá học kì \(semester) 🐸", displayMode: .large)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
