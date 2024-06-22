@@ -24,7 +24,6 @@ struct ResultQuizPieChart: View {
     @State private var selectedAmount: Double? = nil
     let cumulativeIncomes: [(category: String, range: Range<Double>)]
     let percentage: Double
-
     @State private var statusAnswerData: [StatusAnswer]
 
     // Initializer to accept trueAnswer, falseAnswer, and undefinedAnswer
@@ -36,7 +35,6 @@ struct ResultQuizPieChart: View {
         ]
 
         self.percentage = trueAnswer / (trueAnswer + falseAnswer + undefinedAnswer)
-
         var cumulative = 0.0
         self.cumulativeIncomes = initialData.map {
             let newCumulative = cumulative + $0.amount
@@ -66,7 +64,6 @@ struct ResultQuizPieChart: View {
 
         _statusAnswerData = State(initialValue: initialData)
         self.percentage = 2
-
     }
 
     var selectedCategory: StatusAnswer? {
@@ -122,7 +119,6 @@ struct ResultQuizPieChart: View {
                             .foregroundColor((selectedCategory != nil) ? .primary : .clear)
                             :
                             Text("\(convertToPercentage(percentage))%")
-
                             .font(.title.bold())
                             .foregroundColor(.primary)
                     }

@@ -33,12 +33,10 @@ struct ResultQuizView: View {
         return (Double(userCorrectTrueCount) / Double(totalQuestions)) * 100
     }
 
-
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundStyle(Color.white)
-
                 .ignoresSafeArea()
 
             VStack {
@@ -46,7 +44,6 @@ struct ResultQuizView: View {
 
                 VStack(spacing: 0) {
                     ResultQuizPieChart(trueAnswer: Double(userCorrectTrueCount), falseAnswer: Double(userCorrectFalseCount), undefinedAnswer: Double(unansweredCount))
-
 
                     HStack {
                         VStack(alignment: .leading) {
@@ -67,14 +64,12 @@ struct ResultQuizView: View {
                     }
                     .padding(.horizontal, 30)
 
-
                     Button(action: {
                         showAnswers.toggle()
                     }, label: {
                         HStack {
                             Text("Đáp án của bạn")
                             Image(systemName: "list.clipboard")
-
                         }
                     })
                     .padding(.vertical, 10)
@@ -122,7 +117,6 @@ struct ResultQuizView: View {
                         .background(Color.red) // Replace `Color.falseAnswer` with a color, e.g., `.red`
                         .cornerRadius(8)
                     }
-
                 }
                 .padding(.top, 20)
                 Spacer()
@@ -144,5 +138,4 @@ struct ResultQuizView: View {
 
 #Preview {
     ResultQuizView(resultAnswerd: ResultQuizCalculate.mockData)
-
 }
