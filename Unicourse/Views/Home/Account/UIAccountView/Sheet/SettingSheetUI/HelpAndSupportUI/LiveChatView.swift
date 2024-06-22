@@ -11,7 +11,7 @@ struct LiveChatView: View {
     @Environment(\.presentationMode) var presentationMode
 
     // URL của trang ChatBox trên Messenger
-    private let messengerURL = "https://www.facebook.com/messages/t/288592671009847/"
+    private let messengerURL = "https://m.me/288592671009847"
 
     var body: some View {
         VStack {
