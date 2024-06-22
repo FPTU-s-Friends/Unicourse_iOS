@@ -20,13 +20,13 @@ struct CourseListView: View {
 
                     } placeholder: {
                         Rectangle()
+                            .fill(Color.gray.opacity(0.3))
                             .frame(width: UIScreen.main.bounds.width * 0.2, height: 64)
                             .shimmerWithWave()
                     }
                 }
             }
             .frame(width: UIScreen.main.bounds.width * 0.2, height: 64)
-//            .background(Color(hex: "#F1DBC7"))
             .background(Color.mainColor1)
             .clipShape(RoundedRectangle(cornerRadius: 8.0))
 

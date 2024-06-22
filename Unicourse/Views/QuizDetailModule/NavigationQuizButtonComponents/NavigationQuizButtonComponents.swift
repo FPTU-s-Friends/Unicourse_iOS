@@ -91,10 +91,10 @@ struct NavigationQuizButtonComponents: View {
             )
             .cornerRadius(8)
             .animation(.spring(), value: canClickNext)
-            // Navigation link to the result view
-            NavigationLink(destination: ResultQuizView(resultAnswerd: vm.resultQuesList ?? ResultQuizCalculate.mockData), isActive: $shouldNavigate) {
-                EmptyView()
-            }
+//            // Navigation link to the result view
+//            .navigationDestination(isPresented: $shouldNavigate) {
+//                ResultQuizView(resultAnswerd: vm.resultQuesList ?? ResultQuizCalculate.mockData)
+//            }
         }
         .navigationDestination(isPresented: $shouldNavigate) {
             ResultQuizView(resultAnswerd: vm.resultQuesList ?? ResultQuizCalculate.mockData)
