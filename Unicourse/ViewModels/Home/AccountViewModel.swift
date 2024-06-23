@@ -16,5 +16,6 @@ class AccountViewModel: ObservableObject {
         MenuItem(id: 2, systemName: "clock.fill", title: "Xem gần nhất", destination: RecentView(), colorIcon: .blue),
         MenuItem(id: 3, systemName: "sportscourt.fill", title: "Mã giảm giá", destination: DiscountView(), colorIcon: .orange),
         MenuItem(id: 4, systemName: "basket.fill", title: "Lịch sử giao dịch", destination: TransactionHistoryView(), colorIcon: .colorCartIcon),
+        MenuItem(id: 5, systemName: "person.2.wave.2.fill", title: "Cộng đồng", destination: CommunityView(), colorIcon: .blue)
     ]
 }

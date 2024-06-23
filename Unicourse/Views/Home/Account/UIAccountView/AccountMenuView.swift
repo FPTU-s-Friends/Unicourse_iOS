@@ -42,7 +42,7 @@ struct AccountMenuView: View {
                         }
                         .padding(.top, 15)
 
-                        if let enrollCourses = appData.userInfo?.enrollCourses, enrollCourses.isEmpty {
+                        if let enrollCourses = appData.userInfo?.enrollCourses, enrollCourses.isEmpty, enrollCourses == nil {
                             VStack {}
                                 .padding(.top, 5)
                         } else {

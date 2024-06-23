@@ -14,6 +14,7 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     @EnvironmentObject var appData: AppData
     @State private var showMainHomeView = false
+    @State private var activeTab: Tab = .home
 
     var body: some View {
         NavigationStack {
@@ -64,7 +65,7 @@ struct LoginView: View {
                     Spacer()
 
                     NavigationLink(
-                        destination: CustomHomeView(activeTab: .constant(.home))
+                        destination: CustomHomeView(activeTab: $activeTab)
                             .navigationBarBackButtonHidden(true),
                         isActive: Binding<Bool>(
                             get: { appData.userInfo != nil },

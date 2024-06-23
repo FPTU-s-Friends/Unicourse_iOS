@@ -97,6 +97,14 @@
 		C50BCC562C25F3B900FCA00C /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50BCC552C25F3B900FCA00C /* AccountSettingsView.swift */; };
 		C50BCC582C25F8DA00FCA00C /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50BCC572C25F8DA00FCA00C /* NotificationSettingView.swift */; };
 		C510B5272C1AA668002CDD7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */; };
+		C51BD3722C27F10100E646F7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3712C27F10100E646F7 /* CommunityViewModel.swift */; };
+		C51BD3752C27F54E00E646F7 /* ChatRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3742C27F54700E646F7 /* ChatRoomModel.swift */; };
+		C51BD3772C27F5C700E646F7 /* CreateChatRoomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3762C27F5C700E646F7 /* CreateChatRoomSheetView.swift */; };
+		C51BD3792C27FCDC00E646F7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3782C27FCD500E646F7 /* ChatViewModel.swift */; };
+		C51BD37C2C27FD1A00E646F7 /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD37B2C27FD1A00E646F7 /* MessageBubbleView.swift */; };
+		C51BD3822C2800E200E646F7 /* ChatRoomDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3812C2800DE00E646F7 /* ChatRoomDetailModel.swift */; };
+		C51BD3852C2807B800E646F7 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3842C2807B800E646F7 /* DashboardView.swift */; };
+		C51BD3872C2813F300E646F7 /* OpenURLUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51BD3862C2813EA00E646F7 /* OpenURLUtility.swift */; };
 		C51F918A2C1ACBF90032A922 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C51F91892C1ACBF90032A922 /* FirebaseMessaging */; };
 		C52151ED2C0AD7CC002855B6 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52151EC2C0AD7CC002855B6 /* BannerModel.swift */; };
 		C52151F02C0AF607002855B6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C52151EF2C0AF607002855B6 /* SocketIO */; };
@@ -192,8 +200,8 @@
 		C56881862BF867E700B2C3F3 /* NotificationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56881852BF867E700B2C3F3 /* NotificationItemView.swift */; };
 		C5688C5B2C0427E8003669C0 /* TabSelectionSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C5A2C0427E8003669C0 /* TabSelectionSearchView.swift */; };
 		C5688C5D2C042A34003669C0 /* RelatedResultTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C5C2C042A34003669C0 /* RelatedResultTabView.swift */; };
-		C5688C602C042BEC003669C0 /* NewestResultTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C5F2C042BEC003669C0 /* NewestResultTabView.swift */; };
-		C5688C622C042C3F003669C0 /* SaleResultTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C612C042C3F003669C0 /* SaleResultTabView.swift */; };
+		C5688C602C042BEC003669C0 /* BlogListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C5F2C042BEC003669C0 /* BlogListSearch.swift */; };
+		C5688C622C042C3F003669C0 /* QuizListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C612C042C3F003669C0 /* QuizListSearch.swift */; };
 		C5688C672C045495003669C0 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C662C045495003669C0 /* Tab.swift */; };
 		C5688C692C04558D003669C0 /* CustomHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5688C682C04558D003669C0 /* CustomHomeView.swift */; };
 		C56F69382BE2026A0093E51B /* UnicourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F69372BE2026A0093E51B /* UnicourseApp.swift */; };
@@ -390,6 +398,14 @@
 		C50BCC552C25F3B900FCA00C /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		C50BCC572C25F8DA00FCA00C /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
 		C510B5262C1AA668002CDD7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C51BD3712C27F10100E646F7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
+		C51BD3742C27F54700E646F7 /* ChatRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModel.swift; sourceTree = "<group>"; };
+		C51BD3762C27F5C700E646F7 /* CreateChatRoomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatRoomSheetView.swift; sourceTree = "<group>"; };
+		C51BD3782C27FCD500E646F7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		C51BD37B2C27FD1A00E646F7 /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
+		C51BD3812C2800DE00E646F7 /* ChatRoomDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDetailModel.swift; sourceTree = "<group>"; };
+		C51BD3842C2807B800E646F7 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		C51BD3862C2813EA00E646F7 /* OpenURLUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLUtility.swift; sourceTree = "<group>"; };
 		C52151EC2C0AD7CC002855B6 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		C52151F12C0AF8EF002855B6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		C52151F42C0B0D56002855B6 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
@@ -476,8 +492,8 @@
 		C56881852BF867E700B2C3F3 /* NotificationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemView.swift; sourceTree = "<group>"; };
 		C5688C5A2C0427E8003669C0 /* TabSelectionSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionSearchView.swift; sourceTree = "<group>"; };
 		C5688C5C2C042A34003669C0 /* RelatedResultTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedResultTabView.swift; sourceTree = "<group>"; };
-		C5688C5F2C042BEC003669C0 /* NewestResultTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestResultTabView.swift; sourceTree = "<group>"; };
-		C5688C612C042C3F003669C0 /* SaleResultTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleResultTabView.swift; sourceTree = "<group>"; };
+		C5688C5F2C042BEC003669C0 /* BlogListSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogListSearch.swift; sourceTree = "<group>"; };
+		C5688C612C042C3F003669C0 /* QuizListSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListSearch.swift; sourceTree = "<group>"; };
 		C5688C662C045495003669C0 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		C5688C682C04558D003669C0 /* CustomHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHomeView.swift; sourceTree = "<group>"; };
 		C56F69342BE2026A0093E51B /* Unicourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unicourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -981,6 +997,40 @@
 			path = HelpAndSupportUI;
 			sourceTree = "<group>";
 		};
+		C51BD3702C27F0F100E646F7 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				C51BD3782C27FCD500E646F7 /* ChatViewModel.swift */,
+				C51BD3712C27F10100E646F7 /* CommunityViewModel.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		C51BD3732C27F54100E646F7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C51BD3812C2800DE00E646F7 /* ChatRoomDetailModel.swift */,
+				C51BD3742C27F54700E646F7 /* ChatRoomModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		C51BD37A2C27FD0600E646F7 /* ChatRoomUI */ = {
+			isa = PBXGroup;
+			children = (
+				C51BD37B2C27FD1A00E646F7 /* MessageBubbleView.swift */,
+			);
+			path = ChatRoomUI;
+			sourceTree = "<group>";
+		};
+		C51BD3832C2807AB00E646F7 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C51BD3842C2807B800E646F7 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		C52151EB2C0AD7BE002855B6 /* BannerModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1313,7 @@
 		C56749442BE8709D00DA6A58 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C51BD3862C2813EA00E646F7 /* OpenURLUtility.swift */,
 				C56749452BE870B500DA6A58 /* AppDelegate.swift */,
 				B5BE39E92BF71CCD00F6BD3A /* ConvertDateToString.swift */,
 				B578A8942BFCD081003CBFFA /* ISOStringConvertHelper.swift */,
@@ -1332,9 +1383,11 @@
 		C567496C2BE8C56A00DA6A58 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				C51BD37A2C27FD0600E646F7 /* ChatRoomUI */,
 				C568817F2BF8409E00B2C3F3 /* ChatGroupItem */,
 				C56749712BE8C5CB00DA6A58 /* CommunityView.swift */,
 				C5CDF97E2C2182390093611E /* ChatView.swift */,
+				C51BD3762C27F5C700E646F7 /* CreateChatRoomSheetView.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -1375,8 +1428,8 @@
 			children = (
 				C5688C5A2C0427E8003669C0 /* TabSelectionSearchView.swift */,
 				C5688C5C2C042A34003669C0 /* RelatedResultTabView.swift */,
-				C5688C5F2C042BEC003669C0 /* NewestResultTabView.swift */,
-				C5688C612C042C3F003669C0 /* SaleResultTabView.swift */,
+				C5688C5F2C042BEC003669C0 /* BlogListSearch.swift */,
+				C5688C612C042C3F003669C0 /* QuizListSearch.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -1442,6 +1495,7 @@
 		C56F69462BE207E80093E51B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C51BD3732C27F54100E646F7 /* Chat */,
 				C5C0076F2C256F6E0098DF4D /* User */,
 				C5CDF9762C213BC40093611E /* Transaction */,
 				B501BE662C171E5500F4FCEC /* DailyReward */,
@@ -1465,6 +1519,7 @@
 		C56F69472BE207ED0093E51B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C51BD3832C2807AB00E646F7 /* Dashboard */,
 				C567496C2BE8C56A00DA6A58 /* Community */,
 				C524E1B02C1AE90F00F98E2B /* ChatWithAI */,
 				B50C4ADE2C0DE0AB0099B228 /* DailyRewards */,
@@ -1491,6 +1546,7 @@
 		C56F69482BE207FA0093E51B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C51BD3702C27F0F100E646F7 /* Community */,
 				C5CDF9732C213A760093611E /* Account */,
 				B501BE632C171E2900F4FCEC /* DailyReward */,
 				C52152002C0B331C002855B6 /* Blog */,
@@ -1965,9 +2021,11 @@
 				C56749772BE8DA1500DA6A58 /* SemesterChoosenView.swift in Sources */,
 				B5898FA52BEE0D5D00C315B8 /* CourseReviewTabView.swift in Sources */,
 				B50C4ADD2C0DD1D10099B228 /* APIQuizPath.swift in Sources */,
+				C51BD3752C27F54E00E646F7 /* ChatRoomModel.swift in Sources */,
 				C53437EF2C0C47330039CA41 /* WebView.swift in Sources */,
 				C5F604982C0C4682001C7071 /* DetailBlogView.swift in Sources */,
 				B50A72602BFE05F400D3B549 /* TrackModel.swift in Sources */,
+				C51BD37C2C27FD1A00E646F7 /* MessageBubbleView.swift in Sources */,
 				B5D0DA282C03434500773956 /* StreamingVideoViewModel.swift in Sources */,
 				C5E98B082BFF171300630823 /* SkeletonTrackingCourseView.swift in Sources */,
 				C5688C672C045495003669C0 /* Tab.swift in Sources */,
@@ -1988,6 +2046,7 @@
 				C5B287662C0D6D9300906F10 /* BottomTabButtonUIView.swift in Sources */,
 				C57ED1B92BEF4CB000641532 /* SearchEntryView.swift in Sources */,
 				C56749692BE89B0500DA6A58 /* SignUpResponseModel.swift in Sources */,
+				C51BD3792C27FCDC00E646F7 /* ChatViewModel.swift in Sources */,
 				B50A72592BFDF9DC00D3B549 /* LectureModel.swift in Sources */,
 				C5C665A32BFF1CEA009A733B /* CurrentLearningCourses.swift in Sources */,
 				C50BCC562C25F3B900FCA00C /* AccountSettingsView.swift in Sources */,
@@ -1995,6 +2054,7 @@
 				C56749722BE8C5CB00DA6A58 /* CommunityView.swift in Sources */,
 				C564E97C2C0ED5300039A4F7 /* NotFoundImageView.swift in Sources */,
 				C564E97C2C0ED5300039A4F7 /* NotFoundImageView.swift in Sources */,
+				C51BD3822C2800E200E646F7 /* ChatRoomDetailModel.swift in Sources */,
 				C56749512BE8810F00DA6A58 /* AppData.swift in Sources */,
 				C56749632BE8994B00DA6A58 /* APIPath.swift in Sources */,
 				C5B287642C0D6D7300906F10 /* TopTabBarButtomUIView.swift in Sources */,
@@ -2004,11 +2064,11 @@
 				C5C665A72BFF2B9C009A733B /* CourseSemesterViewModel.swift in Sources */,
 				C56749752BE8CB7100DA6A58 /* HeaderButtonView.swift in Sources */,
 				B5C177B12C086BC700D1DFC4 /* SuccessEnrolledCourse.swift in Sources */,
-				C5688C622C042C3F003669C0 /* SaleResultTabView.swift in Sources */,
+				C5688C622C042C3F003669C0 /* QuizListSearch.swift in Sources */,
 				B50906DC2C07476E005B334A /* AddToCartButton.swift in Sources */,
 				B501BE6C2C17247E00F4FCEC /* GetISOString.swift in Sources */,
 				B549E4E02C0B2E99003347A3 /* ProgressBarComponent.swift in Sources */,
-				C5688C622C042C3F003669C0 /* SaleResultTabView.swift in Sources */,
+				C5688C622C042C3F003669C0 /* QuizListSearch.swift in Sources */,
 				B5A43A232BFAFE3B00AE89C4 /* HTTPStatusCode.swift in Sources */,
 				C56749652BE899D700DA6A58 /* SignInRequestModel.swift in Sources */,
 				B5946C452C089C5500314B7F /* LectureDetailModel.swift in Sources */,
@@ -2020,6 +2080,7 @@
 				C564E9812C0EFBD70039A4F7 /* RepliesCommentItem.swift in Sources */,
 				B578A8952BFCD081003CBFFA /* ISOStringConvertHelper.swift in Sources */,
 				B549E4D72C0B0D2E003347A3 /* AnswerComponent.swift in Sources */,
+				C51BD3852C2807B800E646F7 /* DashboardView.swift in Sources */,
 				C5EA2CFC2BF7716B002C6144 /* PaymentMethodItemView.swift in Sources */,
 				C5DEAA532C0741E700955E1C /* RecentItemView.swift in Sources */,
 				C564E97F2C0EDD8A0039A4F7 /* BlogLikeModel.swift in Sources */,
@@ -2085,6 +2146,7 @@
 				C541D9FE2BE355490022079E /* ButtonMain.swift in Sources */,
 				C57ED1C12BEF4D1000641532 /* ResultUserView.swift in Sources */,
 				C57ED1BE2BEF4CC900641532 /* SuggestCourseView.swift in Sources */,
+				C51BD3772C27F5C700E646F7 /* CreateChatRoomSheetView.swift in Sources */,
 				C54DADB42BE9E51300E968CE /* AccountView.swift in Sources */,
 				C56F693A2BE2026A0093E51B /* ContentView.swift in Sources */,
 				C53E804D2BF0BE38003DFC4B /* UserStatisticView.swift in Sources */,
@@ -2114,8 +2176,8 @@
 				C50BCC582C25F8DA00FCA00C /* NotificationSettingView.swift in Sources */,
 				C5B2875F2C0C6F3900906F10 /* String+Extension.swift in Sources */,
 				C579AF6E2C002A15004BB9A6 /* DefaultTextUser.swift in Sources */,
-				C5688C602C042BEC003669C0 /* NewestResultTabView.swift in Sources */,
-				C5688C602C042BEC003669C0 /* NewestResultTabView.swift in Sources */,
+				C5688C602C042BEC003669C0 /* BlogListSearch.swift in Sources */,
+				C5688C602C042BEC003669C0 /* BlogListSearch.swift in Sources */,
 				C539C4D32C09BD72008F14B6 /* AllQuizModel.swift in Sources */,
 				B5898FA72BEE106400C315B8 /* CustomProcessRating.swift in Sources */,
 				C53437F62C0C51CE0039CA41 /* DetailBlogModel.swift in Sources */,
@@ -2166,6 +2228,7 @@
 				B5D2BB022C05C3F5004A4ED8 /* EnrolledNewCourseModel.swift in Sources */,
 				C56881842BF854F900B2C3F3 /* NotificationView.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
+				C51BD3722C27F10100E646F7 /* CommunityViewModel.swift in Sources */,
 				C5D7DD092BF70AA400FC0DF7 /* SearchResultItemView.swift in Sources */,
 				B50C4AE02C0DE0C40099B228 /* DailyRewardIcon.swift in Sources */,
 				B5898F8E2BED339E00C315B8 /* RatingStars.swift in Sources */,
@@ -2173,6 +2236,7 @@
 				C5688C5D2C042A34003669C0 /* RelatedResultTabView.swift in Sources */,
 				C5BE44D02C20256A00E5FB7C /* OpenAIService.swift in Sources */,
 				C5688C5D2C042A34003669C0 /* RelatedResultTabView.swift in Sources */,
+				C51BD3872C2813F300E646F7 /* OpenURLUtility.swift in Sources */,
 				C5EA2CF92BF76BE8002C6144 /* CheckoutView.swift in Sources */,
 				B5F06B172C009C85001316BC /* SkeletonDetailInformationCourse.swift in Sources */,
 				B5BC20F42C244B6900354C69 /* ResultQuizView.swift in Sources */,

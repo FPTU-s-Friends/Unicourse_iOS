@@ -31,10 +31,8 @@ struct SupportContactView: View {
             Form {
                 Section(header: Text("Contact Us")) {
                     Text("For any inquiries or support, feel free to reach out to us through the provided email or phone number. We are here to assist you!")
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
-                        .padding(.bottom, 10) // Add some space below the description
-
                     HStack {
                         Image(systemName: "envelope.circle.fill")
                             .resizable()

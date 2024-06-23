@@ -9,6 +9,7 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct TopCoursesView: View {
+    @Namespace var nameSpace
     @Binding var isLoadingSearchCourse: Bool
     @State private var isNavigateToAllTopCourse = false
     var searchCourses: [SearchCourseModel]
@@ -32,8 +33,23 @@ struct TopCoursesView: View {
                     }
                 } else {
                     ForEach(searchCourses, id: \._id) { course in
-                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                            TopCourseViewItem(course: course)
+                        NavigationLink {
+                            if #available(iOS 18.0, *) {
+                                CourseDetailView(courseId: course._id)
+                                    .navigationTransition(.zoom(sourceID: "card\(course._id)", in: nameSpace))
+
+                            } else {
+                                CourseDetailView(courseId: course._id)
+                            }
+                        } label: {
+                            if #available(iOS 18.0, *) {
+                                TopCourseViewItem(course: course)
+                                    .matchedTransitionSource(id: "card\(course._id)", in: nameSpace)
+                                    .cornerRadius(20)
+                            } else {
+                                TopCourseViewItem(course: course)
+                                    .cornerRadius(20)
+                            }
                         }
                     }
                 }

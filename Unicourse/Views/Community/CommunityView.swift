@@ -8,46 +8,59 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @State var searchString: String = ""
-    @State private var gradientHeight: CGFloat = 0
-    @State var isPresentedCreateGroup = false
+    @StateObject var viewModel = CommunityViewModel()
 
     var body: some View {
-        ScrollView {
-            ForEach(1 ..< 3) { _ in
-                NavigationLink {
-                    ChatView()
-                        .navigationTitle("Group Chat 1")
-                        .navigationBarBackButtonHidden(true)
+        ZStack {
+            Color.mainBackgroundColor.ignoresSafeArea()
 
-                } label: {
-                    ChatGroupMiniView()
+            Image(.appIcon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: UIScreen.main.bounds.width * 0.3)
+                .opacity(0.3)
+
+            ScrollView {
+                ForEach(viewModel.allChatRooms, id: \._id) { chatRoom in
+                    NavigationLink {
+                        ChatView(roomId: chatRoom._id)
+                            .navigationTitle(chatRoom.name)
+                            .navigationBarBackButtonHidden(true)
+
+                    } label: {
+                        ChatGroupMiniView(chatRoom: chatRoom)
+                    }
                 }
+
+                .padding(.horizontal, 10)
+                .searchable(text: $viewModel.searchString, prompt: Text("Tìm kiếm"))
             }
 
-            .padding(.horizontal, 10)
-            .searchable(text: $searchString, prompt: Text("Tìm kiếm"))
-        }
-
-        .background {
-            ZStack {
-                Color.mainBackgroundColor.ignoresSafeArea()
-                AsyncImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/FPT_logo_2010.svg/1200px-FPT_logo_2010.svg.png")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: UIScreen.main.bounds.width * 0.3, height: 500)
-                        .opacity(0.2)
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: UIScreen.main.bounds.width * 0.3, height: 500)
-                        .foregroundStyle(.white)
-                        .shimmerWithWave()
-                }
+            if viewModel.isLoadingChatRoom {
+                LoadingIndicatorView(isLoading: .constant(true))
+                    .animation(.spring, value: viewModel.isLoadingChatRoom)
             }
         }
-        .navigationTitle("Cộng đồng 🌏")
-        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            Task {
+                viewModel.isLoadingChatRoom = true
+                try await viewModel.getAllChatRooms()
+                viewModel.isLoadingChatRoom = false
+            }
+        }
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(
+                title: Text("Error").foregroundStyle(Color.red),
+                message: Text(viewModel.error),
+                dismissButton: .cancel(Text("Ok")) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        viewModel.isShowingAlert = false
+                    }
+                }
+            )
+        }
+        .navigationTitle("Cộng đồng")
+        .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
@@ -63,7 +76,7 @@ struct CommunityView: View {
             ToolbarItem(placement: .destructiveAction) {
                 Button {
                     withAnimation {
-                        isPresentedCreateGroup = true
+                        viewModel.isPresentedCreateGroup = true
                     }
                 } label: {
                     Image(systemName: "square.and.pencil.circle.fill")
@@ -85,8 +98,8 @@ struct CommunityView: View {
             }
         }
         .toolbarTitleDisplayMode(.large)
-        .sheet(isPresented: $isPresentedCreateGroup) {
-            Text("Tạo group ở đây")
+        .sheet(isPresented: $viewModel.isPresentedCreateGroup) {
+            CreateChatRoomSheetView()
                 .presentationDetents([.large, .medium])
         }
     }

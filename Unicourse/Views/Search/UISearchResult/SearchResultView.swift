@@ -21,15 +21,24 @@ struct SearchResultView: View {
             VStack {
 //                ResultUserView()
 
-                TabSelectionSearchView(tabSelection: $tabSelection, selectionButtons: ["Liên quan", "Mới nhất", "Giảm giá"])
+                TabSelectionSearchView(tabSelection: $tabSelection,
+                                       selectionButtons: ["Khoá Học", "Bài Viết", "Bài Tập"])
                 TabView(selection: $tabSelection) {
                     // Tab Liên quan
-                    RelatedResultTabView(isLoadingSearch: $viewModel.isLoading, listSearch: $viewModel.listSearch, viewModel: viewModel)
+                    RelatedResultTabView(isLoadingSearch: $viewModel.isLoading,
+                                         listSearch: $viewModel.listSearch,
+                                         viewModel: viewModel)
                         .tag(0)
+
                     // Tab Mới nhất
-                    NewestResultTabView().tag(1)
+                    BlogListSearch(listBlog: viewModel.listSearch.blog,
+                                   viewModel: viewModel)
+                        .tag(1)
+
                     // Tab Giảm giá
-                    SaleResultTabView().tag(2)
+                    QuizListSearch(viewModel: viewModel,
+                                   listQuiz: viewModel.listSearch.quiz)
+                        .tag(2)
                 }
             }
         }
@@ -37,9 +46,8 @@ struct SearchResultView: View {
             viewModel.search(searchText: viewModel.searchString)
         }
 
-        .searchable(text: $viewModel.searchString, prompt: Text("Tìm Khoá Học"))
-        .navigationTitle("Tìm kiếm khoá học")
-        .navigationBarTitleDisplayMode(.automatic)
+        .navigationTitle("Tìm kiếm \" \(viewModel.searchString) \"")
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isPresentedFilter) {
             VStack {
                 Text("Filter ở đây")
@@ -59,24 +67,9 @@ struct SearchResultView: View {
             }
 
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
+                ButtonCircleUIView(systemName: "ellipsis.circle.fill") {
                     isPresentedFilter.toggle()
-                }, label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "ellipsis")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 16, height: 16)
-                    }
-                    .padding(8)
-                    .background(.white)
-                    .cornerRadius(16)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .inset(by: 0.25)
-                            .stroke(Color(red: 0.26, green: 0.52, blue: 0.96), lineWidth: 0.25)
-                    )
-                })
+                }
             }
         }
     }
