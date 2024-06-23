@@ -16,7 +16,15 @@ struct BlogListSearch: View {
     var body: some View {
         ScrollView {
             if listBlog.isEmpty {
-                Text("Không tìm thấy bài viết nào phù hợp !")
+                VStack(alignment: .center) {
+                    Spacer()
+
+                    NotFoundImageView(width: 420, height: 200)
+                    Text("Không tìm thấy bài viết nào phù hợp !")
+
+                    Spacer()
+                }
+
             } else {
                 ForEach(listBlog.indices, id: \.self) { index in
                     let blog = listBlog[index]
@@ -88,5 +96,5 @@ struct BlogListSearch: View {
 }
 
 #Preview {
-    BlogListSearch(listBlog: [.sampleData], viewModel: SearchEntryViewModel())
+    BlogListSearch(listBlog: [], viewModel: SearchEntryViewModel())
 }

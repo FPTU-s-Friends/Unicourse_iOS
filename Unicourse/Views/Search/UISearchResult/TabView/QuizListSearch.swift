@@ -16,7 +16,15 @@ struct QuizListSearch: View {
     var body: some View {
         ScrollView {
             if listQuiz.isEmpty {
-                Text("Không tìm thấy câu hỏi nào phù hợp !")
+                VStack(alignment: .center) {
+                    Spacer()
+
+                    NotFoundImageView(width: 420, height: 200)
+                    Text("Không tìm thấy câu hỏi nào phù hợp !")
+
+                    Spacer()
+                }
+
             } else {
                 ForEach(listQuiz.indices, id: \.self) { index in
                     let quiz = listQuiz[index]
