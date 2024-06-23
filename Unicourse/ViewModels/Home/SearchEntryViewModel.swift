@@ -19,6 +19,8 @@ class SearchEntryViewModel: ObservableObject {
     @Published var listSearch: SearchResponseModel = .init(course: [], quiz: [], blog: [])
     @Published var listSuggestCourse: [SearchSuggestModel] = []
     @Published var listFreeCourse: [SearchCourseModel] = []
+//    @Published var listBlog: [BlogSearchModel] = []
+//    @Published var listQuiz: [QuizSearchModel] = []
     @Published var isLoading = false
     @Published var isLoadingMore = false
     @Published var error = ""
@@ -56,8 +58,10 @@ class SearchEntryViewModel: ObservableObject {
                         self.listSuggestCourse = data.course.map { course in
                             SearchSuggestModel(searchString: course.title.localizedLowercase, urlImage: course.thumbnail)
                         }
+//                        self.listBlog = data.blog
+//                        self.listQuiz = data.quiz
                         self.filterFreeCourses()
-                        self.currentPage = pageToUse // Cập nhật currentPage
+                        self.currentPage = pageToUse
                     } else {
                         print("List search is nil")
                     }

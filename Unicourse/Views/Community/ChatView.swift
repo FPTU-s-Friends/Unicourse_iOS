@@ -4,27 +4,29 @@
 //
 //  Created by Trung Kiên Nguyễn on 18/6/24.
 //
+import Combine
+import SDWebImageSwiftUI
 import SwiftUI
 
-import Combine
-
 struct ChatView: View {
+    @EnvironmentObject var appData: AppData
     @StateObject private var viewModel = ChatViewModel()
     @State private var inputText: String = ""
+    var roomId: String
 
     var body: some View {
         VStack {
             ScrollViewReader { scrollView in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 8) {
-                        ForEach(viewModel.messages) { message in
-                            MessageBubble(message: message)
-                                .id(message.id)
+                        ForEach(viewModel.chatRoomDetail?.messages ?? [], id: \._id) { message in
+                            MessageBubbleView(message: message)
+                                .id(message._id)
                         }
                     }
                     .padding()
-                    .onChange(of: viewModel.messages) { _ in
-                        if let lastMessageId = viewModel.messages.last?.id {
+                    .onChange(of: viewModel.chatRoomDetail?.messages) { _ in
+                        if let lastMessageId = viewModel.chatRoomDetail?.messages.last?._id {
                             scrollView.scrollTo(lastMessageId, anchor: .bottom)
                         }
                     }
@@ -41,11 +43,14 @@ struct ChatView: View {
                         .textFieldStyle(.plain)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 14)
-                        .background(Color(.secondarySystemBackground))
+                        .foregroundStyle(.black)
+                        .background(Color.mainBackgroundColor)
                         .cornerRadius(20)
                         .padding(.horizontal)
 
-                    Button {} label: {
+                    Button {
+                        inputText = ""
+                    } label: {
                         Image(systemName: "paperplane.circle.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -55,10 +60,24 @@ struct ChatView: View {
                     }
                     .disabled(inputText.isEmpty)
                 }
-
                 .padding(.bottom, -15)
             }
             .padding(.vertical, 5)
+            .padding(.bottom, 10)
+        }
+        .onDisappear {
+            SDImageCache.shared.clearMemory()
+        }
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(
+                title: Text("Error").foregroundStyle(Color.red),
+                message: Text(viewModel.error),
+                dismissButton: .cancel(Text("Ok")) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        viewModel.isShowingAlert = false
+                    }
+                }
+            )
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -92,85 +111,22 @@ struct ChatView: View {
             Color.mainBackgroundColor
                 .ignoresSafeArea()
         }
-    }
-
-    private func sendMessage() {
-        guard !inputText.isEmpty else { return }
-        viewModel.sendMessage(inputText)
-        inputText = ""
-    }
-}
-
-struct MessageBubble: View {
-    var message: Message
-
-    var body: some View {
-        HStack {
-            if message.isSentByCurrentUser {
-                Spacer()
-                Text(message.text)
-                    .padding(10)
-                    .background(Color.blue)
-                    .cornerRadius(15)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-
-                AsyncImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/1053/1053244.png")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .cornerRadius(20)
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.gray.opacity(0.2))
-                        .shimmerWithWave()
+        .onAppear {
+            Task {
+                do {
+                    viewModel.isLoadingChatRoom = true
+                    try await viewModel.getDetailChatRoom(roomId: roomId)
+                    viewModel.isLoadingChatRoom = false
+                } catch {
+                    viewModel.error = "Failed to load chat room."
+                    viewModel.isShowingAlert = true
                 }
-            } else {
-                AsyncImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/1053/1053244.png")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.gray.opacity(0.2))
-                        .shimmerWithWave()
-                }
-
-                Text(message.text)
-                    .padding(10)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(15)
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Spacer()
             }
         }
     }
 }
 
 #Preview {
-    ChatView()
-}
-
-class ChatViewModel: ObservableObject {
-    @Published var messages: [Message] = [
-        Message(text: "Hello!", isSentByCurrentUser: false),
-        Message(text: "Hi, how are you?", isSentByCurrentUser: true),
-        Message(text: "I'm good, thanks!", isSentByCurrentUser: false)
-    ]
-
-    func sendMessage(_ text: String) {
-        let newMessage = Message(text: text, isSentByCurrentUser: true)
-        messages.append(newMessage)
-    }
-}
-
-struct Message: Identifiable, Equatable {
-    let id = UUID()
-    let text: String
-    let isSentByCurrentUser: Bool
+    ChatView(roomId: "65ebe4d2d0cb58ef9cb250cc")
+        .environmentObject(AppData())
 }

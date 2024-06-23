@@ -57,6 +57,13 @@ struct QuizSearchModel: Codable {
     var course_id: String?
     var status: String
     var category: String
+
+    static let sampleData = QuizSearchModel(_id: "663cbe6bc8497fc91aa9066c",
+                                            title: "SSG104 - Part 1",
+                                            description: "Mã môn học SSG104 - Phần 1",
+                                            picture: "https://apollo.primeng.org/assets/demo/images/blog/blog-2.png",
+                                            status: "open",
+                                            category: "CN2")
 }
 
 // Blog Search Model
@@ -67,12 +74,31 @@ struct BlogSearchModel: Codable {
     var min_read: Int
     var images: [String]?
     var thumbnail_url: String?
-    var tags: [tag]
+    var tags: [Tag]
     var status: String
     var date_published: String
+
+    // Dữ liệu mẫu cho BlogSearchModel
+    static let sampleData =
+        BlogSearchModel(
+            _id: "65af6fd2f5cdb60fc506c592",
+            title: "Rèn luyện tư duy và áp dụng kiến thức đã học vào thực hành",
+            description: "Bài viết này sẽ chia sẻ cho các bạn vài típ về cân bằng giữa việc học và thực hành trong lập trình",
+            min_read: 2,
+            images: [
+                "https://firebasestorage.googleapis.com/v0/b/nha-trang-ntne.appspot.com/o/Unicourse%20Project%2Fblog2.jpg?alt=media&token=4b470754-8de9-43ab-8bca-2a7be3fbaf17"
+            ],
+            thumbnail_url: "https://firebasestorage.googleapis.com/v0/b/nha-trang-ntne.appspot.com/o/Unicourse%20Project%2Fblog2.jpg?alt=media&token=4b470754-8de9-43ab-8bca-2a7be3fbaf17",
+            tags: [
+                Tag(name: "Thuật toán", code: "thuat_toan", color: "#CCCCCC"),
+                Tag(name: "Cơ bản", code: "co_ban", color: "#336699")
+            ],
+            status: "approved",
+            date_published: "2024-01-22T00:00:00.000Z"
+        )
 }
 
-struct tag: Codable {
+struct Tag: Codable {
     var name: String
     var code: String
     var color: String

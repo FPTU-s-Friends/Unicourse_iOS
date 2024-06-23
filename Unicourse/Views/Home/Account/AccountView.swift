@@ -10,6 +10,7 @@ import SwiftUI
 struct AccountView: View {
     @StateObject var viewModel = AccountViewModel()
     @EnvironmentObject var appData: AppData
+    @State private var isNavigateToDashboard = false
 
     var body: some View {
         ZStack {
@@ -24,9 +25,13 @@ struct AccountView: View {
                 ScrollView {
                     VStack {
                         UserStatisticView()
+                            .onTapGesture {
+                                withAnimation {
+                                    isNavigateToDashboard = true
+                                }
+                            }
 
                         AccountMenuView(menuItems: viewModel.menuItems)
-                            .padding(.bottom, 30)
                     }
                     .background {
                         Color.white
@@ -51,6 +56,10 @@ struct AccountView: View {
             if appData.isLoading {
                 LoadingIndicatorView(isLoading: .constant(true))
             }
+        }
+        .navigationDestination(isPresented: $isNavigateToDashboard) {
+            DashboardView()
+                .navigationBarBackButtonHidden(true)
         }
     }
 }

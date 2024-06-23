@@ -4,7 +4,6 @@
 //
 //  Created by Trung Kiên Nguyễn on 9/6/24.
 //
-
 import SwiftUI
 
 struct SettingSheetView: View {
@@ -13,7 +12,7 @@ struct SettingSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Tài Khoản ")) {
+                Section(header: Text("Tài Khoản")) {
                     NavigationLink {
                         AccountSettingsView()
                             .navigationBarBackButtonHidden(true)
@@ -22,14 +21,12 @@ struct SettingSheetView: View {
                             Image(systemName: "person.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.accountIconColor)
                             Text("Account Settings")
                         }
                     }
-                }
 
-                Section(header: Text("Thông Báo")) {
                     NavigationLink {
                         NotificationSettingView()
                             .navigationBarBackButtonHidden(true)
@@ -38,7 +35,7 @@ struct SettingSheetView: View {
                             Image(systemName: "bell.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.notificationIconColor)
                             Text("Notifications")
                         }
@@ -54,24 +51,9 @@ struct SettingSheetView: View {
                             Image(systemName: "lock.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.privacyIconColor)
                             Text("Privacy")
-                        }
-                    }
-                }
-
-                Section(header: Text("Visit Us")) {
-                    NavigationLink {
-                        WebViewUI(url: "https://unicourse.vn")
-                    } label: {
-                        HStack {
-                            Image(systemName: "globe.central.south.asia.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
-                                .foregroundColor(.blue)
-                            Text("Website")
                         }
                     }
                 }
@@ -85,9 +67,22 @@ struct SettingSheetView: View {
                             Image(systemName: "questionmark.circle.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.helpIconColor)
                             Text("Help & Support")
+                        }
+                    }
+
+                    NavigationLink {
+                        WebViewUI(url: "https://unicourse.vn")
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe.central.south.asia.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.blue)
+                            Text("Website")
                         }
                     }
 
@@ -99,9 +94,24 @@ struct SettingSheetView: View {
                             Image(systemName: "info.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.aboutIconColor)
                             Text("About Us")
+                        }
+                    }
+
+                    // Nút mở trong WebView hoặc ứng dụng Facebook
+                    Button(action: {
+                        OpenURLUtility.openURL("https://www.facebook.com/profile.php?id=61559287804624")
+                    }) {
+                        HStack {
+                            Image(systemName: "shared.with.you.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.cyan)
+                            Text("Visit Us")
+                                .foregroundColor(.primary)
                         }
                     }
                 }
@@ -114,7 +124,7 @@ struct SettingSheetView: View {
                             Image(systemName: "archivebox.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.closeAccountIconColor)
                             Text("Close Account")
                         }
@@ -122,7 +132,7 @@ struct SettingSheetView: View {
                     }
                 }
             }
-            .listStyle(InsetGroupedListStyle()) // Use a different list style for a better appearance
+            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Cài đặt ⚙️")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -139,5 +149,3 @@ struct SettingSheetView: View {
 #Preview {
     SettingSheetView()
 }
-
-import SwiftUI

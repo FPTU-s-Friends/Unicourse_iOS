@@ -65,6 +65,7 @@ struct HelpAndSupportView: View {
                                 .foregroundColor(.red)
                         }
                     }
+
                     NavigationLink(destination: WebViewUI(url: "https://unicourse.vn/terms")) {
                         Label {
                             Text("Terms of Service")

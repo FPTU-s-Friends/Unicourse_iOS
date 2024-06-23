@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @State var searchString: String = ""
-    @State private var gradientHeight: CGFloat = 0
-    @State var isPresentedCreateGroup = false
+    @StateObject var viewModel = CommunityViewModel()
 
     var body: some View {
         ZStack {
@@ -23,23 +21,46 @@ struct CommunityView: View {
                 .opacity(0.3)
 
             ScrollView {
-                ForEach(1 ..< 3) { _ in
+                ForEach(viewModel.allChatRooms, id: \._id) { chatRoom in
                     NavigationLink {
-                        ChatView()
-                            .navigationTitle("Group Chat 1")
+                        ChatView(roomId: chatRoom._id)
+                            .navigationTitle(chatRoom.name)
                             .navigationBarBackButtonHidden(true)
 
                     } label: {
-                        ChatGroupMiniView()
+                        ChatGroupMiniView(chatRoom: chatRoom)
                     }
                 }
 
                 .padding(.horizontal, 10)
-                .searchable(text: $searchString, prompt: Text("Tìm kiếm"))
+                .searchable(text: $viewModel.searchString, prompt: Text("Tìm kiếm"))
+            }
+
+            if viewModel.isLoadingChatRoom {
+                LoadingIndicatorView(isLoading: .constant(true))
+                    .animation(.spring, value: viewModel.isLoadingChatRoom)
             }
         }
-        .navigationTitle("Cộng đồng 🌏")
-        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            Task {
+                viewModel.isLoadingChatRoom = true
+                try await viewModel.getAllChatRooms()
+                viewModel.isLoadingChatRoom = false
+            }
+        }
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(
+                title: Text("Error").foregroundStyle(Color.red),
+                message: Text(viewModel.error),
+                dismissButton: .cancel(Text("Ok")) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        viewModel.isShowingAlert = false
+                    }
+                }
+            )
+        }
+        .navigationTitle("Cộng đồng")
+        .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(Color.mainBackgroundColor, for: .navigationBar)
@@ -55,7 +76,7 @@ struct CommunityView: View {
             ToolbarItem(placement: .destructiveAction) {
                 Button {
                     withAnimation {
-                        isPresentedCreateGroup = true
+                        viewModel.isPresentedCreateGroup = true
                     }
                 } label: {
                     Image(systemName: "square.and.pencil.circle.fill")
@@ -77,8 +98,8 @@ struct CommunityView: View {
             }
         }
         .toolbarTitleDisplayMode(.large)
-        .sheet(isPresented: $isPresentedCreateGroup) {
-            Text("Tạo group ở đây")
+        .sheet(isPresented: $viewModel.isPresentedCreateGroup) {
+            CreateChatRoomSheetView()
                 .presentationDetents([.large, .medium])
         }
     }

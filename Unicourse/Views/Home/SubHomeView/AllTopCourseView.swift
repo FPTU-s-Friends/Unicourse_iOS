@@ -9,6 +9,7 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct AllTopCourseView: View {
+    @Namespace var nameSpace
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @StateObject var viewModel = SearchEntryViewModel()
     @State private var isSearchBarVisible: Bool = false
@@ -28,11 +29,35 @@ struct AllTopCourseView: View {
                     } else {
                         ForEach(viewModel.listSearch.course.indices, id: \.self) { index in
                             let course = viewModel.listSearch.course[index]
+
+//                            VStack {
+//                                if #available(iOS 18.0, *) {
+//                                    NavigationLink {
+//                                        CourseDetailView(courseId: course._id)
+//                                            .navigationTransition(.zoom(sourceID: "card\(course._id)", in: nameSpace))
+//
+//                                    } label: {
+//                                        TopCourseViewItem(course: course)
+//                                            .background(colorScheme == .dark ? .black : .white)
+//                                            .matchedTransitionSource(id: "card\(course._id)", in: nameSpace)
+//                                            .cornerRadius(20)
+//                                            .frame(width: UIScreen.main.bounds.width)
+//                                    }
+//                                } else {
+//                                    NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+//                                        TopCourseView(course: course)
+//                                            .background(colorScheme == .dark ? .black : .white)
+//                                            .cornerRadius(20)
+//                                    }
+//                                }
+//                            }
+
                             NavigationLink(destination: CourseDetailView(courseId: course._id)) {
                                 TopCourseView(course: course)
                                     .background(colorScheme == .dark ? .black : .white)
                                     .cornerRadius(20)
                             }
+
                             .onAppear {
                                 if index == viewModel.listSearch.course.count - 1 {
                                     viewModel.loadMore(searchText: viewModel.searchString)

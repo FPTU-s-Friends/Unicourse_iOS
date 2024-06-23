@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopFreeCourseView: View {
+    @Namespace var nameSpace
     @Binding var isLoadingSearchCourse: Bool
     @State private var isNavigateToAllFreeCourse = false
     var freeCourse: [SearchCourseModel]
@@ -31,8 +32,27 @@ struct TopFreeCourseView: View {
                     }
                 } else {
                     ForEach(freeCourse, id: \._id) { course in
-                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                            TopCourseViewItem(course: course)
+//                        NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+//                            TopCourseViewItem(course: course)
+//                        }
+
+                        NavigationLink {
+                            if #available(iOS 18.0, *) {
+                                CourseDetailView(courseId: course._id)
+                                    .navigationTransition(.zoom(sourceID: "card\(course._id)", in: nameSpace))
+
+                            } else {
+                                CourseDetailView(courseId: course._id)
+                            }
+                        } label: {
+                            if #available(iOS 18.0, *) {
+                                TopCourseViewItem(course: course)
+                                    .matchedTransitionSource(id: "card\(course._id)", in: nameSpace)
+                                    .cornerRadius(20)
+                            } else {
+                                TopCourseViewItem(course: course)
+                                    .cornerRadius(20)
+                            }
                         }
                     }
                 }
