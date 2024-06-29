@@ -11,6 +11,7 @@ import SwiftUI
 struct SuggestCourseView: View {
     @Binding var listSearch: SearchResponseModel
     @Binding var isLoadingSearch: Bool
+    var action: () -> Void
 
     var body: some View {
         HStack {
@@ -21,7 +22,9 @@ struct SuggestCourseView: View {
 
             Spacer()
 
-            Button(action: {}, label: {
+            Button(action: {
+                action()
+            }, label: {
                 Image("reloadIcon")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -111,6 +114,8 @@ struct SuggestCourseItem: View {
 
 #Preview {
     NavigationStack {
-        SuggestCourseView(listSearch: .constant(.init(course: [SearchCourseModel.sampleData], quiz: [], blog: [])), isLoadingSearch: .constant(false))
+        SuggestCourseView(listSearch: .constant(.init(course: [SearchCourseModel.sampleData], quiz: [], blog: [])),
+                          isLoadingSearch: .constant(false))
+        {}
     }
 }

@@ -22,21 +22,32 @@ struct RelatedResultTabView: View {
                             SkeletonGridCourseView()
                         }
                     } else {
-                        ForEach(listSearch.course.indices, id: \.self) { index in
-                            let course = listSearch.course[index]
-                            NavigationLink(destination: CourseDetailView(courseId: course._id)) {
-                                SearchResultItemView(title: course.title,
-                                                     description: course.titleDescription,
-                                                     thumbnail: course.thumbnail,
-                                                     lectureName: course.lecture.fullName,
-                                                     lectureImage: course.lecture.profile_image,
-                                                     courseType: course.type,
-                                                     courseAmount: course.amount)
+                        if listSearch.course.isEmpty {
+                            VStack(alignment: .center) {
+                                Spacer()
+
+                                NotFoundImageView(width: 420, height: 200)
+                                Text("Không tìm thấy khoá học nào phù hợp !")
+
+                                Spacer()
                             }
-                            .onAppear {
-                                // Load more content when the last item appears
-                                if index == listSearch.course.count - 1 {
-                                    viewModel.loadMore(searchText: viewModel.searchString)
+                        } else {
+                            ForEach(listSearch.course.indices, id: \.self) { index in
+                                let course = listSearch.course[index]
+                                NavigationLink(destination: CourseDetailView(courseId: course._id)) {
+                                    SearchResultItemView(title: course.title,
+                                                         description: course.titleDescription,
+                                                         thumbnail: course.thumbnail,
+                                                         lectureName: course.lecture.fullName,
+                                                         lectureImage: course.lecture.profile_image,
+                                                         courseType: course.type,
+                                                         courseAmount: course.amount)
+                                }
+                                .onAppear {
+                                    // Load more content when the last item appears
+                                    if index == listSearch.course.count - 1 {
+                                        viewModel.loadMore(searchText: viewModel.searchString)
+                                    }
                                 }
                             }
                         }

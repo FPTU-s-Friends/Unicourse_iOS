@@ -20,6 +20,9 @@ struct SearchEntryView: View {
                     //            Suggest Course
                     SuggestCourseView(listSearch: $viewModel.listSearch,
                                       isLoadingSearch: $viewModel.isLoading)
+                    {
+                        viewModel.search(searchText: viewModel.searchString)
+                    }
                 }
                 .navigationBarBackButtonHidden(true)
                 .navigationTitle("Tìm kiếm khoá học")

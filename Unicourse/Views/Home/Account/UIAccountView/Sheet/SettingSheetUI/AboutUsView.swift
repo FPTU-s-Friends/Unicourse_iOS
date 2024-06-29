@@ -13,92 +13,37 @@ struct AboutUsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
-                    // Top Banner Image
-                    Image("MainBanner")
+                VStack(spacing: 20) {
+                    Image("appIcon") // Ensure this image exists in your assets
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .padding(.top, 20)
+
+                    Image("uni1") // Ensure this image exists in your assets
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .cornerRadius(10)
                         .padding(.horizontal, 5)
-                
-                    // App Icon and Introduction
-                    HStack(alignment: .center, spacing: 15) {
-                        Image("appIcon") // Ensure this image exists in your assets
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 80, height: 80)
-                            .clipShape(Circle())
-                        
-                        Text("Welcome to Unicourse, your number one source for all things related to online courses. We're dedicated to providing you the very best of education, with an emphasis on quality content, expert instructors, and exceptional support.")
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.leading)
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    // Our Mission Section
-                    sectionView(
-                        title: "Our Mission",
-                        text: "Our mission is to make quality education accessible to everyone, everywhere. We aim to empower learners by providing them with the tools and knowledge they need to succeed in their personal and professional lives.",
-                        imageName: "home-banner2" // Add a relevant image in your assets
-                    )
-                    
-                    // Our Vision Section
-                    sectionView(
-                        title: "Our Vision",
-                        text: "We envision a world where anyone, regardless of location or background, can access the education they need to achieve their dreams. We strive to create a community of lifelong learners who are passionate about personal growth and development.",
-                        imageName: "home-banner3" // Add a relevant image in your assets
-                    )
-                    
+
+                    introductionSection
+                    missionSection
+                    startupJourneySection
+                    challengesSection
+
+                    // Unicourse Members Section
+                    unicourseMembersSection
+
                     // Contact Us Section
-                    VStack(alignment: .leading, spacing: 15) {
-                        Image("contactUsImage") // Ensure this image exists in your assets
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: .infinity)
-                            .clipped()
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                        
-                        Text("Contact Us")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        
-                        Text("Have any questions or feedback? We'd love to hear from you! Reach out to us at ")
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.blue)
-                            .underline()
-                        
-                        Text("[unicourse.learningplatform@gmail.com](mailto:unicourse.learningplatform@gmail.com)")
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                    
+                    contactUsSection
+
                     // Visit Us Section
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("Visit Us")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        
-                        Text("For more information, visit our website at ")
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.blue)
-                            .underline()
-                        
-                        Text("[unicourse.vn](https://unicourse.vn)")
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                    
-                    Spacer()
+                    visitUsSection
                 }
                 .padding(.bottom, 20)
             }
-            .navigationTitle("About Us")
+            .navigationTitle("Giới thiệu")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -109,29 +54,149 @@ struct AboutUsView: View {
             }
         }
     }
-    
-    // Helper View to create sections with title, text, and image
-    private func sectionView(title: String, text: String, imageName: String) -> some View {
+
+    private var introductionSection: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Image(imageName) // Ensure this image exists in your assets
+            Text("Với tầm nhìn trở thành nền tảng học tập trực tuyến hàng đầu tại Việt Nam, Unicourse đặt ra những mục tiêu đầy tham vọng cho tương lai. Trong ngắn hạn, nền tảng hướng đến việc tăng số lượng người dùng, mở rộng đối tượng khách hàng và phát triển trên nhiều nền tảng khác nhau. Về dài hạn, Unicourse mong muốn xây dựng lộ trình học tập cho nhiều ngành nghề khác nhau, mở rộng ra các trường đại học trên toàn quốc và thậm chí là xây dựng văn phòng đại diện riêng.")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 20)
+    }
+
+    private var missionSection: some View {
+        VStack(alignment: .center, spacing: 15) {
+            Text("Dự án Unicourse: Nền tảng học tập trực tuyến nhận Học bổng Khởi nghiệp từ Trường Đại Học FPT")
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            Text("Với tầm nhìn trở thành nền tảng học tập trực tuyến hàng đầu tại Việt Nam, Unicourse đặt ra những mục tiêu đầy tham vọng cho tương lai. Trong ngắn hạn, nền tảng hướng đến việc tăng số lượng người dùng, mở rộng đối tượng khách hàng và phát triển trên nhiều nền tảng khác nhau. Về dài hạn, Unicourse mong muốn xây dựng lộ trình học tập cho nhiều ngành nghề khác nhau, mở rộng ra các trường đại học trên toàn quốc và thậm chí là xây dựng văn phòng đại diện riêng.")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 20)
+    }
+
+    private var startupJourneySection: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Hành trình nhận học bổng khởi nghiệp")
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            Text("Để biến ý tưởng thành hiện thực, nhóm đã không ngừng nỗ lực hoàn thiện dự án và mạnh dạn ứng tuyển Học bổng Khởi nghiệp của trường. Nhờ sự chuẩn bị kỹ lưỡng và tiềm năng phát triển của dự án, Unicourse đã được trao học bổng trị giá hơn 30 triệu đồng, tạo động lực lớn để nhóm tiếp tục phát triển nền tảng.")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 20)
+    }
+
+    private var challengesSection: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Thách thức khi thực hiện dự án và giải pháp")
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            Text("Unicourse áp dụng mô hình Lean Startup, tập trung vào việc nhanh chóng tung ra sản phẩm tối giản và liên tục cải tiến dựa trên phản hồi của người dùng. Đối tượng khách hàng chính của nền tảng là sinh viên, với nguồn doanh thu đến từ việc bán khóa học và chia sẻ hoa hồng với giảng viên. Để thu hút và giữ chân khách hàng, Unicourse đã triển khai nhiều chiến lược như tổ chức minigame, tạo nội dung chất lượng, giảm giá cho khách hàng mới và xây dựng chương trình khách hàng thân thiết.")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.horizontal, 20)
+    }
+
+    private var unicourseMembersSection: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Thành viên dự án Unicourse")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 20)
+
+            // Grid layout for members
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                memberView(name: "Đặng Minh Châu", title: "Chief Executive Officer", imageName: "chau")
+                memberView(name: "Nguyễn Thành Đạt", title: "Chief Technology Officer", imageName: "dat")
+                memberView(name: "Nguyễn Huy Khải", title: "Chief Financial Officer", imageName: "khai")
+                memberView(name: "Mạc Tuấn Long", title: "Chief Marketing Officer", imageName: "long")
+                memberView(name: "Đinh Gia Bảo", title: "Backend Developer", imageName: "bao")
+                memberView(name: "Bùi Đức Trí", title: "Backend Developer", imageName: "tri")
+                memberView(name: "Nguyễn Trung Kiên", title: "Mobile Developer", imageName: "kien")
+                memberView(name: "Trần Quang Minh", title: "Mobile Developer", imageName: "minh")
+            }
+            .padding(.horizontal, 20)
+        }
+        .padding(.top, 20)
+    }
+
+    private var contactUsSection: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Image("contactUsImage") // Ensure this image exists in your assets
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .clipped()
                 .cornerRadius(10)
                 .shadow(radius: 5)
-            
-            Text(title)
+
+            Text("Liên hệ với chúng tôi")
                 .font(.title2)
                 .fontWeight(.semibold)
-            
-            Text(text)
+
+            Text("Bạn có bất kỳ câu hỏi hoặc phản hồi nào? Chúng tôi rất mong nhận được phản hồi từ bạn! Hãy liên hệ với chúng tôi tại ")
                 .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.leading)
+                .foregroundColor(.blue)
+                .underline()
+
+            Text("[unicourse.learningplatform@gmail.com](mailto:unicourse.learningplatform@gmail.com)")
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 16)
         .padding(.top, 10)
+    }
+
+    private var visitUsSection: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Thêm thông tin")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(.leading, 5)
+
+            Text("Để biết thêm thông tin, hãy truy cập trang web của chúng tôi tại ")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.blue)
+                .underline()
+                .padding(.horizontal, 5)
+
+            Text("[unicourse.vn](https://unicourse.vn)")
+                .padding(.leading, 5)
+        }
+    }
+
+    // Helper View to create member profile
+    private func memberView(name: String, title: String, imageName: String) -> some View {
+        VStack {
+            Image(imageName) // Ensure this image exists in your assets
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .shadow(radius: 5)
+
+            Text(name)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+
+            Text(title)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
     }
 }
 
