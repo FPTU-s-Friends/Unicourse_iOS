@@ -36,13 +36,8 @@ struct QuestionComponent: View {
                             .foregroundStyle(
                                 LinearGradient(
                                     stops: [
-                                        Gradient.Stop(color: .red, location: 0.0),
-                                        Gradient.Stop(color: .orange, location: 0.17),
-                                        Gradient.Stop(color: .yellow, location: 0.33),
-                                        Gradient.Stop(color: .green, location: 0.5),
-                                        Gradient.Stop(color: .blue, location: 0.67),
-                                        Gradient.Stop(color: .indigo, location: 0.83),
-                                        Gradient.Stop(color: .purple, location: 1.0),
+                                        Gradient.Stop(color: .mainColor1, location: 0.0),
+                                        Gradient.Stop(color: .mainColor2, location: 2.0)
                                     ],
                                     startPoint: UnitPoint(x: 0, y: 0.5),
                                     endPoint: UnitPoint(x: 1, y: 0.5)
@@ -77,8 +72,7 @@ struct QuestionComponent: View {
     }
 }
 
-//
-// #Preview {
-//    var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
-//    QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false), questionTitle: ques)
-// }
+#Preview {
+    var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
+    QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false), questionTitle: "zxczxczx", questionIndex: 1)
+}
