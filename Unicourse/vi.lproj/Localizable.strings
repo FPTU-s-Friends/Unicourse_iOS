@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Unicourse
+
+  Created by Trung Kiên Nguyễn on 2/7/24.
+  
+*/
+
+"settings" = "Cài Đặt";
+"account_settings" = "Cài đặt Tài khoản";
+"notifications" = "Thông báo";
+"privacy" = "Quyền riêng tư";
+"help_support" = "Trợ giúp & Hỗ trợ";
+"username" = "Tên người dùng";
+"email" = "Email";
+"enable_notifications" = "Bật thông báo";
+"subscribe_newsletter" = "Đăng ký nhận tin";
+"log_out" = "Đăng xuất";
+"about_us" = "Về chúng tôi";
+"visit_us" = "Thăm chúng tôi";
+"close_account" = "Đóng tài khoản";
+
+
+
+// notfound
+"notfound_cart" = "Chưa có khoá học nào được thêm vào giỏ";
+
+// payment
+"no_payment_selected" = "Không có phương thức thanh toán nào được chọn";
+
+
+// Bottom tab
+"tab_home" = "Trang chủ";
+"tab_course" = "Khoá học";
+"tab_quiz" = "Ôn tập";
+"tab_blog" = "Bài viết";
+"tab_account" = "Tài khoản";

@@ -13,7 +13,7 @@ struct HelpAndSupportView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("FAQ")) {
+                Section(header: Text("Câu hỏi thường gặp")) {
                     ForEach(faqs, id: \.question) { faq in
                         NavigationLink(destination: FAQDetailView(faq: faq)) {
                             Text(faq.question)
@@ -21,10 +21,10 @@ struct HelpAndSupportView: View {
                     }
                 }
 
-                Section(header: Text("Support")) {
+                Section(header: Text("Hỗ trợ")) {
                     NavigationLink(destination: SupportContactView()) {
                         Label {
-                            Text("Contact Support")
+                            Text("Liên hệ hỗ trợ")
                         } icon: {
                             Image(systemName: "envelope.circle.fill")
                                 .foregroundColor(.blue)
@@ -32,7 +32,7 @@ struct HelpAndSupportView: View {
                     }
                     NavigationLink(destination: LiveChatView()) {
                         Label {
-                            Text("Live Chat")
+                            Text("Trò chuyện trực tiếp")
                         } icon: {
                             Image(systemName: "message.circle.fill")
                                 .foregroundColor(.green)
@@ -40,18 +40,21 @@ struct HelpAndSupportView: View {
                     }
                 }
 
-                Section(header: Text("Resources")) {
+                Section(header: Text("Tài nguyên")) {
                     NavigationLink(destination: HelpTopicsView()) {
                         Label {
-                            Text("Help Topics")
+                            Text("Chủ đề trợ giúp")
                         } icon: {
                             Image(systemName: "book.circle.fill")
                                 .foregroundColor(.orange)
                         }
                     }
-                    NavigationLink(destination: FeedbackFormView()) {
+                    NavigationLink(destination: {
+                        FeedbackFormView()
+                            .navigationBarBackButtonHidden(true)
+                    }) {
                         Label {
-                            Text("Send Feedback")
+                            Text("Gửi phản hồi")
                         } icon: {
                             Image(systemName: "pencil.circle.fill")
                                 .foregroundColor(.purple)
@@ -59,7 +62,7 @@ struct HelpAndSupportView: View {
                     }
                     NavigationLink(destination: WebViewUI(url: "https://unicourse.vn")) {
                         Label {
-                            Text("Privacy Policy")
+                            Text("Chính sách quyền riêng tư")
                         } icon: {
                             Image(systemName: "lock.circle.fill")
                                 .foregroundColor(.red)
@@ -68,7 +71,7 @@ struct HelpAndSupportView: View {
 
                     NavigationLink(destination: WebViewUI(url: "https://unicourse.vn/terms")) {
                         Label {
-                            Text("Terms of Service")
+                            Text("Điều khoản dịch vụ")
                         } icon: {
                             Image(systemName: "doc.circle.fill")
                                 .foregroundColor(.cyan)
@@ -77,7 +80,7 @@ struct HelpAndSupportView: View {
                 }
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("Help & Support")
+            .navigationTitle("Trợ giúp & Hỗ trợ")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -97,8 +100,8 @@ struct FAQ {
 
 // Sample FAQs
 let faqs: [FAQ] = [
-    FAQ(question: "How do I purchase a course?", answer: "To purchase a course, go to the course page and click on 'Buy Now'."),
-    FAQ(question: "How do I access my courses?", answer: "You can access your purchased courses in the 'My Courses' section."),
+    FAQ(question: "Làm thế nào để mua khóa học?", answer: "Để mua khóa học, truy cập trang khóa học và nhấn 'Mua ngay'."),
+    FAQ(question: "Làm thế nào để truy cập các khóa học ?", answer: "Bạn có thể truy cập các khóa học đã mua trong mục 'Khóa học của tôi'."),
     // Add more FAQs as needed
 ]
 
@@ -117,7 +120,7 @@ struct FAQDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("FAQ")
+        .navigationTitle("Câu hỏi thường gặp")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {

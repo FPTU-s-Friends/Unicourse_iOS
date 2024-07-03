@@ -12,16 +12,18 @@ import JWTDecode
 class AppData: ObservableObject {
     @Published var user: UserProfile?
     @Published var userInfo: UserInfoModel?
+    @Published var cart: CartModel?
+    @Published var cartSelectedItems: [CartItem] = []
+    @Published var listCurrentEnrolled: [String] = []
+    @Published var wishList: [WishListModel] = []
     @Published var token: String
     @Published var isShowingAlert = false
+    @Published var isShowingAlertUpdateUser = false
+    @Published var isLoggedIn: Bool = false
     @Published var isLoading = false
     @Published var isShowSlashScreen = true
     @Published var error: String = ""
     @Published var mainTabSelection = 0
-    @Published var isLoggedIn: Bool = false
-    @Published var listCurrentEnrolled: [String] = []
-    @Published var cart: CartModel?
-    @Published var isShowingAlertUpdateUser = false
 
     init(user: UserProfile? = nil, token: String = "") {
         self.user = user
@@ -131,6 +133,26 @@ class AppData: ObservableObject {
         }
     }
 
+    func getUserWistList(token: String) async throws {
+        let path = APIPath.getWishList.stringValue
+        let method = HTTPMethod.get
+        let headers = ["Authorization": "Bearer \(token)"]
+
+        do {
+            let response: CommonResponse<[WishListModel]> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: nil)
+            if let data: [WishListModel] = response.data {
+                wishList = data
+            } else {
+                print("Wishlist data is nil")
+            }
+        } catch {
+            print("Get wish list error")
+            print(error)
+            self.error = error.localizedDescription
+            isShowingAlert = true
+        }
+    }
+
     func updateUserProfile(newInfor: requestUpdateUserProfile, token: String, userId: String) async throws {
         let path = APIPath.updateUser.stringValue
         let method = HTTPMethod.put
@@ -153,5 +175,13 @@ class AppData: ObservableObject {
             isShowingAlert = true
             print(error)
         }
+    }
+
+    func calculateTotalAmount() -> Int {
+        return Int(cartSelectedItems.reduce(0) { $0 + $1.amount })
+    }
+
+    func calculateTotalCoin() -> Int {
+        return Int(userInfo?.coins?.reduce(0) { $0 + $1.coin } ?? 0)
     }
 }

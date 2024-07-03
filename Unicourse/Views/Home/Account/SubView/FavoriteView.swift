@@ -32,8 +32,6 @@ struct FavoriteView: View {
                             .tint(.red)
                     }
                 }
-                .transition(.opacity.combined(with: .blurReplace))
-                .animation(.easeInOut(duration: 0.8))
                 .searchable(text: $searchString, isPresented: $isSearchBarVisible, prompt: Text("Tìm kiếm"))
                 .padding(.horizontal, -5)
                 .background(Color.mainBackgroundColor)
@@ -41,8 +39,7 @@ struct FavoriteView: View {
             } else {
                 ScrollView {
                     NotfoundView(systemName: "shippingbox.fill", message: "Bạn chưa có yêu thích khoá học nào")
-                        .transition(.opacity.combined(with: .blurReplace))
-                        .animation(.easeInOut(duration: 0.8))
+
                     Spacer()
                 }
                 .refreshable {

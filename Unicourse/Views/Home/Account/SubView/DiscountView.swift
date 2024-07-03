@@ -19,20 +19,11 @@ struct DiscountView: View {
                     .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(.gray)
                 ) {
-                    SaleItemView()
-                    SaleItemView()
-                }
-
-                Section(header: Text("Phiếu đặc biệt")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(.gray)
-                ) {
-                    SaleItemView()
-                    SaleItemView()
-                    SaleItemView()
-                    SaleItemView()
-                    SaleItemView()
-                    SaleItemView()
+                    SaleItemView(textTitle: "Tiêu đề 1", code: "CODE123")
+                    SaleItemView(textTitle: "Tiêu đề 2", code: "CODE456")
+                    SaleItemView(textTitle: "Tiêu đề 3", code: "CODE789")
+                    SaleItemView(textTitle: "Tiêu đề 4", code: "CODE101")
+                    SaleItemView(textTitle: "Tiêu đề 5", code: "CODE202")
                 }
             }
             .padding()

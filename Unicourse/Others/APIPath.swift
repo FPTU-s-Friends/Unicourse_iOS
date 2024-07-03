@@ -29,6 +29,7 @@ enum APIPath {
     case getTransactionHistory
     case updateUser
     case getChatRooms
+    case getWishList
 
     var stringValue: String {
         switch self {
@@ -74,6 +75,8 @@ enum APIPath {
             "/api/user/updateUserLevel"
         case .getChatRooms:
             "/api/chatRoom/get-room"
+        case .getWishList:
+            "/api/user/get-wish-list"
         }
     }
 }

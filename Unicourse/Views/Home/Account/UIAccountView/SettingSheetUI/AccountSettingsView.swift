@@ -21,16 +21,17 @@ struct AccountSettingsView: View {
         NavigationView {
             Form {
                 // Profile Section
-                Section(header: Text("Profile")) {
+                Section(header: Text("Hồ sơ")) {
                     HStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.blue)
                             .font(.system(size: 22))
-                        Text("Username")
+                        Text("Tên người dùng")
                         Spacer()
-                        TextField("Username", text: $username)
+                        TextField("Tên người dùng", text: $username)
                             .multilineTextAlignment(.trailing)
                             .disabled(true)
+                            .foregroundStyle(.gray)
                     }
                     HStack {
                         Image(systemName: "envelope.circle.fill")
@@ -43,21 +44,22 @@ struct AccountSettingsView: View {
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
                             .disabled(true)
+                            .foregroundStyle(.gray)
                     }
                 }
 
                 // Notifications Section
-                Section(header: Text("Notifications")) {
+                Section(header: Text("Thông báo")) {
                     Toggle(isOn: $notificationsEnabled) {
-                        Text("Enable Notifications")
+                        Text("Bật thông báo")
                     }
                     Toggle(isOn: $newsletterSubscribed) {
-                        Text("Subscribe to Newsletter")
+                        Text("Đăng ký nhận tin")
                     }
                 }
 
                 // Support Section
-                Section(header: Text("Support")) {
+                Section(header: Text("Hỗ trợ")) {
                     NavigationLink(destination: {
                         HelpAndSupportView()
                             .navigationBarBackButtonHidden(true)
@@ -66,7 +68,7 @@ struct AccountSettingsView: View {
                             Image(systemName: "questionmark.circle.fill")
                                 .foregroundColor(.blue)
                                 .font(.system(size: 22))
-                            Text("Help & Support")
+                            Text("Trợ giúp & Hỗ trợ")
                         }
                     }
                 }
@@ -80,15 +82,15 @@ struct AccountSettingsView: View {
                             Image(systemName: "arrowshape.turn.up.left.circle.fill")
                                 .foregroundColor(.red)
                                 .font(.system(size: 22))
-                            Text("Log Out")
+                            Text("Đăng xuất")
                                 .foregroundColor(.red)
                         }
                     }
                     .alert(isPresented: $showAlert) {
                         Alert(
-                            title: Text("Log Out"),
-                            message: Text("Are you sure you want to log out?"),
-                            primaryButton: .destructive(Text("Log Out")) {
+                            title: Text("Đăng xuất"),
+                            message: Text("Bạn có chắc chắn muốn đăng xuất không?"),
+                            primaryButton: .destructive(Text("Đăng xuất")) {
                                 withAnimation(.spring) {
                                     appData.isLoading = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -125,7 +127,7 @@ struct AccountSettingsView: View {
             .navigationDestination(isPresented: $isLoggedOut) {
                 LoginView()
             }
-            .navigationTitle("Account Settings")
+            .navigationTitle("Cài đặt tài khoản")
             .navigationBarTitleDisplayMode(.large)
         }
     }
