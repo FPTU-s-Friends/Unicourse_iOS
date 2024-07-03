@@ -30,6 +30,7 @@ struct ContentView: View {
                     guard let userId = appData.user?.userId else { return }
                     try await appData.getUserInfo(userId: userId, token: appData.token)
                     try await appData.getUserCart(token: appData.token)
+                    try await appData.getUserWistList(token: appData.token)
                 } catch {
                     print(error)
                 }

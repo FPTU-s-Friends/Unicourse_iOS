@@ -16,9 +16,9 @@ struct ProgressCourseView: View {
     var body: some View {
         if isLoading {
             VStack {
-                HeaderCategoryView(textCategory: HeaderCategoryText.progressText,
-                                   textButton: TextButton.viewAll,
-                                   action: {})
+//                HeaderCategoryView(textCategory: HeaderCategoryText.progressText,
+//                                   textButton: TextButton.viewAll,
+//                                   action: {})
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {

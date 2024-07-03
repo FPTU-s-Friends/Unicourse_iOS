@@ -38,6 +38,9 @@ final class LoginViewModel: NSObject, ObservableObject {
             guard let idToken = gidSignInResult.user.idToken?.tokenString else {
                 throw URLError(.badServerResponse)
             }
+
+            let googleUserResponse = GoogleUserResponse(from: gidSignInResult.user) // tạo user model để có thể print ra cho dễ.
+
             let accessToken = gidSignInResult.user.accessToken.tokenString
 
             return try await AuthenticationManager.shared.signInWithGoogle(idToken: idToken, accessToken: accessToken)
@@ -100,11 +103,6 @@ final class LoginViewModel: NSObject, ObservableObject {
         // Set default name if fullName is empty
         let displayName = fullName.isEmpty ? "Người dùng Unicourse" : fullName
 
-        // Get profile image URL if user is a real user
-
-        print("tokenString", tokenString)
-        print("displayName", displayName)
-
         do {
             let signInResponse = try await NetworkManager.shared.signIn(email: email)
             print("Logged In Success")
@@ -151,4 +149,18 @@ func randomNonceString(length: Int = 32) -> String {
     }
 
     return String(nonce)
+}
+
+struct GoogleUserResponse: Encodable {
+    let userId: String
+    let idToken: String?
+    let fullName: String?
+    let email: String?
+
+    init(from user: GIDGoogleUser) {
+        self.userId = user.userID ?? ""
+        self.idToken = user.idToken?.tokenString
+        self.fullName = user.profile?.name
+        self.email = user.profile?.email
+    }
 }

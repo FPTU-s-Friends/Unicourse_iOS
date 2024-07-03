@@ -12,7 +12,7 @@ struct SettingSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Tài Khoản")) {
+                Section(header: Text(NSLocalizedString("account_settings", comment: ""))) {
                     NavigationLink {
                         AccountSettingsView()
                             .navigationBarBackButtonHidden(true)
@@ -23,7 +23,7 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.accountIconColor)
-                            Text("Account Settings")
+                            Text(NSLocalizedString("account_settings", comment: ""))
                         }
                     }
 
@@ -37,12 +37,12 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.notificationIconColor)
-                            Text("Notifications")
+                            Text(NSLocalizedString("notifications", comment: ""))
                         }
                     }
                 }
 
-                Section(header: Text("Điều Khoản")) {
+                Section(header: Text(NSLocalizedString("privacy", comment: ""))) {
                     NavigationLink {
                         PrivacyView()
                             .navigationBarBackButtonHidden(true)
@@ -53,12 +53,12 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.privacyIconColor)
-                            Text("Privacy")
+                            Text(NSLocalizedString("privacy", comment: ""))
                         }
                     }
                 }
 
-                Section(header: Text("Hỗ Trợ")) {
+                Section(header: Text(NSLocalizedString("help_support", comment: ""))) {
                     NavigationLink {
                         HelpAndSupportView()
                             .navigationBarBackButtonHidden(true)
@@ -69,7 +69,7 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.helpIconColor)
-                            Text("Help & Support")
+                            Text(NSLocalizedString("help_support", comment: ""))
                         }
                     }
 
@@ -82,7 +82,7 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.blue)
-                            Text("Website")
+                            Text(NSLocalizedString("website", comment: ""))
                         }
                     }
 
@@ -96,11 +96,10 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.aboutIconColor)
-                            Text("About Us")
+                            Text(NSLocalizedString("about_us", comment: ""))
                         }
                     }
 
-                    // Nút mở trong WebView hoặc ứng dụng Facebook
                     Button(action: {
                         OpenURLUtility.openURL("https://www.facebook.com/profile.php?id=61559287804624")
                     }) {
@@ -110,7 +109,7 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.cyan)
-                            Text("Visit Us")
+                            Text(NSLocalizedString("visit_us", comment: ""))
                                 .foregroundColor(.primary)
                         }
                     }
@@ -118,7 +117,7 @@ struct SettingSheetView: View {
 
                 Section {
                     Button(action: {
-                        print("Close Account tapped")
+                        print("Đóng tài khoản được nhấn")
                     }) {
                         HStack {
                             Image(systemName: "archivebox.circle")
@@ -126,14 +125,14 @@ struct SettingSheetView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.closeAccountIconColor)
-                            Text("Close Account")
+                            Text(NSLocalizedString("close_account", comment: ""))
                         }
                         .foregroundColor(.closeAccountIconColor)
                     }
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Cài đặt ⚙️")
+            .navigationTitle(NSLocalizedString("settings", comment: ""))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -145,6 +144,7 @@ struct SettingSheetView: View {
         }
     }
 }
+
 
 #Preview {
     SettingSheetView()

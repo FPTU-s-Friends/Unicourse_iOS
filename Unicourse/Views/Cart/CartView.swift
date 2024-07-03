@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var appData: AppData
-
+   
     var body: some View {
         VStack {
             ScrollView {
@@ -20,7 +20,7 @@ struct CartView: View {
                     }
 
                 } else {
-                    NotfoundView(systemName: "shippingbox.fill", message: "Chưa có khoá học nào được thêm vào giỏ")
+                    NotfoundView(systemName: "shippingbox.fill", message: NSLocalizedString("notfound_cart", comment: ""))
                 }
                 Spacer()
             }
@@ -30,7 +30,6 @@ struct CartView: View {
                 }
             }
 
-            // Bottom
 
             CartBottomView()
         }

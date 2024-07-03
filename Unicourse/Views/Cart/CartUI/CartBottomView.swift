@@ -52,11 +52,11 @@ struct CartBottomView: View {
                             .foregroundStyle(.gray)
 
                         HStack {
-                            Text("\(String(describing: appData.cart?.amount ?? 0))")
+                            Text("\(calculateTotalAmount(), specifier: "%.0f") VND")
                                 .font(.system(size: 16, weight: .bold))
                                 .lineSpacing(20)
                                 .foregroundColor(.activeColor)
-                            Text("\(String(describing: (appData.cart?.amount ?? 0) + 10000))")
+                            Text("\(calculateTotalAmount() + 10000, specifier: "%.0f") VND")
                                 .font(.system(size: 14, weight: .light))
                                 .lineSpacing(20)
                                 .strikethrough()
@@ -78,25 +78,15 @@ struct CartBottomView: View {
             NavigationView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Section(header: Text("Phiếu đặc biệt")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundStyle(.gray)
-                        ) {
-                            SaleItemView()
-                            SaleItemView()
-                        }
+                        NotfoundView(systemName: "shippingbox.circle", message: "Không có voucher nào phù hợp !")
 
-                        Section(header: Text("Phiếu đặc biệt")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundStyle(.gray)
-                        ) {
-                            SaleItemView()
-                            SaleItemView()
-                            SaleItemView()
-                            SaleItemView()
-                            SaleItemView()
-                            SaleItemView()
-                        }
+//                        Section(header: Text("Phiếu đặc biệt")
+//                            .font(.system(size: 14, weight: .medium))
+//                            .foregroundStyle(.gray)
+//                        ) {
+//                            SaleItemView(textTitle: "Tiêu đề 1", code: "CODE123")
+//                            SaleItemView(textTitle: "Tiêu đề 2", code: "CODE456")
+//                        }
                     }
                     .padding()
                 }
@@ -104,12 +94,16 @@ struct CartBottomView: View {
                 .navigationBarTitleDisplayMode(.large)
                 .presentationDetents([.large])
             }
-
         })
         .background(.white)
+    }
+
+    private func calculateTotalAmount() -> Double {
+        return Double(appData.cartSelectedItems.reduce(0) { $0 + $1.amount })
     }
 }
 
 #Preview {
     CartBottomView()
+        .environmentObject(AppData())
 }

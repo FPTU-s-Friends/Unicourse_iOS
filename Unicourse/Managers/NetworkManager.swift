@@ -72,8 +72,6 @@ class NetworkManager {
             defaultHeaders.merge(additionalHeaders) { _, new in new }
         }
 
-        print(path)
-
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = defaultHeaders

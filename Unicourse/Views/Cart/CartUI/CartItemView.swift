@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CartItemView: View {
-    @State private var isChecked: Bool = false
     @State private var isShowMore = false
     var item: CartItem
 
@@ -16,15 +15,15 @@ struct CartItemView: View {
         VStack {
             VStack {
                 VStack(alignment: .leading) {
-                    HeaderCartItemView(isShowMore: $isShowMore)
+//                    HeaderCartItemView(isShowMore: $isShowMore)
 
-                    CartProductItem(isChecked: $isChecked, item: item)
+                    CartProductItem(item: item)
 
-                    if isShowMore {
-                        VStack {
-                            Text("More detail here")
-                        }
-                    }
+//                    if isShowMore {
+//                        VStack {
+//                            Text("More detail here")
+//                        }
+//                    }
                 }
                 .padding()
                 .background(Color.white.cornerRadius(10))

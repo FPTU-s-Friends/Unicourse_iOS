@@ -40,6 +40,7 @@ struct AppleLoginButtonView: View {
                             appData.token = jwtToken
                             try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
                             try await appData.getUserCart(token: jwtToken)
+                            try await appData.getUserWistList(token: jwtToken)
                         } catch {
                             print("Apple sign-in error: \(error.localizedDescription)")
                             self.error = "Apple sign-in error: \(error.localizedDescription)"

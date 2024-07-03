@@ -33,6 +33,7 @@ struct GithubLoginButtonView: View {
                     appData.token = jwtToken
                     try await appData.decodeJWTTokenAndSetUserProfile(token: jwtToken)
                     try await appData.getUserCart(token: jwtToken)
+                    try await appData.getUserWistList(token: jwtToken)
                 } catch {
                     appData.error = error.localizedDescription
                     appData.isShowingAlert = true

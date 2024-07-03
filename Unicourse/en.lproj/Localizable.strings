@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  Unicourse
+
+  Created by Trung Kiên Nguyễn on 2/7/24.
+  
+*/
+"settings" = "Settings";
+"account_settings" = "Account Settings";
+"notifications" = "Notifications";
+"privacy" = "Privacy";
+"help_support" = "Help & Support";
+"username" = "Username";
+"email" = "Email";
+"enable_notifications" = "Enable Notifications";
+"subscribe_newsletter" = "Subscribe to Newsletter";
+"log_out" = "Log Out";
+"about_us" = "About Us";
+"visit_us" = "Visit Us";
+"close_account" = "Close Account";
+
+
+// notfound
+"notfound_cart" = "No courses have been added to the cart yet";
+
+
+// payment
+"no_payment_selected" = "No Payment Method Selected";
+
+
+// bottom tab
+"tab_home" = "Home";
+"tab_course" = "Courses";
+"tab_quiz" = "Quiz";
+"tab_blog" = "Blog";
+"tab_account" = "Account";

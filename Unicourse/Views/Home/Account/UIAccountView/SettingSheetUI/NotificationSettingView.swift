@@ -16,24 +16,24 @@ struct NotificationSettingView: View {
 
     var body: some View {
         Form {
-            Section(header: Text("App Notifications")) {
+            Section(header: Text("Thông báo ứng dụng")) {
                 Toggle(isOn: $appNotificationsEnabled) {
                     HStack {
                         Image(systemName: "app.badge.fill")
                             .foregroundColor(.blue)
                             .font(.system(size: 22))
-                        Text("Receive App Notifications")
+                        Text("Nhận thông báo ứng dụng")
                     }
                 }
             }
 
-            Section(header: Text("Course Notifications")) {
+            Section(header: Text("Thông báo khóa học")) {
                 Toggle(isOn: $courseNotificationsEnabled) {
                     HStack {
                         Image(systemName: "book.circle.fill")
                             .foregroundColor(.green) // Changed color to green for course updates
                             .font(.system(size: 22))
-                        Text("Course Updates")
+                        Text("Cập nhật khóa học")
                     }
                 }
                 Toggle(isOn: $newsletterNotificationsEnabled) {
@@ -41,23 +41,23 @@ struct NotificationSettingView: View {
                         Image(systemName: "newspaper.circle.fill")
                             .foregroundColor(.orange) // Changed color to orange for newsletter
                             .font(.system(size: 22))
-                        Text("Newsletter")
+                        Text("Bản tin")
                     }
                 }
             }
 
-            Section(header: Text("Chat Notifications")) {
+            Section(header: Text("Thông báo trò chuyện")) {
                 Toggle(isOn: $chatNotificationsEnabled) {
                     HStack {
                         Image(systemName: "message.circle.fill")
-                            .foregroundColor(.green) // Changed color to purple for chat notifications
+                            .foregroundColor(.purple) // Changed color to purple for chat notifications
                             .font(.system(size: 22))
-                        Text("Chat Messages")
+                        Text("Tin nhắn trò chuyện")
                     }
                 }
             }
         }
-        .navigationTitle("Notification Settings")
+        .navigationTitle("Cài đặt thông báo")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
