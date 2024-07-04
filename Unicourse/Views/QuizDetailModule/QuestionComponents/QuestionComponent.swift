@@ -72,7 +72,10 @@ struct QuestionComponent: View {
     }
 }
 
-#Preview {
-    var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
-    QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false), questionTitle: "zxczxczx", questionIndex: 1)
+struct QuestionComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        var ques: String = "According to this module, universities are not just trying to train you for a job role, but are also trying to prepare you . . . Refer to lesson 1.4a. Choose one option"
+        QuestionComponent(isOpenQuestion: .constant(false), isChangeYAxisQuestion: .constant(false), questionTitle: ques, questionIndex: 1)
+    }
 }
+
