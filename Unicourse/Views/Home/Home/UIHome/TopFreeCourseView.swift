@@ -39,7 +39,6 @@ struct TopFreeCourseView: View {
                         NavigationLink {
                             if #available(iOS 18.0, *) {
                                 CourseDetailView(courseId: course._id)
-                                    .navigationTransition(.zoom(sourceID: "card\(course._id)", in: nameSpace))
 
                             } else {
                                 CourseDetailView(courseId: course._id)
@@ -47,7 +46,6 @@ struct TopFreeCourseView: View {
                         } label: {
                             if #available(iOS 18.0, *) {
                                 TopCourseViewItem(course: course)
-                                    .matchedTransitionSource(id: "card\(course._id)", in: nameSpace)
                                     .cornerRadius(20)
                             } else {
                                 TopCourseViewItem(course: course)
