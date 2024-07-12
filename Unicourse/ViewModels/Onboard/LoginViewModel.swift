@@ -40,6 +40,7 @@ final class LoginViewModel: NSObject, ObservableObject {
             }
 
             let googleUserResponse = GoogleUserResponse(from: gidSignInResult.user) // tạo user model để có thể print ra cho dễ.
+            printJSONData(data: googleUserResponse)
 
             let accessToken = gidSignInResult.user.accessToken.tokenString
 
@@ -151,7 +152,7 @@ func randomNonceString(length: Int = 32) -> String {
     return String(nonce)
 }
 
-struct GoogleUserResponse: Encodable {
+struct GoogleUserResponse: Codable {
     let userId: String
     let idToken: String?
     let fullName: String?

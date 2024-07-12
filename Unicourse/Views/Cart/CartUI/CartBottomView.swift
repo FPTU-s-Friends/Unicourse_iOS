@@ -53,11 +53,11 @@ struct CartBottomView: View {
 
                         HStack {
                             Text("\(calculateTotalAmount(), specifier: "%.0f") VND")
-                                .font(.system(size: 16, weight: .bold))
+                                .font(.system(size: 14, weight: .bold))
                                 .lineSpacing(20)
                                 .foregroundColor(.activeColor)
                             Text("\(calculateTotalAmount() + 10000, specifier: "%.0f") VND")
-                                .font(.system(size: 14, weight: .light))
+                                .font(.system(size: 12, weight: .light))
                                 .lineSpacing(20)
                                 .strikethrough()
                                 .foregroundStyle(.gray)

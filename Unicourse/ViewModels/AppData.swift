@@ -173,7 +173,30 @@ class AppData: ObservableObject {
             print("UpdateUserProfile", error)
             self.error = error.localizedDescription
             isShowingAlert = true
-            print(error)
+        }
+    }
+
+    func createPaymentLink(token: String, paymentInfo: CreatePaymentLinkModel) async throws -> CommonResponse<PaymentLinkData> {
+        let path = APIPath.createPaymentLink.stringValue
+        let method = HTTPMethod.post
+        let headers = [
+            "Authorization": "Bearer \(token)",
+            "x-mobile-source": "true"
+        ]
+
+        guard let bodyData = try? JSONEncoder().encode(paymentInfo) else {
+            throw NetworkError.encodingError
+        }
+
+        do {
+            let response: CommonResponse<PaymentLinkData> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+            printJSONData(data: response)
+            return response
+        } catch {
+            print("createPaymentLinkFailed", error)
+            self.error = error.localizedDescription
+            isShowingAlert = true
+            throw error
         }
     }
 
@@ -184,4 +207,31 @@ class AppData: ObservableObject {
     func calculateTotalCoin() -> Int {
         return Int(userInfo?.coins?.reduce(0) { $0 + $1.coin } ?? 0)
     }
+}
+
+struct CreatePaymentLinkModel: Codable {
+    let orderCode: Int
+    let amount: Int
+    let description: String
+    let items: [itemCreatePaymentModel]
+}
+
+struct itemCreatePaymentModel: Codable {
+    let name: String
+    let quantity: Int
+    let price: Int
+}
+
+struct PaymentLinkData: Codable {
+    let bin: String
+    let accountNumber: String
+    let accountName: String
+    let amount: Int
+    let description: String
+    let orderCode: Int
+    let currency: String
+    let paymentLinkId: String
+    let status: String
+    let checkoutUrl: String
+    let qrCode: String
 }

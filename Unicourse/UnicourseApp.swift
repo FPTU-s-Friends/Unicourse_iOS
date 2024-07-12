@@ -34,6 +34,11 @@ struct UnicourseApp: App {
 
             .preferredColorScheme(.light)
             .animation(.spring(), value: appData.isShowSlashScreen)
+            .onReceive(NotificationCenter.default.publisher(for: .didReceiveDeepLink)) { notification in
+                if let url = notification.object as? URL {
+                    handleDeepLink(url: url)
+                }
+            }
             .onAppear {
                 Task {
                     do {
@@ -47,5 +52,11 @@ struct UnicourseApp: App {
                 }
             }
         }
+    }
+
+    private func handleDeepLink(url: URL) {
+        // Handle the URL and update payment status
+        print("Handling deep link: \(url)")
+        // Add your deep link handling logic here
     }
 }
