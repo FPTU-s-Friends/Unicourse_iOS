@@ -40,12 +40,15 @@ struct AccountView: View {
                     }
                     .padding(.horizontal, 30)
                 }
+                .padding(.bottom, 60)
             }
+
             .navigationDestination(isPresented: $viewModel.isNavigateToSettingView, destination: {
                 SettingSheetView()
                     .navigationBarBackButtonHidden(true)
 
             })
+
             .sheet(isPresented: $viewModel.isPresentedEditSheet, content: {
                 EditSheetView(isPresentEditSheet: $viewModel.isPresentedEditSheet)
                     .presentationDetents([.large])

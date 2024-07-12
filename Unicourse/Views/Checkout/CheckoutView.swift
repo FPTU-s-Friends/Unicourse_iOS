@@ -21,9 +21,15 @@ enum PaymentMethod: CustomStringConvertible {
     }
 }
 
+struct IdentifiableURL: Identifiable {
+    let id = UUID()
+    let url: URL
+}
+
 struct CheckoutView: View {
     @EnvironmentObject var appData: AppData
-    @State var selectedPaymentMethod: PaymentMethod?
+    @State private var selectedPaymentMethod: PaymentMethod?
+    @State private var paymentUrl: IdentifiableURL?
 
     var body: some View {
         VStack {
@@ -38,9 +44,8 @@ struct CheckoutView: View {
                                     .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
                                     .cornerRadius(10)
                             } placeholder: {
-                                RoundedRectangle(cornerRadius: 4)
+                                RoundedRectangle(cornerRadius: 10)
                                     .frame(width: UIScreen.main.bounds.width * 0.3, height: 75)
-                                    .cornerRadius(10)
                                     .shimmerWithWave()
                             }
 
@@ -49,14 +54,14 @@ struct CheckoutView: View {
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(1)
                                     .font(.system(size: 12, weight: .light))
-                                // ---
+
                                 HStack {
                                     Text("\(item.amount) VND")
                                         .font(.system(size: 14, weight: .bold))
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(1)
                                         .foregroundColor(.activeColor)
-                                    // ---
+
                                     Text("\(item.amount + 20000) VND")
                                         .font(.system(size: 12, weight: .bold))
                                         .multilineTextAlignment(.leading)
@@ -68,18 +73,7 @@ struct CheckoutView: View {
                         }
                     }
 
-                    HStack {
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                        Text("Chi tiết")
-                            .font(.system(size: 12, weight: .light))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
+                    DividerView(text: "Chi tiết")
 
                     HStack {
                         VStack(alignment: .leading, spacing: 10) {
@@ -98,11 +92,11 @@ struct CheckoutView: View {
                         VStack(alignment: .trailing, spacing: 8) {
                             Text("\(appData.calculateTotalAmount()) VND")
                                 .font(.system(size: 13, weight: .light))
-                                .foregroundStyle(.gray)
+                                .foregroundColor(.gray)
 
                             Text("\(appData.calculateTotalCoin()) VND")
                                 .font(.system(size: 13, weight: .light))
-                                .foregroundStyle(.gray)
+                                .foregroundColor(.gray)
 
                             if let payment = selectedPaymentMethod {
                                 Text(payment.description)
@@ -110,40 +104,29 @@ struct CheckoutView: View {
                                     .padding(.vertical, 5)
                                     .padding(.horizontal, 10)
                                     .background(Color.UIButtonGreen.cornerRadius(10))
-                                    .foregroundStyle(.white)
+                                    .foregroundColor(.white)
                             } else {
                                 Text(NSLocalizedString("no_payment_selected", comment: ""))
                                     .font(.system(size: 10, weight: .light))
                                     .padding(.vertical, 5)
                                     .padding(.horizontal, 10)
                                     .background(Color.gray.cornerRadius(10))
-                                    .foregroundStyle(.white)
+                                    .foregroundColor(.white)
                             }
                         }
                     }
-                    HStack {
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                        Text("Tổng số")
-                            .font(.system(size: 12, weight: .light))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
+
+                    DividerView(text: "Tổng số")
 
                     HStack {
                         Spacer()
                         VStack(alignment: .trailing, spacing: 8) {
                             Text("Tổng giá")
                                 .font(.system(size: 14, weight: .light))
-                                .foregroundStyle(.gray)
+                                .foregroundColor(.gray)
 
-                            Text("\(appData.calculateTotalAmount() - appData.calculateTotalCoin()) VND")
+                            Text("\(max(appData.calculateTotalAmount() - appData.calculateTotalCoin(), 0)) VND")
                                 .font(.system(size: 16, weight: .bold))
-                                .lineSpacing(20)
                                 .foregroundColor(.activeColor)
                         }
                     }
@@ -182,14 +165,14 @@ struct CheckoutView: View {
             }
 
             Spacer()
+
             VStack {
-                Button(action: {}, label: {
+                Button(action: processPayment, label: {
                     ButtonGradientUI(titleButton: "Thanh Toán")
                 })
-
                 .padding(.horizontal, 20)
             }
-            .background(.white)
+            .background(Color.white)
         }
         .background(Color.mainBackgroundColor)
         .toolbar {
@@ -200,6 +183,74 @@ struct CheckoutView: View {
         .navigationTitle("Thanh Toán")
         .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden(true)
+        .alert(isPresented: $appData.isShowingAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(appData.error ?? "Unknown error"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .sheet(item: $paymentUrl) { identifiableUrl in
+            SafariView(url: identifiableUrl.url)
+        }
+    }
+
+    private func processPayment() {
+        Task {
+            print(appData.token)
+            do {
+                let items = appData.cartSelectedItems.map { item in
+                    itemCreatePaymentModel(
+                        name: item.title,
+                        quantity: 1,
+                        price: item.amount
+                    )
+                }
+//                let totalAmount = max(appData.calculateTotalAmount() - appData.calculateTotalCoin(), 0)
+                let totalAmount = 2000
+                let paymentInfo = CreatePaymentLinkModel(
+                    orderCode: Int.random(in: 1000 ... 9999999),
+                    amount: totalAmount,
+                    description: "Order payment",
+                    items: items
+                )
+                let token = appData.token
+                let response = try await appData.createPaymentLink(token: token, paymentInfo: paymentInfo)
+
+                if let data = response.data {
+                    print("Payment link created successfully: \(data.checkoutUrl)")
+                    if let url = URL(string: data.checkoutUrl) {
+                        paymentUrl = IdentifiableURL(url: url)
+                    } else {
+                        appData.error = "Invalid checkout URL"
+                        appData.isShowingAlert = true
+                    }
+                }
+
+            } catch {
+                appData.error = error.localizedDescription
+                appData.isShowingAlert = true
+            }
+        }
+    }
+}
+
+struct DividerView: View {
+    let text: String
+
+    var body: some View {
+        HStack {
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(.gray)
+            Text(text)
+                .font(.system(size: 12, weight: .light))
+                .fontWeight(.bold)
+                .foregroundColor(.gray)
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(.gray)
+        }
     }
 }
 
