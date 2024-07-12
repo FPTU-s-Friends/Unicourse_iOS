@@ -41,6 +41,7 @@ struct TopCoursesView: View {
                     }
                 }
             }
+            // zxczxcz
         }
         .padding(.leading, 10)
     }
