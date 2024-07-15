@@ -19,6 +19,11 @@ struct IdentifiableURL: Identifiable {
     let url: URL
 }
 
+struct IdentifiableURL: Identifiable {
+    let id = UUID()
+    let url: URL
+}
+
 struct CheckoutView: View {
     @EnvironmentObject var appData: AppData
     @State private var selectedPaymentMethod: PaymentMethod?

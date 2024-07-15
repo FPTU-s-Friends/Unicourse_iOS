@@ -17,6 +17,12 @@
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
+	<dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>unicourse</string>
+        </array>
+    </dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>

@@ -59,4 +59,10 @@ struct UnicourseApp: App {
         print("Handling deep link: \(url)")
         // Add your deep link handling logic here
     }
+
+    private func handleDeepLink(url: URL) {
+        // Handle the URL and update payment status
+        print("Handling deep link: \(url)")
+        // Add your deep link handling logic here
+    }
 }
