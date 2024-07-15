@@ -31,6 +31,8 @@ enum APIPath {
     case getChatRooms
     case getWishList
     case createPaymentLink
+    case getPaymentInfo
+    case createTransaction
 
     var stringValue: String {
         switch self {
@@ -80,6 +82,10 @@ enum APIPath {
             "/api/user/get-wish-list"
         case .createPaymentLink:
             "/api/payOS/create-payment-link"
+        case .getPaymentInfo:
+            "/api/payOS/get-payment-link"
+        case .createTransaction:
+            "/api/transactions/pay"
         }
     }
 }

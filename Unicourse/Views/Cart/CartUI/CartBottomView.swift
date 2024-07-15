@@ -11,6 +11,10 @@ struct CartBottomView: View {
     @EnvironmentObject var appData: AppData
     @State private var isShowingListVoucher = false
 
+    private var hasItemsInCart: Bool {
+        return appData.cart?.items.isEmpty == false
+    }
+
     var body: some View {
         // Bottom Cart
         VStack {
@@ -70,6 +74,8 @@ struct CartBottomView: View {
                         ButtonGradientUI(titleButton: "Mua Ngay")
                             .frame(width: 160)
                     }
+                    .disabled(!hasItemsInCart) // Disable button if no items in cart
+                    .opacity(hasItemsInCart ? 1 : 0.5) // Change opacity to indicate disabled state
                 }
                 .padding(.horizontal, 20)
             }
@@ -99,7 +105,7 @@ struct CartBottomView: View {
     }
 
     private func calculateTotalAmount() -> Double {
-        return Double(appData.cartSelectedItems.reduce(0) { $0 + $1.amount })
+        return Double(appData.cart?.items.reduce(0) { $0 + $1.amount } ?? 0)
     }
 }
 

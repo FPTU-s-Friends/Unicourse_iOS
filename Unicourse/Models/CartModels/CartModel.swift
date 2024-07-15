@@ -8,12 +8,12 @@
 import Foundation
 
 struct CartModel: Codable {
-    let _id: String
-    let user_id: CartUser_idModel
-    let amount: Int
-    let items: [CartItem]
-    let created_at: String
-    let updated_at: String
+    var _id: String
+    var user_id: CartUser_idModel
+    var amount: Int
+    var items: [CartItem]
+    var created_at: String
+    var updated_at: String
 }
 
 struct CartUser_idModel: Codable {

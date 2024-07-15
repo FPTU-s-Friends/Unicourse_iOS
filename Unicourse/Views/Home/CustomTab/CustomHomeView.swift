@@ -17,8 +17,10 @@ struct CustomHomeView: View {
                 HomeView()
                     .tag(Tab.home)
 
-                CourseView()
-                    .tag(Tab.course)
+                NavigationView {
+                    CourseView()
+                }
+                .tag(Tab.course)
 
                 NavigationView {
                     QuizView()

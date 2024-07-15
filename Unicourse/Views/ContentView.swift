@@ -31,6 +31,7 @@ struct ContentView: View {
                     try await appData.getUserInfo(userId: userId, token: appData.token)
                     try await appData.getUserCart(token: appData.token)
                     try await appData.getUserWistList(token: appData.token)
+                    print(appData.token)
                 } catch {
                     print(error)
                 }

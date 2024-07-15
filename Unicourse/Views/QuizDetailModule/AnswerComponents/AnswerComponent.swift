@@ -63,9 +63,16 @@ struct AnswerComponent: View {
 //                                printJSONData(data: newListAnswer)
                             }
                         }
-                        .onChange(of: isShowAnswer) { _, newValue in
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.85) {
-                                isExpandedAnswer = newValue
+//                        .onChange(of: isShowAnswer) { _, newValue in
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.85) {
+//                                isExpandedAnswer = newValue
+//                            }
+//                        }
+                        .onReceive(NotificationCenter.default.publisher(for: .isShowAnswerChanged)) { notification in
+                            if let newValue = notification.userInfo?["newValue"] as? Bool {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.85) {
+                                    self.isExpandedAnswer = newValue
+                                }
                             }
                         }
                 }
@@ -86,3 +93,6 @@ struct AnswerComponent: View {
 // #Preview {
 //    AnswerComponent(typeAnswer: .multiple, listAnswer: [], isShowAnswer: true)
 // }
+extension Notification.Name {
+    static let isShowAnswerChanged = Notification.Name("isShowAnswerChanged")
+}

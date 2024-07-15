@@ -10,9 +10,9 @@ import SwiftUI
 
 struct SafariView: UIViewControllerRepresentable {
     let url: URL
-    @Environment(\.presentationMode) var presentationMode
+    var onDismiss: (() -> Void)?
 
-    class Coordinator: NSObject, SFSafariViewControllerDelegate {
+    class Coordinator: NSObject, SFSafariViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
         var parent: SafariView
 
         init(parent: SafariView) {
@@ -20,7 +20,11 @@ struct SafariView: UIViewControllerRepresentable {
         }
 
         func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-            parent.presentationMode.wrappedValue.dismiss()
+            parent.onDismiss?()
+        }
+
+        func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+            parent.onDismiss?()
         }
     }
 
@@ -31,6 +35,8 @@ struct SafariView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> SFSafariViewController {
         let safariVC = SFSafariViewController(url: url)
         safariVC.delegate = context.coordinator
+        safariVC.presentationController?.delegate = context.coordinator
+        safariVC.modalPresentationStyle = .fullScreen
         return safariVC
     }
 
