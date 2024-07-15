@@ -9,25 +9,10 @@ import SwiftUI
 
 struct CartProductItem: View {
     var item: CartItem
-    @State private var isChecked = false
     @EnvironmentObject var appData: AppData
 
     var body: some View {
         HStack {
-            Button(action: {
-                withAnimation {
-                    isChecked.toggle()
-                    handleCheckBoxToggle()
-                }
-            }, label: {
-                Image(systemName: isChecked ? "checkmark.square.fill" : "square")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(isChecked ? .mainColor1 : .gray)
-                    .frame(width: 16)
-                    .padding(.trailing, 10)
-            })
-
             NavigationLink(destination: CourseDetailView(courseId: item._id)) {
                 HStack {
                     AsyncImage(url: URL(string: item.thumbnail)) { image in
@@ -64,16 +49,18 @@ struct CartProductItem: View {
                     }
                 }
             }
+
+            Spacer()
         }
     }
 
-    private func handleCheckBoxToggle() {
-        if isChecked {
-            appData.cartSelectedItems.append(item)
-        } else {
-            appData.cartSelectedItems.removeAll { $0._id == item._id }
-        }
-    }
+//    private func handleCheckBoxToggle() {
+//        if isChecked {
+//            appData.cartSelectedItems.append(item)
+//        } else {
+//            appData.cartSelectedItems.removeAll { $0._id == item._id }
+//        }
+//    }
 }
 
 #Preview {

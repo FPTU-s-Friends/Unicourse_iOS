@@ -21,7 +21,7 @@ struct UnicourseApp: App {
                 } else {
                     ContentView()
                         .environmentObject(appData)
-                        .environmentObject(SocketIOManager.shared)
+//                        .environmentObject(SocketIOManager.shared)
                         .alert("Error", isPresented: $appData.isShowingAlert) {
                             Button("OK", role: .cancel) {
                                 appData.isShowingAlert = false
@@ -34,7 +34,7 @@ struct UnicourseApp: App {
 
             .preferredColorScheme(.light)
             .animation(.spring(), value: appData.isShowSlashScreen)
-            .onReceive(NotificationCenter.default.publisher(for: .didReceiveDeepLink)) { notification in
+            .onReceive(NotificationCenter.default.publisher(for: .paymentCompleted)) { notification in
                 if let url = notification.object as? URL {
                     handleDeepLink(url: url)
                 }
@@ -52,6 +52,12 @@ struct UnicourseApp: App {
                 }
             }
         }
+    }
+
+    private func handleDeepLink(url: URL) {
+        // Handle the URL and update payment status
+        print("Handling deep link: \(url)")
+        // Add your deep link handling logic here
     }
 
     private func handleDeepLink(url: URL) {

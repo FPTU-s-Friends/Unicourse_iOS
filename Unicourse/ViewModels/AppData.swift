@@ -13,7 +13,6 @@ class AppData: ObservableObject {
     @Published var user: UserProfile?
     @Published var userInfo: UserInfoModel?
     @Published var cart: CartModel?
-    @Published var cartSelectedItems: [CartItem] = []
     @Published var listCurrentEnrolled: [String] = []
     @Published var wishList: [WishListModel] = []
     @Published var token: String
@@ -128,6 +127,7 @@ class AppData: ObservableObject {
             }
 
         } catch {
+            cart = nil
             print("Get User Cart Error")
             print(error)
         }
@@ -190,7 +190,6 @@ class AppData: ObservableObject {
 
         do {
             let response: CommonResponse<PaymentLinkData> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
-            printJSONData(data: response)
             return response
         } catch {
             print("createPaymentLinkFailed", error)
@@ -200,8 +199,50 @@ class AppData: ObservableObject {
         }
     }
 
+    func getPaymentLinkInfo(token: String, orderCode: Int) async throws -> CommonResponse<PaymentLinkInfomation> {
+        let path = APIPath.getPaymentInfo.stringValue
+        let method = HTTPMethod.get
+        let headers = [
+            "Authorization": "Bearer \(token)"
+        ]
+
+        do {
+            let response: CommonResponse<PaymentLinkInfomation> = try await NetworkManager.shared.callAPI(path: "\(path)/\(orderCode)", method: method, headers: headers, body: nil)
+            printJSONData(data: response)
+            return response
+        } catch {
+            print("getPaymentLinkInfo", error)
+            self.error = error.localizedDescription
+            isShowingAlert = true
+            throw error
+        }
+    }
+
+    func createTransaction(token: String, data: TransactionRequestModel) async throws -> CommonResponse<TransactionResponseModel> {
+        let path = APIPath.createTransaction.stringValue
+        let method = HTTPMethod.post
+        let headers = [
+            "Authorization": "Bearer \(token)"
+        ]
+
+        guard let bodyData = try? JSONEncoder().encode(data) else {
+            throw NetworkError.encodingError
+        }
+
+        do {
+            let response: CommonResponse<TransactionResponseModel> = try await NetworkManager.shared.callAPI(path: path, method: method, headers: headers, body: bodyData)
+            printJSONData(data: response)
+            return response
+        } catch {
+            print("create Transaction", error)
+            self.error = error.localizedDescription
+            isShowingAlert = true
+            throw error
+        }
+    }
+
     func calculateTotalAmount() -> Int {
-        return Int(cartSelectedItems.reduce(0) { $0 + $1.amount })
+        return Int(cart?.items.reduce(0) { $0 + $1.amount } ?? 0)
     }
 
     func calculateTotalCoin() -> Int {
@@ -209,6 +250,7 @@ class AppData: ObservableObject {
     }
 }
 
+// Payment Link
 struct CreatePaymentLinkModel: Codable {
     let orderCode: Int
     let amount: Int
@@ -234,4 +276,63 @@ struct PaymentLinkData: Codable {
     let status: String
     let checkoutUrl: String
     let qrCode: String
+}
+
+struct PaymentLinkInfomation: Codable {
+    let id: String
+    let orderCode: Int
+    let amount: Int
+    let amountPaid: Int
+    let amountRemaining: Int
+    let status: String
+    let createdAt: String
+    let transactions: [TransactionPaymentLink]
+    let canceledAt: String?
+    let cancellationReason: String?
+}
+
+struct TransactionPaymentLink: Codable {
+    let accountNumber: String
+    let amount: Int
+    let counterAccountBankId: String?
+    let counterAccountBankName: String?
+    let counterAccountName: String?
+    let counterAccountNumber: String?
+    let description: String
+    let reference: String
+    let transactionDateTime: String
+    let virtualAccountName: String?
+    let virtualAccountNumber: String
+}
+
+// Transaction Model
+struct TransactionRequestModel: Codable {
+    let userId: String
+    let process_date: String
+    let payer: payerTransaction
+    let cart_id: String
+    let payment_method: String
+    let total_old_amount: Int
+    let total_new_amount: Int
+    let voucher_id: String
+    let status: String
+    let transaction_code: String
+}
+
+struct payerTransaction: Codable {
+    let name: String
+    let email: String
+    let address: String
+}
+
+struct TransactionResponseModel: Codable {
+    let userId: String
+    let process_date: String
+    let payer: payerTransaction
+    let item_checkout: [String]?
+    let payment_method: String
+    let total_old_amount: Int
+    let total_new_amount: Int
+    let status: String
+    let transaction_code: String
 }

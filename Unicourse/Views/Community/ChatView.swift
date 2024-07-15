@@ -70,7 +70,8 @@ struct ChatView: View {
         }
         .alert(isPresented: $viewModel.isShowingAlert) {
             Alert(
-                title: Text("Error").foregroundStyle(Color.red),
+                title: Text("Error")
+                    .foregroundColor(Color.red),
                 message: Text(viewModel.error),
                 dismissButton: .cancel(Text("Ok")) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
